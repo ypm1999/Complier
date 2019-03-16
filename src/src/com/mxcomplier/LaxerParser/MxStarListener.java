@@ -1,4 +1,5 @@
-// Generated from MxStar.g4 by ANTLR 4.7.2
+// Generated from /home/sjtu-ypm/complier/src/src/com/mxcomplier/LaxerParser/MxStar.g4 by ANTLR 4.7.2
+package com.mxcomplier.LaxerParser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -7,15 +8,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface MxStarListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link MxStarParser#file}.
+	 * Enter a parse tree produced by {@link MxStarParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void enterFile(MxStarParser.FileContext ctx);
+	void enterProgram(MxStarParser.ProgramContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MxStarParser#file}.
+	 * Exit a parse tree produced by {@link MxStarParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void exitFile(MxStarParser.FileContext ctx);
+	void exitProgram(MxStarParser.ProgramContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MxStarParser#functionDefinition}.
 	 * @param ctx the parse tree
@@ -247,6 +248,18 @@ public interface MxStarListener extends ParseTreeListener {
 	 */
 	void exitBinaryExpr(MxStarParser.BinaryExprContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code suffixIncDec}
+	 * labeled alternative in {@link MxStarParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterSuffixIncDec(MxStarParser.SuffixIncDecContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code suffixIncDec}
+	 * labeled alternative in {@link MxStarParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitSuffixIncDec(MxStarParser.SuffixIncDecContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code assignExpr}
 	 * labeled alternative in {@link MxStarParser#expression}.
 	 * @param ctx the parse tree
@@ -258,18 +271,6 @@ public interface MxStarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignExpr(MxStarParser.AssignExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code postfixIncDec}
-	 * labeled alternative in {@link MxStarParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterPostfixIncDec(MxStarParser.PostfixIncDecContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code postfixIncDec}
-	 * labeled alternative in {@link MxStarParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitPostfixIncDec(MxStarParser.PostfixIncDecContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MxStarParser#newExpression}.
 	 * @param ctx the parse tree

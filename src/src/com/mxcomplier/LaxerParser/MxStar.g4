@@ -1,7 +1,7 @@
 
 grammar MxStar;
 
-file
+program
     :   (   functionDefinition
         |   classDefinition
         |   declarationStatement
@@ -9,7 +9,7 @@ file
     ;
 
 functionDefinition
-    :   typeName ('[' ']')* functionDeclarator compoundStatement
+    :   (typeName)? functionDeclarator compoundStatement
     ;
 
 functionDeclarator
@@ -26,7 +26,6 @@ classStatement
 
 classBlockItem
     :   functionDefinition
-    |   constructFunctionDefine
     |   declarationStatement
     ;
 
@@ -66,7 +65,7 @@ argumentExpressionList
 
 expression
     :   primaryExpression                                               # primaryExpr
-    |   expression op = ('++' | '--')                                   # postfixIncDec
+    |   expression op = ('++' | '--')                                   # suffixIncDec
     |   <assoc = right> op = ('++' | '--') expression                   # prefixExpr
     |   <assoc = right> op = ('+' | '-' | '!' | '~') expression         # prefixExpr
     |   newExpression                                                   # new
@@ -134,62 +133,24 @@ typeName
     |   Identifier
     ;
 
+Bool                : 'bool';
+Int                 : 'int';
+String              : 'string';
+Null                : 'null';
+Void                : 'void';
+True                : 'true';
+False               : 'false';
+If                  : 'if';
+Else                : 'else';
+For                 : 'for';
+While               : 'while';
+Break               : 'break';
+Continue            : 'continue';
+Return              : 'return';
+New                 : 'new';
+Class               : 'class';
+This                : 'this';
 
-Break : 'break';
-String : 'string';
-Continue : 'continue';
-Else : 'else';
-For : 'for';
-If : 'if';
-Int : 'int';
-Bool : 'bool';
-Return : 'return';
-Void : 'void';
-While : 'while';
-New : 'new';
-
-
-LeftParen : '(';
-RightParen : ')';
-LeftBracket : '[';
-RightBracket : ']';
-LeftBrace : '{';
-RightBrace : '}';
-
-Less : '<';
-LessEqual : '<=';
-Greater : '>';
-GreaterEqual : '>=';
-LeftShift : '<<';
-RightShift : '>>';
-
-Plus : '+';
-PlusPlus : '++';
-Minus : '-';
-MinusMinus : '--';
-Star : '*';
-Div : '/';
-Mod : '%';
-
-And : '&';
-Or : '|';
-AndAnd : '&&';
-OrOr : '||';
-Caret : '^';
-Not : '!';
-Tilde : '~';
-
-Question : '?';
-Colon : ':';
-Semi : ';';
-Comma : ',';
-
-Assign : '=';
-
-Equal : '==';
-NotEqual : '!=';
-
-Dot : '.';
 
 bracketIdentifier
     :   Identifier

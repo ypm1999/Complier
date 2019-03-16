@@ -3,7 +3,7 @@ import fileinput
 make = "java -jar /usr/local/lib/antlr-4.7.2-complete.jar MxStar.g4 && javac MxStar*.java"
 run = "java org.antlr.v4.gui.TestRig MxStar file TestCases/"
 os.system(make)
-for now in open("temp.txt", "r"):
+for now in open("testcases_except_CE.txt", "r"):
     line = now[:-1]
     if line[0:8] != "testcase":
         continue

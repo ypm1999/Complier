@@ -1,4 +1,5 @@
-// Generated from MxStar.g4 by ANTLR 4.7.2
+// Generated from /home/sjtu-ypm/complier/src/src/com/mxcomplier/LaxerParser/MxStar.g4 by ANTLR 4.7.2
+package com.mxcomplier.LaxerParser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -7,15 +8,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface MxStarListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link MxStarParser#file}.
+	 * Enter a parse tree produced by {@link MxStarParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void enterFile(MxStarParser.FileContext ctx);
+	void enterProgram(MxStarParser.ProgramContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MxStarParser#file}.
+	 * Exit a parse tree produced by {@link MxStarParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void exitFile(MxStarParser.FileContext ctx);
+	void exitProgram(MxStarParser.ProgramContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MxStarParser#functionDefinition}.
 	 * @param ctx the parse tree

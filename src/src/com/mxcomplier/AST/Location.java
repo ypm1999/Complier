@@ -14,4 +14,12 @@ final public class Location {
         this.line = token.getLine();
         this.column = token.getCharPositionInLine();
     }
+
+    public int getLine() {
+        return line;
+    }
+
+    public int getColumn() {
+        return column;
+    }
 }

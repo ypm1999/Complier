@@ -1,20 +1,25 @@
 package com.mxcomplier.AST;
 
+import com.mxcomplier.Scope.Scope;
+
 import java.util.List;
 
 public class ProgramNode extends Node {
     private List<ClassDefNode> classDefs;
     private List<FuncDefNode> funcDefs;
     private List<VarDefNode> varDefs;
+    private Scope scope;
 
     public ProgramNode(List<ClassDefNode> classDefs,
                 List<FuncDefNode> funcDefs,
                 List<VarDefNode> varDefs,
-                Location location){
+                Location location)
+    {
         this.classDefs = classDefs;
         this.funcDefs = funcDefs;
         this.varDefs = varDefs;
         this.location = location;
+        this.scope = new Scope(null);
     }
 
     public List<ClassDefNode> getClassDefs() {
@@ -28,6 +33,8 @@ public class ProgramNode extends Node {
     public List<VarDefNode> getVarDefs() {
         return varDefs;
     }
+
+    public Scope getScope() { return scope; }
 
     @Override
     public void accept(ASTVisitor visitor) {

@@ -9,11 +9,7 @@ program
     ;
 
 functionDefinition
-    :   (typeName)? functionDeclarator compoundStatement
-    ;
-
-functionDeclarator
-    :   Identifier '(' declarationList? ')'
+    :   (typeOrVoid)? Identifier '(' declarationList? ')' compoundStatement
     ;
 
 classDefinition
@@ -21,16 +17,7 @@ classDefinition
     ;
 
 classStatement
-    :   classBlockItem* 
-    ;
-
-classBlockItem
-    :   functionDefinition
-    |   declarationStatement
-    ;
-
-constructFunctionDefine
-    :   functionDeclarator compoundStatement
+    :   (functionDefinition | declarationStatement)*
     ;
 
 declarationList
@@ -42,12 +29,9 @@ declarationStatement
     ;
 
 declaration
-    :   typeName ('[' ']')* initDeclarator
+    :   type Identifier ('=' expression)?
     ;
 
-initDeclarator
-    :   Identifier (('=' expression) | ( '(' declarationList? ')' ))?
-    ;
 
 // Expression build
 primaryExpression
@@ -68,7 +52,7 @@ expression
     |   expression op = ('++' | '--')                                   # suffixIncDec
     |   <assoc = right> op = ('++' | '--') expression                   # prefixExpr
     |   <assoc = right> op = ('+' | '-' | '!' | '~') expression         # prefixExpr
-    |   newExpression                                                   # new
+    |   newExpression                                                   # newExpr
     |   expression op = ('*' | '/' | '%') expression                    # binaryExpr
     |   expression op = ('+' | '-') expression                          # binaryExpr
     |   expression op = ('<<' | '>>') expression                        # binaryExpr
@@ -83,7 +67,8 @@ expression
     ;
 
 newExpression
-    :   New typeName ('[' expression ']')* ('[' ']')* ( '(' argumentExpressionList? ')' )?
+    :   New baseType ('[' expression ']')+ ('[' ']')*
+    |   New baseType ( '('  ')' )?
     ;
 
 // Expression build finished
@@ -99,7 +84,12 @@ statement
     ;
 
 compoundStatement
-    :   '{' (statement | declaration)* '}'
+    :   '{' compoundStatementItem* '}'
+    ;
+
+compoundStatementItem
+    :   statement
+    |   declarationStatement
     ;
 
 expressionStatement
@@ -125,12 +115,21 @@ jumpStatement
     |   Return expression? ';'
     ;
 
-typeName
-    :   Void 
-    |   Int 
+baseType
+    :   Int
     |   Bool 
     |   String 
     |   Identifier
+    ;
+
+type
+    :   baseType
+    |   type '[' ']'
+    ;
+
+typeOrVoid
+    :   Void
+    |   type
     ;
 
 Bool                : 'bool';
@@ -173,9 +172,9 @@ fragment Digit
     ;
 
 Constant
-    :   'true'
-    |   'false'
-    |   'null'
+    :   True
+    |   False
+    |   Null
     |   IntegerConstant
     |   CharacterConstant
     ;

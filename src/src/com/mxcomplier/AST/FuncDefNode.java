@@ -9,12 +9,18 @@ final public class FuncDefNode extends Node {
     private List<TypeNode> parameters;
     private BlockStmtNode funcBody;
 
-    FuncDefNode(String name, TypeNode returnType, List<TypeNode> parameters, BlockStmtNode funcBody){
+    public FuncDefNode(String name,
+                       TypeNode returnType,
+                       List<TypeNode> parameters,
+                       BlockStmtNode funcBody,
+                       Location location)
+    {
         this.name = name;
         this.returnType = returnType;
         this.isConstructor = returnType == null;
         this.parameters = parameters;
         this.funcBody = funcBody;
+        this.location = location;
     }
 
     public String getName() {

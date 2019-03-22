@@ -53,47 +53,47 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeclaration(MxStarParser.DeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code identifier}
+	 * Visit a parse tree produced by the {@code memberCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIdentifier(MxStarParser.IdentifierContext ctx);
+	T visitMemberCallExpr(MxStarParser.MemberCallExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code constant}
+	 * Visit a parse tree produced by the {@code arrayCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitConstant(MxStarParser.ConstantContext ctx);
+	T visitArrayCallExpr(MxStarParser.ArrayCallExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code functionCall}
+	 * Visit a parse tree produced by the {@code functionCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionCall(MxStarParser.FunctionCallContext ctx);
+	T visitFunctionCallExpr(MxStarParser.FunctionCallExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code subExperssion}
+	 * Visit a parse tree produced by the {@code subExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubExperssion(MxStarParser.SubExperssionContext ctx);
+	T visitSubExpr(MxStarParser.SubExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code arrayCall}
+	 * Visit a parse tree produced by the {@code identifierExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArrayCall(MxStarParser.ArrayCallContext ctx);
+	T visitIdentifierExpr(MxStarParser.IdentifierExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code memberCall}
+	 * Visit a parse tree produced by the {@code constantExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMemberCall(MxStarParser.MemberCallContext ctx);
+	T visitConstantExpr(MxStarParser.ConstantExprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MxStarParser#argumentExpressionList}.
 	 * @param ctx the parse tree

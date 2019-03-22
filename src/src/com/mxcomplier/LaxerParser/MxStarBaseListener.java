@@ -100,73 +100,73 @@ public class MxStarBaseListener implements MxStarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdentifier(MxStarParser.IdentifierContext ctx) { }
+	@Override public void enterMemberCallExpr(MxStarParser.MemberCallExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdentifier(MxStarParser.IdentifierContext ctx) { }
+	@Override public void exitMemberCallExpr(MxStarParser.MemberCallExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstant(MxStarParser.ConstantContext ctx) { }
+	@Override public void enterArrayCallExpr(MxStarParser.ArrayCallExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstant(MxStarParser.ConstantContext ctx) { }
+	@Override public void exitArrayCallExpr(MxStarParser.ArrayCallExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCall(MxStarParser.FunctionCallContext ctx) { }
+	@Override public void enterFunctionCallExpr(MxStarParser.FunctionCallExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionCall(MxStarParser.FunctionCallContext ctx) { }
+	@Override public void exitFunctionCallExpr(MxStarParser.FunctionCallExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubExperssion(MxStarParser.SubExperssionContext ctx) { }
+	@Override public void enterSubExpr(MxStarParser.SubExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSubExperssion(MxStarParser.SubExperssionContext ctx) { }
+	@Override public void exitSubExpr(MxStarParser.SubExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayCall(MxStarParser.ArrayCallContext ctx) { }
+	@Override public void enterIdentifierExpr(MxStarParser.IdentifierExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayCall(MxStarParser.ArrayCallContext ctx) { }
+	@Override public void exitIdentifierExpr(MxStarParser.IdentifierExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMemberCall(MxStarParser.MemberCallContext ctx) { }
+	@Override public void enterConstantExpr(MxStarParser.ConstantExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMemberCall(MxStarParser.MemberCallContext ctx) { }
+	@Override public void exitConstantExpr(MxStarParser.ConstantExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -4,6 +4,8 @@ import com.mxcomplier.AST.*;
 import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.LaxerParser.MxStarBaseVisitor;
 import com.mxcomplier.LaxerParser.MxStarParser;
+import com.mxcomplier.Type.ArrayType;
+import com.mxcomplier.Type.Type;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.ArrayList;
@@ -75,6 +77,9 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
         return new ClassDefNode(name, varList, funcList, new Location(ctx.getStart()));
     }
 
+
+    //TODO PrimaryExpression
+
     @Override
     public Node visitSuffixIncDec(MxStarParser.SuffixIncDecContext ctx) {
         Node subExpr = NullExprNode.getInstance();
@@ -118,6 +123,34 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
     }
 
     @Override
+    public Node visitBinaryExpr(MxStarParser.BinaryExprContext ctx) {
+        BinaryExprNode.Op op;
+        Node leftExpr = visit(ctx.exp1), rightExpr = visit(ctx.exp2);
+        switch (ctx.op.getText()){
+            case "*":   op = BinaryExprNode.Op.MUL; break;
+            case "/":   op = BinaryExprNode.Op.DIV; break;
+            case "%":   op = BinaryExprNode.Op.MOD; break;
+            case "+":   op = BinaryExprNode.Op.PLUS; break;
+            case "-":   op = BinaryExprNode.Op.MINUS; break;
+            case "<<":  op = BinaryExprNode.Op.LSH; break;
+            case ">>":  op = BinaryExprNode.Op.RSH; break;
+            case ">":   op = BinaryExprNode.Op.LESS; break;
+            case "<":   op = BinaryExprNode.Op.LARGE; break;
+            case ">=":  op = BinaryExprNode.Op.LESS_EQUAL; break;
+            case "<=":  op = BinaryExprNode.Op.LARGE_EQUAL; break;
+            case "==":  op = BinaryExprNode.Op.EQUAL; break;
+            case "!=":  op = BinaryExprNode.Op.UNEQUAL; break;
+            case "&":   op = BinaryExprNode.Op.AND; break;
+            case "^":   op = BinaryExprNode.Op.OR; break;
+            case "|":   op = BinaryExprNode.Op.XOR; break;
+            case "&&":  op = BinaryExprNode.Op.ANDAND; break;
+            case "||":  op = BinaryExprNode.Op.OROR; break;
+            default: op     = BinaryExprNode.Op.NULL; break;
+        }
+        return new BinaryExprNode((ExprNode) leftExpr, (ExprNode) rightExpr, op, new Location(ctx.getStart()));
+    }
+
+    @Override
     public Node visitAssignExpr(MxStarParser.AssignExprContext ctx) {
         Node leftExpr = NullExprNode.getInstance(), rightExpr = NullExprNode.getInstance();
 
@@ -136,6 +169,22 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
 
     @Override
     public Node visitNewExpression(MxStarParser.NewExpressionContext ctx) {
+        Node newType;
+        List<ExprNode> dims = new ArrayList<>();
+        int order = 0;
+        newType = visit(ctx.baseType());
 
+        if (ctx.expression() != null){
+            Type type = ((TypeNode)newType).getType();
+            for (ParserRuleContext dim : ctx.expression()){
+                type = new ArrayType(type);
+                dims.add((ExprNode) visit(dim));
+                order++;
+            }
+            newType = new TypeNode(type, newType.getLocation());
+            order = (ctx.getChildCount() - (2 + order)) / 2;
+        }
+
+        return new NewExprNode((TypeNode) newType, dims, order, new Location(ctx.getStart()));
     }
 }

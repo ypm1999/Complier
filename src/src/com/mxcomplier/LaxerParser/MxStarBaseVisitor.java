@@ -66,42 +66,42 @@ public class MxStarBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIdentifier(MxStarParser.IdentifierContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMemberCallExpr(MxStarParser.MemberCallExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitConstant(MxStarParser.ConstantContext ctx) { return visitChildren(ctx); }
+	@Override public T visitArrayCallExpr(MxStarParser.ArrayCallExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionCall(MxStarParser.FunctionCallContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunctionCallExpr(MxStarParser.FunctionCallExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSubExperssion(MxStarParser.SubExperssionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSubExpr(MxStarParser.SubExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArrayCall(MxStarParser.ArrayCallContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIdentifierExpr(MxStarParser.IdentifierExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMemberCall(MxStarParser.MemberCallContext ctx) { return visitChildren(ctx); }
+	@Override public T visitConstantExpr(MxStarParser.ConstantExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -35,12 +35,12 @@ declaration
 
 // Expression build
 primaryExpression
-    :   Identifier                                                      # identifier
-    |   Constant                                                        # constant
-    |   '(' expression ')'                                              # subExperssion
-    |   primaryExpression '[' expression ']'                            # arrayCall
-    |   primaryExpression '(' argumentExpressionList? ')'               # functionCall
-    |   primaryExpression '.' bracketIdentifier                         # memberCall
+    :   Identifier                                                      # identifierExpr
+    |   Constant                                                        # constantExpr
+    |   '(' expression ')'                                              # subExpr
+    |   primaryExpression '[' expression ']'                            # arrayCallExpr
+    |   primaryExpression '(' argumentExpressionList? ')'               # functionCallExpr
+    |   primaryExpression '.' bracketIdentifier                         # memberCallExpr
     ;
 
 argumentExpressionList
@@ -53,16 +53,16 @@ expression
     |   <assoc = right> op = ('++' | '--') expression                   # prefixExpr
     |   <assoc = right> op = ('+' | '-' | '!' | '~') expression         # prefixExpr
     |   newExpression                                                   # newExpr
-    |   expression op = ('*' | '/' | '%') expression                    # binaryExpr
-    |   expression op = ('+' | '-') expression                          # binaryExpr
-    |   expression op = ('<<' | '>>') expression                        # binaryExpr
-    |   expression op = ('<' | '>' | '<=' | '>=') expression            # binaryExpr
-    |   expression op = ('==' | '!=') expression                        # binaryExpr
-    |   expression op = '&' expression                                  # binaryExpr
-    |   expression op = '^' expression                                  # binaryExpr
-    |   expression op = '|' expression                                  # binaryExpr
-    |   expression op = '&&' expression                                 # binaryExpr
-    |   expression op = '||' expression                                 # binaryExpr
+    |   exp1=expression op = ('*' | '/' | '%') exp2=expression          # binaryExpr
+    |   exp1=expression op = ('+' | '-') exp2=expression                # binaryExpr
+    |   exp1=expression op = ('<<' | '>>') exp2=expression              # binaryExpr
+    |   exp1=expression op = ('<' | '>' | '<=' | '>=') exp2=expression  # binaryExpr
+    |   exp1=expression op = ('==' | '!=') exp2=expression              # binaryExpr
+    |   exp1=expression op = '&' exp2=expression                        # binaryExpr
+    |   exp1=expression op = '^' exp2=expression                        # binaryExpr
+    |   exp1=expression op = '|' exp2=expression                        # binaryExpr
+    |   exp1=expression op = '&&' exp2=expression                       # binaryExpr
+    |   exp1=expression op = '||' exp2=expression                       # binaryExpr
     |   <assoc=right> primaryExpression op = '=' expression             # assignExpr
     ;
 

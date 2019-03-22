@@ -3,28 +3,28 @@ package com.mxcomplier.Type;
 import com.mxcomplier.Config;
 
 public class ArrayType extends Type{
-    private String name;
+    private Type baseType;
 
-    private ArrayType(String name){
-        this.name = name;
+    public ArrayType(Type baseType){
+        this.baseType = baseType;
         this.hyperType = HyperType.ARRAY;
         this.varSize = Config.getREGSIZE();
     }
 
-    public String getName() {
-        return name;
+    public Type getBaseType() {
+        return baseType;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof ArrayType)
-            return name.equals(((ArrayType) obj).name);
+            return baseType.equals(((ArrayType) obj).baseType);
         else
             return false;
     }
 
     @Override
     public String toString() {
-        return String.format("ArrayType(%s)", name.toString());
+        return String.format("ArrayType(%s)", baseType.toString());
     }
 }

@@ -78,77 +78,77 @@ public interface MxStarListener extends ParseTreeListener {
 	 */
 	void exitDeclaration(MxStarParser.DeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code identifier}
+	 * Enter a parse tree produced by the {@code memberCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterIdentifier(MxStarParser.IdentifierContext ctx);
+	void enterMemberCallExpr(MxStarParser.MemberCallExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code identifier}
+	 * Exit a parse tree produced by the {@code memberCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitIdentifier(MxStarParser.IdentifierContext ctx);
+	void exitMemberCallExpr(MxStarParser.MemberCallExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code constant}
+	 * Enter a parse tree produced by the {@code arrayCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterConstant(MxStarParser.ConstantContext ctx);
+	void enterArrayCallExpr(MxStarParser.ArrayCallExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code constant}
+	 * Exit a parse tree produced by the {@code arrayCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitConstant(MxStarParser.ConstantContext ctx);
+	void exitArrayCallExpr(MxStarParser.ArrayCallExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code functionCall}
+	 * Enter a parse tree produced by the {@code functionCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionCall(MxStarParser.FunctionCallContext ctx);
+	void enterFunctionCallExpr(MxStarParser.FunctionCallExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code functionCall}
+	 * Exit a parse tree produced by the {@code functionCallExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionCall(MxStarParser.FunctionCallContext ctx);
+	void exitFunctionCallExpr(MxStarParser.FunctionCallExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code subExperssion}
+	 * Enter a parse tree produced by the {@code subExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterSubExperssion(MxStarParser.SubExperssionContext ctx);
+	void enterSubExpr(MxStarParser.SubExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code subExperssion}
+	 * Exit a parse tree produced by the {@code subExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitSubExperssion(MxStarParser.SubExperssionContext ctx);
+	void exitSubExpr(MxStarParser.SubExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code arrayCall}
+	 * Enter a parse tree produced by the {@code identifierExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterArrayCall(MxStarParser.ArrayCallContext ctx);
+	void enterIdentifierExpr(MxStarParser.IdentifierExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code arrayCall}
+	 * Exit a parse tree produced by the {@code identifierExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitArrayCall(MxStarParser.ArrayCallContext ctx);
+	void exitIdentifierExpr(MxStarParser.IdentifierExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code memberCall}
+	 * Enter a parse tree produced by the {@code constantExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterMemberCall(MxStarParser.MemberCallContext ctx);
+	void enterConstantExpr(MxStarParser.ConstantExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code memberCall}
+	 * Exit a parse tree produced by the {@code constantExpr}
 	 * labeled alternative in {@link MxStarParser#primaryExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitMemberCall(MxStarParser.MemberCallContext ctx);
+	void exitConstantExpr(MxStarParser.ConstantExprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MxStarParser#argumentExpressionList}.
 	 * @param ctx the parse tree

@@ -7,7 +7,7 @@ public class NewExprNode extends ExprNode {
     private List<ExprNode> dims;
     private int order;
 
-    public NewExprNode(TypeNode baseType, List dims, int order, Location location){
+    public NewExprNode(TypeNode baseType, List dims, int order, Location location) {
         this.baseType = baseType;
         this.dims = dims;
         this.order = order;

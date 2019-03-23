@@ -3,7 +3,7 @@ package com.mxcomplier.AST;
 public class AssignExprNode extends ExprNode {
     private ExprNode leftExpr, rightExpr;
 
-    public AssignExprNode(ExprNode leftExpr, ExprNode rightExpr, Location location){
+    public AssignExprNode(ExprNode leftExpr, ExprNode rightExpr, Location location) {
         this.leftExpr = leftExpr;
         this.rightExpr = rightExpr;
         this.location = location;

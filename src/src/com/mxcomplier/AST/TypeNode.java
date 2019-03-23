@@ -5,7 +5,7 @@ import com.mxcomplier.Type.Type;
 public class TypeNode extends Node {
     private Type type;
 
-    public TypeNode(Type type, Location location){
+    public TypeNode(Type type, Location location) {
         this.type = type;
         this.location = location;
     }

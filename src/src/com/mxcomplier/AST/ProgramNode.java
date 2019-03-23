@@ -11,15 +11,13 @@ public class ProgramNode extends Node {
     private Scope scope;
 
     public ProgramNode(List<ClassDefNode> classDefs,
-                List<FuncDefNode> funcDefs,
-                List<VarDefNode> varDefs,
-                Location location)
-    {
+                       List<FuncDefNode> funcDefs,
+                       List<VarDefNode> varDefs,
+                       Location location) {
         this.classDefs = classDefs;
         this.funcDefs = funcDefs;
         this.varDefs = varDefs;
         this.location = location;
-        this.scope = new Scope(null);
     }
 
     public List<ClassDefNode> getClassDefs() {
@@ -34,7 +32,13 @@ public class ProgramNode extends Node {
         return varDefs;
     }
 
-    public Scope getScope() { return scope; }
+    public Scope getScope() {
+        return scope;
+    }
+
+    public void setScope(Scope scope) {
+        this.scope = scope;
+    }
 
     @Override
     public void accept(ASTVisitor visitor) {

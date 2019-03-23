@@ -11,7 +11,7 @@ public class PrefixExprNode extends ExprNode {
     private ExprNode subExpr;
     private PrefixOp prefixOp;
 
-    public PrefixExprNode(ExprNode subExpr, PrefixOp prefixOp, Location location){
+    public PrefixExprNode(ExprNode subExpr, PrefixOp prefixOp, Location location) {
         this.subExpr = subExpr;
         this.prefixOp = prefixOp;
         this.location = location;

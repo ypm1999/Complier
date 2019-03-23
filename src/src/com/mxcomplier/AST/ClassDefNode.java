@@ -1,17 +1,19 @@
 package com.mxcomplier.AST;
 
+import com.mxcomplier.Scope.Scope;
+
 import java.util.List;
 
 public class ClassDefNode extends Node {
     private String name;
     private List<VarDefNode> memberdefs;
     private List<FuncDefNode> funcdefs;
+    private Scope scope;
 
     public ClassDefNode(String name,
                         List<VarDefNode> memberdefs,
                         List<FuncDefNode> funcdefs,
-                        Location location)
-    {
+                        Location location) {
         this.name = name;
         this.memberdefs = memberdefs;
         this.funcdefs = funcdefs;
@@ -28,6 +30,14 @@ public class ClassDefNode extends Node {
 
     public List<FuncDefNode> getFuncdefs() {
         return funcdefs;
+    }
+
+    public Scope getScope() {
+        return scope;
+    }
+
+    public void setScope(Scope scope) {
+        this.scope = scope;
     }
 
     @Override

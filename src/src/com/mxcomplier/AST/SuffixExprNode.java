@@ -9,7 +9,7 @@ public class SuffixExprNode extends ExprNode {
     private ExprNode subExpr;
     private SuffixOp suffixOp;
 
-    public SuffixExprNode(ExprNode subExpr, SuffixOp suffixOp, Location location){
+    public SuffixExprNode(ExprNode subExpr, SuffixOp suffixOp, Location location) {
         this.subExpr = subExpr;
         this.suffixOp = suffixOp;
         this.location = location;

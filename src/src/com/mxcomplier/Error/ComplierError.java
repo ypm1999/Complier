@@ -2,7 +2,7 @@ package com.mxcomplier.Error;
 
 import com.mxcomplier.AST.Location;
 
-public class ComplierError extends Exception {
+public class ComplierError extends Error {
 
     public ComplierError(Location location, String msg){
         String errorMsg = String.format("[Complier Error] at (%d,%d): %s",

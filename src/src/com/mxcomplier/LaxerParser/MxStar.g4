@@ -9,11 +9,11 @@ program
     ;
 
 functionDefinition
-    :   (typeOrVoid)? Identifier '(' declarationList? ')' compoundStatement
+    :   (typeOrVoid)? identifier '(' declarationList? ')' compoundStatement
     ;
 
 classDefinition
-    :   'class' Identifier '{' classStatement '}'
+    :   Class identifier '{' classStatement '}'
     ;
 
 classStatement
@@ -29,14 +29,15 @@ declarationStatement
     ;
 
 declaration
-    :   type Identifier ('=' expression)?
+    :   type identifier ('=' expression)?
     ;
 
 
 // Expression build
 primaryExpression
-    :   Identifier                                                      # identifierExpr
-    |   Constant                                                        # constantExpr
+    :   This                                                            # thisExpr
+    |   identifier                                                      # identifierExpr
+    |   constant                                                        # constantExpr
     |   '(' expression ')'                                              # subExpr
     |   primaryExpression '[' expression ']'                            # arrayCallExpr
     |   primaryExpression '(' argumentExpressionList? ')'               # functionCallExpr
@@ -80,7 +81,6 @@ statement
     |   selectionStatement
     |   iterationStatement
     |   jumpStatement
-    |   declarationStatement
     ;
 
 compoundStatement
@@ -97,29 +97,29 @@ expressionStatement
     ;
 
 selectionStatement
-    :   If '(' expression ')' statement (Else statement)?
+    :   If '(' expression ')' thenStmt = statement (Else elseStmt = statement)?
     ;
 
 iterationStatement
-    :   While '(' expression ')' statement
-    |   For '(' forCondition ')' statement
+    :   While '(' expression ')' statement                  #whileStatement
+    |   For '(' forCondition ')' statement                  #forStatement
     ;
 
 forCondition
-	:   expression? ';' expression? ';' expression?
+	:   exp1 = expression? ';' exp2 = expression? ';' exp3 = expression?
 	;
 
 jumpStatement
-    :   Continue ';'
-    |   Break ';'
-    |   Return expression? ';'
+    :   Continue ';'                        #continueStmt
+    |   Break ';'                           #breakStmt
+    |   Return expression? ';'              #reutrnStmt
     ;
 
 baseType
     :   Int
     |   Bool 
     |   String 
-    |   Identifier
+    |   identifier
     ;
 
 type
@@ -130,6 +130,29 @@ type
 typeOrVoid
     :   Void
     |   type
+    ;
+
+
+bracketIdentifier
+    :   identifier
+    |   '(' bracketIdentifier ')'
+    ;
+
+identifier
+    :   Nondigit
+        (   Nondigit
+        |   Digit
+        |   '_'
+        )*
+    ;
+
+
+constant
+    :   True                        #boolConst
+    |   False                       #boolConst
+    |   Null                        #nullConst
+    |   IntegerConstant             #intConst
+    |   CharacterConstant           #stringConst
     ;
 
 Bool                : 'bool';
@@ -151,16 +174,9 @@ Class               : 'class';
 This                : 'this';
 
 
-bracketIdentifier
-    :   Identifier
-    |   '(' bracketIdentifier ')'
-    ;
-Identifier
-    :   Nondigit
-        (   Nondigit
-        |   Digit
-        |   '_'
-        )*
+IntegerConstant
+    :   NonzeroDigit Digit*
+    |   '0'
     ;
 
 fragment Nondigit
@@ -171,29 +187,8 @@ fragment Digit
     :   [0-9]
     ;
 
-Constant
-    :   True
-    |   False
-    |   Null
-    |   IntegerConstant
-    |   CharacterConstant
-    ;
-
-fragment IntegerConstant
-    :   DecimalConstant 
-    |   '0'
-    ;
-
-fragment DecimalConstant
-    :   NonzeroDigit Digit*
-    ;
-
 fragment NonzeroDigit
     :   [1-9]
-    ;
-
-DigitSequence
-    :   Digit+
     ;
 
 fragment CharacterConstant

@@ -12,7 +12,7 @@ public class BinaryExprNode extends ExprNode {
     private ExprNode leftExpr, rightExpr;
     private Op op;
 
-    public BinaryExprNode(ExprNode leftExpr, ExprNode rightExpr, Op op, Location location){
+    public BinaryExprNode(ExprNode leftExpr, ExprNode rightExpr, Op op, Location location) {
         this.leftExpr = leftExpr;
         this.rightExpr = rightExpr;
         this.location = location;

@@ -7,17 +7,16 @@ final public class FuncDefNode extends Node {
     private TypeNode returnType;
     private boolean isConstructor;
     private List<TypeNode> parameters;
-    private BlockStmtNode funcBody;
+    private CompStmtNode funcBody;
 
     public FuncDefNode(String name,
                        TypeNode returnType,
                        List<TypeNode> parameters,
-                       BlockStmtNode funcBody,
-                       Location location)
-    {
+                       CompStmtNode funcBody,
+                       Location location) {
         this.name = name;
         this.returnType = returnType;
-        this.isConstructor = returnType == null;
+        this.isConstructor = (returnType == null);
         this.parameters = parameters;
         this.funcBody = funcBody;
         this.location = location;
@@ -31,15 +30,13 @@ final public class FuncDefNode extends Node {
         return returnType;
     }
 
-    public boolean getIsConstructor(){
-        return isConstructor;
-    }
+    public boolean getIsConstructor() { return isConstructor; }
 
     public List<TypeNode> getParameters() {
         return parameters;
     }
 
-    public BlockStmtNode getFuncBody() {
+    public CompStmtNode getFuncBody() {
         return funcBody;
     }
 

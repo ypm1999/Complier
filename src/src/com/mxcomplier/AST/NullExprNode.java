@@ -1,12 +1,9 @@
 package com.mxcomplier.AST;
 
-public class NullExprNode extends ExprNode {
-    static private NullExprNode instance = new NullExprNode();
+public class NullExprNode extends ConstExprNode {
 
-    private NullExprNode(){}
-
-    public static NullExprNode getInstance() {
-        return instance;
+    public NullExprNode(Location location) {
+        this.location = location;
     }
 
     @Override

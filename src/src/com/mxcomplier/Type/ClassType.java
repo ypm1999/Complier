@@ -5,7 +5,7 @@ import com.mxcomplier.Config;
 public class ClassType extends Type{
     private String name;
 
-    private ClassType(String name){
+    public ClassType(String name) {
         this.name = name;
         this.hyperType = HyperType.CLASS;
         this.varSize = Config.getREGSIZE();

@@ -6,12 +6,12 @@ final public class FuncDefNode extends Node {
     private String name;
     private TypeNode returnType;
     private boolean isConstructor;
-    private List<TypeNode> parameters;
+    private List<VarDefNode> parameters;
     private CompStmtNode funcBody;
 
     public FuncDefNode(String name,
                        TypeNode returnType,
-                       List<TypeNode> parameters,
+                       List<VarDefNode> parameters,
                        CompStmtNode funcBody,
                        Location location) {
         this.name = name;
@@ -32,7 +32,7 @@ final public class FuncDefNode extends Node {
 
     public boolean getIsConstructor() { return isConstructor; }
 
-    public List<TypeNode> getParameters() {
+    public List<VarDefNode> getParameters() {
         return parameters;
     }
 

@@ -24,10 +24,6 @@ declarationList
     :   declaration (',' declaration)*
     ;
 
-declarationStatement
-    :   declaration ';'
-    ;
-
 declaration
     :   type identifier ('=' expression)?
     ;
@@ -35,13 +31,13 @@ declaration
 
 // Expression build
 primaryExpression
-    :   This                                                            # thisExpr
+    :   primaryExpression '[' expression ']'                            # arrayCallExpr
+    |   primaryExpression '(' argumentExpressionList? ')'               # functionCallExpr
+    |   primaryExpression '.' bracketIdentifier                         # memberCallExpr
+    |   This                                                            # thisExpr
     |   identifier                                                      # identifierExpr
     |   constant                                                        # constantExpr
     |   '(' expression ')'                                              # subExpr
-    |   primaryExpression '[' expression ']'                            # arrayCallExpr
-    |   primaryExpression '(' argumentExpressionList? ')'               # functionCallExpr
-    |   primaryExpression '.' bracketIdentifier                         # memberCallExpr
     ;
 
 argumentExpressionList
@@ -72,9 +68,6 @@ newExpression
     |   New baseType ( '('  ')' )?
     ;
 
-// Expression build finished
-
-
 statement
     :   compoundStatement
     |   expressionStatement
@@ -90,6 +83,11 @@ compoundStatement
 compoundStatementItem
     :   statement
     |   declarationStatement
+    ;
+
+
+declarationStatement
+    :   declaration ';'
     ;
 
 expressionStatement
@@ -110,16 +108,18 @@ forCondition
 	;
 
 jumpStatement
-    :   Continue ';'                        #continueStmt
+    :   Return expression? ';'              #reutrnStmt
+    |   Continue ';'                        #continueStmt
     |   Break ';'                           #breakStmt
-    |   Return expression? ';'              #reutrnStmt
     ;
 
+identifier : Identifier;
+
 baseType
-    :   Int
-    |   Bool 
-    |   String 
-    |   identifier
+    :   identifier
+    |   Int
+    |   Bool
+    |   String
     ;
 
 type
@@ -138,13 +138,6 @@ bracketIdentifier
     |   '(' bracketIdentifier ')'
     ;
 
-identifier
-    :   Nondigit
-        (   Nondigit
-        |   Digit
-        |   '_'
-        )*
-    ;
 
 
 constant
@@ -155,43 +148,50 @@ constant
     |   CharacterConstant           #stringConst
     ;
 
-Bool                : 'bool';
-Int                 : 'int';
-String              : 'string';
 Null                : 'null';
-Void                : 'void';
 True                : 'true';
 False               : 'false';
-If                  : 'if';
+This                : 'this';
+Void                : 'void';
+Int                 : 'int';
+String              : 'string';
+Bool                : 'bool';
+New                 : 'new';
+Class               : 'class';
+Return              : 'return';
+Continue            : 'continue';
+Break               : 'break';
 Else                : 'else';
 For                 : 'for';
 While               : 'while';
-Break               : 'break';
-Continue            : 'continue';
-Return              : 'return';
-New                 : 'new';
-Class               : 'class';
-This                : 'this';
+If                  : 'if';
+
+Identifier
+    :   Nondigit        (   Nondigit
+        |   Digit
+        |   '_'
+        )*
+    ;
 
 
 IntegerConstant
-    :   NonzeroDigit Digit*
-    |   '0'
+    :   '0'
+    |   NonzeroDigit Digit*
     ;
 
-fragment Nondigit
+Nondigit
     :   [a-zA-Z]
     ;
 
-fragment Digit
+Digit
     :   [0-9]
     ;
 
-fragment NonzeroDigit
+NonzeroDigit
     :   [1-9]
     ;
 
-fragment CharacterConstant
+CharacterConstant
     :   '"' CCharSequence? '"'
     ;
 

@@ -13,8 +13,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import java.io.InputStream;
 
 public class MidTerm {
-    private ProgramNode ast;
-    public void main() {
+//    private ProgramNode ast;
+    public static void main(String[] args) {
         try{
             InputStream codeInput= System.in;
             CharStream charInput = CharStreams.fromStream(codeInput);
@@ -23,7 +23,7 @@ public class MidTerm {
             MxStarParser parser = new MxStarParser(token);
             ParseTree tree = parser.program();
             ASTBuilder astBuilder = new ASTBuilder();
-            ast = (ProgramNode) astBuilder.visit(tree);
+            ProgramNode ast = (ProgramNode) astBuilder.visit(tree);
 
         }
         catch (Exception e) {

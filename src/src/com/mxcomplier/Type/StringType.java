@@ -10,7 +10,7 @@ public class StringType extends Type{
         this.varSize = Config.getREGSIZE();
     }
 
-    public StringType getInstance(){
+    static public StringType getInstance() {
         return instance;
     }
 }

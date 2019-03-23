@@ -1,7 +1,5 @@
 package com.mxcomplier.Type;
 
-import com.sun.management.VMOption;
-
 public class VoidType extends Type{
     static private VoidType instance = new VoidType();
 
@@ -9,7 +7,7 @@ public class VoidType extends Type{
         this.hyperType = HyperType.VOID;
     }
 
-    public VoidType getInstance(){
+    static public VoidType getInstance() {
         return instance;
     }
 }

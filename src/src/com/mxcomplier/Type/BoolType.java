@@ -7,7 +7,7 @@ public class BoolType extends Type{
         this.hyperType = HyperType.BOOL;
     }
 
-    public BoolType getInstance(){
+    static public BoolType getInstance() {
         return instance;
     }
 }

@@ -41,12 +41,6 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeclarationList(MxStarParser.DeclarationListContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MxStarParser#declarationStatement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDeclarationStatement(MxStarParser.DeclarationStatementContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link MxStarParser#declaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -174,6 +168,12 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCompoundStatementItem(MxStarParser.CompoundStatementItemContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MxStarParser#declarationStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclarationStatement(MxStarParser.DeclarationStatementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MxStarParser#expressionStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -206,6 +206,13 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitForCondition(MxStarParser.ForConditionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code reutrnStmt}
+	 * labeled alternative in {@link MxStarParser#jumpStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReutrnStmt(MxStarParser.ReutrnStmtContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code continueStmt}
 	 * labeled alternative in {@link MxStarParser#jumpStatement}.
 	 * @param ctx the parse tree
@@ -219,13 +226,6 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBreakStmt(MxStarParser.BreakStmtContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code reutrnStmt}
-	 * labeled alternative in {@link MxStarParser#jumpStatement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitReutrnStmt(MxStarParser.ReutrnStmtContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MxStarParser#baseType}.
 	 * @param ctx the parse tree

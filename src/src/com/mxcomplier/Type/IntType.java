@@ -7,7 +7,7 @@ public class IntType extends Type{
         this.hyperType = HyperType.INT;
     }
 
-    public IntType getInstance(){
+    static public IntType getInstance() {
         return instance;
     }
 }

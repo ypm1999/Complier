@@ -1,5 +1,7 @@
 package com.mxcomplier.AST;
 
+import com.mxcomplier.Scope.Scope;
+
 import java.util.List;
 
 final public class FuncDefNode extends Node {
@@ -8,6 +10,7 @@ final public class FuncDefNode extends Node {
     private boolean isConstructor;
     private List<VarDefNode> parameters;
     private CompStmtNode funcBody;
+    private Scope scope;
 
     public FuncDefNode(String name,
                        TypeNode returnType,
@@ -38,6 +41,14 @@ final public class FuncDefNode extends Node {
 
     public CompStmtNode getFuncBody() {
         return funcBody;
+    }
+
+    public Scope getScope() {
+        return scope;
+    }
+
+    public void setScope(Scope scope) {
+        this.scope = scope;
     }
 
     @Override

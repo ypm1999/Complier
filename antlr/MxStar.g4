@@ -135,15 +135,11 @@ typeName
     ;
 
 
-Break : 'break';
+
 String : 'string';
-Continue : 'continue';
-Else : 'else';
-For : 'for';
-If : 'if';
 Int : 'int';
 Bool : 'bool';
-Return : 'return';
+
 Void : 'void';
 While : 'while';
 New : 'new';

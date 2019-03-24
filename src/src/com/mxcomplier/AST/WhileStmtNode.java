@@ -1,8 +1,11 @@
 package com.mxcomplier.AST;
 
+import com.mxcomplier.Scope.Scope;
+
 public class WhileStmtNode extends StmtNode {
     private ExprNode judgeExpr;
     private StmtNode stmt;
+    private Scope scope;
 
     public WhileStmtNode(ExprNode judgeExpr, StmtNode stmt, Location location){
         this.judgeExpr = judgeExpr;
@@ -16,6 +19,14 @@ public class WhileStmtNode extends StmtNode {
 
     public ExprNode getJudgeExpr() {
         return judgeExpr;
+    }
+
+    public Scope getScope() {
+        return scope;
+    }
+
+    public void setScope(Scope scope) {
+        this.scope = scope;
     }
 
     @Override

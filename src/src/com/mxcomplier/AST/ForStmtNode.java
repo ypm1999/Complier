@@ -1,8 +1,11 @@
 package com.mxcomplier.AST;
 
+import com.mxcomplier.Scope.Scope;
+
 public class ForStmtNode extends StmtNode {
     private ExprNode expr1, expr2, expr3;
     private StmtNode stmt;
+    private Scope scope;
 
     public ForStmtNode(ExprNode expr1, ExprNode expr2, ExprNode expr3, StmtNode stmt, Location location){
         this.expr1 = expr1;
@@ -26,6 +29,14 @@ public class ForStmtNode extends StmtNode {
 
     public StmtNode getStmt() {
         return stmt;
+    }
+
+    public Scope getScope() {
+        return scope;
+    }
+
+    public void setScope(Scope scope) {
+        this.scope = scope;
     }
 
     @Override

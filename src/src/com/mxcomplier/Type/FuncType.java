@@ -3,7 +3,7 @@ package com.mxcomplier.Type;
 public class FuncType extends Type{
     private String name;
 
-    private FuncType(String name){
+    public FuncType(String name){
         this.name = name;
         this.hyperType = HyperType.FUNC;
     }

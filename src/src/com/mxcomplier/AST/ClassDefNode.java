@@ -6,17 +6,17 @@ import java.util.List;
 
 public class ClassDefNode extends Node {
     private String name;
-    private List<VarDefNode> memberdefs;
-    private List<FuncDefNode> funcdefs;
+    private List<VarDefNode> memberDefs;
+    private List<FuncDefNode> funcDefs;
     private Scope scope;
 
     public ClassDefNode(String name,
-                        List<VarDefNode> memberdefs,
-                        List<FuncDefNode> funcdefs,
+                        List<VarDefNode> memberDefs,
+                        List<FuncDefNode> funcDefs,
                         Location location) {
         this.name = name;
-        this.memberdefs = memberdefs;
-        this.funcdefs = funcdefs;
+        this.memberDefs = memberDefs;
+        this.funcDefs = funcDefs;
         this.location = location;
     }
 
@@ -24,12 +24,12 @@ public class ClassDefNode extends Node {
         return name;
     }
 
-    public List<VarDefNode> getMemberdefs() {
-        return memberdefs;
+    public List<VarDefNode> getMemberDefs() {
+        return memberDefs;
     }
 
-    public List<FuncDefNode> getFuncdefs() {
-        return funcdefs;
+    public List<FuncDefNode> getFuncDefs() {
+        return funcDefs;
     }
 
     public Scope getScope() {

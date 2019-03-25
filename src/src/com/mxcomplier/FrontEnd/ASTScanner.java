@@ -1,8 +1,11 @@
 package com.mxcomplier.FrontEnd;
 
 import com.mxcomplier.AST.*;
+import com.mxcomplier.Scope.Scope;
 
-public class ScopeBuilderASTScaner extends ASTScaner{
+public class ASTScanner implements ASTVisitor {
+    protected Scope currentScope;
+
     @Override
     public void visit(ProgramNode node) {
 

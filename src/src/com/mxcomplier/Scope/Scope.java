@@ -25,6 +25,12 @@ public class Scope {
         else identMap.put(name, symbol);
     }
 
+    public void put(String name, Symbol symbol){
+        if (identMap.containsKey(name))
+            throw new ComplierError(String.format("Symbol %s is decleared before", name));
+        else identMap.put(name, symbol);
+    }
+
     public Symbol getSelf(String name, Location location){
         if (!identMap.containsKey(name))
             throw new ComplierError(location, String.format("Symbol %s is not decleared", name));

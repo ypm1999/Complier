@@ -6,20 +6,10 @@ import com.mxcomplier.Scope.FuncSymbol;
 import com.mxcomplier.Scope.Scope;
 import com.mxcomplier.Scope.Symbol;
 
-public class ScopePrepareASTScaner extends ASTScaner{
-
-
-    private void addBuildInFunc(){
-
-    }
-
-    private void prepareGlobalScope(){
-    }
-
+public class ScopePrepareASTScanner extends ASTScanner{
     @Override
     public void visit(ProgramNode node) {
         currentScope = new Scope(null);
-        prepareGlobalScope();
         for (FuncDefNode func : node.getFuncDefs())
             func.accept(this);
         for (ClassDefNode clas: node.getClassDefs())

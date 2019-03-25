@@ -2,7 +2,7 @@ package com.mxcomplier.FrontEnd;
 
 import com.mxcomplier.AST.*;
 
-public class ScopeClassMemberASTScaner extends ASTScaner{
+public class ScopeClassMemberASTScanner extends ASTScanner{
     @Override
     public void visit(ProgramNode node) {
 

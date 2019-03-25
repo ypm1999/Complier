@@ -11,6 +11,11 @@ public class ClassSymbol extends Symbol{
         this.node = node;
     }
 
+    public ClassSymbol(String name){
+        super(name, new ClassType(name));
+        this.node = null;
+    }
+
     public ClassDefNode getNode() {
         return node;
     }

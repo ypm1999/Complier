@@ -3,11 +3,11 @@ package com.mxcomplier.AST;
 public class MemberCallExprNode extends ExprNode {
 
     private ExprNode baseExpr;
-    private IdentExprNode identifier;
+    private String memberName;
 
-    public MemberCallExprNode(ExprNode baseExpr, IdentExprNode identifier, Location location) {
+    public MemberCallExprNode(ExprNode baseExpr, String memberName, Location location) {
         this.baseExpr = baseExpr;
-        this.identifier = identifier;
+        this.memberName = memberName;
         this.location = location;
     }
 
@@ -15,8 +15,8 @@ public class MemberCallExprNode extends ExprNode {
         return baseExpr;
     }
 
-    public IdentExprNode getIdentifier() {
-        return identifier;
+    public String getMemberName() {
+        return memberName;
     }
 
     @Override

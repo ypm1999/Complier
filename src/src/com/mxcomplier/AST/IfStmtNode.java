@@ -5,7 +5,7 @@ import com.mxcomplier.Scope.Scope;
 public class IfStmtNode extends StmtNode {
     private ExprNode judgeExpr;
     private StmtNode thenStmt, elseStmt;
-    private Scope scope;
+    private Scope scope = new Scope();
 
     public IfStmtNode(ExprNode judgeExpr, StmtNode thenStmt, StmtNode elseStmt, Location location){
         this.judgeExpr = judgeExpr;
@@ -35,10 +35,6 @@ public class IfStmtNode extends StmtNode {
 
     public Scope getScope() {
         return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     @Override

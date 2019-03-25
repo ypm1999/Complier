@@ -9,11 +9,11 @@ public class AssignExprNode extends ExprNode {
         this.location = location;
     }
 
-    public Node getLeftExpr() {
+    public ExprNode getLeftExpr() {
         return leftExpr;
     }
 
-    public Node getRightExpr() {
+    public ExprNode getRightExpr() {
         return rightExpr;
     }
 

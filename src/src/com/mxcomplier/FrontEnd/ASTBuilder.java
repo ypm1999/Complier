@@ -54,8 +54,12 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
             returnType =  visit(ctx.typeOrVoid());
 
         if (ctx.declarationList() != null)
-            for (ParserRuleContext args : ctx.declarationList().declaration())
-                parameters.add((VarDefNode) visit(args));
+            for (ParserRuleContext args : ctx.declarationList().declaration()){
+                VarDefNode argsDef = (VarDefNode) visit(args);
+                argsDef.setFuncArgs(true);
+                parameters.add(argsDef);
+            }
+
 
         return new FuncDefNode(name, (TypeNode) returnType, parameters, (CompStmtNode) funcbody, new Location(ctx.getStart()));
     }
@@ -67,7 +71,9 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
         List<FuncDefNode> funcList = new ArrayList<>();
         if(ctx.classStatement().declarationStatement() != null)
             for (ParserRuleContext var : ctx.classStatement().declarationStatement()){
-                varList.add((VarDefNode) visit(var));
+                VarDefNode varDef = (VarDefNode) visit(var);
+                varDef.setMemberDef(true);
+                varList.add(varDef);
             }
         if (ctx.classStatement().functionDefinition() != null)
             for (ParserRuleContext func : ctx.classStatement().functionDefinition()){
@@ -251,13 +257,12 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
 
     @Override
     public Node visitMemberCallExpr(MxStarParser.MemberCallExprContext ctx) {
-        Node baseExpr, identifier;
-        baseExpr = visit(ctx.primaryExpression());
-        identifier = visit(ctx.bracketIdentifier());
+        ExprNode baseExpr = (ExprNode) visit(ctx.primaryExpression());
+        IdentExprNode identifier = (IdentExprNode) visit(ctx.bracketIdentifier());
         if (baseExpr instanceof ConstExprNode)
             throw new ComplierError(new Location(ctx.getStart()), "Invalid member call");
 
-        return new MemberCallExprNode((ExprNode) baseExpr, (IdentExprNode) identifier, new Location(ctx.getStart()));
+        return new MemberCallExprNode(baseExpr, identifier.getName(), new Location(ctx.getStart()));
     }
 
     @Override
@@ -386,12 +391,13 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
         if (ctx.expression() != null){
             Type type = ((TypeNode)newType).getType();
             for (ParserRuleContext dim : ctx.expression()){
-                type = new ArrayType(type);
                 dims.add((ExprNode) visit(dim));
                 order++;
             }
             newType = new TypeNode(type, newType.getLocation());
             order = (ctx.getChildCount() - (2 + order)) / 2;
+            for(int i = order; i > 0; i--)
+                type = new ArrayType(type);
         }
 
         return new NewExprNode((TypeNode) newType, dims, order, new Location(ctx.getStart()));

@@ -19,16 +19,16 @@ public class Scope {
     }
 
 
-    public void put(String name, Symbol symbol, Location location){
-        if (identMap.containsKey(name))
-            throw new ComplierError(location, String.format("Symbol %s is decleared before", name));
-        else identMap.put(name, symbol);
+    public void put(Symbol symbol, Location location){
+        if (identMap.containsKey(symbol.getName()))
+            throw new ComplierError(location, String.format("Symbol %s is decleared before", symbol.getName()));
+        else identMap.put(symbol.getName(), symbol);
     }
 
-    public void put(String name, Symbol symbol){
-        if (identMap.containsKey(name))
-            throw new ComplierError(String.format("Symbol %s is decleared before", name));
-        else identMap.put(name, symbol);
+    public void put(Symbol symbol){
+        if (identMap.containsKey(symbol.getName()))
+            throw new ComplierError(String.format("Symbol %s is decleared before", symbol.getName()));
+        else identMap.put(symbol.getName(), symbol);
     }
 
     public Symbol getSelf(String name, Location location){

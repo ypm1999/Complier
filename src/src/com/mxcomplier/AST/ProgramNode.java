@@ -8,7 +8,7 @@ public class ProgramNode extends Node {
     private List<ClassDefNode> classDefs;
     private List<FuncDefNode> funcDefs;
     private List<VarDefNode> varDefs;
-    private Scope scope;
+    private Scope scope = new Scope();
 
     public ProgramNode(List<ClassDefNode> classDefs,
                        List<FuncDefNode> funcDefs,
@@ -34,10 +34,6 @@ public class ProgramNode extends Node {
 
     public Scope getScope() {
         return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     @Override

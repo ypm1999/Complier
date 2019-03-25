@@ -7,7 +7,7 @@ public class NullType extends Type{
         this.hyperType = HyperType.NULL;
     }
 
-    public NullType getInstance(){
+    static public NullType getInstance(){
         return instance;
     }
 }

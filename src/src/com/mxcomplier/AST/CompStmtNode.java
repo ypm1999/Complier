@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CompStmtNode extends StmtNode {
     private List<StmtNode> stmtlist;
-    private Scope scope;
+    private Scope scope = new Scope();
 
     public CompStmtNode(List<StmtNode> stmtlist, Location location){
         this.stmtlist = stmtlist;
@@ -19,10 +19,6 @@ public class CompStmtNode extends StmtNode {
 
     public Scope getScope() {
         return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     @Override

@@ -8,7 +8,7 @@ public class ClassDefNode extends Node {
     private String name;
     private List<VarDefNode> memberDefs;
     private List<FuncDefNode> funcDefs;
-    private Scope scope;
+    private Scope scope = new Scope();
 
     public ClassDefNode(String name,
                         List<VarDefNode> memberDefs,
@@ -34,10 +34,6 @@ public class ClassDefNode extends Node {
 
     public Scope getScope() {
         return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     @Override

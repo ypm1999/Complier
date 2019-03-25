@@ -5,7 +5,7 @@ import com.mxcomplier.Scope.Scope;
 public class WhileStmtNode extends StmtNode {
     private ExprNode judgeExpr;
     private StmtNode stmt;
-    private Scope scope;
+    private Scope scope = new Scope();
 
     public WhileStmtNode(ExprNode judgeExpr, StmtNode stmt, Location location){
         this.judgeExpr = judgeExpr;
@@ -23,10 +23,6 @@ public class WhileStmtNode extends StmtNode {
 
     public Scope getScope() {
         return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     @Override

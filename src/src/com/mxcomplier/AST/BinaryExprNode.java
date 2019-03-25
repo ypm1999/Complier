@@ -5,8 +5,7 @@ public class BinaryExprNode extends ExprNode {
     public enum Op {
         MUL, DIV, MOD, PLUS, MINUS, LSH, RSH,
         LESS, LARGE, LESS_EQUAL, LARGE_EQUAL, EQUAL, UNEQUAL,
-        AND, XOR, OR, ANDAND, OROR,
-        NULL
+        AND, XOR, OR, ANDAND, OROR
     }
 
     private ExprNode leftExpr, rightExpr;
@@ -19,11 +18,11 @@ public class BinaryExprNode extends ExprNode {
         this.op = op;
     }
 
-    public Node getLeftExpr() {
+    public ExprNode getLeftExpr() {
         return leftExpr;
     }
 
-    public Node getRightExpr() {
+    public ExprNode getRightExpr() {
         return rightExpr;
     }
 

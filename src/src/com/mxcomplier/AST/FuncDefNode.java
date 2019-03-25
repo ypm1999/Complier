@@ -10,7 +10,7 @@ final public class FuncDefNode extends Node {
     private boolean isConstructor;
     private List<VarDefNode> parameters;
     private CompStmtNode funcBody;
-    private Scope scope;
+    private Scope scope = new Scope();
 
     public FuncDefNode(String name,
                        TypeNode returnType,
@@ -45,10 +45,6 @@ final public class FuncDefNode extends Node {
 
     public Scope getScope() {
         return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.mxcomplier.AST.*;
 import com.mxcomplier.Scope.Scope;
 
 public class ASTScanner implements ASTVisitor {
-    protected Scope currentScope;
+    Scope currentScope = null;
 
     @Override
     public void visit(ProgramNode node) {

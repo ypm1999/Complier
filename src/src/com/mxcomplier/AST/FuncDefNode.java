@@ -10,7 +10,6 @@ final public class FuncDefNode extends Node {
     private boolean isConstructor;
     private List<VarDefNode> parameters;
     private CompStmtNode funcBody;
-    private Scope scope = new Scope();
 
     public FuncDefNode(String name,
                        TypeNode returnType,
@@ -41,10 +40,6 @@ final public class FuncDefNode extends Node {
 
     public CompStmtNode getFuncBody() {
         return funcBody;
-    }
-
-    public Scope getScope() {
-        return scope;
     }
 
     @Override

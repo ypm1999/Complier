@@ -4,6 +4,7 @@ import com.mxcomplier.AST.*;
 import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.LaxerParser.MxStarBaseVisitor;
 import com.mxcomplier.LaxerParser.MxStarParser;
+import com.mxcomplier.Scope.Scope;
 import com.mxcomplier.Type.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 
@@ -11,36 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ASTBuilder  extends MxStarBaseVisitor<Node> {
+    private Scope currentScope;
 
     @Override
     public Node visitProgram(MxStarParser.ProgramContext ctx) {
-        List<ClassDefNode> classDefs = new ArrayList<>();
-        List<FuncDefNode> funcDefs = new ArrayList<>();
-        List<VarDefNode> varDefs = new ArrayList<>();
-        Node tempNode;
+        List<Node> sections = new ArrayList<>();
+        currentScope = new Scope(null);
 
-        if (ctx.classDefinition() != null){
-            for(ParserRuleContext classDef : ctx.classDefinition()){
-                tempNode = visit(classDef);
-                classDefs.add((ClassDefNode) tempNode);
-            }
-        }
+        if (ctx.sections() != null)
+            for(ParserRuleContext section : ctx.sections())
+                sections.add(visit(section));
 
-        if (ctx.functionDefinition() != null){
-            for(ParserRuleContext funcDef : ctx.functionDefinition()){
-                tempNode = visit(funcDef);
-                funcDefs.add((FuncDefNode) tempNode);
-            }
-        }
-
-        if (ctx.declarationStatement() != null){
-            for(ParserRuleContext varDef : ctx.declarationStatement()){
-                tempNode = visit(varDef);
-                varDefs.add((VarDefNode) tempNode);
-            }
-        }
-
-        return new ProgramNode(classDefs, funcDefs, varDefs, new Location(ctx.getStart()));
+        return new ProgramNode(sections, currentScope, new Location(ctx.getStart()));
     }
 
     @Override
@@ -69,6 +52,8 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
         String name = ctx.identifier().getText();
         List<VarDefNode> varList = new ArrayList<>();
         List<FuncDefNode> funcList = new ArrayList<>();
+        Scope scope = new Scope(currentScope);
+        currentScope = scope;
         if(ctx.classStatement().declarationStatement() != null)
             for (ParserRuleContext var : ctx.classStatement().declarationStatement()){
                 VarDefNode varDef = (VarDefNode) visit(var);
@@ -79,7 +64,8 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
             for (ParserRuleContext func : ctx.classStatement().functionDefinition()){
                 funcList.add((FuncDefNode) visit(func));
             }
-        return new ClassDefNode(name, varList, funcList, new Location(ctx.getStart()));
+        currentScope = currentScope.getParent();
+        return new ClassDefNode(name, varList, funcList, scope, new Location(ctx.getStart()));
     }
 
     @Override
@@ -110,14 +96,15 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
 
     @Override
     public Node visitCompoundStatement(MxStarParser.CompoundStatementContext ctx) {
-        List<StmtNode> stmtlist = new ArrayList<>();
+        List<Node> stmtlist = new ArrayList<>();
+        Scope scope = new Scope(currentScope);
         if (ctx.compoundStatementItem() != null) {
+            currentScope = scope;
             for (ParserRuleContext item : ctx.compoundStatementItem())
-                stmtlist.add((StmtNode) visit(item));
-            return new CompStmtNode(stmtlist, new Location(ctx.getStart()));
+                stmtlist.add(visit(item));
+            currentScope = scope.getParent();
         }
-        else
-            return new BlankStmtNode(new Location(ctx.getStart()));
+        return new CompStmtNode(stmtlist, scope, new Location(ctx.getStart()));
     }
 
     @Override
@@ -140,12 +127,15 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
 
     @Override
     public Node visitForStatement(MxStarParser.ForStatementContext ctx) {
-        ExprNode expr1 = null, expr2 = null, expr3 = null;
+        ExprNode expr1 = null, expr2, expr3 = null;
         StmtNode stmt = (StmtNode) visit(ctx.statement());
         if (ctx.forCondition().exp1 != null)
             expr1 = (ExprNode) visit(ctx.forCondition().exp1);
         if (ctx.forCondition().exp2 != null)
             expr2 = (ExprNode) visit(ctx.forCondition().exp2);
+        else
+            expr2 = new BoolConstExprNode(BoolConstExprNode.BoolValue.TRUE,
+                                            new Location(ctx.forCondition().exp2.getStart()));
         if (ctx.forCondition().exp3 != null)
             expr3 = (ExprNode) visit(ctx.forCondition().exp3);
         return new ForStmtNode(expr1, expr2, expr3, stmt, new Location(ctx.getStart()));
@@ -188,7 +178,10 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
 
     @Override
     public Node visitReutrnStmt(MxStarParser.ReutrnStmtContext ctx) {
-        return new ReturnStmtNode(new Location(ctx.getStart()));
+        if (ctx.expression() == null)
+            return new ReturnStmtNode(null, new Location(ctx.getStart()));
+        else
+            return new ReturnStmtNode((ExprNode) visit(ctx.expression()), new Location(ctx.getStart()));
     }
 
     @Override
@@ -394,10 +387,10 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
                 dims.add((ExprNode) visit(dim));
                 order++;
             }
-            newType = new TypeNode(type, newType.getLocation());
             order = (ctx.getChildCount() - (2 + order)) / 2;
             for(int i = order; i > 0; i--)
                 type = new ArrayType(type);
+            newType = new TypeNode(type, newType.getLocation());
         }
 
         return new NewExprNode((TypeNode) newType, dims, order, new Location(ctx.getStart()));

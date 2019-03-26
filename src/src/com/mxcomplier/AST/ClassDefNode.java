@@ -8,16 +8,18 @@ public class ClassDefNode extends Node {
     private String name;
     private List<VarDefNode> memberDefs;
     private List<FuncDefNode> funcDefs;
-    private Scope scope = new Scope();
+    private Scope scope;
 
     public ClassDefNode(String name,
                         List<VarDefNode> memberDefs,
                         List<FuncDefNode> funcDefs,
+                        Scope scope,
                         Location location) {
         this.name = name;
         this.memberDefs = memberDefs;
         this.funcDefs = funcDefs;
         this.location = location;
+        this.scope = scope;
     }
 
     public String getName() {

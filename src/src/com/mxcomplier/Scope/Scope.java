@@ -55,13 +55,13 @@ public class Scope {
             if (parent != null)
                 return parent.getClass(name, location);
             else
-                throw new ComplierError(location, String.format("Symbol %s is not decleared", name));
+                throw new ComplierError(location, String.format("Class %s is not decleared", name));
         else{
             Symbol symbol = identMap.get(name);
             if (symbol.getType() instanceof ClassType)
                 return (ClassSymbol) symbol;
             else
-                throw new ComplierError(location, String.format("Symbol %s is not decleared as class", name));
+                throw new ComplierError(location, String.format("Class %s is not decleared as class", name));
         }
     }
 
@@ -70,13 +70,13 @@ public class Scope {
             if (parent != null)
                 return parent.getFunc(name, location);
             else
-                throw new ComplierError(location, String.format("Symbol %s is not decleared", name));
+                throw new ComplierError(location, String.format("Function %s is not decleared", name));
         else{
             Symbol symbol = identMap.get(name);
             if (symbol.getType() instanceof FuncType)
                 return (FuncSymbol) symbol;
             else
-                throw new ComplierError(location, String.format("Symbol %s is not decleared as class", name));
+                throw new ComplierError(location, String.format("Function %s is not decleared as class", name));
         }
     }
 
@@ -86,13 +86,13 @@ public class Scope {
             if (parent != null)
                 return parent.getVar(name, location);
             else
-                throw new ComplierError(location, String.format("Symbol %s is not decleared", name));
+                throw new ComplierError(location, String.format("Variable %s is not decleared", name));
         else{
             Symbol symbol = identMap.get(name);
             if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
                 return (VarSymbol) symbol;
             else
-                throw new ComplierError(location, String.format("Symbol %s is not decleared as class", name));
+                throw new ComplierError(location, String.format("Variable %s is not decleared as class", name));
         }
     }
 

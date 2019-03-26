@@ -1,6 +1,7 @@
 package com.mxcomplier.FrontEnd;
 
 import com.mxcomplier.AST.*;
+import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.Scope.*;
 import com.mxcomplier.Type.IntType;
 import com.mxcomplier.Type.StringType;
@@ -49,12 +50,15 @@ public class ScopePrepareASTScanner extends ASTScanner{
     public void visit(ProgramNode node) {
         currentScope = node.getScope();
 
-        for (ClassDefNode classes: node.getClassDefs())
-            classes.accept(this);
+        prepareGlobalScope();
+
+        for (Node section : node.getSections()){
+            if (section  instanceof ClassDefNode)
+                section.accept(this);
+        }
 
         currentScope = currentScope.getParent();
     }
-
 
 
     @Override

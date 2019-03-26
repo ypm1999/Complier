@@ -2,11 +2,16 @@
 grammar MxStar;
 
 program
-    :   (   functionDefinition
-        |   classDefinition
-        |   declarationStatement
-        )*  EOF
+    :   sections*  EOF
     ;
+
+sections
+    :   functionDefinition
+    |   classDefinition
+    |   declarationStatement
+    ;
+
+
 
 functionDefinition
     :   (typeOrVoid)? identifier '(' declarationList? ')' compoundStatement

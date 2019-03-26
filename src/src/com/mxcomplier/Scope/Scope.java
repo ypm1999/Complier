@@ -1,8 +1,10 @@
 package com.mxcomplier.Scope;
 
+import com.mxcomplier.AST.FuncDefNode;
 import com.mxcomplier.AST.Location;
 import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.Type.ClassType;
+import com.mxcomplier.Type.FuncType;
 
 import java.util.HashMap;
 
@@ -62,6 +64,39 @@ public class Scope {
                 throw new ComplierError(location, String.format("Symbol %s is not decleared as class", name));
         }
     }
+
+    public FuncSymbol getFunc(String name, Location location){
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getFunc(name, location);
+            else
+                throw new ComplierError(location, String.format("Symbol %s is not decleared", name));
+        else{
+            Symbol symbol = identMap.get(name);
+            if (symbol.getType() instanceof FuncType)
+                return (FuncSymbol) symbol;
+            else
+                throw new ComplierError(location, String.format("Symbol %s is not decleared as class", name));
+        }
+    }
+
+
+    public VarSymbol getVar(String name, Location location){
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getVar(name, location);
+            else
+                throw new ComplierError(location, String.format("Symbol %s is not decleared", name));
+        else{
+            Symbol symbol = identMap.get(name);
+            if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
+                return (VarSymbol) symbol;
+            else
+                throw new ComplierError(location, String.format("Symbol %s is not decleared as class", name));
+        }
+    }
+
+
 
 
 

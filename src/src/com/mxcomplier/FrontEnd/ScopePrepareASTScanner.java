@@ -12,9 +12,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+//add BuildInFunc, class define, function define and class method define
 public class ScopePrepareASTScanner extends ASTScanner{
 
-    private void addBuildInFunc(Scope scope, String name, Type returnType, List<Symbol> args){
+    private void addBuildInFunc(Scope scope, String name, Type returnType, List<Type> args){
         scope.put(new FuncSymbol(name, returnType, null, args));
     }
 
@@ -31,21 +32,11 @@ public class ScopePrepareASTScanner extends ASTScanner{
         addBuildInFunc(arrayScope, "size", intType, new ArrayList<>());
         addBuildInFunc(currentScope, "getString", stringType, new ArrayList<>());
         addBuildInFunc(currentScope, "getInt", intType, new ArrayList<>());
-
-        addBuildInFunc(currentScope, "print", voidType,
-                Collections.singletonList(new VarSymbol("str", stringType)));
-
-        addBuildInFunc(currentScope, "println", voidType,
-                Collections.singletonList(new VarSymbol("str", stringType)));
-
-        addBuildInFunc(stringScope, "ord", intType,
-                Collections.singletonList(new VarSymbol("pos", intType)));
-
-        addBuildInFunc(currentScope, "toString", stringType,
-                Collections.singletonList(new VarSymbol("i", intType)));
-
-        addBuildInFunc(stringScope, "subString", stringType,
-                Arrays.asList(new VarSymbol("left", intType), new VarSymbol("right", intType)));
+        addBuildInFunc(currentScope, "print", voidType, Collections.singletonList(stringType));
+        addBuildInFunc(currentScope, "println", voidType, Collections.singletonList(stringType));
+        addBuildInFunc(stringScope, "ord", intType, Collections.singletonList(intType));
+        addBuildInFunc(currentScope, "toString", stringType, Collections.singletonList(intType));
+        addBuildInFunc(stringScope, "subString", stringType, Arrays.asList(intType, intType));
 
 //        currentScope.put(new ClassSymbol("int", new Scope(currentScope)));
 //        currentScope.put(new ClassSymbol("bool", new Scope(currentScope)));
@@ -58,21 +49,13 @@ public class ScopePrepareASTScanner extends ASTScanner{
     public void visit(ProgramNode node) {
         currentScope = node.getScope();
 
-        for (FuncDefNode func : node.getFuncDefs())
-            func.accept(this);
         for (ClassDefNode classes: node.getClassDefs())
             classes.accept(this);
 
         currentScope = currentScope.getParent();
     }
 
-    @Override
-    public void visit(FuncDefNode node) {
-        Symbol symbol = new FuncSymbol(node.getName(), node);
-        currentScope.put(symbol, node.getLocation());
 
-        node.getScope().setParent(currentScope);
-    }
 
     @Override
     public void visit(ClassDefNode node) {
@@ -81,9 +64,6 @@ public class ScopePrepareASTScanner extends ASTScanner{
 
         node.getScope().setParent(currentScope);
         currentScope = node.getScope();
-
-        for (FuncDefNode func : node.getFuncDefs())
-            func.accept(this);
 
         currentScope = currentScope.getParent();
     }

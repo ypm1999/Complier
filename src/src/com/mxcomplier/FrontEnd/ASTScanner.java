@@ -1,10 +1,31 @@
 package com.mxcomplier.FrontEnd;
 
 import com.mxcomplier.AST.*;
+import com.mxcomplier.Scope.ClassSymbol;
 import com.mxcomplier.Scope.Scope;
+import com.mxcomplier.Scope.Symbol;
+import com.mxcomplier.Scope.VarSymbol;
+import com.mxcomplier.Type.ArrayType;
+import com.mxcomplier.Type.ClassType;
+import com.mxcomplier.Type.StringType;
+import com.mxcomplier.Type.Type;
 
 public class ASTScanner implements ASTVisitor {
     Scope currentScope = null;
+    Scope globalScope = null;
+
+    Symbol getClassMember(String className, String memberName, Location location){
+        ClassSymbol symbol = globalScope.getClass(className, location);
+        return symbol.getScope().getSelf(memberName, location);
+    }
+
+    void putVar(VarDefNode node){
+        Type type =node.getType().getType();
+        if (type instanceof ClassType)
+            type = globalScope.getClass(((ClassType) type).getName(), node.getLocation()).getType();
+        currentScope.put(new VarSymbol(node.getName(), type));
+    }
+
 
     @Override
     public void visit(ProgramNode node) {

@@ -5,10 +5,12 @@ import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.Scope.*;
 import com.mxcomplier.Type.*;
 
+import java.util.Iterator;
 
 
 public class ScopeBuilderASTScanner extends ASTScanner{
     private ClassSymbol currentClass = null;
+    private Scope globalScope = null;
 
 
     private void checkVarInit(VarDefNode node){
@@ -27,12 +29,12 @@ public class ScopeBuilderASTScanner extends ASTScanner{
 
     @Override
     public void visit(ProgramNode node) {
-        currentScope = node.getScope();
+        globalScope = currentScope = node.getScope();
 
         for (ClassDefNode classes: node.getClassDefs())
             classes.accept(this);
 
-        currentScope = currentScope.getParent();
+        globalScope = currentScope = null;
     }
 
     @Override
@@ -66,7 +68,8 @@ public class ScopeBuilderASTScanner extends ASTScanner{
     public void visit(VarDefNode node) {
         checkVarInit(node);
         if (!node.isMemberDef())
-            currentScope.put(new VarSymbol(node.getName(), node.getType().getType()));
+            putVar(node);
+
     }
 
     @Override
@@ -138,26 +141,96 @@ public class ScopeBuilderASTScanner extends ASTScanner{
 
     @Override
     public void visit(SuffixExprNode node) {
-
+        node.getSubExpr().accept(this);
+        if (node.getSubExpr().getType() != IntType.getInstance())
+            throw new ComplierError(node.getLocation(), "invalid suffix expression");
+        node.setLeftValue(node.getSubExpr().isLeftValue());
+        node.setType(node.getSubExpr().getType());
     }
 
     @Override
     public void visit(FuncCallExprNode node) {
+        ExprNode base = node.getBaseExpr();
+        base.accept(this);
 
+        if (!node.getArgumentList().isEmpty()){
+            FuncSymbol func;
+            if (base instanceof IdentExprNode){
+                func = globalScope.getFunc(((IdentExprNode) base).getName(), base.getLocation());
+            }
+            else if (base instanceof MemberCallExprNode){
+                Symbol tmpSymbol = getClassMember(((ClassType)((MemberCallExprNode) base).getBaseExpr().getType()).getName(),
+                                        ((MemberCallExprNode) base).getMemberName(), base.getLocation());
+                if (tmpSymbol instanceof FuncSymbol)
+                    func = (FuncSymbol) tmpSymbol;
+                else
+                    throw new ComplierError(base.getLocation(),"");
+            }
+            else
+                throw new ComplierError(node.getLocation(), "");
+
+            Iterator<Type> it = func.getParameters().iterator();
+            if (func.getParameters().size() == node.getArgumentList().size())
+                for (ExprNode expr : node.getArgumentList()){
+                    expr.accept(this);
+                    if (expr.getType() != it.next())
+                        throw new ComplierError(node.getLocation(), "");
+                }
+            else
+                throw new ComplierError(node.getLocation(), "");
+        }
+        node.setLeftValue(false);
+        node.setType(node.getBaseExpr().getType());
     }
 
     @Override
     public void visit(ArrCallExprNode node) {
+        node.getBaseExpr().accept(this);
+        node.getSubscriptExpr().accept(this);
 
+        if (node.getBaseExpr().getType() != IntType.getInstance())
+            throw new ComplierError(node.getLocation(), "dim of array must be int");
+        if (!(node.getBaseExpr().getType() instanceof ArrayType))
+            throw new ComplierError(node.getLocation(), "array call error, not an array");
+
+        node.setLeftValue(true);
+        node.setType(((ArrayType) node.getBaseExpr().getType()).getBaseType());
     }
 
     @Override
     public void visit(MemberCallExprNode node) {
+        ExprNode baseExpr = node.getBaseExpr();
+        baseExpr.accept(this);
+        if (baseExpr.getType() instanceof ClassType){
+            Symbol varOrFunc = getClassMember(((ClassType) baseExpr.getType()).getName(),
+                                              node.getMemberName(), node.getLocation());
+            node.setLeftValue(true);
+            node.setType(varOrFunc.getType());
+        }
+        else
+            throw new ComplierError(node.getLocation(), "only class can call member variable");
 
     }
 
     @Override
     public void visit(PrefixExprNode node) {
+        node.getSubExpr().accept(this);
+        boolean valid;
+        switch (node.getSubExpr().getType().getHyperType()){
+            case INT:
+                valid = true;
+                break;
+            case BOOL:
+                valid = node.getPrefixOp() == PrefixExprNode.PrefixOp.NOT ||
+                        node.getPrefixOp() == PrefixExprNode.PrefixOp.INV;
+                break;
+            default:
+                valid = false;
+        }
+        if (!valid)
+            throw new ComplierError(node.getLocation(), "invalid prefix expression");
+        node.setLeftValue(node.getSubExpr().isLeftValue());
+        node.setType(node.getSubExpr().getType());
 
     }
 
@@ -258,7 +331,6 @@ public class ScopeBuilderASTScanner extends ASTScanner{
         }
         else
             throw new ComplierError(node.getLocation(), "Identifier must be a variable or function");
-
     }
 
     @Override

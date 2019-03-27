@@ -30,8 +30,11 @@ public class MidTerm {
             ScopePrepareASTScanner scanner1 = new ScopePrepareASTScanner();
             ScopeClassMemberASTScanner scanner2 = new ScopeClassMemberASTScanner();
             ScopeBuilderASTScanner scanner3 = new ScopeBuilderASTScanner();
+            System.out.println("Scanner1");
             scanner1.visit(ast);
+            System.out.println("Scanner2");
             scanner2.visit(ast);
+            System.out.println("Scanner3");
             scanner3.visit(ast);
         }
         catch (Error e) {

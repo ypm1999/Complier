@@ -29,7 +29,7 @@ public class ScopePrepareASTScanner extends ASTScanner{
         Type stringType = StringType.getInstance();
 
         addBuildInFunc(stringScope, "length", intType, new ArrayList<>());
-        addBuildInFunc(stringScope, "parseInt", voidType, new ArrayList<>());
+        addBuildInFunc(stringScope, "parseInt", intType, new ArrayList<>());
         addBuildInFunc(arrayScope, "size", intType, new ArrayList<>());
         addBuildInFunc(currentScope, "getString", stringType, new ArrayList<>());
         addBuildInFunc(currentScope, "getInt", intType, new ArrayList<>());

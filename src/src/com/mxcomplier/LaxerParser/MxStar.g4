@@ -205,8 +205,8 @@ fragment CCharSequence
     ;
 
 fragment CChar
-    :   ~[\\\r\n]
-    |   EscapeSequence
+    :   EscapeSequence
+    |   ~[\\\r\n]
     ;
 
 fragment EscapeSequence

@@ -270,7 +270,7 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
     @Override
     public Node visitStringConst(MxStarParser.StringConstContext ctx) {
         String str = ctx.getText();
-        str = str.substring(1, str.length() - 2);
+        str = str.substring(1, str.length() - 1);
         return new StringConstExprNode(strTrans(str),new Location(ctx.getStart()));
     }
 
@@ -280,9 +280,17 @@ public class ASTBuilder  extends MxStarBaseVisitor<Node> {
             if (str.charAt(i) == '\\')
                 if (i + 1 == str.length())
                     throw new ComplierError("String constant error with \\");
-                else
+                else {
                     i++;
-            newStr.append(str.charAt(i));
+                    switch (str.charAt(i)){
+                        case 'n': newStr.append('\n'); break;
+                        case '\\': newStr.append('\\'); break;
+                        case '\"': newStr.append('\"'); break;
+                        default: throw new ComplierError("String constant error with \\");
+                    }
+                }
+            else
+                newStr.append(str.charAt(i));
         }
         return newStr.toString();
     }

@@ -41,7 +41,8 @@ public class ScopeBuilderASTScanner extends ASTScanner{
 
     @Override
     public void visit(FuncDefNode node) {
-        currentFunc = globalScope.getFunc(node.getName(), node.getLocation());
+        currentFunc = currentScope.getFunc(node.getName(), node.getLocation());
+
         if (node.getReturnType().getType() instanceof ClassType)
             globalScope.getClass(((ClassType) node.getReturnType().getType()).getName(), node.getLocation());
         node.getFuncBody().accept(this);
@@ -232,6 +233,9 @@ public class ScopeBuilderASTScanner extends ASTScanner{
         if (baseExpr.getType() instanceof ClassType){
             varOrFunc = getClassMember(((ClassType) baseExpr.getType()).getName(),
                                               node.getMemberName(), node.getLocation());
+        }
+        else if (baseExpr.getType() instanceof StringType){
+            varOrFunc = getClassMember("string", node.getMemberName(), node.getLocation());
         }
         else if (baseExpr.getType() instanceof ArrayType){
             varOrFunc = getClassMember("__array", node.getMemberName(), node.getLocation());

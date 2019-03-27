@@ -17,6 +17,12 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(MxStarParser.ProgramContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MxStarParser#sections}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSections(MxStarParser.SectionsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MxStarParser#functionDefinition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -227,6 +233,12 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBreakStmt(MxStarParser.BreakStmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MxStarParser#identifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifier(MxStarParser.IdentifierContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MxStarParser#baseType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -250,12 +262,6 @@ public interface MxStarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBracketIdentifier(MxStarParser.BracketIdentifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MxStarParser#identifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIdentifier(MxStarParser.IdentifierContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code boolConst}
 	 * labeled alternative in {@link MxStarParser#constant}.

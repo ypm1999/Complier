@@ -1,8 +1,12 @@
 package com.mxcomplier.FrontEnd;
 
-import com.mxcomplier.AST.*;
-import com.mxcomplier.Error.ComplierError;
-import com.mxcomplier.Scope.*;
+import com.mxcomplier.AST.ClassDefNode;
+import com.mxcomplier.AST.Node;
+import com.mxcomplier.AST.ProgramNode;
+import com.mxcomplier.Scope.ClassSymbol;
+import com.mxcomplier.Scope.FuncSymbol;
+import com.mxcomplier.Scope.Scope;
+import com.mxcomplier.Scope.Symbol;
 import com.mxcomplier.Type.IntType;
 import com.mxcomplier.Type.StringType;
 import com.mxcomplier.Type.Type;
@@ -14,13 +18,13 @@ import java.util.Collections;
 import java.util.List;
 
 //add BuildInFunc, class define, function define and class method define
-public class ScopePrepareASTScanner extends ASTScanner{
+public class ScopePrepareASTScanner extends ASTScanner {
 
-    private void addBuildInFunc(Scope scope, String name, Type returnType, List<Type> args){
+    private void addBuildInFunc(Scope scope, String name, Type returnType, List<Type> args) {
         scope.put(new FuncSymbol(name, returnType, null, args));
     }
 
-    private void prepareGlobalScope(){
+    private void prepareGlobalScope() {
         Scope stringScope = new Scope(currentScope);
         Scope arrayScope = new Scope(currentScope);
 
@@ -52,8 +56,8 @@ public class ScopePrepareASTScanner extends ASTScanner{
 
         prepareGlobalScope();
 
-        for (Node section : node.getSections()){
-            if (section  instanceof ClassDefNode)
+        for (Node section : node.getSections()) {
+            if (section instanceof ClassDefNode)
                 section.accept(this);
         }
 

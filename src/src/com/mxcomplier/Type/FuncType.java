@@ -1,9 +1,9 @@
 package com.mxcomplier.Type;
 
-public class FuncType extends Type{
+public class FuncType extends Type {
     private String name;
 
-    public FuncType(String name){
+    public FuncType(String name) {
         this.name = name;
         this.hyperType = HyperType.FUNC;
     }

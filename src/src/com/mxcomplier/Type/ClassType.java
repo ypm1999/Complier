@@ -2,7 +2,7 @@ package com.mxcomplier.Type;
 
 import com.mxcomplier.Config;
 
-public class ClassType extends Type{
+public class ClassType extends Type {
     private String name;
 
     public ClassType(String name) {

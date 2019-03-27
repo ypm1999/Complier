@@ -2,157 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd63b658-0c42-46ab-a1cc-8ecd93e4cf27" name="Default Changelist" comment="Start_Scope_Scanner_Global">
-      <change afterPath="$PROJECT_DIR$/../antlr_test/.antlr/MxStar.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/.antlr/MxStarLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/.antlr/MxStarLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/.antlr/MxStarLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/CE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStar.g4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStar.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStar.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStarBaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStarLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStarLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStarLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStarListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/MxStarParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_101.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_103.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_104.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_105.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_106.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_107.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_108.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_109.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_110.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_111.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_112.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_113.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_114.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_115.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_116.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_117.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_118.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_119.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_120.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_121.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_122.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_123.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_124.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_125.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_126.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_127.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_128.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_129.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_130.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_131.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_132.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_133.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_134.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_135.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_136.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_137.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_138.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_139.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_140.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_141.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_142.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_143.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_144.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_145.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_146.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_147.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_148.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_149.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_150.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_151.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_152.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_153.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_154.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_155.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_156.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_157.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_158.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_159.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_160.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_161.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_162.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_165.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_167.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_168.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_170.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_171.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_173.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_174.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_175.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_176.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_177.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_179.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_180.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_183.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_184.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_185.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_186.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_187.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_188.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_189.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_190.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_191.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_192.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_194.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_196.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_197.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_198.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_199.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_204.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_205.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_208.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_214.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_216.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_218.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_219.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_220.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_225.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_226.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_72.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_73.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_74.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_75.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_76.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_77.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_78.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_79.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_80.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_81.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_82.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_83.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_84.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_85.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_86.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_87.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_88.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_89.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_90.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_91.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_92.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_93.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_95.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_96.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_97.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_98.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/semantic/testcase_99.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/temp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../antlr_test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/build.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../complier_commit/build.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/semantic.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../complier_commit/semantic.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/lib/antlr-4.7.2-complete.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ASTVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/AST_tree_list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ArrCallExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/AssignExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/BinaryExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/BlankStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/BoolConstExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/BreakStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ClassDefNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/CompStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ConstExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ContinueStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/DefNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ExprStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ForStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/FuncCallExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/FuncDefNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/IdentExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/IfStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/IntConstExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/MemberCallExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/NewExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/NullExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/PrefixExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ProgramNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ReturnStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/StmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/StringConstExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/SuffixExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/ThisExprNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/TypeNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/VarDefNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/AST/WhileStmtNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Complier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Error/ComplierError.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/FrontEnd/ASTBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/FrontEnd/ASTScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStar.g4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStar.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStar.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStarBaseVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStarLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStarLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStarLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStarParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/LaxerParser/MxStarVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/MidTerm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Scope/ClassSymbol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Scope/FuncSymbol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Scope/Scope.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Scope/Symbol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Scope/VarSymbol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/ArrayType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/BoolType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/ClassType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/FuncType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/IntType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/NullType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/StringType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/VoidType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStar.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStarLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/com/mxcomplier/LaxerParser/MxStarLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/src/testcase.mx" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/src/testcase.mx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr_test/.antlr/MxStar.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr_test/MxStarBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr_test/.antlr/MxStarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr_test/MxStarVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStarParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testcases/testcase.mx" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/testcase.mx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -177,35 +120,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7492877">
+    <splitter split-orientation="horizontal" split-proportion="0.735865">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="179">
-                  <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="40" selection-start-line="40" selection-end-line="40" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="707">
-                  <caret line="264" column="49" lean-forward="true" selection-start-line="264" selection-start-column="49" selection-end-line="264" selection-end-column="49" />
+                <state relative-caret-position="219">
+                  <caret line="33" column="56" lean-forward="true" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#8666#8667#0" expanded="true" />
@@ -221,10 +143,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="179">
-                  <caret line="246" column="32" selection-start-line="246" selection-start-column="32" selection-end-line="246" selection-end-column="32" />
+                <state relative-caret-position="280">
+                  <caret line="44" selection-start-line="44" selection-end-line="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -233,10 +155,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+                <state relative-caret-position="109">
+                  <caret line="428" column="47" lean-forward="true" selection-start-line="428" selection-start-column="47" selection-end-line="428" selection-end-column="47" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -245,68 +167,56 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/MemberCallExprNode.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="24" selection-start-line="24" selection-end-line="24" />
-                  <folding>
-                    <element signature="e#448#449#0" expanded="true" />
-                    <element signature="e#481#482#0" expanded="true" />
-                    <element signature="e#541#542#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/FuncCallExprNode.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="25" selection-start-line="25" selection-end-line="25" />
-                  <folding>
-                    <element signature="e#596#597#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/IdentExprNode.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" selection-start-line="17" selection-end-line="17" />
-                  <folding>
-                    <element signature="e#342#343#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/Node.java">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="102">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
+                  <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
                   <folding>
-                    <element signature="e#157#158#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#615#616#0" expanded="true" />
+                    <element signature="e#648#649#0" expanded="true" />
+                    <element signature="e#689#690#0" expanded="true" />
+                    <element signature="e#722#723#0" expanded="true" />
+                    <element signature="e#843#844#0" expanded="true" />
+                    <element signature="e#886#887#0" expanded="true" />
+                    <element signature="e#924#925#0" expanded="true" />
+                    <element signature="e#960#961#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/FuncDefNode.java">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
-                  <caret line="27" selection-start-line="27" selection-end-line="27" />
+                <state relative-caret-position="418">
+                  <caret line="73" column="60" lean-forward="true" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
                   <folding>
-                    <element signature="e#810#811#0" expanded="true" />
-                    <element signature="e#994#995#0" expanded="true" />
-                    <element signature="e#1027#1028#0" expanded="true" />
-                    <element signature="e#1068#1069#0" expanded="true" />
-                    <element signature="e#1099#1100#0" expanded="true" />
-                    <element signature="e#1159#1160#0" expanded="true" />
-                    <element signature="e#1194#1195#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-145">
+                  <caret line="37" column="44" lean-forward="true" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="283">
+                  <caret line="25" column="26" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="26" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -318,32 +228,20 @@
         <splitter split-orientation="vertical" split-proportion="0.44708425">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/TypeNode.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="85">
-                      <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+                    <state relative-caret-position="119">
+                      <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ClassDefNode.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="306">
+                    <state relative-caret-position="130">
                       <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="170">
-                      <caret line="18" selection-start-line="18" selection-end-line="18" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -351,8 +249,11 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/CompStmtNode.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="187">
-                      <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+                    <state relative-caret-position="56">
+                      <caret line="26" selection-start-line="26" selection-end-line="26" />
+                      <folding>
+                        <element signature="e#596#597#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -364,8 +265,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="119">
-                      <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+                    <state relative-caret-position="115">
+                      <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
                     </state>
                   </provider>
                 </entry>
@@ -429,8 +330,13 @@
       <find>only</find>
       <find>newExpress</find>
       <find>NewE</find>
-      <find>Return</find>
       <find>return type not match</find>
+      <find>getClassMember</find>
+      <find>StringType</find>
+      <find>assign</find>
+      <find>New</find>
+      <find>Return</find>
+      <find>typeA</find>
     </findStrings>
     <replaceStrings>
       <replace>[]</replace>
@@ -465,7 +371,6 @@
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ExprStmtNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/main.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/IntType.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/StringType.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/BoolType.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/ClassType.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/VoidType.java" />
@@ -488,29 +393,30 @@
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/BinaryExprNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/NewExprNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/FuncDefNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ForStmtNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/CompStmtNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ClassDefNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ProgramNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/StringType.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="222" />
-    <option name="y" value="58" />
-    <option name="width" value="1390" />
-    <option name="height" value="1000" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="156" />
+    <option name="y" value="111" />
+    <option name="width" value="1634" />
+    <option name="height" value="928" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -538,13 +444,13 @@
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AST" type="462c0819:PsiDirectoryNode" />
+              <item name="mxcomplier" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Error" type="462c0819:PsiDirectoryNode" />
+              <item name="AST" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
@@ -557,6 +463,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Scope" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Type" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -574,11 +486,12 @@
     <property name="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4::/package" value="com.mxcomplier.LaxerParser" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553658810841" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553689603549" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../EM-Compiler" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
@@ -663,7 +576,7 @@
       <workItem from="1553418649195" duration="107000" />
       <workItem from="1553434349406" duration="5219000" />
       <workItem from="1553472510279" duration="48940000" />
-      <workItem from="1553654179973" duration="3656000" />
+      <workItem from="1553654179973" duration="19298000" />
     </task>
     <task id="LOCAL-00001" summary="initialize project &amp; add some boks">
       <created>1552104305621</created>
@@ -763,16 +676,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553605813879</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Start_Scope_Scanner_Global">
+      <created>1553658806074</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1553658806074</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156518000" />
+    <option name="totallyTimeSpent" value="172160000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="156" y="111" width="1634" height="928" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892008" visible="true" weight="0.22302158" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892008" visible="true" weight="0.25377834" />
       <window_info id="Structure" order="1" sideWeight="0.5010799" side_tool="true" weight="0.1128943" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -782,8 +703,8 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4986165" weight="0.12419006" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4991699" visible="true" weight="0.29697624" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36285096" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4991699" visible="true" weight="0.38172716" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31101513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -793,7 +714,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.5013835" side_tool="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5019369" side_tool="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Tool Output" order="12" sideWeight="0.4980631" weight="0.29697624" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="13" sideWeight="0.4986165" weight="0.4298056" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="13" sideWeight="0.4986165" weight="0.29589632" />
       <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4986165" weight="0.3509719" />
       <window_info anchor="bottom" id="Python Console" order="15" />
       <window_info anchor="bottom" id="Duplicate detector" order="16" weight="0.32937366" />
@@ -856,43 +777,55 @@
     <MESSAGE value="AST_buckup" />
     <MESSAGE value="AST_buckup_leave_decl" />
     <MESSAGE value="Start_Scope_Scanner_Func" />
-    <MESSAGE value="Start_Scope_Scanner_Global" />
     <MESSAGE value="Scnner_almost_finish &amp;&amp; start_DEBUG" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scnner_almost_finish &amp;&amp; start_DEBUG" />
+    <MESSAGE value="Start_Scope_Scanner_Global" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start_Scope_Scanner_Global" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java</url>
-          <line>86</line>
+          <url>file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java</url>
+          <line>65</line>
           <properties />
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java</url>
-          <line>57</line>
+          <line>164</line>
           <properties />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java</url>
-          <line>246</line>
-          <properties />
-          <option name="timeStamp" value="34" />
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="str.charAt(i)" language="JAVA" />
-        <watch expression="str.length()" language="JAVA" />
-        <watch expression="node.getBaseExpr().getType()" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>ctx.String()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ctx.Int()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ctx.expression()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ctx.getText()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ctx.getStart()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>node.getBaseExpr().getType()</expression-string>
         <language-id>JAVA</language-id>
@@ -918,43 +851,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>node.getLocation()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/BoolType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/VoidType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/get_tests.py" />
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/AST_tree_list">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JAVA/com.mxcomplier.AST.ContinueStmtNode">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1051,24 +950,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/ArrayType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/FuncType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/StringType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1149,18 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/ClassSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#535#536#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/VarDefNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1174,43 +1047,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#722#723#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/NewExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ForStmtNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/ClassType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/BoolConstExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1221,32 +1061,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/WhileStmtNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Error/ComplierError.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#379#380#0" expanded="true" />
-            <element signature="e#412#413#0" expanded="true" />
-            <element signature="e#490#491#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1261,78 +1079,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/TypeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ClassDefNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/CompStmtNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/FuncDefNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1342,57 +1092,6 @@
           <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#157#158#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="264" column="49" lean-forward="true" selection-start-line="264" selection-start-column="49" selection-end-line="264" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8666#8667#0" expanded="true" />
-            <element signature="e#8710#8711#0" expanded="true" />
-            <element signature="e#8789#8790#0" expanded="true" />
-            <element signature="e#8835#8836#0" expanded="true" />
-            <element signature="e#11820#11821#0" expanded="true" />
-            <element signature="e#13367#13368#0" expanded="true" />
-            <element signature="e#15524#15525#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/IdentExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#342#343#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1419,10 +1118,252 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java">
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="246" column="32" selection-start-line="246" selection-start-column="32" selection-end-line="246" selection-end-column="32" />
+        <state relative-caret-position="128">
+          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Symbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding>
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/ClassSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/BoolType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#266#267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ArrCallExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#558#559#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/IdentExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding>
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/ClassType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/ArrayType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Type/StringType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/antlr-4.7.2-complete.jar!/org/antlr/v4/runtime/BailErrorStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/antlr-4.7.2-complete.jar!/org/antlr/v4/runtime/misc/ParseCancellationException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/TypeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/WhileStmtNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#520#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/BoolConstExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#440#441#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/StringConstExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#371#372#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/NewExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#657#658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/FuncDefNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="e#783#784#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="33" column="56" lean-forward="true" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8666#8667#0" expanded="true" />
+            <element signature="e#8710#8711#0" expanded="true" />
+            <element signature="e#8789#8790#0" expanded="true" />
+            <element signature="e#8835#8836#0" expanded="true" />
+            <element signature="e#11820#11821#0" expanded="true" />
+            <element signature="e#13367#13368#0" expanded="true" />
+            <element signature="e#15524#15525#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+            <element signature="e#886#887#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/CompStmtNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#596#597#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ClassDefNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1431,8 +1372,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="-145">
+          <caret line="37" column="44" lean-forward="true" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="73" column="60" lean-forward="true" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="428" column="47" lean-forward="true" selection-start-line="428" selection-start-column="47" selection-end-line="428" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

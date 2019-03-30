@@ -25,6 +25,6 @@ public class ClassType extends Type {
 
     @Override
     public String toString() {
-        return String.format("ClassType(%s)", name.toString());
+        return String.format("ClassType(%s)", name);
     }
 }

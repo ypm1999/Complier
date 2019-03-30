@@ -22,6 +22,6 @@ public class FuncType extends Type {
 
     @Override
     public String toString() {
-        return String.format("FuncType(%s)", name.toString());
+        return String.format("FuncType(%s)", name);
     }
 }

@@ -1,14 +1,30 @@
 package com.mxcomplier.FrontEnd;
 
 import com.mxcomplier.AST.*;
+import com.mxcomplier.Config;
+import com.mxcomplier.Ir.Operands.StaticDataIR;
+import com.mxcomplier.Scope.VarSymbol;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class IRBuilder extends ASTScanner{
+    private List<StaticDataIR> staticDataList;
+
 
 
     @Override
     public void visit(ProgramNode node) {
+        globalScope = currentScope = node.getScope();
+        staticDataList = new ArrayList<>();
+
+        for (Node section: node.getSections())
+            if (section instanceof VarDefNode){
+                VarSymbol var = currentScope.getVar(((VarDefNode) section).getName());
 
 
+            }
+        globalScope = currentScope = currentScope.getParent();
     }
 
     @Override

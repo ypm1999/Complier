@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd63b658-0c42-46ab-a1cc-8ecd93e4cf27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/LoadInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PopInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PushInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/ReturnInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/StoreInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/AddressIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ConstantIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java" afterDir="false" />
+    <list default="true" id="cd63b658-0c42-46ab-a1cc-8ecd93e4cf27" name="Default Changelist" comment="building_ir">
+      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/MemoryIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/LoadInstIR.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PopInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PopInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PushInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PushInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/ReturnInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/ReturnInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/StoreInstIR.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java" afterDir="false" />
+    </list>
+    <list id="ad6cd9c6-90e9-4b03-8c24-cc54fb5061fa" name="no Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../antlr_test/.antlr/MxStar.interp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../antlr_test/.antlr/MxStar.tokens" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../antlr_test/.antlr/MxStarLexer.interp" beforeDir="false" />
@@ -259,11 +264,6 @@
       <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/StringType.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/Type.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../complier_commit/src/src/com/mxcomplier/Type/VoidType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/AST/ASTVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/AST/ASTVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Type/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Type/ClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Type/FuncType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Type/FuncType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/testcase.mx" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/testcase.mx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -287,77 +287,141 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.59003323">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#231#232#0" expanded="true" />
+                    <element signature="e#264#265#0" expanded="true" />
+                    <element signature="e#509#510#0" expanded="true" />
+                    <element signature="e#543#544#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+                  <folding>
+                    <element signature="e#222#223#0" expanded="true" />
+                    <element signature="e#256#257#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/MemoryIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#442#443#0" expanded="true" />
+                    <element signature="e#471#472#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" column="47" lean-forward="true" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="34">
+                  <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="184">
+                  <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="289">
+                  <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#881#882#0" expanded="true" />
+                    <element signature="e#917#918#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Config.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -420,35 +484,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/AssignExprNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/BinaryExprNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/NewExprNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/FuncDefNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ForStmtNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/CompStmtNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ClassDefNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ProgramNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Type/StringType.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/FunctionIr.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/ClassIr.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/Register.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/Address.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/Data.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/Value.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/Inst.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInst.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInst.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInst.java" />
@@ -468,17 +503,46 @@
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddress.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticData.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInst.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/ASTVisitor.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/StoreInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/ReturnInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PushInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/LoadInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PopInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ConstantIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/MemoryIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="114" />
-    <option name="y" value="152" />
-    <option name="width" value="1634" />
-    <option name="height" value="928" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="75" />
+    <option name="y" value="413" />
+    <option name="width" value="1657" />
+    <option name="height" value="932" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -526,6 +590,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Operands" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Scope" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -542,8 +612,9 @@
     <property name="$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4::/package" value="com.mxcomplier.LaxerParser" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553931984734" />
-    <property name="last_opened_file_path" value="$USER_HOME$/EM-Compiler" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554025186326" />
+    <property name="last_opened_file_path" value="$USER_HOME$/mstar-compiler" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -610,6 +681,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cd63b658-0c42-46ab-a1cc-8ecd93e4cf27" name="Default Changelist" comment="" />
+      <changelist id="ad6cd9c6-90e9-4b03-8c24-cc54fb5061fa" name="no Changelist" comment="" />
       <created>1552104229812</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -635,7 +707,7 @@
       <workItem from="1553434349406" duration="5219000" />
       <workItem from="1553472510279" duration="48940000" />
       <workItem from="1553654179973" duration="21720000" />
-      <workItem from="1553861361956" duration="6193000" />
+      <workItem from="1553861361956" duration="20389000" />
     </task>
     <task id="LOCAL-00001" summary="initialize project &amp; add some boks">
       <created>1552104305621</created>
@@ -763,11 +835,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553689909901</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="try_build_ir">
+      <created>1553932113353</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1553932113353</updated>
+    </task>
+    <task id="LOCAL-00020" summary="try_build_ir">
+      <created>1554000188962</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1554000188962</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180775000" />
+    <option name="totallyTimeSpent" value="194971000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -779,10 +865,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="114" y="152" width="1634" height="928" extended-state="0" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892008" visible="true" weight="0.25660378" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892008" visible="true" weight="0.16804865" />
       <window_info id="Structure" order="1" sideWeight="0.5010799" side_tool="true" weight="0.1128943" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -798,13 +884,13 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32916147" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4997233" weight="0.32937366" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4997233" weight="0.32903227" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.5013835" side_tool="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5019369" side_tool="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Tool Output" order="12" sideWeight="0.4980631" weight="0.29697624" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" sideWeight="0.4986165" weight="0.29589632" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4986165" weight="0.3509719" />
+      <window_info active="true" anchor="bottom" id="Messages" order="14" sideWeight="0.4986165" visible="true" weight="0.35053763" />
       <window_info anchor="bottom" id="Python Console" order="15" />
       <window_info anchor="bottom" id="Duplicate detector" order="16" weight="0.32937366" />
       <window_info anchor="bottom" id="Dependency Viewer" order="17" weight="0.7359199" />
@@ -860,6 +946,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initialize project &amp; add some boks" />
     <MESSAGE value="initialize project" />
@@ -872,7 +984,9 @@
     <MESSAGE value="Start_Scope_Scanner_Global" />
     <MESSAGE value="semantic_passed" />
     <MESSAGE value="semantic_passed_formated" />
-    <option name="LAST_COMMIT_MESSAGE" value="semantic_passed_formated" />
+    <MESSAGE value="try_build_ir" />
+    <MESSAGE value="building_ir" />
+    <option name="LAST_COMMIT_MESSAGE" value="building_ir" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -929,76 +1043,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/StringConstExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#371#372#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/NewExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#657#658#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/FuncDefNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ReturnStmtNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#389#390#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/LaxerParser/MxStar.g4">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1016,16 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Symbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1034,13 +1072,6 @@
             <element signature="e#278#279#0" expanded="true" />
             <element signature="e#305#306#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -1070,16 +1101,6 @@
             <element signature="e#355#356#0" expanded="true" />
             <element signature="e#406#407#0" expanded="true" />
             <element signature="e#448#449#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1130,13 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/FunctionIr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1147,134 +1161,8 @@
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/ClassIr.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/operand.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/AddressIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ConstantIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/ReturnInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PopInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PushInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/LoadInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/StoreInstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ASTVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1283,10 +1171,317 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="172" column="5" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="172" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Complier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+          <folding>
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/StoreInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/ReturnInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/HeapAllocInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PushInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/LoadInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/PopInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/ProgramIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/Scope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/UnaryInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/AddressIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ConstantIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/FuncAddressIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="47" lean-forward="true" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Scope/FuncSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#917#918#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/IRVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/MemoryIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding>
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StaticDataIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#264#265#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -95,6 +95,54 @@ public class Scope {
         }
     }
 
+    public ClassSymbol getClass(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getClass(name);
+            else
+                throw new ComplierError("IR");
+        else {
+            Symbol symbol = identMap.get(name);
+            if (symbol.getType() instanceof ClassType)
+                return (ClassSymbol) symbol;
+            else
+                throw new ComplierError("IR");
+        }
+
+    }
+
+    public FuncSymbol getFunc(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getFunc(name);
+            else
+                throw new ComplierError("IR");
+        else {
+            Symbol symbol = identMap.get(name);
+            if (symbol.getType() instanceof FuncType)
+                return (FuncSymbol) symbol;
+            else
+                throw new ComplierError("IR");
+        }
+    }
+
+
+    public VarSymbol getVar(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getVar(name);
+            else
+                throw new ComplierError("IR");
+        else {
+            Symbol symbol = identMap.get(name);
+            if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
+                return (VarSymbol) symbol;
+            else
+                throw new ComplierError("IR");
+        }
+    }
+
+
 
     public Scope getParent() {
         return parent;

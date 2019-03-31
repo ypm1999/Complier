@@ -5,9 +5,11 @@ import com.mxcomplier.Ir.Operands.StaticDataIR;
 import java.util.List;
 
 public class ProgramIR {
-    private List<BasicBlockIR> BBList;
     private List<FuncIR> funcs;
     private FuncIR mainFunc;
-    private List<StaticDataIR> staticData;
+    public List<StaticDataIR> staticData;
 
+    public void accept(IRVisitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -1,5 +1,6 @@
 package com.mxcomplier.Scope;
 
+import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 import com.mxcomplier.Type.FuncType;
 import com.mxcomplier.Type.Type;
 
@@ -10,6 +11,7 @@ public class FuncSymbol extends Symbol {
     private Scope scope;
     private List<Type> parameters;
     private boolean isConstructor;
+    public VirtualRegisterIR address;
 
 
     public FuncSymbol(String name, Type returnType, Scope scope, List<Type> args) {

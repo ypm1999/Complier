@@ -2,6 +2,7 @@ package com.mxcomplier.Scope;
 
 import com.mxcomplier.AST.Location;
 import com.mxcomplier.Error.ComplierError;
+import com.mxcomplier.Error.IRError;
 import com.mxcomplier.Type.ClassType;
 import com.mxcomplier.Type.FuncType;
 
@@ -79,6 +80,16 @@ public class Scope {
         }
     }
 
+    public Symbol get(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.get(name);
+            else
+                throw new IRError(String.format("get %s", name));
+        else
+            return identMap.get(name);
+    }
+
 
     public VarSymbol getVar(String name, Location location) {
         if (!identMap.containsKey(name))
@@ -100,13 +111,13 @@ public class Scope {
             if (parent != null)
                 return parent.getClass(name);
             else
-                throw new ComplierError("IR");
+                throw new IRError("IR getClass1");
         else {
             Symbol symbol = identMap.get(name);
             if (symbol.getType() instanceof ClassType)
                 return (ClassSymbol) symbol;
             else
-                throw new ComplierError("IR");
+                throw new IRError("IR getClass2");
         }
 
     }
@@ -116,13 +127,13 @@ public class Scope {
             if (parent != null)
                 return parent.getFunc(name);
             else
-                throw new ComplierError("IR");
+                throw new IRError("IR getFunc1");
         else {
             Symbol symbol = identMap.get(name);
             if (symbol.getType() instanceof FuncType)
                 return (FuncSymbol) symbol;
             else
-                throw new ComplierError("IR");
+                throw new IRError("IR getFunc2");
         }
     }
 
@@ -132,13 +143,13 @@ public class Scope {
             if (parent != null)
                 return parent.getVar(name);
             else
-                throw new ComplierError("IR");
+                throw new IRError("IR getVar1");
         else {
             Symbol symbol = identMap.get(name);
             if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
                 return (VarSymbol) symbol;
             else
-                throw new ComplierError("IR");
+                throw new IRError("IR getVar2");
         }
     }
 

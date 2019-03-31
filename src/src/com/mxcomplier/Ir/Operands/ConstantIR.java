@@ -1,4 +1,5 @@
 package com.mxcomplier.Ir.Operands;
 
-abstract public class ConstantIR {
+abstract public class ConstantIR extends OperandIR{
+
 }

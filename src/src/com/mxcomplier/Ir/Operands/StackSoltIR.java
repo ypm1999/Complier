@@ -1,12 +1,13 @@
 package com.mxcomplier.Ir.Operands;
 
+
 import com.mxcomplier.Ir.IRVisitor;
 
-public class ImmediateIR extends ConstantIR {
-    private int value;
+public class StackSoltIR extends MemoryIR {
+    String lable;
 
-    public ImmediateIR(int value){
-        this.value = value;
+    public StackSoltIR(String lable){
+        this.lable = lable;
     }
 
     public void accept(IRVisitor visitor) {

@@ -78,6 +78,7 @@ public class ScopeClassMemberASTScanner extends ASTScanner {
     @Override
     public void visit(VarDefNode node) {
         putVar(node);
+        currentClass.addVar(node.getName());
     }
 
 }

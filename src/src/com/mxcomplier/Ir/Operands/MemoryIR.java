@@ -3,27 +3,37 @@ package com.mxcomplier.Ir.Operands;
 import com.mxcomplier.Ir.IRVisitor;
 
 public class MemoryIR extends AddressIR {
-    private int size;
-    private int offset;
+    private RegisterIR size = null;
+    private RegisterIR offset = null;
+    private ConstantIR constant = null;
 
 
-    public MemoryIR(int size){
+    public MemoryIR(){}
+
+    public MemoryIR(RegisterIR size){
         this.size = size;
-        this.offset = 0;
     }
 
-    public MemoryIR(int size, int offset){
+    public MemoryIR(RegisterIR size, RegisterIR offset){
         this.size = size;
         this.offset = offset;
     }
 
+    public MemoryIR(ConstantIR constant){
+        this.constant = constant;
+    }
 
-    public int getSize() {
+
+    public RegisterIR getSize() {
         return size;
     }
 
-    public int getOffset() {
+    public RegisterIR getOffset() {
         return offset;
+    }
+
+    public ConstantIR getConstant() {
+        return constant;
     }
 
     public void accept(IRVisitor visitor) {

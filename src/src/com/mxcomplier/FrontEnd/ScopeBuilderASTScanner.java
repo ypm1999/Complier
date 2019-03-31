@@ -394,9 +394,11 @@ public class ScopeBuilderASTScanner extends ASTScanner {
         if (symbol instanceof VarSymbol) {
             node.setLeftValue(true);
             node.setType(symbol.getType());
+            node.setVar(true);
         } else if (symbol instanceof FuncSymbol) {
             node.setLeftValue(false);
             node.setType(((FuncSymbol) symbol).getReturnType());
+            node.setFunc(true);
         } else
             throw new ComplierError(node.getLocation(), "Identifier must be a variable or function");
     }

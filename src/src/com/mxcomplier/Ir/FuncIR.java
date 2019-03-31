@@ -1,26 +1,21 @@
 package com.mxcomplier.Ir;
 
+import com.mxcomplier.Ir.Operands.RegisterIR;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class FuncIR {
-    private String msg; //for Debug
     private String name;
-    private List<BasicBlockIR> BBList;
-    private List<FuncIR> callee;
+    public BasicBlockIR entryBB, leaveBB;
+    private List<BasicBlockIR> BBList = new ArrayList<>();
+    private List<FuncIR> callee = new ArrayList<>();
+    private List<RegisterIR> parameters = new ArrayList<>();
 
-    public FuncIR(String name, List<BasicBlockIR> BBList, List<FuncIR> callee){
-        this.msg = "";
+    public FuncIR(String name){
         this.name = name;
-        this.BBList = BBList;
-        this.callee = callee;
     }
 
-    public FuncIR(String name, List<BasicBlockIR> BBList, List<FuncIR> callee, String msg){
-        this.msg = msg;
-        this.name = name;
-        this.BBList = BBList;
-        this.callee = callee;
-    }
 
     public String getName() {
         return name;
@@ -34,8 +29,12 @@ public class FuncIR {
         return callee;
     }
 
-    public String getMsg() {
-        return msg;
+    public void addPara(RegisterIR reg){
+        parameters.add(reg);
+    }
+
+    public List<RegisterIR> getParameters() {
+        return parameters;
     }
 
     public void accept(IRVisitor visitor) {

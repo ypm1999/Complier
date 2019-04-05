@@ -1,16 +1,27 @@
 package com.mxcomplier.Ir.Instructions;
 
-import com.mxcomplier.Ir.Operands.RegisterIR;
+import com.mxcomplier.Ir.Operands.AddressIR;
 
 public class UnaryInstIR extends InstIR {
     public enum Op{
-        NEG, NOT, INV, INC, DEC
+        NEG, INV, INC, DEC, NULL, ERROR
     }
 
     private Op op;
-    private RegisterIR dest;
-    private RegisterIR src;
+    private AddressIR dest;
 
+    public UnaryInstIR(Op op, AddressIR dest){
+        this.op = op;
+        this.dest = dest;
+    }
 
+    public Op getOp() {
+        return op;
+    }
+
+    public AddressIR getDest() {
+        return dest;
+    }
 
 }
+

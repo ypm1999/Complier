@@ -153,6 +153,53 @@ public class Scope {
         }
     }
 
+    public ClassSymbol tryGetClass(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getClass(name);
+            else
+                return null;
+        else {
+            Symbol symbol = identMap.get(name);
+            if (symbol.getType() instanceof ClassType)
+                return (ClassSymbol) symbol;
+            else
+                return null;
+        }
+
+    }
+
+    public FuncSymbol tryGetFunc(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getFunc(name);
+            else
+                return null;
+        else {
+            Symbol symbol = identMap.get(name);
+            if (symbol.getType() instanceof FuncType)
+                return (FuncSymbol) symbol;
+            else
+                return null;
+        }
+    }
+
+
+    public VarSymbol tryGetVar(String name) {
+        if (!identMap.containsKey(name))
+            if (parent != null)
+                return parent.getVar(name);
+            else
+                return null;
+        else {
+            Symbol symbol = identMap.get(name);
+            if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
+                return (VarSymbol) symbol;
+            else
+                return null;
+        }
+    }
+
 
 
     public Scope getParent() {

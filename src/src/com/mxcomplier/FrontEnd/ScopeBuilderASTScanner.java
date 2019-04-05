@@ -190,7 +190,8 @@ public class ScopeBuilderASTScanner extends ASTScanner {
 
         FuncSymbol func;
         if (base instanceof IdentExprNode) {
-            func = currentScope.getFunc(((IdentExprNode) base).getName(), base.getLocation());
+            node.setFuncName(((IdentExprNode) base).getName());
+            func = currentScope.getFunc(node.getFuncName(), base.getLocation());
         } else if (base instanceof MemberCallExprNode) {
             String name;
             Type type = ((MemberCallExprNode) base).getBaseExpr().getType();
@@ -202,8 +203,8 @@ public class ScopeBuilderASTScanner extends ASTScanner {
                 name = "__array";
             else
                 throw new ComplierError(node.getLocation(), "unknown member call type");
-
-            Symbol tmpSymbol = getClassMember(name, ((MemberCallExprNode) base).getMemberName(), base.getLocation());
+            node.setFuncName(((MemberCallExprNode) base).getMemberName());
+            Symbol tmpSymbol = getClassMember(name, node.getFuncName(), base.getLocation());
             if (tmpSymbol instanceof FuncSymbol)
                 func = (FuncSymbol) tmpSymbol;
             else

@@ -25,7 +25,6 @@ public class PrefixExprNode extends ExprNode {
 
     public enum PrefixOp {
         PREFIX_INC, PREFIX_DEC,
-        PLUS, MINUS, NOT, INV,
-        NULL
+        PLUS, MINUS, NOT, INV
     }
 }

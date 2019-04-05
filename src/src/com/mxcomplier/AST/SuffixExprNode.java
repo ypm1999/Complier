@@ -23,7 +23,6 @@ public class SuffixExprNode extends ExprNode {
     }
 
     public enum SuffixOp {
-        SUFFIX_INC, SUFFIX_DEC,
-        NULL
+        SUFFIX_INC, SUFFIX_DEC
     }
 }

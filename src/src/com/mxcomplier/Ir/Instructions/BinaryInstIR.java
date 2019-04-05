@@ -1,22 +1,22 @@
 package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.IRVisitor;
-import com.mxcomplier.Ir.Operands.RegisterIR;
+import com.mxcomplier.Ir.Operands.AddressIR;
+import com.mxcomplier.Ir.Operands.OperandIR;
 
 public class BinaryInstIR extends InstIR {
     public enum Op{
-        ADD, SUB, MUL, DIV, SHL, SHR, AND, OR, XOR
+        ADD, SUB, MUL, DIV, MOD, SHL, SHR, AND, OR, XOR, ERROR
     }
 
     private Op op;
-    private RegisterIR dest;
-    private RegisterIR lhs, rhs;
+    private AddressIR dest;
+    private OperandIR src;
 
-    public BinaryInstIR(Op op, RegisterIR dest, RegisterIR lhs, RegisterIR rhs){
+    public BinaryInstIR(Op op, AddressIR dest, OperandIR src){
         this.op = op;
         this.dest = dest;
-        this.lhs = lhs;
-        this.rhs = rhs;
+        this.src = src;
     }
 
 
@@ -24,15 +24,11 @@ public class BinaryInstIR extends InstIR {
         return op;
     }
 
-    public RegisterIR getLhs() {
-        return lhs;
+    public OperandIR getSrc() {
+        return src;
     }
 
-    public RegisterIR getRhs() {
-        return rhs;
-    }
-
-    public RegisterIR getDest() {
+    public AddressIR getDest() {
         return dest;
     }
 

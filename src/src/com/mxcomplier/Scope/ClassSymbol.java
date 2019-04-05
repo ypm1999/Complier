@@ -39,6 +39,10 @@ public class ClassSymbol extends Symbol {
         return -1;
     }
 
+    public int getSize(){
+        return offset;
+    }
+
     public Scope getScope() {
         return scope;
     }

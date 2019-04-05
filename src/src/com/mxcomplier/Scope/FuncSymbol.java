@@ -11,15 +11,16 @@ public class FuncSymbol extends Symbol {
     private Scope scope;
     private List<Type> parameters;
     private boolean isConstructor;
-    public VirtualRegisterIR address;
+    private ClassSymbol belongClass;
 
 
-    public FuncSymbol(String name, Type returnType, Scope scope, List<Type> args) {
+    public FuncSymbol(String name, Type returnType, Scope scope, List<Type> args, ClassSymbol belongClass) {
         super(name, new FuncType(name));
         this.scope = scope;
         this.returnType = returnType;
         this.parameters = args;
         isConstructor = false;
+        this.belongClass = belongClass;
     }
 
     public Scope getScope() {
@@ -36,6 +37,10 @@ public class FuncSymbol extends Symbol {
 
     public boolean isConstructor() {
         return isConstructor;
+    }
+
+    public ClassSymbol getBelongClass() {
+        return belongClass;
     }
 
     public void setConstructor(boolean constructor) {

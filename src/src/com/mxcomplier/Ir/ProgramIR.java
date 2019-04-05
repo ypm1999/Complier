@@ -6,8 +6,20 @@ import java.util.List;
 
 public class ProgramIR {
     private List<FuncIR> funcs;
-    private FuncIR mainFunc;
-    public List<StaticDataIR> staticData;
+    private List<StaticDataIR> staticData;
+
+    public ProgramIR(List<FuncIR> func, List<StaticDataIR> staticData){
+        this.funcs = func;
+        this.staticData = staticData;
+    }
+
+    public List<FuncIR> getFuncs() {
+        return funcs;
+    }
+
+    public List<StaticDataIR> getStaticData() {
+        return staticData;
+    }
 
     public void accept(IRVisitor visitor) {
         visitor.visit(this);

@@ -9,6 +9,10 @@ public class ImmediateIR extends ConstantIR {
         this.value = value;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }

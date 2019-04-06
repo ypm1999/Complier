@@ -114,4 +114,9 @@ abstract public class IRScanner implements IRVisitor {
     public void visit(StaticDataIR node) {
 
     }
+
+    @Override
+    public void visit(BranchInstIR node) {
+
+    }
 }

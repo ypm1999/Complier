@@ -3,7 +3,6 @@ package com.mxcomplier.FrontEnd;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.*;
-import com.mxcomplier.Ir.Operands.*;
 import com.mxcomplier.Ir.ProgramIR;
 
 public class IRPrinter extends IRScanner {
@@ -49,11 +48,9 @@ public class IRPrinter extends IRScanner {
     public void visit(FuncIR node) {
         println(String.format("<%s>", node.getName()));
         indent();
-        int cnt = 0;
         for (BasicBlockIR bb : node.getBBList()){
             println(String.format("<%s>", bb));
             bb.accept(this);
-
         }
         unindent();
         println("\n********************************************************************************\n");

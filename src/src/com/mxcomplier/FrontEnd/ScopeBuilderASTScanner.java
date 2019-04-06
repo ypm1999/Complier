@@ -192,7 +192,7 @@ public class ScopeBuilderASTScanner extends ASTScanner {
         if (base instanceof IdentExprNode) {
             node.setFuncName(((IdentExprNode) base).getName());
             func = globalScope.getFunc(node.getFuncName(), base.getLocation());
-            if (func.getBelongClass() != null)
+            if (func.getBelongClass() != null && func.getBelongClass() != currentClass)
                 throw new ComplierError(node.getLocation(), "func Call error");
         } else if (base instanceof MemberCallExprNode) {
 

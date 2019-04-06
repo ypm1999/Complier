@@ -58,7 +58,7 @@ public class Scope {
                 throw new ComplierError(location, String.format("Class %s is not decleared", name));
         else {
             Symbol symbol = identMap.get(name);
-            if (symbol.getType() instanceof ClassType)
+            if (symbol instanceof ClassSymbol)
                 return (ClassSymbol) symbol;
             else
                 throw new ComplierError(location, String.format("Class %s is not decleared as class", name));
@@ -73,7 +73,7 @@ public class Scope {
                 throw new ComplierError(location, String.format("Function %s is not decleared", name));
         else {
             Symbol symbol = identMap.get(name);
-            if (symbol.getType() instanceof FuncType)
+            if (symbol instanceof FuncSymbol)
                 return (FuncSymbol) symbol;
             else
                 throw new ComplierError(location, String.format("Function %s is not decleared as class", name));
@@ -99,7 +99,7 @@ public class Scope {
                 throw new ComplierError(location, String.format("Variable %s is not decleared", name));
         else {
             Symbol symbol = identMap.get(name);
-            if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
+            if (symbol instanceof VarSymbol)
                 return (VarSymbol) symbol;
             else
                 throw new ComplierError(location, String.format("Variable %s is not decleared as class", name));
@@ -114,7 +114,7 @@ public class Scope {
                 throw new IRError("IR getClass1");
         else {
             Symbol symbol = identMap.get(name);
-            if (symbol.getType() instanceof ClassType)
+            if (symbol instanceof ClassSymbol)
                 return (ClassSymbol) symbol;
             else
                 throw new IRError("IR getClass2");
@@ -130,7 +130,7 @@ public class Scope {
                 throw new IRError("IR getFunc1");
         else {
             Symbol symbol = identMap.get(name);
-            if (symbol.getType() instanceof FuncType)
+            if (symbol instanceof FuncSymbol)
                 return (FuncSymbol) symbol;
             else
                 throw new IRError("IR getFunc2");
@@ -146,7 +146,7 @@ public class Scope {
                 throw new IRError("IR getVar1");
         else {
             Symbol symbol = identMap.get(name);
-            if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
+            if (symbol instanceof VarSymbol)
                 return (VarSymbol) symbol;
             else
                 throw new IRError("IR getVar2");
@@ -193,7 +193,7 @@ public class Scope {
                 return null;
         else {
             Symbol symbol = identMap.get(name);
-            if (!(symbol.getType() instanceof FuncType || symbol.getType() instanceof ClassType))
+            if (symbol instanceof VarSymbol)
                 return (VarSymbol) symbol;
             else
                 return null;

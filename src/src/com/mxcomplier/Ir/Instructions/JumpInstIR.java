@@ -3,7 +3,7 @@ package com.mxcomplier.Ir.Instructions;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.IRVisitor;
 
-public class JumpInstIR extends InstIR {
+public class JumpInstIR extends BranchInstIR {
     private BasicBlockIR target;
 
     public JumpInstIR(BasicBlockIR target){

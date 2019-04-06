@@ -2,6 +2,7 @@ package com.mxcomplier.Ir;
 
 import com.mxcomplier.Ir.Instructions.*;
 import com.mxcomplier.Ir.Operands.*;
+import com.mxcomplier.Type.BoolType;
 
 public interface IRVisitor {
     void visit(BasicBlockIR node);
@@ -9,6 +10,7 @@ public interface IRVisitor {
     void visit(FuncIR node);
 
     void visit(InstIR node);
+    void visit(BranchInstIR node);
     void visit(CallInstIR node);
     void visit(UnaryInstIR node);
     void visit(JumpInstIR node);

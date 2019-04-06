@@ -13,7 +13,7 @@ public class StaticDataIR extends ConstantIR {
 
     public StaticDataIR(String constString){
         this.constString = constString;
-        this.size = constString.length() + 1;
+        this.size = constString.length() + 1 + Config.getREGSIZE();
     }
 
     public int getSize() {

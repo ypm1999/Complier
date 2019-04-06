@@ -4,7 +4,7 @@ import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.OperandIR;
 
-public class CJumpInstIR extends InstIR {
+public class CJumpInstIR extends BranchInstIR {
     public enum Op{
         L, G, LE, GE, EQ, NEQ, ERROR
     }

@@ -3,7 +3,7 @@ package com.mxcomplier.Ir.Instructions;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.RegisterIR;
 
-public class ReturnInstIR extends InstIR {
+public class ReturnInstIR extends BranchInstIR {
     private RegisterIR dest;
 
     public ReturnInstIR(RegisterIR dest){

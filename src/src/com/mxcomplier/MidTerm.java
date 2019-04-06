@@ -34,11 +34,8 @@ public class MidTerm {
             ScopePrepareASTScanner scanner1 = new ScopePrepareASTScanner();
             ScopeClassMemberASTScanner scanner2 = new ScopeClassMemberASTScanner();
             ScopeBuilderASTScanner scanner3 = new ScopeBuilderASTScanner();
-//            System.err.println("Scanner1");
             scanner1.visit(ast);
-//            System.err.println("Scanner2");
             scanner2.visit(ast);
-//            System.err.println("Scanner3");
             scanner3.visit(ast);
         } catch (ComplierError e) {
             System.err.println("Complier Failed!");

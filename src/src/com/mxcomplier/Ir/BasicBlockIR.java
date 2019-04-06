@@ -14,15 +14,19 @@ public class BasicBlockIR {
         this.lable = lable;
         this.func = func;
         this.head = this.tail = null;
+        func.getBBList().add(this);
     }
 
     public void append(InstIR inst){
+//        System.out.println(inst);
         if (head == null){
             inst.prev = inst.next = null;
             head = tail = inst;
         }
-        else
+        else {
             tail.append(inst);
+            tail = inst;
+        }
     }
 
     public FuncIR getFunc() {
@@ -39,6 +43,15 @@ public class BasicBlockIR {
 
     public String getLable() {
         return lable;
+    }
+
+    public String getFuncLabel(){
+        return func.getName() + func.getBBList().indexOf(this);
+    }
+
+    @Override
+    public String toString() {
+        return getFuncLabel() + '_' + lable;
     }
 
     public void accept(IRVisitor visitor) {

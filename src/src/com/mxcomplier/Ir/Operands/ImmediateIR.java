@@ -13,6 +13,11 @@ public class ImmediateIR extends ConstantIR {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return "_" + value;
+    }
+
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }

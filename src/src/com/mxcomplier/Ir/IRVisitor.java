@@ -9,7 +9,6 @@ public interface IRVisitor {
     void visit(FuncIR node);
 
     void visit(InstIR node);
-    void visit(BranchInstIR node);
     void visit(CallInstIR node);
     void visit(UnaryInstIR node);
     void visit(JumpInstIR node);
@@ -19,7 +18,6 @@ public interface IRVisitor {
     void visit(PopInstIR node);
     void visit(PushInstIR node);
     void visit(ReturnInstIR node);
-    void visit(HeapAllocInstIR node);
     void visit(CompInstIR node);
 
     void visit(AddressIR node);

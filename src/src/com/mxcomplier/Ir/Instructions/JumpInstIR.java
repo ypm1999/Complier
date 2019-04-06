@@ -14,6 +14,11 @@ public class JumpInstIR extends InstIR {
         return target;
     }
 
+    @Override
+    public String toString() {
+        return String.format("jmp %s", target);
+    }
+
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }

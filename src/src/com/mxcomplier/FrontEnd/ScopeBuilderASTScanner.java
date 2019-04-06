@@ -42,7 +42,7 @@ public class ScopeBuilderASTScanner extends ASTScanner {
 
     @Override
     public void visit(FuncDefNode node) {
-        currentFunc = currentScope.getFunc(node.getName(), node.getLocation());
+        currentFunc = globalScope.getFunc(node.getName(), node.getLocation());
 
         node.getFuncBody().accept(this);
 
@@ -191,10 +191,15 @@ public class ScopeBuilderASTScanner extends ASTScanner {
         FuncSymbol func;
         if (base instanceof IdentExprNode) {
             node.setFuncName(((IdentExprNode) base).getName());
-            func = currentScope.getFunc(node.getFuncName(), base.getLocation());
+            func = globalScope.getFunc(node.getFuncName(), base.getLocation());
+            if (func.getBelongClass() != null)
+                throw new ComplierError(node.getLocation(), "func Call error");
         } else if (base instanceof MemberCallExprNode) {
-            String name;
+
             Type type = ((MemberCallExprNode) base).getBaseExpr().getType();
+            node.setFuncName(((MemberCallExprNode) base).getMemberName());
+            func = globalScope.getFunc(node.getFuncName() , node.getLocation());
+            String name;
             if (type instanceof ClassType)
                 name = ((ClassType) type).getName();
             else if (type instanceof StringType)
@@ -203,12 +208,9 @@ public class ScopeBuilderASTScanner extends ASTScanner {
                 name = "__array";
             else
                 throw new ComplierError(node.getLocation(), "unknown member call type");
-            node.setFuncName(((MemberCallExprNode) base).getMemberName());
-            Symbol tmpSymbol = getClassMember(name, node.getFuncName(), base.getLocation());
-            if (tmpSymbol instanceof FuncSymbol)
-                func = (FuncSymbol) tmpSymbol;
-            else
-                throw new ComplierError(base.getLocation(), "invalid member function call");
+
+            if (!func.getBelongClass().getName().equals(name))
+                throw new ComplierError(node.getLocation(), "unknown member call type");
         } else
             throw new ComplierError(node.getLocation(), "unknown function call");
 

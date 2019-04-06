@@ -1,5 +1,6 @@
 package com.mxcomplier.Ir.Instructions;
 
+import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Type.StringType;
 
 abstract public class InstIR {
@@ -32,6 +33,10 @@ abstract public class InstIR {
         }
         this.next = inst;
         inst.prev = this;
+    }
+
+    public void accept(IRVisitor visitor) {
+        visitor.visit(this);
     }
 
 }

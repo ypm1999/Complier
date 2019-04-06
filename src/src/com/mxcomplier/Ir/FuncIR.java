@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncIR {
+    public enum Type{
+        EXTRA, LIBRARY, USER
+    }
     private String name;
+    private Type type;
     public BasicBlockIR entryBB, leaveBB;
     private List<BasicBlockIR> BBList = new ArrayList<>();
     private List<FuncIR> callee = new ArrayList<>();
@@ -14,8 +18,13 @@ public class FuncIR {
 
     public FuncIR(String name){
         this.name = name;
+        this.type = Type.USER;
     }
 
+    public FuncIR(String name, Type type){
+        this.name = name;
+        this.type = type;
+    }
 
     public String getName() {
         return name;
@@ -29,8 +38,8 @@ public class FuncIR {
         return callee;
     }
 
-    public void addPara(RegisterIR reg){
-        parameters.add(reg);
+    public Type getType() {
+        return type;
     }
 
     public List<RegisterIR> getParameters() {

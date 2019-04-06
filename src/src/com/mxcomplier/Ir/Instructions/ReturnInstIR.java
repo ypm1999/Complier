@@ -14,6 +14,12 @@ public class ReturnInstIR extends InstIR {
         return dest;
     }
 
+
+    @Override
+    public String toString() {
+        return String.format("ret %s", dest);
+    }
+
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }

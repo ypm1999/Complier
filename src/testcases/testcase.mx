@@ -1,5 +1,5 @@
-class A {}
-int main(){
-	A a = new A;
-}
+int main()
+{
+int [][][]a = (new int[3][2][][])[1];
 
+}

@@ -1,5 +1,6 @@
 package com.mxcomplier.Ir.Instructions;
 
+import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.AddressIR;
 
 public class UnaryInstIR extends InstIR {
@@ -21,6 +22,15 @@ public class UnaryInstIR extends InstIR {
 
     public AddressIR getDest() {
         return dest;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", op.toString().toLowerCase(), dest);
+    }
+
+    public void accept(IRVisitor visitor) {
+        visitor.visit(this);
     }
 
 }

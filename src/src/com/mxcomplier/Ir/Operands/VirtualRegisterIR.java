@@ -20,4 +20,9 @@ public class VirtualRegisterIR extends RegisterIR {
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public String toString() {
+        return String.format("vReg%d_%s", id, lable);
+    }
 }

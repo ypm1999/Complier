@@ -127,15 +127,12 @@ public class ASTBuilder extends MxStarBaseVisitor<Node> {
 
     @Override
     public Node visitForStatement(MxStarParser.ForStatementContext ctx) {
-        ExprNode expr1 = null, expr2, expr3 = null;
+        ExprNode expr1 = null, expr2 = null, expr3 = null;
         StmtNode stmt = (StmtNode) visit(ctx.statement());
         if (ctx.forCondition().exp1 != null)
             expr1 = (ExprNode) visit(ctx.forCondition().exp1);
         if (ctx.forCondition().exp2 != null)
             expr2 = (ExprNode) visit(ctx.forCondition().exp2);
-        else
-            expr2 = new BoolConstExprNode(BoolConstExprNode.BoolValue.TRUE,
-                    new Location(ctx.forCondition().exp2.getStart()));
         if (ctx.forCondition().exp3 != null)
             expr3 = (ExprNode) visit(ctx.forCondition().exp3);
         return new ForStmtNode(expr1, expr2, expr3, stmt, new Location(ctx.getStart()));
@@ -395,16 +392,16 @@ public class ASTBuilder extends MxStarBaseVisitor<Node> {
                 op = BinaryExprNode.Op.RSH;
                 break;
             case ">":
-                op = BinaryExprNode.Op.LESS;
-                break;
-            case "<":
                 op = BinaryExprNode.Op.LARGE;
                 break;
+            case "<":
+                op = BinaryExprNode.Op.LESS;
+                break;
             case ">=":
-                op = BinaryExprNode.Op.LESS_EQUAL;
+                op = BinaryExprNode.Op.LARGE_EQUAL;
                 break;
             case "<=":
-                op = BinaryExprNode.Op.LARGE_EQUAL;
+                op = BinaryExprNode.Op.LESS_EQUAL;
                 break;
             case "==":
                 op = BinaryExprNode.Op.EQUAL;

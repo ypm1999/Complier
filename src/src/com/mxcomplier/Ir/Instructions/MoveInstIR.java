@@ -3,7 +3,6 @@ package com.mxcomplier.Ir.Instructions;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.AddressIR;
 import com.mxcomplier.Ir.Operands.OperandIR;
-import com.mxcomplier.Ir.Operands.RegisterIR;
 
 public class MoveInstIR extends InstIR {
     private AddressIR dest;
@@ -20,6 +19,12 @@ public class MoveInstIR extends InstIR {
 
     public OperandIR getSrc() {
         return src;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("mov %s %s", dest, src);
     }
 
     public void accept(IRVisitor visitor) {

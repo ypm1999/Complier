@@ -32,6 +32,11 @@ public class BinaryInstIR extends InstIR {
         return dest;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s %s %s", op.toString().toLowerCase(), dest, src);
+    }
+
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }

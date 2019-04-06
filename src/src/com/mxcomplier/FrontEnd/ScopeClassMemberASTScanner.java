@@ -71,14 +71,15 @@ public class ScopeClassMemberASTScanner extends ASTScanner {
             returnType = node.getReturnType().getType();
         FuncSymbol symbol = new FuncSymbol(node.getName(), returnType, node.getFuncBody().getScope(), args, currentClass);
         symbol.setConstructor(node.getReturnType() == null);
-        currentScope.put(symbol, node.getLocation());
+        globalScope.put(symbol, node.getLocation());
         node.getFuncBody().getScope().setParent(currentScope);
     }
 
     @Override
     public void visit(VarDefNode node) {
         putVar(node);
-        currentClass.addVar(node.getName());
+        if (currentClass != null)
+            currentClass.addVar(node.getName());
     }
 
 }

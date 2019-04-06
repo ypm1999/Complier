@@ -2,7 +2,6 @@ package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.IRVisitor;
-import com.mxcomplier.Ir.Operands.AddressIR;
 import com.mxcomplier.Ir.Operands.OperandIR;
 
 public class CJumpInstIR extends InstIR {
@@ -40,6 +39,12 @@ public class CJumpInstIR extends InstIR {
 
     public BasicBlockIR getFalseBB() {
         return falseBB;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("cjmp if(%s %s %s) goto %s else goto %s", lhs, op, rhs, trueBB, falseBB);
     }
 
     public void accept(IRVisitor visitor) {

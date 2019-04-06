@@ -1,12 +1,12 @@
 package com.mxcomplier.AST;
 
-import com.mxcomplier.Ir.Operands.RegisterIR;
+import com.mxcomplier.Ir.Operands.AddressIR;
 import com.mxcomplier.Type.Type;
 
 abstract public class ExprNode extends Node {
     private Type type;
     private boolean leftValue;
-    public RegisterIR resultReg;
+    public AddressIR resultReg;
 
     public Type getType() {
         return type;

@@ -3,10 +3,14 @@ package com.mxcomplier.Ir.Instructions;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.AddressIR;
 import com.mxcomplier.Ir.Operands.OperandIR;
+import com.mxcomplier.Ir.Operands.StackSoltIR;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MoveInstIR extends InstIR {
-    private AddressIR dest;
-    private OperandIR src;
+    public AddressIR dest;
+    public OperandIR src;
 
     public MoveInstIR(AddressIR dest, OperandIR src){
         this.dest = dest;
@@ -21,10 +25,27 @@ public class MoveInstIR extends InstIR {
         return src;
     }
 
+    public void setSrc(OperandIR src) {
+        this.src = src;
+    }
+
+    @Override
+    public List<StackSoltIR> getStackSolt() {
+        List<StackSoltIR> res = new ArrayList<>();
+        if (dest instanceof StackSoltIR)
+            res.add((StackSoltIR) dest);
+        if (src instanceof StackSoltIR)
+            res.add((StackSoltIR) src);
+        return res;
+    }
 
     @Override
     public String toString() {
         return String.format("mov %s %s", dest, src);
+    }
+
+    public String nasmString() {
+        return String.format("mov %s, %s", dest, src);
     }
 
     public void accept(IRVisitor visitor) {

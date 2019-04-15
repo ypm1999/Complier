@@ -1,12 +1,13 @@
-package com.mxcomplier.FrontEnd;
+package com.mxcomplier.backEnd;
 
+import com.mxcomplier.FrontEnd.IRBuilder;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.*;
 import com.mxcomplier.Ir.ProgramIR;
 
 public class IRPrinter extends IRScanner {
-    String indentation = "";
+    private String indentation = "";
 
     public IRPrinter(IRBuilder builder){
         this.builder = builder;
@@ -28,9 +29,9 @@ public class IRPrinter extends IRScanner {
 
     @Override
     public void visit(BasicBlockIR node) {
-        InstIR inst = node.getHead();
+        InstIR inst = node.getHead().next;
         indent();
-        while(inst != null){
+        while(inst != node.getTail()){
             inst.accept(this);
             inst = inst.next;
         }

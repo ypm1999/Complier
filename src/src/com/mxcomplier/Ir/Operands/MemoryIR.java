@@ -5,7 +5,7 @@ import com.mxcomplier.Ir.IRVisitor;
 public class MemoryIR extends AddressIR {
     private RegisterIR base = null;
     private RegisterIR offset = null;
-    private int scale = 0;
+    private int scale = 1;
     private int num = 0;
     private ConstantIR constant = null;
 
@@ -51,20 +51,31 @@ public class MemoryIR extends AddressIR {
         this.scale = scale;
     }
 
+    public void setNum(int num) {
+        this.num = num;
+    }
+
     @Override
     public String toString() {
-        if (scale == 0) {
-            if (offset == null)
-                return String.format("[%s + %d]", base, num);
+        if (constant != null)
+            return "[" + constant.lable + "]";
+        String str1, str2, str3;
+        str1 = "" + base;
+        if (offset == null)
+            str2 = "";
+        else{
+            if (scale == 1)
+                str2 = " + " + offset.toString();
             else
-                return String.format("[%s + %s]", base, offset);
+                str2 = " + " + offset.toString() + "*" + scale;
         }
-        else {
-            if (num == 0)
-                return String.format("[%s + %s * %d]", base, offset, scale);
-            else
-                return String.format("[%s + %s*%d + %d]", base, offset, scale, num);
-        }
+        if (num > 0)
+            str3 = " + " + num;
+        else if (num < 0)
+            str3 = " - " + (-num);
+        else
+            str3 = "";
+        return "qword [" + str1 + str2 + str3 + ']';
     }
 
     public void accept(IRVisitor visitor) {

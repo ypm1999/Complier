@@ -5,6 +5,7 @@ import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.FrontEnd.*;
 import com.mxcomplier.LaxerParser.MxStarLexer;
 import com.mxcomplier.LaxerParser.MxStarParser;
+import com.mxcomplier.backEnd.*;
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -37,8 +38,15 @@ public class Main {
 
             IRBuilder irBuilder = new IRBuilder();
             IRPrinter irPrinter = new IRPrinter(irBuilder);
+            NasmPrinter nasmPrinter = new NasmPrinter(irBuilder);
+            IRfixer iRfixer = new IRfixer();
+            RegisterAllocater allocater = new RegisterAllocater();
+            StackFrameAllocater stackFrameAllocater = new StackFrameAllocater();
             irBuilder.visit(ast);
-            irPrinter.visit(irBuilder.root);
+            iRfixer.visit((irBuilder.root));
+            allocater.visit(irBuilder.root);
+            stackFrameAllocater.visit(irBuilder.root);
+            nasmPrinter.visit(irBuilder.root);
 
         } catch (ComplierError e) {
             System.err.println("Complier Failed!");

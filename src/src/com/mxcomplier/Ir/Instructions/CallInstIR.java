@@ -44,6 +44,10 @@ public class CallInstIR extends InstIR {
         return str.toString();
     }
 
+    public String nasmString() {
+        return "call " + func.getName();
+    }
+
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }

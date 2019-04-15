@@ -15,7 +15,7 @@ public class ImmediateIR extends ConstantIR {
 
     @Override
     public String toString() {
-        return "_" + value;
+        return "$" + value;
     }
 
     public void accept(IRVisitor visitor) {

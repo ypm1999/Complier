@@ -1,5 +1,6 @@
-package com.mxcomplier.FrontEnd;
+package com.mxcomplier.backEnd;
 
+import com.mxcomplier.FrontEnd.IRBuilder;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.IRVisitor;
@@ -9,6 +10,22 @@ import com.mxcomplier.Ir.ProgramIR;
 
 abstract public class IRScanner implements IRVisitor {
     IRBuilder builder;
+
+    MemoryIR getMemory(OperandIR operand){
+        if (operand instanceof VirtualRegisterIR)
+            return ((VirtualRegisterIR) operand).memory;
+        else if (operand instanceof MemoryIR)
+            return (MemoryIR) operand;
+        else
+            return null;
+    }
+
+    MemoryIR getVregMemory(OperandIR operand){
+        if (operand instanceof VirtualRegisterIR)
+            return ((VirtualRegisterIR) operand).memory;
+        else
+            return null;
+    }
     @Override
     public void visit(BasicBlockIR node) {
 

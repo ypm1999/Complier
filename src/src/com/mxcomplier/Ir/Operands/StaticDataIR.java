@@ -5,7 +5,7 @@ import com.mxcomplier.Ir.IRVisitor;
 
 public class StaticDataIR extends ConstantIR {
     private int size;
-    private String constString;
+    private String constString = null;
 
     public StaticDataIR(){
         this.size = Config.getREGSIZE();
@@ -22,6 +22,22 @@ public class StaticDataIR extends ConstantIR {
 
     public String getConstString() {
         return constString;
+    }
+
+    @Override
+    public String toString() {
+        if (constString == null){
+            StringBuilder tmp = new StringBuilder("db");
+            for (int i = 0; i < size; i++)
+                tmp.append(" 0x00,");
+            return tmp.substring(0, tmp.length() - 1);
+        }
+        else
+            return "db \'" + constString + '\'';
+    }
+
+    public String nasmString() {
+        return  toString();
     }
 
     public void accept(IRVisitor visitor) {

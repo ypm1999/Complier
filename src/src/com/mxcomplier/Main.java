@@ -39,14 +39,18 @@ public class Main {
             IRBuilder irBuilder = new IRBuilder();
             IRPrinter irPrinter = new IRPrinter(irBuilder);
             NasmPrinter nasmPrinter = new NasmPrinter(irBuilder);
+
             IRfixer iRfixer = new IRfixer();
             RegisterAllocater allocater = new RegisterAllocater();
             StackFrameAllocater stackFrameAllocater = new StackFrameAllocater();
             irBuilder.visit(ast);
-            iRfixer.visit((irBuilder.root));
-            allocater.visit(irBuilder.root);
-            stackFrameAllocater.visit(irBuilder.root);
-            nasmPrinter.visit(irBuilder.root);
+            irPrinter.visit(irBuilder.root);
+            IRInterpreter interpreter = new IRInterpreter(irBuilder);
+            interpreter.run();
+//            iRfixer.visit((irBuilder.root));
+//            allocater.visit(irBuilder.root);
+//            stackFrameAllocater.visit(irBuilder.root);
+//            nasmPrinter.visit(irBuilder.root);
 
         } catch (ComplierError e) {
             System.err.println("Complier Failed!");

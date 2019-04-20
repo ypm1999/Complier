@@ -1,6 +1,5 @@
 package com.mxcomplier.Ir;
 
-import com.mxcomplier.Ir.Operands.RegisterIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.ArrayList;

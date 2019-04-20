@@ -14,6 +14,7 @@ public class IRPrinter extends IRScanner {
     }
 
     private void println(String str){
+        str = str.replace("\n", "\n"+indentation);
         System.out.println(indentation+str);
     }
 

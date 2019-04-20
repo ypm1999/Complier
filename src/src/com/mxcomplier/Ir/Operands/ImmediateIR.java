@@ -3,13 +3,13 @@ package com.mxcomplier.Ir.Operands;
 import com.mxcomplier.Ir.IRVisitor;
 
 public class ImmediateIR extends ConstantIR {
-    private int value;
+    private long value;
 
-    public ImmediateIR(int value){
+    public ImmediateIR(long value){
         this.value = value;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 

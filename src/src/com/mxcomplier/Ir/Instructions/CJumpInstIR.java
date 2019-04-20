@@ -43,7 +43,7 @@ public class CJumpInstIR extends BranchInstIR {
 
 
 
-    public String irString() {
+    public String toString() {
         return String.format("cjmp if(%s %s %s) goto %s else goto %s", lhs, op, rhs, trueBB, falseBB);
     }
 

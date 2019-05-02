@@ -36,7 +36,7 @@ public class IRInterpreter{
     }
 
     public void run(){
-        runFunc(init, new ArrayList<>());
+//        runFunc(init, new ArrayList<>());
         System.err.println("main return Value:" + runFunc(main, new ArrayList<>()));
     }
 
@@ -55,6 +55,7 @@ public class IRInterpreter{
             BasicBlockIR nextBB;
             while (inst != bb.getTail()) {
                 if (inst instanceof ReturnInstIR){
+                    System.err.println(func.getName() + " return Value:" + getValue(((ReturnInstIR) inst).getSrc()));
                     return getValue(((ReturnInstIR) inst).getSrc());
                 }
                 nextBB = runInst(inst);
@@ -68,6 +69,7 @@ public class IRInterpreter{
         assert false;
         return 0;
     }
+    private Scanner sc = new Scanner(System.in);
     private long runLibFunc(FuncIR func, List<OperandIR> args){
         switch (func.getName()) {
             case "print":
@@ -77,14 +79,12 @@ public class IRInterpreter{
                 System.out.println(getString(args.get(0)));
                 break;
             case "getString": {
-                Scanner sc = new Scanner(System.in);
                 String str = sc.next();
                 long res = malloc(str.length() + Config.getREGSIZE() + 1);
                 writeString((int) res, str);
                 return res;
             }
             case "getInt": {
-                Scanner sc = new Scanner(System.in);
                 return sc.nextInt();
             }
             case "toString": {
@@ -106,8 +106,8 @@ public class IRInterpreter{
                 return res;
             }
             case "___array_size":
-                return memoryGetInt((int) getValue(args.get(0)));
-            case "__malloc":
+                return memoryGetInt((int) getValue(args.get(0)) - 8);
+            case "malloc":
                 return malloc(getValue(args.get(0)));
             case "__stradd": {
                 String str = getString(args.get(0)) + getString(args.get(1));
@@ -122,15 +122,14 @@ public class IRInterpreter{
                 return Integer.compare(res, 0);
             }
             default:
-                assert false;
-                break;
+                throw new Error();
         }
         return 0;
     }
 
 
     private BasicBlockIR runInst(InstIR instruction){
-//        System.err.println(instruction.toString());
+        System.err.println(instruction.toString());
         switch (instruction.getClass().getName().substring(31)){
             case "BinaryInstIR":{
                 BinaryInstIR inst = (BinaryInstIR) instruction;
@@ -153,10 +152,10 @@ public class IRInterpreter{
                         write(inst.getDest(), lhs % rhs);
                         break;
                     case SHL:
-                        write(inst.getDest(), lhs >> rhs);
+                        write(inst.getDest(), lhs << rhs);
                         break;
                     case SHR:
-                        write(inst.getDest(), lhs << rhs);
+                        write(inst.getDest(), lhs >> rhs);
                         break;
                     case AND:
                         write(inst.getDest(), lhs & rhs);
@@ -194,6 +193,11 @@ public class IRInterpreter{
             case "MoveInstIR":{
                 MoveInstIR inst = (MoveInstIR) instruction;
                 write(inst.getDest(), getValue(inst.getSrc()));
+                break;
+            }
+            case "LeaInstIR":{
+                LeaInstIR inst = (LeaInstIR) instruction;
+                write(inst.getDest(), getMemaddr((MemoryIR) inst.getSrc()));
                 break;
             }
 //            case "PopInstIR":{
@@ -239,7 +243,9 @@ public class IRInterpreter{
             }
             case "CallInstIR":{
                 CallInstIR inst = (CallInstIR) instruction;
-                write(inst.getReturnValue(), runFunc(inst.getFunc(), inst.getArgs()));
+                long ret = runFunc(inst.getFunc(), inst.getArgs());
+                write(inst.getReturnValue(), ret);
+//                System.err.println("run " + inst.getFunc().getName() + " return :" + ret);
                 break;
             }
 
@@ -250,7 +256,9 @@ public class IRInterpreter{
     }
 
     private int getMemaddr(MemoryIR mem){
-
+        if (mem.getConstant() != null){
+            return staticDataMap.getOrDefault(mem.getConstant(), -1);
+        }
         VirtualRegisterIR base = (VirtualRegisterIR) mem.getBase();
         VirtualRegisterIR offset = (VirtualRegisterIR) mem.getOffset();
         int addrOffset = (int)regSet[base.getId()] + mem.getNum();
@@ -325,7 +333,7 @@ public class IRInterpreter{
             memory[addr++] = (char)src;
     }
 
-    private int pt = 0;
+    private static int pt = 0;
     private long malloc(long size){
         pt += size;
         assert pt < MemorySize;

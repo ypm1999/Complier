@@ -1,5 +1,6 @@
 package com.mxcomplier.backEnd;
 
+import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.FrontEnd.IRBuilder;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
@@ -7,18 +8,25 @@ import com.mxcomplier.Ir.Instructions.*;
 import com.mxcomplier.Ir.Operands.StaticDataIR;
 import com.mxcomplier.Ir.ProgramIR;
 
+import java.io.*;
 import java.util.List;
 
 public class NasmPrinter extends IRScanner {
     private String indentation = "";
+    private PrintStream output = System.out;
 
     public NasmPrinter(IRBuilder builder){
         this.builder = builder;
+//        try {
+//            output = new PrintStream("test.asm");
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void println(String str){
         str = str.replace("\n", "\n"+indentation);
-        System.out.println(indentation+str);
+        output.println(indentation+str);
     }
 
 
@@ -31,8 +39,17 @@ public class NasmPrinter extends IRScanner {
     }
 
     private void init_print(List<StaticDataIR> staticData){
-        println("default rel");
-        println("global start");
+        try {
+            BufferedReader libBuffer = new BufferedReader(new FileReader("lib/c2nasm/lib.asm"));
+            String line;
+            while((line = libBuffer.readLine()) != null)
+                output.println(line);
+
+        } catch (IOException e) {
+            throw new ComplierError("IO exception when reading builtin functions from file");
+        }
+        println("global main");
+        println("global __init");
         println("section .data");
         indent();
         for (StaticDataIR data : staticData){
@@ -44,12 +61,12 @@ public class NasmPrinter extends IRScanner {
         unindent();
         println("");
         println("section .text\n");
-        println("start:");
-        indent();
-        println("call __init");
-        println("call main");
-        println("jmp __done");
-        unindent();
+//        println("start:");
+//        indent();
+//        println("call __init");
+//        println("call main");
+//        println("jmp __done");
+//        unindent();
         println("");
     }
 
@@ -71,7 +88,8 @@ public class NasmPrinter extends IRScanner {
         for (FuncIR func : node.getFuncs()){
             func.accept(this);
         }
-        println("__done:");
+//        println("__done:");
+        output.flush();
     }
 
     @Override
@@ -138,4 +156,8 @@ public class NasmPrinter extends IRScanner {
         println(node.toString());
     }
 
+    @Override
+    public void visit(LeaInstIR node) {
+        println(node.nasmString());
+    }
 }

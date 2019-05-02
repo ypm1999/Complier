@@ -1,10 +1,13 @@
 package com.mxcomplier.Ir.Operands;
 
 import com.mxcomplier.Ir.IRVisitor;
+import com.mxcomplier.Ir.RegisterSet;
 
 public class MemoryIR extends AddressIR {
     private RegisterIR base = null;
     private RegisterIR offset = null;
+    public RegisterIR old_base = null;
+    public RegisterIR old_offset = null;
     private int scale = 1;
     private int num = 0;
     private ConstantIR constant = null;
@@ -21,6 +24,12 @@ public class MemoryIR extends AddressIR {
         this.offset = offset;
     }
 
+    public MemoryIR(RegisterIR base, RegisterIR offset, int scale){
+        this.base = base;
+        this.offset = offset;
+        this.scale = scale;
+    }
+
     public MemoryIR(RegisterIR base, int num){
         this.base = base;
         this.num = num;
@@ -31,12 +40,20 @@ public class MemoryIR extends AddressIR {
     }
 
 
-    public OperandIR getBase() {
+    public RegisterIR getBase() {
         return base;
     }
 
-    public OperandIR getOffset() {
+    public RegisterIR getOffset() {
         return offset;
+    }
+
+    public void setBase(RegisterIR base) {
+        this.base = base;
+    }
+
+    public void setOffset(RegisterIR offset) {
+        this.offset = offset;
     }
 
     public ConstantIR getConstant() {
@@ -62,7 +79,7 @@ public class MemoryIR extends AddressIR {
     @Override
     public String toString() {
         if (constant != null)
-            return "[" + constant.lable + "]";
+            return "[rel " + constant.lable + "]";
         String str1, str2, str3;
         str1 = "" + base;
         if (offset == null)

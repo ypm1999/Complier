@@ -2,37 +2,32 @@ package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.AddressIR;
+import com.mxcomplier.Ir.Operands.MemoryIR;
 import com.mxcomplier.Ir.Operands.OperandIR;
 import com.mxcomplier.Ir.Operands.StackSoltIR;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryInstIR extends InstIR {
-    public enum Op{
-        ADD, SUB, MUL, DIV, MOD, SHL, SHR, AND, OR, XOR, ERROR
-    }
-
-    private Op op;
+public class LeaInstIR extends InstIR {
     public AddressIR dest;
-    public OperandIR src;
+    public AddressIR src;
 
-    public BinaryInstIR(Op op, AddressIR dest, OperandIR src){
-        this.op = op;
+    public LeaInstIR(AddressIR dest, MemoryIR src){
         this.dest = dest;
         this.src = src;
     }
 
-    public Op getOp() {
-        return op;
+    public AddressIR getDest() {
+        return dest;
     }
 
     public OperandIR getSrc() {
         return src;
     }
 
-    public AddressIR getDest() {
-        return dest;
+    public void setSrc(MemoryIR src) {
+        this.src = src;
     }
 
     @Override
@@ -47,19 +42,11 @@ public class BinaryInstIR extends InstIR {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s", op.toString().toLowerCase(), dest, src);
+        return String.format("lea %s %s", dest, src);
     }
 
     public String nasmString() {
-        switch (op){
-            case MUL:
-                return String.format("mul %s", src);
-            case DIV:
-            case MOD:
-                return String.format("mov rdx,   0\ndiv %s", src);
-            default:
-                return String.format("%s %s, %s", op.toString().toLowerCase(), dest, src);
-        }
+        return String.format("lea %s, %s", dest, src);
     }
 
     public void accept(IRVisitor visitor) {

@@ -12,6 +12,7 @@ public class CompInstIR extends InstIR {
     public OperandIR lhs, rhs;
 
     public CompInstIR(OperandIR lhs, OperandIR rhs){
+
         this.lhs = lhs;
         this.rhs = rhs;
     }

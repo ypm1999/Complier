@@ -1,12 +1,9 @@
 package com.mxcomplier.backEnd;
 
 import com.mxcomplier.FrontEnd.IRBuilder;
-import com.mxcomplier.Ir.BasicBlockIR;
-import com.mxcomplier.Ir.FuncIR;
-import com.mxcomplier.Ir.IRVisitor;
+import com.mxcomplier.Ir.*;
 import com.mxcomplier.Ir.Instructions.*;
 import com.mxcomplier.Ir.Operands.*;
-import com.mxcomplier.Ir.ProgramIR;
 
 abstract public class IRScanner implements IRVisitor {
     IRBuilder builder;
@@ -26,6 +23,33 @@ abstract public class IRScanner implements IRVisitor {
         else
             return null;
     }
+
+    void fixMemory(MemoryIR mem, InstIR node){
+        if (mem == null)
+            return;
+
+        MemoryIR base = getMemory(mem.getBase());
+        MemoryIR offset = getMemory(mem.getOffset());
+        if (mem.old_base != null || mem.old_offset != null){
+            base = getMemory(mem.old_base);
+            offset = getMemory(mem.old_offset);
+        }
+        else{
+            mem.old_base = mem.getBase();
+            mem.old_offset = mem.getOffset();
+        }
+        fixMemory(base, node);
+        fixMemory(offset, node);
+        if (base != null){
+            node.prepend(new MoveInstIR(RegisterSet.r8, base));
+            mem.setBase(RegisterSet.r8);
+        }
+        if (mem.getOffset() != null){
+            node.prepend(new MoveInstIR(RegisterSet.r9, offset));
+            mem.setOffset(RegisterSet.r9);
+        }
+    }
+
     @Override
     public void visit(BasicBlockIR node) {
 
@@ -134,6 +158,11 @@ abstract public class IRScanner implements IRVisitor {
 
     @Override
     public void visit(BranchInstIR node) {
+
+    }
+
+    @Override
+    public void visit(LeaInstIR node) {
 
     }
 }

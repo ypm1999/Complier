@@ -10,7 +10,7 @@ public class PhysicalRegisterIR extends RegisterIR {
 
     @Override
     public String toString() {
-        return  this.lable;
+        return this.lable;
     }
 
     public void accept(IRVisitor visitor) {

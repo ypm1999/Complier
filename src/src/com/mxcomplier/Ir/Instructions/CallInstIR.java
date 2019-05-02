@@ -4,7 +4,10 @@ import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.OperandIR;
 import com.mxcomplier.Ir.Operands.RegisterIR;
+import com.mxcomplier.Ir.Operands.StackSoltIR;
+import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CallInstIR extends InstIR {
@@ -29,6 +32,15 @@ public class CallInstIR extends InstIR {
 
     public RegisterIR getReturnValue() {
         return returnValue;
+    }
+
+    @Override
+    public List<StackSoltIR> getStackSolt() {
+        List<StackSoltIR> res = new ArrayList<>();
+        VirtualRegisterIR ret = (VirtualRegisterIR) returnValue;
+        if (ret != null && ret.memory instanceof StackSoltIR)
+            res.add((StackSoltIR) ret.memory);
+        return res;
     }
 
     @Override

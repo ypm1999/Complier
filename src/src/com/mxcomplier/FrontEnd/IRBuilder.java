@@ -59,7 +59,7 @@ public class IRBuilder extends ASTScanner{
         FuncIR library_substring = new FuncIR("_string_substring", FuncIR.Type.LIBRARY);
         FuncIR library_size = new FuncIR("___array_size", FuncIR.Type.LIBRARY);
 
-        library_malloc = new FuncIR("__malloc", FuncIR.Type.LIBRARY);
+        library_malloc = new FuncIR("malloc", FuncIR.Type.LIBRARY);
         library_stradd = new FuncIR("__stradd", FuncIR.Type.LIBRARY);
         library_strcmp = new FuncIR("__strcmp", FuncIR.Type.LIBRARY);
         initFunc = new FuncIR("__init", FuncIR.Type.EXTRA);
@@ -163,6 +163,10 @@ public class IRBuilder extends ASTScanner{
             VarSymbol var = funcScope.getVar(arg.getName());
             var.vReg = new VirtualRegisterIR(node.getName() + "_arg_" + arg.getName());
             args.add(var.vReg);
+        }
+
+        if (node.getName().equals("main")){
+            curBB.append(new CallInstIR(funcMap.get("__init"), new ArrayList<>(), null));
         }
 
         node.getFuncBody().accept(this);
@@ -270,36 +274,42 @@ public class IRBuilder extends ASTScanner{
     @Override
     public void visit(ForStmtNode node) {
         BasicBlockIR condBB = new BasicBlockIR(currentFunc, "forCondition");
+        BasicBlockIR expr3BB = new BasicBlockIR(currentFunc, "forexpr3");
         BasicBlockIR bodyBB = new BasicBlockIR(currentFunc, "forBody");
         BasicBlockIR afterBB = new BasicBlockIR(currentFunc, "forAfter");
         if (node.getExpr1() != null)
             node.getExpr1().accept(this);
-        curBB.append(new JumpInstIR(bodyBB));
+        curBB.append(new JumpInstIR(condBB));
 
         if (node.getExpr2() == null){
-            curBB = condBB;
-            if (node.getExpr3() != null)
+            if (node.getExpr3() != null) {
+                curBB = expr3BB;
                 node.getExpr3().accept(this);
-            curBB.append(new JumpInstIR(bodyBB));
+            }
+            expr3BB.append(new JumpInstIR(condBB));
+            condBB.append(new JumpInstIR(bodyBB));
         }
         else{
+            if (node.getExpr3() != null) {
+                curBB = expr3BB;
+                node.getExpr3().accept(this);
+            }
+            expr3BB.append(new JumpInstIR(condBB));
             trueBBMap.put(node.getExpr2(), bodyBB);
             falseBBMap.put(node.getExpr2(), afterBB);
             curBB = condBB;
-            if (node.getExpr3() != null)
-                node.getExpr3().accept(this);
             node.getExpr2().accept(this);
         }
 
         curBB = bodyBB;
         BasicBlockIR oldLoop = curLoopAfter, oldLoopCondition = curLoopCondition;
         curLoopAfter = afterBB;
-        curLoopCondition = condBB;
+        curLoopCondition = expr3BB;
         node.getStmt().accept(this);
         curLoopAfter = oldLoop;
         curLoopCondition = oldLoopCondition;
         if (!(curBB.getTail().prev instanceof BranchInstIR))
-            curBB.append(new JumpInstIR(condBB));
+            curBB.append(new JumpInstIR(expr3BB));
 
         curBB = afterBB;
     }
@@ -316,8 +326,9 @@ public class IRBuilder extends ASTScanner{
 
     @Override
     public void visit(ReturnStmtNode node) {
-        VirtualRegisterIR res = new VirtualRegisterIR("ret_value");
+        VirtualRegisterIR res = null;
         if (node.getReturnExpr() != null) {
+            res = new VirtualRegisterIR("ret_value");
             if (node.getReturnExpr().getType() instanceof BoolType){
                 boolAssign(res, node.getReturnExpr());
             }
@@ -357,6 +368,8 @@ public class IRBuilder extends ASTScanner{
         if (base instanceof IdentExprNode) {
             func = currentScope.getFunc(((IdentExprNode) base).getName(), base.getLocation());
             funcName = func.getName();
+            if (func.getBelongClass() != null)
+                funcName = transName(func.getBelongClass().getName(), funcName);
         }
         else {
             String name = null;
@@ -502,25 +515,29 @@ public class IRBuilder extends ASTScanner{
 
         VirtualRegisterIR size = new VirtualRegisterIR("new_size");
         curBB.append(new MoveInstIR(size, dim));
-        curBB.append(new BinaryInstIR(BinaryInstIR.Op.MUL, size, REGSIZE));
+        curBB.append(new UnaryInstIR(UnaryInstIR.Op.INC, size));
+        curBB.append(new BinaryInstIR(BinaryInstIR.Op.SHL, size, new ImmediateIR(3)));
         curBB.append(new CallInstIR(library_malloc, Collections.singletonList(size), res));
+        curBB.append(new MoveInstIR(new MemoryIR(res), dim));
+        curBB.append(new BinaryInstIR(BinaryInstIR.Op.ADD, res, REGSIZE));
         if (dims.size() == 0)
             return res;
 
         BasicBlockIR condBB = new BasicBlockIR(currentFunc, "newWhileCondition");
         BasicBlockIR bodyBB = new BasicBlockIR(currentFunc, "newWhileBody");
         BasicBlockIR afterBB = new BasicBlockIR(currentFunc, "newWhileAfter");
-        VirtualRegisterIR end = size;
-        curBB.append(new BinaryInstIR(BinaryInstIR.Op.ADD, end, res));
-        curBB.append(new JumpInstIR(condBB));
-        condBB.append(new CJumpInstIR(CJumpInstIR.Op.E, res, end, afterBB, bodyBB));
-        curBB = bodyBB;
-        curBB.append(new MoveInstIR(res, allocaArray(order - 1, dims)));
 
-        curBB.append(new BinaryInstIR(BinaryInstIR.Op.ADD, res, REGSIZE));
+        VirtualRegisterIR cnt = new VirtualRegisterIR("new_cnt");
+        curBB.append(new MoveInstIR(size, dim));
+        curBB.append(new MoveInstIR(cnt, ZERO));
+        curBB.append(new JumpInstIR(condBB));
+        condBB.append(new CJumpInstIR(CJumpInstIR.Op.E, cnt, size, afterBB, bodyBB));
+        curBB = bodyBB;
+        curBB.append(new MoveInstIR(new MemoryIR(res, cnt, 8), allocaArray(order - 1, dims)));
+
+        curBB.append(new UnaryInstIR(UnaryInstIR.Op.INC, cnt));
         curBB.append(new JumpInstIR(condBB));
         curBB = afterBB;
-        curBB.append(new BinaryInstIR(BinaryInstIR.Op.SUB, res, dim));
         return res;
     }
 
@@ -714,8 +731,10 @@ public class IRBuilder extends ASTScanner{
     public void visit(StringConstExprNode node) {
         StaticDataIR staticData = new StaticDataIR(node.getString());
         root.getStaticData().add(staticData);
-        node.resultReg = new MemoryIR(staticData);
-        node.resultReg.lable = staticData.lable = "constString";
+        MemoryIR constString = new MemoryIR(staticData);
+        constString.lable = staticData.lable = "constString";
+        node.resultReg = new VirtualRegisterIR("constString_addr");
+        curBB.append(new LeaInstIR(node.resultReg, constString));
     }
 
     @Override

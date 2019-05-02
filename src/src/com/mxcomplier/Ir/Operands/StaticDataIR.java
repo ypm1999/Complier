@@ -29,11 +29,16 @@ public class StaticDataIR extends ConstantIR {
         if (constString == null){
             StringBuilder tmp = new StringBuilder("db");
             for (int i = 0; i < size; i++)
-                tmp.append(" 0x00,");
+                tmp.append(" 00H,");
             return tmp.substring(0, tmp.length() - 1);
         }
-        else
-            return "db \'" + constString + '\'';
+        else{
+            StringBuilder tmp = new StringBuilder(String.format("dq %d\ndb ", constString.length()));
+            for (int i = 0; i < constString.length(); ++i)
+                tmp.append(String.format("%02XH, ", (int) constString.charAt(i)));
+            return tmp.toString() + "00H";
+        }
+
     }
 
     public String nasmString() {

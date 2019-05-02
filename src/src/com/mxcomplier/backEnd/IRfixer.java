@@ -3,6 +3,7 @@ package com.mxcomplier.backEnd;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
+import com.mxcomplier.Ir.Instructions.LeaInstIR;
 import com.mxcomplier.Ir.Instructions.MoveInstIR;
 import com.mxcomplier.Ir.Operands.MemoryIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
@@ -41,4 +42,14 @@ public class IRfixer extends IRScanner {
             node.setSrc(tmp);
         }
     }
+
+    @Override
+    public void visit(LeaInstIR node) {
+        if (node.getDest() instanceof MemoryIR && node.getSrc() instanceof MemoryIR){
+            VirtualRegisterIR tmp = new VirtualRegisterIR("lea_tmp");
+            node.append(new MoveInstIR(node.getDest(), tmp));
+            node.dest = tmp;
+        }
+    }
+
 }

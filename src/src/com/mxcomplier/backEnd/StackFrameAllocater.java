@@ -12,10 +12,9 @@ import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.util.*;
 
 import static java.lang.Integer.max;
+import static java.lang.Math.min;
 
 public class StackFrameAllocater extends IRScanner {
-
-
 
     private class Frame{
         public List<AddressIR> tempVar = new ArrayList<>();
@@ -89,22 +88,29 @@ public class StackFrameAllocater extends IRScanner {
     @Override
     public void visit(CallInstIR node) {
         List<OperandIR> args = node.getArgs();
-        int cnt = node.getArgs().size();
+        int cnt = min(node.getArgs().size() - 1, 5);
 
         for (int i = args.size()-1; i >= 0; i--){
             OperandIR arg = args.get(i);
             if (args.size() - i < 6) {
                 if (arg instanceof ImmediateIR)
                     node.prepend(new MoveInstIR(paratReg[cnt], arg));
-                else
-                    node.prepend(new MoveInstIR(paratReg[cnt], getMemory(arg)));
+                else {
+                    MemoryIR mem = getMemory(arg);
+                    fixMemory(mem, node);
+                    node.prepend(new MoveInstIR(paratReg[cnt], mem));
+                }
                 node.prepend(new PushInstIR(paratReg[cnt]));
+                cnt--;
             }
             else {
                 if (arg instanceof ImmediateIR)
                     node.prepend(new MoveInstIR(RegisterSet.rax, arg));
-                else
-                    node.prepend(new MoveInstIR(RegisterSet.rax, getMemory(arg)));
+                else {
+                    MemoryIR mem = getMemory(arg);
+                    fixMemory(mem, node);
+                    node.prepend(new MoveInstIR(RegisterSet.rax, mem));
+                }
                 node.prepend(new PushInstIR(RegisterSet.rax));
             }
         }

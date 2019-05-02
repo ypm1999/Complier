@@ -21,8 +21,8 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            InputStream codeInput = System.in;
-//            InputStream codeInput = new FileInputStream("testcases/testcase.mx");
+//            InputStream codeInput = System.in;
+            InputStream codeInput = new FileInputStream("testcases/testcase.mx");
             CharStream charInput = CharStreams.fromStream(codeInput);
             MxStarLexer lexer = new MxStarLexer(charInput);
             CommonTokenStream token = new CommonTokenStream(lexer);

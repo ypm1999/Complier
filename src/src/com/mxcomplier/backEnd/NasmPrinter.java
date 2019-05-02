@@ -17,11 +17,11 @@ public class NasmPrinter extends IRScanner {
 
     public NasmPrinter(IRBuilder builder){
         this.builder = builder;
-//        try {
-//            output = new PrintStream("test.asm");
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            output = new PrintStream("test.asm");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void println(String str){

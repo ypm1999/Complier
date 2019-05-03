@@ -3,12 +3,14 @@ package com.mxcomplier.Ir;
 import com.mxcomplier.Ir.Instructions.EmptyInstIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
 
+import java.util.List;
+
 public class BasicBlockIR {
     private String lable; //for Debug
     private FuncIR func;
     private InstIR head, tail;
-//    public List<BasicBlockIR> fronters;
-//    public List<BasicBlockIR> successors;
+    public List<BasicBlockIR> fronters;
+    public List<BasicBlockIR> successors;
 
 
     public BasicBlockIR(FuncIR func, String lable){
@@ -18,6 +20,14 @@ public class BasicBlockIR {
         this.tail = new EmptyInstIR();
         this.head.append(this.tail);
         func.getBBList().add(this);
+    }
+
+    void addFronter(BasicBlockIR bb){
+        fronters.add(bb);
+    }
+
+    void addSuccessor(BasicBlockIR bb){
+        successors.add(bb);
     }
 
     public void append(InstIR inst){

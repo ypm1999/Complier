@@ -1,10 +1,7 @@
 package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.IRVisitor;
-import com.mxcomplier.Ir.Operands.AddressIR;
-import com.mxcomplier.Ir.Operands.MemoryIR;
-import com.mxcomplier.Ir.Operands.OperandIR;
-import com.mxcomplier.Ir.Operands.StackSoltIR;
+import com.mxcomplier.Ir.Operands.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +36,19 @@ public class LeaInstIR extends InstIR {
             res.add((StackSoltIR) src);
         return res;
     }
+
+    @Override
+    public List<VirtualRegisterIR> getUsedVReg() {
+        List<VirtualRegisterIR> regs = getVreg(dest);
+        regs.addAll(getVreg(src));
+        return regs;
+    }
+
+    @Override
+    public List<VirtualRegisterIR> getDefinedVreg() {
+        return getVreg(dest);
+    }
+
 
     @Override
     public String toString() {

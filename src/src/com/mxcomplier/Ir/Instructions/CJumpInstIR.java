@@ -3,6 +3,9 @@ package com.mxcomplier.Ir.Instructions;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.OperandIR;
+import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
+
+import java.util.List;
 
 public class CJumpInstIR extends BranchInstIR {
     public enum Op{
@@ -41,6 +44,12 @@ public class CJumpInstIR extends BranchInstIR {
         return falseBB;
     }
 
+    @Override
+    public List<VirtualRegisterIR> getUsedVReg() {
+        List<VirtualRegisterIR> regs = getVreg(lhs);
+        regs.addAll(getVreg(lhs));
+        return regs;
+    }
 
 
     public String toString() {

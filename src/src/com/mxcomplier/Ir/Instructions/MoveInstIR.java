@@ -4,6 +4,7 @@ import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.AddressIR;
 import com.mxcomplier.Ir.Operands.OperandIR;
 import com.mxcomplier.Ir.Operands.StackSoltIR;
+import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,18 @@ public class MoveInstIR extends InstIR {
         if (src instanceof StackSoltIR)
             res.add((StackSoltIR) src);
         return res;
+    }
+
+    @Override
+    public List<VirtualRegisterIR> getUsedVReg() {
+        List<VirtualRegisterIR> regs = getVreg(dest);
+        regs.addAll(getVreg(src));
+        return regs;
+    }
+
+    @Override
+    public List<VirtualRegisterIR> getDefinedVreg() {
+        return getVreg(dest);
     }
 
     @Override

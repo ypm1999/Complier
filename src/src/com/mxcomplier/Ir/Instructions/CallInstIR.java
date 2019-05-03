@@ -48,6 +48,19 @@ public class CallInstIR extends InstIR {
     }
 
     @Override
+    public List<VirtualRegisterIR> getUsedVReg() {
+        List<VirtualRegisterIR> regs = new ArrayList<>();
+        for (OperandIR arg : args)
+            regs.addAll(getVreg(arg));
+        return regs;
+    }
+
+    @Override
+    public List<VirtualRegisterIR> getDefinedVreg() {
+        return getVreg(returnValue);
+    }
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder("call " + func.getName() + " (");
         for (OperandIR arg : args){

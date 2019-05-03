@@ -3,6 +3,9 @@ package com.mxcomplier.Ir.Operands;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.RegisterSet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MemoryIR extends AddressIR {
     private RegisterIR base = null;
     private RegisterIR offset = null;
@@ -74,6 +77,15 @@ public class MemoryIR extends AddressIR {
 
     public void setNum(int num) {
         this.num = num;
+    }
+
+    public List<VirtualRegisterIR> getVreg(){
+        List<VirtualRegisterIR> regs = new ArrayList<>();
+        if (base != null && base instanceof VirtualRegisterIR)
+            regs.add((VirtualRegisterIR) base);
+        if (offset != null && offset instanceof VirtualRegisterIR)
+            regs.add((VirtualRegisterIR) offset);
+        return regs;
     }
 
     @Override

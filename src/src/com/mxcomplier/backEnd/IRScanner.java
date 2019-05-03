@@ -8,6 +8,8 @@ import com.mxcomplier.Ir.Operands.*;
 abstract public class IRScanner implements IRVisitor {
     IRBuilder builder;
 
+
+
     MemoryIR getMemory(OperandIR operand){
         if (operand instanceof VirtualRegisterIR)
             return ((VirtualRegisterIR) operand).memory;

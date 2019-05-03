@@ -7,6 +7,10 @@ public class ReturnInstIR extends BranchInstIR {
 
     private OperandIR src;
 
+    public ReturnInstIR(){
+        this.src = null;
+    }
+
     public ReturnInstIR(OperandIR src){
         this.src = src;
     }

@@ -1,104 +1,46 @@
 
-
-int add(int x,int y){return (x+y)%233;}
-
-int dp(int x){
-	if(x<=1){
-		int tmp=7%233*7%233*7%233*7%233*7%233*7%233*7%233
-			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
-			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
-			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
-			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
-			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
-			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233;
-		return tmp;
-	}
-	int sum=0;
-	int i;
-	for(i=2;i<=x;i++)if((x^i)<x)
-		sum=add(sum,dp(x^i));
-	return sum;
+class TA{
+	string state;
+	int anger;
 }
-
-int main(){
-	int i;
-	int n=getInt();
-	for(i=1;i<=n;i++)
-		println(toString(dp(i)));
+int init_anger = 100;
+int work_anger = 10;
+void work(string st, TA ta)
+{
+    if (ta.anger <= 100) 
+        println(st + ", " + ta.state + " enjoys this work. XD");
+    else 
+        println(st + ", " + ta.state + " wants to give up!!!!!");
+	ta.anger = ta.anger + work_anger;
+}
+int main()
+{
+	TA mr;
+	mr = new TA;
+	mr.state = "the leading TA";
+	mr.anger = 0;
+	work("MR", mr);
 	return 0;
 }
 
 
+
 /*!! metadata:
 === comment ===
-张凯羿 inline,constant folding,recursion - 张凯羿
-=== is_public ===
-True
+class_test-mahaojun.mx
+=== input ===
+
 === assert ===
 output
 === timeout ===
-5.0
-=== input ===
-55
-=== phase ===
-optim pretest
+0.1
 === output ===
-36
-36
-72
-36
-72
-19
-55
-36
-72
-19
-55
-167
-203
-179
-215
-36
-72
-19
-55
-167
-203
-179
-215
-64
-100
-103
-139
-186
-222
-3
-39
-36
-72
-19
-55
-167
-203
-179
-215
-64
-100
-103
-139
-186
-222
-3
-39
-145
-181
-113
-149
-216
-19
-93
-129
-=== exitcode ===
-0
+MR, the leading TA enjoys this work. XD
+Mars, the striking TA enjoys this work. XD
+Mars, the striking TA wants to give up!!!!!
+=== phase ===
+codegen pretest
+=== is_public ===
+True
 
 !!*/

@@ -5,6 +5,7 @@ import com.mxcomplier.Ir.Operands.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LeaInstIR extends InstIR {
     public AddressIR dest;
@@ -47,6 +48,13 @@ public class LeaInstIR extends InstIR {
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
         return getVreg(dest);
+    }
+
+
+    @Override
+    public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){
+        dest = (AddressIR) replacedVreg(dest, renameMap);
+        src = (AddressIR) replacedVreg(src, renameMap);
     }
 
 

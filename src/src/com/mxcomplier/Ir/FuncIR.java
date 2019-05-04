@@ -57,8 +57,8 @@ public class FuncIR {
 
         orderedBBList = new ArrayList<>();
         orderedBBList.add(entryBB);
-        for(BasicBlockIR bb:orderedBBList)
-            orderedBBList.addAll(bb.successors);
+        for (int i = 0; i < orderedBBList.size(); ++i)
+            orderedBBList.addAll(orderedBBList.get(i).successors);
         reversedOrderedBBList = new ArrayList<>(orderedBBList);
         Collections.reverse(reversedOrderedBBList);
     }

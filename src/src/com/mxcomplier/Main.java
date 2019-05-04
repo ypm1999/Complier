@@ -20,9 +20,16 @@ import java.io.InputStream;
 public class Main {
 
     public static void main(String[] args) {
+        if (args.length > 0)
+            if (args[0].equals("-DEBUG"))
+                Config.DEBUG = true;
         try {
-//            InputStream codeInput = System.in;
-            InputStream codeInput = new FileInputStream("testcases/testcase.mx");
+            InputStream codeInput = null;
+            if (Config.DEBUG)
+                codeInput = new FileInputStream("testcases/testcase.mx");
+            else
+                codeInput = System.in;
+
             CharStream charInput = CharStreams.fromStream(codeInput);
             MxStarLexer lexer = new MxStarLexer(charInput);
             CommonTokenStream token = new CommonTokenStream(lexer);
@@ -39,11 +46,11 @@ public class Main {
             IRPrinter irPrinter = new IRPrinter(irBuilder);
 
             irBuilder.visit(ast);
-            irPrinter.visit(irBuilder.root);
+//            irPrinter.visit(irBuilder.root);
 //            IRInterpreter interpreter = new IRInterpreter(irBuilder);
 //            interpreter.run();
             new IRfixer().visit((irBuilder.root));
-            new RegisterAllocator().visit(irBuilder.root);
+            new GraphAllocator().run(irBuilder);
             new StackFrameAllocater().visit(irBuilder.root);
             new NasmPrinter(irBuilder).visit(irBuilder.root);
 

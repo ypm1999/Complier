@@ -2,10 +2,12 @@ package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.IRVisitor;
+import com.mxcomplier.Ir.Operands.AddressIR;
 import com.mxcomplier.Ir.Operands.OperandIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.List;
+import java.util.Map;
 
 public class CJumpInstIR extends BranchInstIR {
     public enum Op{
@@ -49,6 +51,12 @@ public class CJumpInstIR extends BranchInstIR {
         List<VirtualRegisterIR> regs = getVreg(lhs);
         regs.addAll(getVreg(lhs));
         return regs;
+    }
+
+    @Override
+    public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){
+        lhs = replacedVreg(lhs, renameMap);
+        rhs = replacedVreg(rhs, renameMap);
     }
 
 

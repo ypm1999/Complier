@@ -38,7 +38,7 @@ public class IRfixer extends IRScanner {
 
     @Override
     public void visit(MoveInstIR node) {
-        if (node.getDest() instanceof MemoryIR && node.getSrc() instanceof MemoryIR){
+        if (node.getDest() instanceof MemoryIR && (node.getSrc() instanceof MemoryIR || node.getSrc() instanceof  ImmediateIR)){
             VirtualRegisterIR tmp = new VirtualRegisterIR("move_tmp");
             node.prepend(new MoveInstIR(tmp, node.getSrc()));
             node.setSrc(tmp);

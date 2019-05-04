@@ -3,14 +3,15 @@ package com.mxcomplier.Ir;
 import com.mxcomplier.Ir.Instructions.EmptyInstIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasicBlockIR {
     private String lable; //for Debug
     private FuncIR func;
     private InstIR head, tail;
-    public List<BasicBlockIR> fronters;
-    public List<BasicBlockIR> successors;
+    public List<BasicBlockIR> fronters = new ArrayList<>();
+    public List<BasicBlockIR> successors = new ArrayList<>();
 
 
     public BasicBlockIR(FuncIR func, String lable){

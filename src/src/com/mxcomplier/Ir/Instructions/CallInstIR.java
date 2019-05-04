@@ -6,6 +6,7 @@ import com.mxcomplier.Ir.Operands.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CallInstIR extends InstIR {
 
@@ -53,6 +54,15 @@ public class CallInstIR extends InstIR {
         for (OperandIR arg : args)
             regs.addAll(getVreg(arg));
         return regs;
+    }
+
+    @Override
+    public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){
+        returnValue = (RegisterIR) replacedVreg(returnValue, renameMap);
+        List<OperandIR> tmp = new ArrayList<>();
+        for (OperandIR arg : args)
+            tmp.add(replacedVreg(arg, renameMap));
+        args = tmp;
     }
 
     @Override

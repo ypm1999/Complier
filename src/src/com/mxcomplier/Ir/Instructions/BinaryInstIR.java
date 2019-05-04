@@ -8,6 +8,7 @@ import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BinaryInstIR extends InstIR {
     public enum Op{
@@ -51,6 +52,12 @@ public class BinaryInstIR extends InstIR {
         List<VirtualRegisterIR> regs = getVreg(dest);
         regs.addAll(getVreg(src));
         return regs;
+    }
+
+    @Override
+    public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){
+        dest = (AddressIR) replacedVreg(dest, renameMap);
+        src = replacedVreg(src, renameMap);
     }
 
     @Override

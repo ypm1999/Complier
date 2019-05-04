@@ -43,6 +43,9 @@ public class VirtualRegisterIR extends RegisterIR {
 
     @Override
     public String toString() {
-        return String.format("vReg%d_%s", id, lable);
+        if (phyReg == null)
+            return String.format("vReg%d_%s", id, lable);
+        else
+            return phyReg.toString();
     }
 }

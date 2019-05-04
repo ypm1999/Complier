@@ -19,9 +19,8 @@ public class LivenessAnalyzer {
 
     }
 
-
-    void buildGraph(FuncIR func, Graph graph){
-        graph.clear();
+    public Graph buildGraph(FuncIR func){
+        Graph graph = new Graph();
         liveOut.clear();
         usedVregs.clear();
         definedVregs.clear();
@@ -39,9 +38,9 @@ public class LivenessAnalyzer {
                         bbUsed.add(vreg);
                 bbDefined.addAll(defined);
                 for (VirtualRegisterIR vreg: used)
-                    graph.addPoint(vreg);
+                    graph.addNode(vreg);
                 for (VirtualRegisterIR vreg: defined)
-                    graph.addPoint(vreg);
+                    graph.addNode(vreg);
             }
         }
         //get liveOut
@@ -71,13 +70,14 @@ public class LivenessAnalyzer {
                 liveNow.addAll(used);
             }
         }
-
+        return graph;
     }
 
-
-    void run(FuncIR func, Graph interferenceGraph){
-        buildGraph(func, interferenceGraph);
-    }
+//
+//    void run(FuncIR func){
+//        Graph interferenceGraph = new Graph();
+//        buildGraph(func, interferenceGraph);
+//    }
 
 
 }

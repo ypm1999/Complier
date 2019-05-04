@@ -1,46 +1,29 @@
+int main() {
+    int a = 5;
+    int b;
+    int c;
+    c = a++;
+    b = c;
+    return b+c+a;
+}
 
-class TA{
-	string state;
-	int anger;
-}
-int init_anger = 100;
-int work_anger = 10;
-void work(string st, TA ta)
-{
-    if (ta.anger <= 100) 
-        println(st + ", " + ta.state + " enjoys this work. XD");
-    else 
-        println(st + ", " + ta.state + " wants to give up!!!!!");
-	ta.anger = ta.anger + work_anger;
-}
-int main()
-{
-	TA mr;
-	mr = new TA;
-	mr.state = "the leading TA";
-	mr.anger = 0;
-	work("MR", mr);
-	return 0;
-}
 
 
 
 /*!! metadata:
 === comment ===
-class_test-mahaojun.mx
-=== input ===
-
+simple7.mx
 === assert ===
-output
+exitcode
 === timeout ===
 0.1
-=== output ===
-MR, the leading TA enjoys this work. XD
-Mars, the striking TA enjoys this work. XD
-Mars, the striking TA wants to give up!!!!!
+=== input ===
+
 === phase ===
 codegen pretest
 === is_public ===
 True
+=== exitcode ===
+16
 
 !!*/

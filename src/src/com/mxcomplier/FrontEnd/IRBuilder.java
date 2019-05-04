@@ -186,7 +186,7 @@ public class IRBuilder extends ASTScanner{
         for (BasicBlockIR bb : currentFunc.getBBList()){
             if (bb == currentFunc.leaveBB)
                 continue;
-            if (!(bb.getTail().prev instanceof ReturnInstIR))
+            if (bb.getTail().prev instanceof ReturnInstIR)
                 bb.getTail().prev.remove();
             if (!(bb.getTail().prev instanceof BranchInstIR))
                 bb.append(new JumpInstIR(currentFunc.leaveBB));
@@ -770,13 +770,14 @@ public class IRBuilder extends ASTScanner{
         node.resultReg = new ImmediateIR(node.getValue());
     }
 
+    private int stringCnt = 0;
     @Override
     public void visit(StringConstExprNode node) {
         StaticDataIR staticData = new StaticDataIR(node.getString());
         root.getStaticData().add(staticData);
         MemoryIR constString = new MemoryIR(staticData);
-        constString.lable = staticData.lable = "constString";
         node.resultReg = new VirtualRegisterIR("constString_addr");
+        constString.lable = staticData.lable = "constString" + (stringCnt++);
         curBB.append(new LeaInstIR(node.resultReg, constString));
     }
 

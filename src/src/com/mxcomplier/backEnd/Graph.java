@@ -5,16 +5,28 @@ import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-public class Graph{
+class Graph{
     private HashMap<VirtualRegisterIR, HashSet<VirtualRegisterIR>> graphLink = new HashMap<>();
 
-    void addPoint(VirtualRegisterIR p){
+    Graph (){}
+
+    Graph(Graph other){
+        for (Map.Entry<VirtualRegisterIR, HashSet<VirtualRegisterIR>> entry : other.graphLink.entrySet()){
+            graphLink.put(entry.getKey(), new HashSet<>(entry.getValue()));
+        }
+    }
+
+    void addNode(VirtualRegisterIR p){
         if (!graphLink.containsKey(p))
             graphLink.put(p, new HashSet<>());
     }
 
-    void removePoint(VirtualRegisterIR p){
+    void removeNode(VirtualRegisterIR p){
+        for (VirtualRegisterIR vreg: graphLink.get(p))
+            graphLink.get(vreg).remove(p);
         graphLink.remove(p);
     }
 
@@ -28,7 +40,8 @@ public class Graph{
     void addEdges(HashSet<VirtualRegisterIR> u, HashSet<VirtualRegisterIR> v){
         for(VirtualRegisterIR x:u)
             for (VirtualRegisterIR y:v)
-                addEdge(x, y);
+                if (x != y)
+                    addEdge(x, y);
     }
 
     void removeEdge(VirtualRegisterIR u, VirtualRegisterIR v){
@@ -38,8 +51,16 @@ public class Graph{
         graphLink.get(v).remove(u);
     }
 
-    HashSet<VirtualRegisterIR> getNeighbor(VirtualRegisterIR u){
-        return graphLink.get(u);
+    public Set<VirtualRegisterIR> getnodes(){
+        return new HashSet<>(graphLink.keySet());
+    }
+
+    public int getDegree(VirtualRegisterIR u){
+        return graphLink.get(u).size();
+    }
+
+    public HashSet<VirtualRegisterIR> getNeighbor(VirtualRegisterIR u){
+        return new HashSet<>(graphLink.get(u));
     }
 
     void clear(){

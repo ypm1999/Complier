@@ -8,6 +8,7 @@ import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MoveInstIR extends InstIR {
     public AddressIR dest;
@@ -42,14 +43,19 @@ public class MoveInstIR extends InstIR {
 
     @Override
     public List<VirtualRegisterIR> getUsedVReg() {
-        List<VirtualRegisterIR> regs = getVreg(dest);
-        regs.addAll(getVreg(src));
-        return regs;
+        return getVreg(src);
     }
 
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
         return getVreg(dest);
+    }
+
+
+    @Override
+    public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){
+        dest = (AddressIR) replacedVreg(dest, renameMap);
+        src = replacedVreg(src, renameMap);
     }
 
     @Override

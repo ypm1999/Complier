@@ -5,12 +5,12 @@ import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.*;
 import com.mxcomplier.Ir.Operands.ImmediateIR;
 import com.mxcomplier.Ir.Operands.MemoryIR;
+import com.mxcomplier.Ir.Operands.OperandIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 import com.mxcomplier.Ir.ProgramIR;
 import com.mxcomplier.Ir.RegisterSet;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 
 import static com.mxcomplier.FrontEnd.IRBuilder.ZERO;
 import static java.lang.Math.min;
@@ -35,12 +35,24 @@ public class IRfixer extends IRScanner {
             func.accept(this);
             curFunc = null;
         }
+        for (FuncIR func : node.getFuncs()){
+            HashMap<VirtualRegisterIR, VirtualRegisterIR> renameMap = new HashMap<>();
+            for (VirtualRegisterIR vreg : func.usedGlobalVar) {
+                VirtualRegisterIR temp = new VirtualRegisterIR(func.getName() + "_" + vreg.lable);
+                temp.memory = vreg.memory;
+                renameMap.put(vreg, temp);
+//            node.entryBB.prepend(new MoveInstIR(temp, vreg.memory));
+//            node.leaveBB.prepend(new MoveInstIR(vreg.memory, temp));
+            }
+            for (BasicBlockIR bb : func.getBBList()) {
+                for (InstIR inst = bb.getTail().prev; inst != bb.getHead(); inst = inst.prev)
+                    inst.replaceVreg(renameMap);
+            }
+        }
     }
 
     @Override
     public void visit(FuncIR node) {
-        BasicBlockIR entry = node.entryBB, leave = node.leaveBB;
-
         for (BasicBlockIR bb : node.getBBList()){
             bb.accept(this);
         }
@@ -112,16 +124,21 @@ public class IRfixer extends IRScanner {
     public void visit(CallInstIR node) {
         FuncIR caller = curFunc;
         FuncIR callee = node.getFunc();
-        if (callee.getType() != FuncIR.Type.USER)
-            return;
-        HashSet<VirtualRegisterIR> globalVar = new HashSet<>(caller.usedGlobalVar);
-        globalVar.retainAll(callee.usedGlobalVar);
-        InstIR preInst = node.prev;
-        for (int i = 1; i < min(callee.getParameters().size(), 6); i++)
-            preInst = preInst.prev;
-        for (VirtualRegisterIR vreg : globalVar){
-            preInst.append(new MoveInstIR(vreg.memory, vreg));
-            node.append(new MoveInstIR(vreg, vreg.memory));
+        if (callee.getType() == FuncIR.Type.USER) {
+            HashSet<VirtualRegisterIR> globalVar = new HashSet<>(caller.usedGlobalVar);
+            globalVar.retainAll(callee.usedGlobalVar);
+            for (VirtualRegisterIR vreg : globalVar) {
+                node.prepend(new MoveInstIR(vreg.memory, vreg));
+                node.append(new MoveInstIR(vreg, vreg.memory));
+            }
+        }
+
+        LinkedList<OperandIR> args = new LinkedList<>(node.getArgs());
+        while(args.size() > 6)
+            node.prepend(new PushInstIR(args.removeLast()));
+        for (int i = args.size()-1; i >= 0; i--){
+            OperandIR arg = node.getArgs().get(i);
+            node.prepend(new MoveInstIR(RegisterSet.paratReg[i], arg));
         }
     }
 }

@@ -45,7 +45,10 @@ public class UnaryInstIR extends InstIR {
 
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
-        return getVreg(dest);
+        List<VirtualRegisterIR> tmp = new ArrayList<>();
+        if (dest instanceof VirtualRegisterIR)
+            tmp.add((VirtualRegisterIR)dest);
+        return tmp;
     }
 
     @Override

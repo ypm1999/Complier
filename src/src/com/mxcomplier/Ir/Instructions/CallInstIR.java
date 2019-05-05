@@ -6,8 +6,11 @@ import com.mxcomplier.Ir.Operands.*;
 import com.mxcomplier.Ir.RegisterSet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.Math.min;
 
 public class CallInstIR extends InstIR {
 
@@ -51,10 +54,7 @@ public class CallInstIR extends InstIR {
 
     @Override
     public List<VirtualRegisterIR> getUsedVReg() {
-        List<VirtualRegisterIR> regs = new ArrayList<>();
-        for (OperandIR arg : args)
-            regs.addAll(getVreg(arg));
-        return regs;
+        return new ArrayList<>(Arrays.asList(RegisterSet.paratReg).subList(0, min(args.size(), 6)));
     }
 
     @Override

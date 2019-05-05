@@ -12,8 +12,7 @@ import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.*;
 
-import static com.mxcomplier.Ir.RegisterSet.allocatePhyRegisterSet;
-import static com.mxcomplier.Ir.RegisterSet.calleeSaveRegisterSet;
+import static com.mxcomplier.Ir.RegisterSet.*;
 
 public class GraphAllocator{
     private static final int REGNUM = 14;
@@ -108,6 +107,10 @@ public class GraphAllocator{
 
     private IRBuilder irBuilder;
     private void rewriteFunc(FuncIR func){
+//        for (VirtualRegisterIR vreg : spilledVregs){
+//            System.err.println(vreg);
+//            System.err.flush();
+//        }
         for (BasicBlockIR bb : func.getBBList()) {
             for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
                 List<VirtualRegisterIR> used = inst.getUsedVReg(), defined = inst.getDefinedVreg();
@@ -137,6 +140,8 @@ public class GraphAllocator{
     }
 
     private void runFunc(FuncIR func){
+//        for (VirtualRegisterIR vreg : func.usedGlobalVar)
+//            vreg.setPhyReg(null);
         while (true){
             originGraph = new LivenessAnalyzer().buildGraph(func);
             graph = new Graph(originGraph);
@@ -145,16 +150,20 @@ public class GraphAllocator{
                 if (!simplifyTODOList.isEmpty()) doSimplify();
                 else doSpill();
             }while(!spillTODOList.isEmpty() || !simplifyTODOList.isEmpty());
+
             assignColor();
 
             if (spilledVregs.isEmpty()){
                 //set phyReg
                 for (VirtualRegisterIR vreg: originGraph.getnodes())
-                    vreg.setPhyReg(colorMap.get(vreg));
+                    if (vreg.getPhyReg() == null)
+                        vreg.setPhyReg(colorMap.get(vreg));
                 break;
             }
             else
                 rewriteFunc(func);
+//            new IRPrinter(irBuilder).visit(irBuilder.root);
+//            System.out.flush();;
         }
     }
 

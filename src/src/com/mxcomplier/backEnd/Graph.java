@@ -34,6 +34,7 @@ class Graph{
         if (u == v)
             throw new IRError("add self-loop edge");
 //        System.err.println(u + " " + v);
+//        System.err.flush();
         graphLink.get(u).add(v);
         graphLink.get(v).add(u);
     }

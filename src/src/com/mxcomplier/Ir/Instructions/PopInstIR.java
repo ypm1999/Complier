@@ -1,9 +1,11 @@
 package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.IRVisitor;
+import com.mxcomplier.Ir.Operands.MemoryIR;
 import com.mxcomplier.Ir.Operands.RegisterIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +23,10 @@ public class PopInstIR extends InstIR {
 
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
-        return getVreg(dest);
+        List<VirtualRegisterIR> tmp = new ArrayList<>();
+        if (dest instanceof VirtualRegisterIR)
+            tmp.add((VirtualRegisterIR)dest);
+        return tmp;
     }
 
     @Override

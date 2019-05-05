@@ -159,18 +159,21 @@ public class IRBuilder extends ASTScanner{
         Scope funcScope = node.getFuncBody().getScope();
         List<VirtualRegisterIR> args = currentFunc.getParameters();
         ClassSymbol belongClass = funcScope.getFunc(node.getName()).getBelongClass();
+        int i = 0;
         if (belongClass != null) {
             curThisPointor = new VirtualRegisterIR("this_of_" + belongClass.getName());
+            curBB.append(new MoveInstIR(curThisPointor, RegisterSet.paratReg[i]));
             args.add(curThisPointor);
+            ++i;
         }
-        int i = 0;
+
         for (VarDefNode arg : node.getParameters()){
             VarSymbol var = funcScope.getVar(arg.getName());
             var.vReg = new VirtualRegisterIR(node.getName() + "_arg_" + arg.getName());
             if (i < 6)
                 curBB.append(new MoveInstIR(var.vReg, RegisterSet.paratReg[i]));
             else {
-                var.vReg.memory = new MemoryIR(RegisterSet.rbp, Config.getREGSIZE() * (i - 6 + 2));
+                var.vReg.memory = new MemoryIR(RegisterSet.Vrbp, Config.getREGSIZE() * (i - 6 + 2));
                 curBB.append(new MoveInstIR(var.vReg, var.vReg.memory));
             }
             args.add(var.vReg);
@@ -259,7 +262,7 @@ public class IRBuilder extends ASTScanner{
             curBB = elseBB;
             node.getElseStmt().accept(this);
             if (!(curBB.getTail().prev instanceof BranchInstIR))
-                elseBB.append(new JumpInstIR(afterBB));
+                curBB.append(new JumpInstIR(afterBB));
         }
         else{
             falseBBMap.put(node.getJudgeExpr(), afterBB);
@@ -439,10 +442,6 @@ public class IRBuilder extends ASTScanner{
     }
 
     private void doFuncCall(FuncIR func, List<OperandIR> args, VirtualRegisterIR returnValue){
-        for (int i = min(5, args.size()-1); i >= 0; i--){
-            OperandIR arg = args.get(i);
-            curBB.append(new MoveInstIR(RegisterSet.paratReg[i], arg));
-        }
         curBB.append(new CallInstIR(func, args, returnValue));
         if (returnValue != null)
             curBB.append(new MoveInstIR(returnValue, RegisterSet.Vrax));
@@ -453,12 +452,12 @@ public class IRBuilder extends ASTScanner{
         node.getSubscriptExpr().accept(this);
         node.getBaseExpr().accept(this);
         RegisterIR offset = memoryMove(node.getSubscriptExpr().resultReg);
-        RegisterIR base = memoryMove(node.getBaseExpr().resultReg);
+        VirtualRegisterIR base = (VirtualRegisterIR) memoryMove(node.getBaseExpr().resultReg);
         MemoryIR memory;
         if (offset instanceof ImmediateIR)
             memory = new MemoryIR(base, (int)((ImmediateIR) offset).getValue() * Config.getREGSIZE());
         else {
-            memory = new MemoryIR(base, offset);
+            memory = new MemoryIR(base, (VirtualRegisterIR) offset);
             memory.setScale(Config.getREGSIZE());
         }
         memory.lable = "arrCall";
@@ -485,7 +484,7 @@ public class IRBuilder extends ASTScanner{
                 res = baseExpr;
             }
             else{
-                res = new MemoryIR(memoryMove(baseExpr), classSymbol.getVarOffset(node.getMemberName()));
+                res = new MemoryIR((VirtualRegisterIR) memoryMove(baseExpr), classSymbol.getVarOffset(node.getMemberName()));
                 res.lable = "memCall";
             }
         }

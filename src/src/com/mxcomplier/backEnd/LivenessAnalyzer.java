@@ -56,13 +56,16 @@ public class LivenessAnalyzer {
                     tempVregs.addAll(usedVregs.get(nextBB));
                     curLiveOut.addAll(tempVregs);
                 }
+                liveOut.remove(bb);
                 liveOut.put(bb, curLiveOut);
                 changed = changed || oldSize != curLiveOut.size();
             }
         }
 
+        int cnt = 0;
         for (BasicBlockIR bb : func.getBBList()) {
             HashSet<VirtualRegisterIR> liveNow = liveOut.get(bb);
+            cnt++;
             for(InstIR inst = bb.getTail().prev; inst != bb.getHead(); inst = inst.prev) {
                 List<VirtualRegisterIR> used = inst.getUsedVReg(), defined = inst.getDefinedVreg();
                 graph.addEdges(new HashSet<>(defined), liveNow);

@@ -47,15 +47,13 @@ public class Main {
 
             new IRfixer().visit((irBuilder.root));
             if (Config.DEBUG) {
-//                new IRPrinter(irBuilder).visit(irBuilder.root);
+                new IRPrinter(irBuilder).visit(irBuilder.root);
 //            IRInterpreter interpreter = new IRInterpreter(irBuilder);
 //            interpreter.run();
             }
 
             new GraphAllocator().run(irBuilder);
-
             new StackFrameAllocater().visit(irBuilder.root);
-
             new NasmPrinter(irBuilder).visit(irBuilder.root);
 
         } catch (ComplierError e) {

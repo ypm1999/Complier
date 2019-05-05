@@ -3,10 +3,10 @@ package com.mxcomplier.Ir;
 import com.mxcomplier.Ir.Instructions.CJumpInstIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
 import com.mxcomplier.Ir.Instructions.JumpInstIR;
+import com.mxcomplier.Ir.Operands.PhysicalRegisterIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -18,6 +18,7 @@ public class FuncIR {
     private Type type;
     public BasicBlockIR entryBB, leaveBB;
     public HashSet<VirtualRegisterIR> usedGlobalVar = new HashSet<>();
+    private HashSet<PhysicalRegisterIR> definedPhyRegs = null, usedPhyRegs = null;
     private List<BasicBlockIR> BBList = new ArrayList<>();
     private List<BasicBlockIR> orderedBBList, reversedOrderedBBList;
     private List<FuncIR> callee = new ArrayList<>();
@@ -49,18 +50,13 @@ public class FuncIR {
             dfsBB(((CJumpInstIR) inst).getTrueBB(), now);
             dfsBB(((CJumpInstIR) inst).getFalseBB(), now);
         }
+        reversedOrderedBBList.add(now);
     }
 
     public void initOrderBBList(){
         accessed.clear();
+        reversedOrderedBBList = new ArrayList<>();
         dfsBB(entryBB, null);
-
-        orderedBBList = new ArrayList<>();
-        orderedBBList.add(entryBB);
-        for (int i = 0; i < orderedBBList.size(); ++i)
-            orderedBBList.addAll(orderedBBList.get(i).successors);
-        reversedOrderedBBList = new ArrayList<>(orderedBBList);
-        Collections.reverse(reversedOrderedBBList);
     }
 
     public List<BasicBlockIR> getReversedOrderedBBList() {
@@ -91,6 +87,38 @@ public class FuncIR {
         return parameters;
     }
 
+    public HashSet<PhysicalRegisterIR> getDefinedPhyRegs(){
+
+        if (definedPhyRegs == null){
+            definedPhyRegs = new HashSet<>();
+            if (type == Type.LIBRARY)
+                definedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
+            else
+                for (BasicBlockIR bb:BBList){
+                    for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next){
+                        for (VirtualRegisterIR vreg: inst.getUsedVReg())
+                            definedPhyRegs.add(vreg.getPhyReg());
+                    }
+                }
+        }
+        return definedPhyRegs;
+    }
+
+    public HashSet<PhysicalRegisterIR> getUsedPhyRegs() {
+        if (usedPhyRegs == null){
+            usedPhyRegs = new HashSet<>();
+            if (type == Type.LIBRARY)
+                usedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
+            else
+                for (BasicBlockIR bb:BBList){
+                    for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next){
+                        for (VirtualRegisterIR vreg: inst.getUsedVReg())
+                            usedPhyRegs.add(vreg.getPhyReg());
+                    }
+                }
+        }
+        return usedPhyRegs;
+    }
 
     public void accept(IRVisitor visitor) {
         visitor.visit(this);

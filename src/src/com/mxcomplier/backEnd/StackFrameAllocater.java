@@ -8,29 +8,12 @@ import com.mxcomplier.Ir.Operands.*;
 import com.mxcomplier.Ir.ProgramIR;
 import com.mxcomplier.Ir.RegisterSet;
 
-import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.util.*;
 
-import static java.lang.Integer.max;
 import static java.lang.Math.min;
 
 public class StackFrameAllocater extends IRScanner {
-
-    private class Frame{
-        public List<AddressIR> tempVar = new ArrayList<>();
-        public AddressIR old_rbp = new StackSoltIR("old_rbp");
-    }
-
-    Frame curFrame = null;
-
-    static PhysicalRegisterIR[] paratReg = {
-            RegisterSet.rdi,
-            RegisterSet.rsi,
-            RegisterSet.rdx,
-            RegisterSet.rcx,
-            RegisterSet.r8,
-            RegisterSet.r9
-    };
+    private FuncIR curFunc = null;
 
 
     @Override
@@ -45,7 +28,9 @@ public class StackFrameAllocater extends IRScanner {
     @Override
     public void visit(ProgramIR node) {
         for (FuncIR func : node.getFuncs()){
+            curFunc = func;
             func.accept(this);
+            curFunc = null;
         }
     }
 
@@ -71,17 +56,51 @@ public class StackFrameAllocater extends IRScanner {
         for (StackSoltIR stackSolt: stackSolts)
             stackSolt.setNum(-Config.getREGSIZE() * (++i));
 
+        //TODO callee save regs
+        HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.calleeSaveRegisterSet);
+        saveSet.retainAll(node.getDefinedPhyRegs());
+        if (!node.getName().equals("main"))
+            for (PhysicalRegisterIR preg : saveSet) {
+                firstInst.prepend(new PushInstIR(preg));
+                firstInst = firstInst.prev;
+            }
 
         for (BasicBlockIR bb : node.getBBList()){
             bb.accept(this);
+        }
+
+        if (!node.getName().equals("main")) {
+            InstIR lastInst = node.leaveBB.getTail().prev;
+            for (PhysicalRegisterIR preg : saveSet)
+                lastInst.prepend(new PopInstIR(preg));
         }
     }
 
     @Override
     public void visit(CallInstIR node) {
+
+        //TODO caller save regs
+        HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.callerSaveRegisterSet);
+        saveSet.retainAll(node.getFunc().getDefinedPhyRegs());
+        saveSet.retainAll(curFunc.getUsedPhyRegs());
+        for (int i = 0; i < min(6, node.getArgs().size()); ++i)
+            saveSet.remove(RegisterSet.paratReg[i].getPhyReg());
+        if (!node.getFunc().getName().equals("__init"))
+            for (PhysicalRegisterIR preg : saveSet)
+                node.prepend(new PushInstIR(preg));
+
+        if (node.getArgs().size() > 6) {
+            for (int i = node.getArgs().size()-1; i >= 6; i--){
+                OperandIR arg = node.getArgs().get(i);
+                node.prepend(new PushInstIR(arg));
+            }
+        }
+        if (!node.getFunc().getName().equals("__init"))
+            for (PhysicalRegisterIR preg : saveSet)
+                node.append(new PopInstIR(preg));
         if (node.getArgs().size() > 6)
             node.append(new BinaryInstIR(BinaryInstIR.Op.ADD, RegisterSet.rsp,
-                                        new ImmediateIR(Config.getREGSIZE()*(node.getArgs().size() - 6))));
+                new ImmediateIR(Config.getREGSIZE() * (node.getArgs().size() - 6))));
     }
 }
 

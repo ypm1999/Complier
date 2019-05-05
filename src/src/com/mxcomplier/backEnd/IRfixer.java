@@ -9,9 +9,15 @@ import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 import com.mxcomplier.Ir.ProgramIR;
 import com.mxcomplier.Ir.RegisterSet;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import static com.mxcomplier.FrontEnd.IRBuilder.ZERO;
+import static java.lang.Math.min;
 
 public class IRfixer extends IRScanner {
+
+    private FuncIR curFunc = null;
 
     @Override
     public void visit(BasicBlockIR node) {
@@ -25,12 +31,16 @@ public class IRfixer extends IRScanner {
     @Override
     public void visit(ProgramIR node) {
         for (FuncIR func : node.getFuncs()){
+            curFunc = func;
             func.accept(this);
+            curFunc = null;
         }
     }
 
     @Override
     public void visit(FuncIR node) {
+        BasicBlockIR entry = node.entryBB, leave = node.leaveBB;
+
         for (BasicBlockIR bb : node.getBBList()){
             bb.accept(this);
         }
@@ -79,6 +89,39 @@ public class IRfixer extends IRScanner {
             VirtualRegisterIR tmp = new VirtualRegisterIR("push_tmp");
             node.prepend(new MoveInstIR(tmp, node.getSrc()));
             node.setSrc(tmp);
+        }
+    }
+
+    @Override
+    public void visit(CJumpInstIR node) {
+        if (node.getLhs() instanceof ImmediateIR){
+            if (node.getRhs() instanceof ImmediateIR)
+                node.prepend(new MoveInstIR(new VirtualRegisterIR("Cjump_imm_temp"), node.getLhs()));
+            else
+                node.swap();
+        }
+
+        if (node.getLhs() instanceof MemoryIR && node.getRhs() instanceof MemoryIR){
+            VirtualRegisterIR tmp = new VirtualRegisterIR("Cjump_tmp");
+            node.prepend(new MoveInstIR(tmp, node.getRhs()));
+            node.rhs = tmp;
+        }
+    }
+
+    @Override
+    public void visit(CallInstIR node) {
+        FuncIR caller = curFunc;
+        FuncIR callee = node.getFunc();
+        if (callee.getType() != FuncIR.Type.USER)
+            return;
+        HashSet<VirtualRegisterIR> globalVar = new HashSet<>(caller.usedGlobalVar);
+        globalVar.retainAll(callee.usedGlobalVar);
+        InstIR preInst = node.prev;
+        for (int i = 1; i < min(callee.getParameters().size(), 6); i++)
+            preInst = preInst.prev;
+        for (VirtualRegisterIR vreg : globalVar){
+            preInst.append(new MoveInstIR(vreg.memory, vreg));
+            node.append(new MoveInstIR(vreg, vreg.memory));
         }
     }
 }

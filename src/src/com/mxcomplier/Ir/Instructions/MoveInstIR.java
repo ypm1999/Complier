@@ -1,10 +1,7 @@
 package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.IRVisitor;
-import com.mxcomplier.Ir.Operands.AddressIR;
-import com.mxcomplier.Ir.Operands.OperandIR;
-import com.mxcomplier.Ir.Operands.StackSoltIR;
-import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
+import com.mxcomplier.Ir.Operands.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +40,18 @@ public class MoveInstIR extends InstIR {
 
     @Override
     public List<VirtualRegisterIR> getUsedVReg() {
-        return getVreg(src);
+        List<VirtualRegisterIR> tmp = getVreg(src);
+        if (dest instanceof MemoryIR)
+            tmp.addAll(((MemoryIR) dest).getVreg());
+        return tmp;
     }
 
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
-        return getVreg(dest);
+        List<VirtualRegisterIR> tmp = new ArrayList<>();
+        if (dest instanceof VirtualRegisterIR)
+            tmp.add((VirtualRegisterIR)dest);
+        return tmp;
     }
 
 

@@ -24,7 +24,7 @@ public class Main {
             if (args[0].equals("-DEBUG"))
                 Config.DEBUG = true;
         try {
-            InputStream codeInput = null;
+            InputStream codeInput;
             if (Config.DEBUG)
                 codeInput = new FileInputStream("testcases/testcase.mx");
             else
@@ -43,15 +43,19 @@ public class Main {
             new ScopeBuilderASTScanner().visit(ast);
 
             IRBuilder irBuilder = new IRBuilder();
-            IRPrinter irPrinter = new IRPrinter(irBuilder);
-
             irBuilder.visit(ast);
-//            irPrinter.visit(irBuilder.root);
+
+            new IRfixer().visit((irBuilder.root));
+            if (Config.DEBUG) {
+//                new IRPrinter(irBuilder).visit(irBuilder.root);
 //            IRInterpreter interpreter = new IRInterpreter(irBuilder);
 //            interpreter.run();
-            new IRfixer().visit((irBuilder.root));
+            }
+
             new GraphAllocator().run(irBuilder);
+
             new StackFrameAllocater().visit(irBuilder.root);
+
             new NasmPrinter(irBuilder).visit(irBuilder.root);
 
         } catch (ComplierError e) {

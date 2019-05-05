@@ -38,16 +38,21 @@ public class LeaInstIR extends InstIR {
         return res;
     }
 
+
     @Override
     public List<VirtualRegisterIR> getUsedVReg() {
-        List<VirtualRegisterIR> regs = getVreg(dest);
-        regs.addAll(getVreg(src));
-        return regs;
+        List<VirtualRegisterIR> tmp = getVreg(src);
+        if (dest instanceof MemoryIR)
+            tmp.addAll(((MemoryIR) dest).getVreg());
+        return tmp;
     }
 
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
-        return getVreg(dest);
+        List<VirtualRegisterIR> tmp = new ArrayList<>();
+        if (dest instanceof VirtualRegisterIR)
+            tmp.add((VirtualRegisterIR)dest);
+        return tmp;
     }
 
 

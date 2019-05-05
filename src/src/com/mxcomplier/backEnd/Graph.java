@@ -33,6 +33,7 @@ class Graph{
     void addEdge(VirtualRegisterIR u, VirtualRegisterIR v){
         if (u == v)
             throw new IRError("add self-loop edge");
+//        System.err.println(u + " " + v);
         graphLink.get(u).add(v);
         graphLink.get(v).add(u);
     }

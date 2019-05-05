@@ -62,12 +62,13 @@ public class RegisterSet {
             Arrays.asList(rax, rbx, rcx, rdx, rsi, rdi, r8, r9, r10, r11, r12, r13, r14, r15)
     );
 
-    static public List<PhysicalRegisterIR> callerSaveRegisterSet = new ArrayList<>(
+    static public List<PhysicalRegisterIR> calleeSaveRegisterSet = new ArrayList<>(
             Arrays.asList(r12,r13,r14,r15,rbx)
     );
 
-    static public List<PhysicalRegisterIR> calleePhyRegisterSet = new ArrayList<>(
-            Arrays.asList(rax, rcx, rdx, rsi, rdi, r8, r9, r10, r11)
+    static public List<PhysicalRegisterIR> callerSaveRegisterSet = new ArrayList<>(
+            Arrays.asList(rcx, rdx, rsi, rdi, r8, r9, r10, r11)
+            //without rbp,rsp,rax
     );
 
     public RegisterSet(){

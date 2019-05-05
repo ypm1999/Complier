@@ -7,18 +7,20 @@ import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
 import com.mxcomplier.Ir.Instructions.MoveInstIR;
 import com.mxcomplier.Ir.Operands.PhysicalRegisterIR;
+import com.mxcomplier.Ir.Operands.StaticDataIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.*;
 
 import static com.mxcomplier.Ir.RegisterSet.allocatePhyRegisterSet;
-import static com.mxcomplier.Ir.RegisterSet.callerSaveRegisterSet;
+import static com.mxcomplier.Ir.RegisterSet.calleeSaveRegisterSet;
 
 public class GraphAllocator{
     private static final int REGNUM = 14;
 
     private Graph graph, originGraph;
     private List<VirtualRegisterIR> spilledVregs;
+    private LinkedList<VirtualRegisterIR> finishedStack;
     private HashSet<VirtualRegisterIR> simplifyTODOList, spillTODOList;
     private HashMap<VirtualRegisterIR, PhysicalRegisterIR> colorMap;
 
@@ -27,6 +29,7 @@ public class GraphAllocator{
         spillTODOList = new HashSet<>();
         colorMap = new HashMap<>();
         spilledVregs = new ArrayList<>();
+        finishedStack = new LinkedList<>();
         for (VirtualRegisterIR node:graph.getnodes()){
             if (graph.getDegree(node) < REGNUM)
                 simplifyTODOList.add(node);
@@ -45,6 +48,7 @@ public class GraphAllocator{
                 simplifyTODOList.add(vreg);
                 spillTODOList.remove(vreg);
             }
+        finishedStack.addFirst(node);
     }
 
     private void doSpill(){
@@ -72,17 +76,17 @@ public class GraphAllocator{
                 simplifyTODOList.add(vreg);
                 spillTODOList.remove(vreg);
             }
+        finishedStack.addFirst(spillCandidate);
     }
 
     private void assignColor(){
-        Set<VirtualRegisterIR> allVregs = originGraph.getnodes();
         colorMap = new HashMap<>();
-        for (VirtualRegisterIR vreg : allVregs){
+        for (VirtualRegisterIR vreg : finishedStack){
             if (vreg.getPhyReg() != null) {
                 colorMap.put(vreg, vreg.getPhyReg());
             }
         }
-        for (VirtualRegisterIR vreg : allVregs){
+        for (VirtualRegisterIR vreg : finishedStack){
             if (vreg.getPhyReg() != null)
                 continue;
             HashSet<PhysicalRegisterIR> colorCanUse = new HashSet<>(allocatePhyRegisterSet);
@@ -94,7 +98,7 @@ public class GraphAllocator{
             }
             else{
                 PhysicalRegisterIR preg = colorCanUse.iterator().next();
-                colorCanUse.retainAll(callerSaveRegisterSet);
+                colorCanUse.retainAll(calleeSaveRegisterSet);
                 if (!colorCanUse.isEmpty())
                     preg = colorCanUse.iterator().next();
                 colorMap.put(vreg, preg);
@@ -102,6 +106,7 @@ public class GraphAllocator{
         }
     }
 
+    private IRBuilder irBuilder;
     private void rewriteFunc(FuncIR func){
         for (BasicBlockIR bb : func.getBBList()) {
             for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
@@ -129,7 +134,6 @@ public class GraphAllocator{
                 curInst.replaceVreg(renameMap);
             }
         }
-
     }
 
     private void runFunc(FuncIR func){
@@ -155,6 +159,12 @@ public class GraphAllocator{
     }
 
     public void run(IRBuilder ir){
+        irBuilder = ir;
+        int cnt = 0;
+        for (StaticDataIR mem : ir.root.getStaticData()){
+            mem.lable = "__Static" + cnt + "_" + mem.lable;
+            cnt++;
+        }
         for (FuncIR func: ir.root.getFuncs()){
             runFunc(func);
         }

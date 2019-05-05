@@ -47,7 +47,7 @@ public class LivenessAnalyzer {
         boolean changed = true;
         while(changed){
             changed = false;
-            for (BasicBlockIR bb : func.getBBList()){
+            for (BasicBlockIR bb : func.getReversedOrderedBBList()){
                 int oldSize = liveOut.get(bb).size();
                 HashSet<VirtualRegisterIR> curLiveOut = new HashSet<>();
                 for (BasicBlockIR nextBB: bb.successors){
@@ -63,7 +63,7 @@ public class LivenessAnalyzer {
 
         for (BasicBlockIR bb : func.getBBList()) {
             HashSet<VirtualRegisterIR> liveNow = liveOut.get(bb);
-            for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
+            for(InstIR inst = bb.getTail().prev; inst != bb.getHead(); inst = inst.prev) {
                 List<VirtualRegisterIR> used = inst.getUsedVReg(), defined = inst.getDefinedVreg();
                 graph.addEdges(new HashSet<>(defined), liveNow);
                 liveNow.removeAll(defined);

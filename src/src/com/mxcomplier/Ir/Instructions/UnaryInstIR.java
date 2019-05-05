@@ -38,6 +38,15 @@ public class UnaryInstIR extends InstIR {
         return res;
     }
 
+    @Override
+    public List<VirtualRegisterIR> getUsedVReg() {
+        return getVreg(dest);
+    }
+
+    @Override
+    public List<VirtualRegisterIR> getDefinedVreg() {
+        return getVreg(dest);
+    }
 
     @Override
     public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){

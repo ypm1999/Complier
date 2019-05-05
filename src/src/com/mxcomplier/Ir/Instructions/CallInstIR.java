@@ -3,6 +3,7 @@ package com.mxcomplier.Ir.Instructions;
 import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.IRVisitor;
 import com.mxcomplier.Ir.Operands.*;
+import com.mxcomplier.Ir.RegisterSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,10 @@ public class CallInstIR extends InstIR {
 
     @Override
     public List<VirtualRegisterIR> getDefinedVreg() {
-        return getVreg(returnValue);
+        if (returnValue != null)
+            return getVreg(RegisterSet.Vrax);
+        else
+            return new ArrayList<>();
     }
 
     @Override

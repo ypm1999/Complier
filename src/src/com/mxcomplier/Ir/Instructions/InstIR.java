@@ -67,14 +67,14 @@ abstract public class InstIR {
             return renameMap.get(reg);
         if (reg instanceof MemoryIR){
             MemoryIR mem = (MemoryIR) reg;
-            mem.setBase((VirtualRegisterIR) replacedVreg(mem.getBase(), renameMap));
-            mem.setOffset((VirtualRegisterIR) replacedVreg(mem.getOffset(), renameMap));
+            mem.setBase((RegisterIR) replacedVreg(mem.getBase(), renameMap));
+            mem.setOffset((RegisterIR) replacedVreg(mem.getOffset(), renameMap));
         }
         return reg;
     }
 
 
-    List<VirtualRegisterIR> getVreg(OperandIR oper){
+    public List<VirtualRegisterIR> getVreg(OperandIR oper){
         List<VirtualRegisterIR> regs = new ArrayList<>();
         if (oper instanceof VirtualRegisterIR)
             regs.add((VirtualRegisterIR) oper);

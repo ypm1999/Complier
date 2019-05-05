@@ -1,10 +1,7 @@
 package com.mxcomplier.Ir.Instructions;
 
 import com.mxcomplier.Ir.IRVisitor;
-import com.mxcomplier.Ir.Operands.AddressIR;
-import com.mxcomplier.Ir.Operands.OperandIR;
-import com.mxcomplier.Ir.Operands.StackSoltIR;
-import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
+import com.mxcomplier.Ir.Operands.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,22 +44,26 @@ public class BinaryInstIR extends InstIR {
         return res;
     }
 
+
     @Override
     public List<VirtualRegisterIR> getUsedVReg() {
-        List<VirtualRegisterIR> regs = getVreg(dest);
-        regs.addAll(getVreg(src));
-        return regs;
+        List<VirtualRegisterIR> tmp = getVreg(src);
+        tmp.addAll(getVreg(dest));
+        return tmp;
+    }
+
+    @Override
+    public List<VirtualRegisterIR> getDefinedVreg() {
+        List<VirtualRegisterIR> tmp = new ArrayList<>();
+        if (dest instanceof VirtualRegisterIR)
+            tmp.add((VirtualRegisterIR)dest);
+        return tmp;
     }
 
     @Override
     public void replaceVreg(Map<VirtualRegisterIR, VirtualRegisterIR> renameMap){
         dest = (AddressIR) replacedVreg(dest, renameMap);
         src = replacedVreg(src, renameMap);
-    }
-
-    @Override
-    public List<VirtualRegisterIR> getDefinedVreg() {
-        return getVreg(dest);
     }
 
     @Override

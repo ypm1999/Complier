@@ -46,10 +46,22 @@ public class CJumpInstIR extends BranchInstIR {
         return falseBB;
     }
 
+    public void swap(){
+        switch (op){
+            case L: op = Op.G; break;
+            case G: op = Op.L; break;
+            case LE: op = Op.GE; break;
+            case GE: op = Op.LE; break;
+        }
+        OperandIR tmp = lhs;
+        lhs = rhs;
+        rhs = tmp;
+    }
+
     @Override
     public List<VirtualRegisterIR> getUsedVReg() {
         List<VirtualRegisterIR> regs = getVreg(lhs);
-        regs.addAll(getVreg(lhs));
+        regs.addAll(getVreg(rhs));
         return regs;
     }
 
@@ -65,7 +77,10 @@ public class CJumpInstIR extends BranchInstIR {
     }
 
     public String nasmString() {
-        return 'j' + op.toString().toLowerCase() + ' ' + trueBB + "\njmp " + falseBB;
+        String str1 = "cmp " + lhs + ", " + rhs;
+        String str2 = 'j' + op.toString().toLowerCase() + ' ' + trueBB;
+        String str3 = "jmp " + falseBB;
+        return str1 + "\n" + str2 + "\n" + str3;
     }
 
     public void accept(IRVisitor visitor) {

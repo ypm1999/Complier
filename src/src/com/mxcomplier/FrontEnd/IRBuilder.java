@@ -14,6 +14,8 @@ import com.mxcomplier.Type.*;
 
 import java.util.*;
 
+import static java.lang.Math.min;
+
 public class IRBuilder extends ASTScanner{
     public ProgramIR root;
     public Map<String, FuncIR> funcMap = new HashMap<>();
@@ -175,14 +177,21 @@ public class IRBuilder extends ASTScanner{
             ++i;
         }
 
-        if (node.getName().equals("main")){
-            curBB.append(new CallInstIR(funcMap.get("__init"), new ArrayList<>(), null));
-        }
+
 
         node.getFuncBody().accept(this);
+        currentFunc.leaveBB = new BasicBlockIR(currentFunc, "leave_" + currentFunc.getName());
+
+        for (VirtualRegisterIR vreg: currentFunc.usedGlobalVar){
+            currentFunc.entryBB.prepend(new MoveInstIR(vreg, vreg.memory));
+            currentFunc.leaveBB.append(new MoveInstIR(vreg.memory, vreg));
+        }
+
+        if (node.getName().equals("main")){
+            currentFunc.entryBB.prepend(new CallInstIR(funcMap.get("__init"), new ArrayList<>(), null));
+        }
 
         //TODO merge return && find leaveBB
-        currentFunc.leaveBB = new BasicBlockIR(currentFunc, "leave_" + currentFunc.getName());
         for (BasicBlockIR bb : currentFunc.getBBList()){
             if (bb == currentFunc.leaveBB)
                 continue;
@@ -190,7 +199,6 @@ public class IRBuilder extends ASTScanner{
                 bb.getTail().prev.remove();
             if (!(bb.getTail().prev instanceof BranchInstIR))
                 bb.append(new JumpInstIR(currentFunc.leaveBB));
-
         }
         currentFunc.leaveBB.append(new ReturnInstIR());
         currentFunc.initOrderBBList();
@@ -250,7 +258,8 @@ public class IRBuilder extends ASTScanner{
 
             curBB = elseBB;
             node.getElseStmt().accept(this);
-            elseBB.append(new JumpInstIR(afterBB));
+            if (!(curBB.getTail().prev instanceof BranchInstIR))
+                elseBB.append(new JumpInstIR(afterBB));
         }
         else{
             falseBBMap.put(node.getJudgeExpr(), afterBB);
@@ -422,7 +431,7 @@ public class IRBuilder extends ASTScanner{
         doFuncCall(funcMap.get(funcName), args, returnValue);
 
         if (trueBBMap.containsKey(node)){
-            curBB.append(new CJumpInstIR(CJumpInstIR.Op.E, ONE, returnValue,
+            curBB.append(new CJumpInstIR(CJumpInstIR.Op.E, returnValue, ONE,
                                          trueBBMap.get(node), falseBBMap.get(node)));
         }
         else
@@ -430,14 +439,10 @@ public class IRBuilder extends ASTScanner{
     }
 
     private void doFuncCall(FuncIR func, List<OperandIR> args, VirtualRegisterIR returnValue){
-        for (int i = args.size()-1; i >= 0; i--){
+        for (int i = min(5, args.size()-1); i >= 0; i--){
             OperandIR arg = args.get(i);
-            if (i < 6)
-                curBB.append(new MoveInstIR(RegisterSet.paratReg[i], arg));
-            else
-                curBB.append(new PushInstIR(arg));
+            curBB.append(new MoveInstIR(RegisterSet.paratReg[i], arg));
         }
-
         curBB.append(new CallInstIR(func, args, returnValue));
         if (returnValue != null)
             curBB.append(new MoveInstIR(returnValue, RegisterSet.Vrax));
@@ -458,7 +463,7 @@ public class IRBuilder extends ASTScanner{
         }
         memory.lable = "arrCall";
         if (trueBBMap.containsKey(node)){
-            curBB.append(new CJumpInstIR(CJumpInstIR.Op.E, ONE, memory,
+            curBB.append(new CJumpInstIR(CJumpInstIR.Op.E, memory, ONE,
                     trueBBMap.get(node), falseBBMap.get(node)));
         }
         else
@@ -486,7 +491,7 @@ public class IRBuilder extends ASTScanner{
         }
         else assert false;
         if (trueBBMap.containsKey(node)){
-            curBB.append(new CJumpInstIR(CJumpInstIR.Op.E, ONE, res,
+            curBB.append(new CJumpInstIR(CJumpInstIR.Op.E, res, ONE,
                     trueBBMap.get(node), falseBBMap.get(node)));
         }
         else
@@ -526,8 +531,8 @@ public class IRBuilder extends ASTScanner{
     private VirtualRegisterIR allocaClass(String name){
         VirtualRegisterIR res = new VirtualRegisterIR("new_Class");
         if (name.equals("string")){
-            curBB.append(new CallInstIR(library_malloc,
-                    Collections.singletonList(new ImmediateIR(Config.getREGSIZE() * 2)), res));
+            doFuncCall(library_malloc,
+                    Collections.singletonList(new ImmediateIR(Config.getREGSIZE() * 2)), res);
             curBB.append(new MoveInstIR(res, ZERO));
             curBB.append(new BinaryInstIR(BinaryInstIR.Op.ADD, res, REGSIZE));
             curBB.append(new MoveInstIR(res, ZERO));
@@ -535,12 +540,12 @@ public class IRBuilder extends ASTScanner{
         }
         else{
             ClassSymbol symbol = globalScope.getClass(name);
-            curBB.append(new CallInstIR(library_malloc, Collections.singletonList(new ImmediateIR(symbol.getSize())), res));
+            doFuncCall(library_malloc, Collections.singletonList(new ImmediateIR(symbol.getSize())), res);
             FuncIR constructor = funcMap.getOrDefault('_' + name + '_' + name, null);
             if (constructor != null) {
                 VirtualRegisterIR tmp = new VirtualRegisterIR("tmp");
                 curBB.append(new MoveInstIR(tmp, res));
-                curBB.append(new CallInstIR(constructor, Collections.singletonList(tmp), res));
+                doFuncCall(constructor, Collections.singletonList(tmp), res);
             }
         }
         return res;
@@ -556,7 +561,7 @@ public class IRBuilder extends ASTScanner{
         curBB.append(new MoveInstIR(size, dim));
         curBB.append(new UnaryInstIR(UnaryInstIR.Op.INC, size));
         curBB.append(new BinaryInstIR(BinaryInstIR.Op.SHL, size, new ImmediateIR(3)));
-        curBB.append(new CallInstIR(library_malloc, Collections.singletonList(size), res));
+        doFuncCall(library_malloc, Collections.singletonList(size), res);
         curBB.append(new MoveInstIR(new MemoryIR(res), dim));
         curBB.append(new BinaryInstIR(BinaryInstIR.Op.ADD, res, REGSIZE));
         if (dims.size() == 0)

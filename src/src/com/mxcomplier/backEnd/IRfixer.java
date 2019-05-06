@@ -126,7 +126,7 @@ public class IRfixer extends IRScanner {
         FuncIR callee = node.getFunc();
         if (callee.getType() == FuncIR.Type.USER) {
             HashSet<VirtualRegisterIR> globalVar = new HashSet<>(caller.usedGlobalVar);
-            globalVar.retainAll(callee.usedGlobalVar);
+//            globalVar.retainAll(callee.usedGlobalVar);
             for (VirtualRegisterIR vreg : globalVar) {
                 node.prepend(new MoveInstIR(vreg.memory, vreg));
                 node.append(new MoveInstIR(vreg, vreg.memory));

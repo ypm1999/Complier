@@ -58,7 +58,7 @@ public class StackFrameAllocater extends IRScanner {
 
         //TODO callee save regs
         HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.calleeSaveRegisterSet);
-//        saveSet.retainAll(node.getDefinedPhyRegs());
+        saveSet.retainAll(node.getDefinedPhyRegs());
         if (!node.getName().equals("main"))
             for (PhysicalRegisterIR preg : saveSet) {
                 firstInst.prepend(new PushInstIR(preg));
@@ -80,35 +80,28 @@ public class StackFrameAllocater extends IRScanner {
     public void visit(CallInstIR node) {
 
         //TODO caller save regs
-        HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.callerSaveRegisterSet);
+//        HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.callerSaveRegisterSet);
 //        saveSet.retainAll(node.getFunc().getDefinedPhyRegs());
 //        saveSet.retainAll(curFunc.getUsedPhyRegs());
-        for (int i = 0; i < min(6, node.getArgs().size()); ++i)
-            saveSet.remove(RegisterSet.paratReg[i].getPhyReg());
-        InstIR firstInst = node;
-        int cnt = node.getArgs().size() - 6;
-        while(cnt > 0){
-            firstInst = firstInst.prev;
-            if (firstInst instanceof PushInstIR)
-                cnt--;
-        }
-        if (!node.getFunc().getName().equals("__init"))
-            for (PhysicalRegisterIR preg : saveSet)
-                firstInst.prepend(new PushInstIR(preg));
-//
-//        if (node.getArgs().size() > 6) {
-//            for (int i = node.getArgs().size()-1; i >= 6; i--){
-//                OperandIR arg = node.getArgs().get(i);
-//                node.prepend(new PushInstIR(arg));
-//            }
+//        for (int i = 0; i < min(6, node.getArgs().size()); ++i)
+//            saveSet.remove(RegisterSet.paratReg[i].getPhyReg());
+//        InstIR firstInst = node;
+//        int cnt = node.getArgs().size() - 6;
+//        while(cnt > 0){
+//            firstInst = firstInst.prev;
+//            if (firstInst instanceof PushInstIR)
+//                cnt--;
 //        }
-        if (!node.getFunc().getName().equals("__init"))
-            for (PhysicalRegisterIR preg : saveSet)
-                node.append(new PopInstIR(preg));
+//        if (!node.getFunc().getName().equals("__init"))
+//            for (PhysicalRegisterIR preg : saveSet)
+//                firstInst.prepend(new PushInstIR(preg));
+//
+//        if (!node.getFunc().getName().equals("__init"))
+//            for (PhysicalRegisterIR preg : saveSet)
+//                node.append(new PopInstIR(preg));
         if (node.getArgs().size() > 6)
             node.append(new BinaryInstIR(BinaryInstIR.Op.ADD, RegisterSet.rsp,
                 new ImmediateIR(Config.getREGSIZE() * (node.getArgs().size() - 6))));
-
     }
 }
 

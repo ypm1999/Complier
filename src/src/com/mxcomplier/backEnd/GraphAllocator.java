@@ -7,23 +7,26 @@ import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
 import com.mxcomplier.Ir.Instructions.MoveInstIR;
 import com.mxcomplier.Ir.Operands.PhysicalRegisterIR;
+import com.mxcomplier.Ir.Operands.StackSoltIR;
 import com.mxcomplier.Ir.Operands.StaticDataIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
 import java.util.*;
 
 import static com.mxcomplier.Ir.RegisterSet.*;
+import static java.lang.Math.min;
 
 public class GraphAllocator{
     private static final int REGNUM = 14;
 
+    private FuncIR curFunc = null;
     private Graph graph, originGraph;
     private List<VirtualRegisterIR> spilledVregs;
     private LinkedList<VirtualRegisterIR> finishedStack;
     private HashSet<VirtualRegisterIR> simplifyTODOList, spillTODOList;
     private HashMap<VirtualRegisterIR, PhysicalRegisterIR> colorMap;
 
-    void init(){
+    private void init(){
         simplifyTODOList = new HashSet<>();
         spillTODOList = new HashSet<>();
         colorMap = new HashMap<>();
@@ -58,6 +61,7 @@ public class GraphAllocator{
         for (VirtualRegisterIR vreg:spillTODOList){
             if (vreg.getPhyReg() != null)
                 continue;
+
             int curDeegree = graph.getDegree(vreg);
             if (curDeegree > maxDegree){
                 maxDegree = curDeegree;
@@ -88,7 +92,7 @@ public class GraphAllocator{
         for (VirtualRegisterIR vreg : finishedStack){
             if (vreg.getPhyReg() != null)
                 continue;
-            HashSet<PhysicalRegisterIR> colorCanUse = new HashSet<>(allocatePhyRegisterSet);
+            List<PhysicalRegisterIR> colorCanUse = new LinkedList<>(allocatePhyRegisterSet);
             for (VirtualRegisterIR neighbor : originGraph.getNeighbor(vreg))
                 if (colorMap.containsKey(neighbor))
                     colorCanUse.remove(colorMap.get(neighbor));
@@ -96,10 +100,18 @@ public class GraphAllocator{
                 spilledVregs.add(vreg);
             }
             else{
-                PhysicalRegisterIR preg = colorCanUse.iterator().next();
-                colorCanUse.retainAll(calleeSaveRegisterSet);
-                if (!colorCanUse.isEmpty())
+                PhysicalRegisterIR preg = null;
+                for (int i = 0; i < min(6, curFunc.getParameters().size()); i++)
+                    if (colorCanUse.contains(paratReg[i].getPhyReg())){
+                        preg =  paratReg[i].getPhyReg();
+                        break;
+                    }
+                if (preg == null) {
                     preg = colorCanUse.iterator().next();
+                    colorCanUse.retainAll(calleeSaveRegisterSet);
+                    if (!colorCanUse.isEmpty())
+                        preg = colorCanUse.iterator().next();
+                }
                 colorMap.put(vreg, preg);
             }
         }
@@ -111,6 +123,9 @@ public class GraphAllocator{
 //            System.err.println(vreg);
 //            System.err.flush();
 //        }
+        for (VirtualRegisterIR vreg :spilledVregs)
+            if (vreg.memory == null)
+                vreg.memory = new StackSoltIR(vreg.lable + "_spillPlace");
         for (BasicBlockIR bb : func.getBBList()) {
             for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
                 List<VirtualRegisterIR> used = inst.getUsedVReg(), defined = inst.getDefinedVreg();
@@ -156,8 +171,9 @@ public class GraphAllocator{
             if (spilledVregs.isEmpty()){
                 //set phyReg
                 for (VirtualRegisterIR vreg: originGraph.getnodes())
-                    if (vreg.getPhyReg() == null)
+                    if (vreg.getPhyReg() == null) {
                         vreg.setPhyReg(colorMap.get(vreg));
+                    }
                 break;
             }
             else
@@ -175,7 +191,9 @@ public class GraphAllocator{
             cnt++;
         }
         for (FuncIR func: ir.root.getFuncs()){
+            curFunc = func;
             runFunc(func);
+            curFunc = null;
         }
     }
 }

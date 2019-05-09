@@ -1,10 +1,6 @@
 package com.mxcomplier.Ir.Operands;
 
 import com.mxcomplier.Ir.IRVisitor;
-import com.mxcomplier.Ir.Instructions.MoveInstIR;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class VirtualRegisterIR extends RegisterIR {
     static private int vRegId = 0;
@@ -13,8 +9,6 @@ public class VirtualRegisterIR extends RegisterIR {
     public MemoryIR memory = null;
     public boolean tempVar = false;
     private PhysicalRegisterIR phyReg = null;
-    public List<MoveInstIR> moveList = new ArrayList<>();
-    public VirtualRegisterIR alias = this;
 
     public VirtualRegisterIR(String label){
         this.id = vRegId++;

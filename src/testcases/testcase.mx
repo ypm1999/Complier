@@ -1,39 +1,35 @@
-
-class TA{
-	string state;
-	int anger;
+int main() {
+	int cnt = 0;
+	int i;
+	for(i = 0; i < 10; ++i) {
+		if(i % 3 == 0) {
+			continue;
+		}
+		cnt++;
+	}
+	println(toString(cnt));
+	
+	
+	return 0;
 }
-int work_anger;
-void work(string st, TA ta)
-{
-	if (ta.anger <= 100) 
-		println(st + ", " + ta.state + " enjoys this work. XD");
-	else 
-		println(st + ", " + ta.state + " wants to give up!!!!!");
-	ta.anger = ta.anger + work_anger;
-}
-int main()
-{
-}
-
 
 
 /*!! metadata:
 === comment ===
-class_test-mahaojun.mx
-=== input ===
-
+陈伟哲 simple test
+=== is_public ===
+True
 === assert ===
 output
 === timeout ===
-0.1
-=== output ===
-MR, the leading TA enjoys this work. XD
-Mars, the striking TA enjoys this work. XD
-Mars, the striking TA wants to give up!!!!!
+1.0
+=== input ===
+
 === phase ===
 codegen pretest
-=== is_public ===
-True
+=== output ===
+6
+=== exitcode ===
+0
 
 !!*/

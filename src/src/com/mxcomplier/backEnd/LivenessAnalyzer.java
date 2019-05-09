@@ -3,10 +3,8 @@ package com.mxcomplier.backEnd;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
-import com.mxcomplier.Ir.Instructions.MoveInstIR;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +19,7 @@ public class LivenessAnalyzer {
 
     }
 
-    Graph buildGraph(FuncIR func, HashSet<MoveInstIR> moveList){
+    Graph buildGraph(FuncIR func){
         Graph graph = new Graph();
         liveOut.clear();
         usedVregs.clear();
@@ -64,34 +62,18 @@ public class LivenessAnalyzer {
             }
         }
 
+        int cnt = 0;
         for (BasicBlockIR bb : func.getBBList()) {
             HashSet<VirtualRegisterIR> liveNow = liveOut.get(bb);
+            cnt++;
             for(InstIR inst = bb.getTail().prev; inst != bb.getHead(); inst = inst.prev) {
                 List<VirtualRegisterIR> used = inst.getUsedVReg(), defined = inst.getDefinedVreg();
-                if (inst instanceof MoveInstIR){
-                    MoveInstIR moveInst = (MoveInstIR) inst;
-                    if (moveInst.dest instanceof VirtualRegisterIR && moveInst.src instanceof VirtualRegisterIR) {
-                        VirtualRegisterIR dest = (VirtualRegisterIR) moveInst.dest;
-                        VirtualRegisterIR src = (VirtualRegisterIR) moveInst.src;
-                        if (dest.getPhyReg() == null || src.getPhyReg() == null) {
-                            liveNow.removeAll(used);
-                            addMoveList(dest, moveInst);
-                            addMoveList(src, moveInst);
-                            moveList.add(moveInst);
-                        }
-                    }
-                }
                 graph.addEdges(new HashSet<>(defined), liveNow);
                 liveNow.removeAll(defined);
                 liveNow.addAll(used);
-
             }
         }
         return graph;
-    }
-
-    private void addMoveList(VirtualRegisterIR vreg, MoveInstIR inst){
-        vreg.moveList.add(inst);
     }
 
 //

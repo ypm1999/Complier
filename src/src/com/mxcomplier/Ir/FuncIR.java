@@ -19,7 +19,7 @@ public class FuncIR {
     public BasicBlockIR entryBB, leaveBB;
     public HashSet<FuncIR> callee = new HashSet<>(), caller = new HashSet<>();
     public HashSet<VirtualRegisterIR> usedGlobalVar = new HashSet<>(), selfUsedGlobalVar;
-    private HashSet<PhysicalRegisterIR> definedPhyRegs = null, usedPhyRegs = null;
+    public HashSet<PhysicalRegisterIR> definedPhyRegs, selfDefinedPhyRegs, usedPhyRegs, selfUsedPhyRegs;
     private List<BasicBlockIR> BBList = new ArrayList<>();
     private List<BasicBlockIR> orderedBBList, reversedOrderedBBList;
     private List<VirtualRegisterIR> parameters = new ArrayList<>();
@@ -93,37 +93,34 @@ public class FuncIR {
         return parameters;
     }
 
-    public HashSet<PhysicalRegisterIR> getDefinedPhyRegs(){
 
-        if (definedPhyRegs == null){
-            definedPhyRegs = new HashSet<>();
-            if (type == Type.LIBRARY)
-                definedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
-            else
-                for (BasicBlockIR bb:BBList){
-                    for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next){
-                        for (VirtualRegisterIR vreg: inst.getUsedVReg())
-                            definedPhyRegs.add(vreg.getPhyReg());
-                    }
-                }
-        }
-        return definedPhyRegs;
+    public void dfsPhyRegs(FuncIR func){
+
     }
 
-    public HashSet<PhysicalRegisterIR> getUsedPhyRegs() {
-        if (usedPhyRegs == null){
-            usedPhyRegs = new HashSet<>();
-            if (type == Type.LIBRARY)
-                usedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
-            else
-                for (BasicBlockIR bb:BBList){
-                    for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next){
-                        for (VirtualRegisterIR vreg: inst.getUsedVReg())
-                            usedPhyRegs.add(vreg.getPhyReg());
-                    }
-                }
+    public void initPhyRegs() {
+        usedPhyRegs = new HashSet<>();
+        selfUsedPhyRegs = new HashSet<>();
+        definedPhyRegs = new HashSet<>();
+        selfDefinedPhyRegs = new HashSet<>();
+        if (type == Type.LIBRARY) {
+            usedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
+            selfUsedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
+            definedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
+            selfDefinedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
         }
-        return usedPhyRegs;
+        else {
+            for (BasicBlockIR bb : BBList) {
+                for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
+                    for (VirtualRegisterIR vreg : inst.getUsedVReg())
+                        selfUsedPhyRegs.add(vreg.getPhyReg());
+                    for (VirtualRegisterIR vreg : inst.getUsedVReg())
+                        selfDefinedPhyRegs.add(vreg.getPhyReg());
+                }
+            }
+        }
+        usedPhyRegs.addAll(selfUsedPhyRegs);
+        definedPhyRegs.addAll(selfDefinedPhyRegs);
     }
 
     public void accept(IRVisitor visitor) {

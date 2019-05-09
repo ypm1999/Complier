@@ -1,46 +1,36 @@
-//input: 1 2 3 4
 
-int[] a = new int[4];
+class TA{
+	string state;
+	int anger;
+}
+int work_anger;
+void work(string st, TA ta)
+{
+	if (ta.anger <= 100) 
+		println(st + ", " + ta.state + " enjoys this work. XD");
+	else 
+		println(st + ", " + ta.state + " wants to give up!!!!!");
+	ta.anger = ta.anger + work_anger;
+}
 int main()
 {
-    int[] b = new int[a.size()];
-	int i;
-    for (i = 0; i < a.size(); i++)
-	{
-		a[i] = 0;
-		b[i] = getInt();
-	}
-	for (i = 0; i < a.size(); i++)
-	{
-		print(toString(a[i]));
-	}
-	println("");
-	a=b;
-	for (i = 0; i < a.size(); i++)
-	{
-		print(toString(a[i]));
-	}
-    return 0;
 }
-
 
 
 
 /*!! metadata:
 === comment ===
-array_test1-mahaojun.mx
+class_test-mahaojun.mx
 === input ===
-1
-2
-3
-4
+
 === assert ===
 output
 === timeout ===
 0.1
 === output ===
-0000
-1234
+MR, the leading TA enjoys this work. XD
+Mars, the striking TA enjoys this work. XD
+Mars, the striking TA wants to give up!!!!!
 === phase ===
 codegen pretest
 === is_public ===

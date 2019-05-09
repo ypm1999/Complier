@@ -3,10 +3,7 @@ package com.mxcomplier.backEnd;
 import com.mxcomplier.Error.IRError;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 class Graph{
     private HashMap<VirtualRegisterIR, HashSet<VirtualRegisterIR>> graphLink = new HashMap<>();
@@ -20,8 +17,10 @@ class Graph{
     }
 
     void addNode(VirtualRegisterIR p){
-        if (!graphLink.containsKey(p))
+        if (!graphLink.containsKey(p)) {
             graphLink.put(p, new HashSet<>());
+            p.moveList = new ArrayList<>();
+        }
     }
 
     void removeNode(VirtualRegisterIR p){

@@ -58,7 +58,7 @@ public class StackFrameAllocater extends IRScanner {
 
         //TODO callee save regs
         HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.calleeSaveRegisterSet);
-        saveSet.retainAll(node.getDefinedPhyRegs());
+        saveSet.retainAll(node.selfDefinedPhyRegs);
         if (!node.getName().equals("main"))
             for (PhysicalRegisterIR preg : saveSet) {
                 firstInst.prepend(new PushInstIR(preg));
@@ -79,10 +79,10 @@ public class StackFrameAllocater extends IRScanner {
     @Override
     public void visit(CallInstIR node) {
 
-        //TODO caller save regs
+//        //TODO caller save regs
 //        HashSet<PhysicalRegisterIR> saveSet = new HashSet<>(RegisterSet.callerSaveRegisterSet);
-//        saveSet.retainAll(node.getFunc().getDefinedPhyRegs());
-//        saveSet.retainAll(curFunc.getUsedPhyRegs());
+//        saveSet.retainAll(node.getFunc().definedPhyRegs);
+//        saveSet.retainAll(curFunc.selfUsedPhyRegs);
 //        for (int i = 0; i < min(6, node.getArgs().size()); ++i)
 //            saveSet.remove(RegisterSet.paratReg[i].getPhyReg());
 //        InstIR firstInst = node;

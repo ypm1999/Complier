@@ -76,6 +76,10 @@ public class RegisterSet {
             //without rbp,rsp,rax
     );
 
+    static public List<PhysicalRegisterIR> libPhyRegisterSet = new ArrayList<>(
+            Arrays.asList(rax, rbx, rcx, rdx, rsi, rdi)
+    );
+
     public RegisterSet(){
         
     }

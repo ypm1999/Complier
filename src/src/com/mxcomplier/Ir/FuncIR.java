@@ -19,6 +19,7 @@ public class FuncIR {
     }
     private String name;
     private Type type;
+    public VirtualRegisterIR returnValue = null;
     public BasicBlockIR entryBB, leaveBB;
     public HashSet<FuncIR> callee = new HashSet<>(), caller = new HashSet<>();
     public HashSet<VirtualRegisterIR> usedGlobalVar = new HashSet<>(), selfUsedGlobalVar;
@@ -131,13 +132,14 @@ public class FuncIR {
             definedPhyRegs = new HashSet<>();
             if (type == Type.LIBRARY)
                 definedPhyRegs.addAll(RegisterSet.allocatePhyRegisterSet);
-            else
-                for (BasicBlockIR bb:BBList){
-                    for(InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next){
-                        for (VirtualRegisterIR vreg: inst.getUsedVReg())
+            else {
+                for (BasicBlockIR bb : BBList) {
+                    for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
+                        for (VirtualRegisterIR vreg : inst.getDefinedVreg())
                             definedPhyRegs.add(vreg.getPhyReg());
                     }
                 }
+            }
         }
         return definedPhyRegs;
     }

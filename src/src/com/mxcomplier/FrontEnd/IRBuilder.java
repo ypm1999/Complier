@@ -141,8 +141,9 @@ public class IRBuilder extends ASTScanner{
                     useinit = true;
                 }
             }
-
-        initFunc.leaveBB = curBB;
+        initFunc.leaveBB = new BasicBlockIR(initFunc, "leave_initFunc");
+        curBB.append(new JumpInstIR(initFunc.leaveBB));
+        initFunc.leaveBB.append(new ReturnInstIR());
         if (!(curBB.getTail().prev instanceof BranchInstIR))
             curBB.append(new ReturnInstIR(null));
         currentFunc = null;
@@ -468,8 +469,6 @@ public class IRBuilder extends ASTScanner{
         currentFunc.callee.add(func);
         func.caller.add(currentFunc);
         curBB.append(new CallInstIR(func, args, returnValue));
-        if (returnValue != null)
-            curBB.append(new MoveInstIR(returnValue, RegisterSet.Vrax));
     }
 
     @Override

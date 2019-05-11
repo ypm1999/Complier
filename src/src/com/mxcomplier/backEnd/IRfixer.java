@@ -52,6 +52,7 @@ public class IRfixer extends IRScanner {
 
     @Override
     public void visit(ProgramIR node) {
+        accessedFunc.clear();
         for (FuncIR func : node.getFuncs()){
             curFunc = func;
             dfsGlobalVars(func);
@@ -200,10 +201,13 @@ public class IRfixer extends IRScanner {
             node.rhs = tmp;
         }
         node.append(new JumpInstIR(node.getFalseBB()));
+        node.removeFalseBB();
     }
 
     @Override
     public void visit(CallInstIR node) {
+        if (node.getReturnValue() != null)
+            node.append(new MoveInstIR(node.getReturnValue(), RegisterSet.Vrax));
         FuncIR caller = curFunc;
         FuncIR callee = node.getFunc();
         if (callee.getType() == FuncIR.Type.USER) {

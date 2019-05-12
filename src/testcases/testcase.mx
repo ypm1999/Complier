@@ -1,44 +1,27 @@
-class SomeClass {
-	int num;
-
-	SomeClass() {
-		num = 0;
-		num++;
-		this.num++;
-	}
-
-	void print() {
-		println("num = " + toString(num));
-	}
-}
-
 int main() {
-	SomeClass someObject = new SomeClass();
-	someObject.num++;
-	
-	someObject.print();
-	
-	return 0;
+    int x = 10;
+    if (x == 10) x = 20;
+    else x = 30;
+    return x;
 }
+
+
 
 
 /*!! metadata:
 === comment ===
-王洋鲲 Test construction functions
-=== is_public ===
-True
+ssa1.mx
 === assert ===
-output
+exitcode
 === timeout ===
-1.0
+0.1
 === input ===
 
 === phase ===
 codegen pretest
-=== output ===
-num = 3
-
+=== is_public ===
+True
 === exitcode ===
-0
+20
 
 !!*/

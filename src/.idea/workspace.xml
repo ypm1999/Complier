@@ -13,10 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd63b658-0c42-46ab-a1cc-8ecd93e4cf27" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueNumbering.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/UseLessCodeEliminater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/src/testcase.mx" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/src/testcase.mx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/FuncInliner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/FuncInliner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java" afterDir="false" />
@@ -129,61 +132,17 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7108089">
+    <splitter split-orientation="horizontal" split-proportion="0.6760148">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1058">
-                  <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+                <state relative-caret-position="4437">
+                  <caret line="291" column="5" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1224">
-                  <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#725#726#0" expanded="true" />
-                    <element signature="e#759#760#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="489">
-                  <caret line="47" column="44" lean-forward="true" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="847" column="5" lean-forward="true" selection-start-line="847" selection-start-column="5" selection-end-line="847" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -191,60 +150,47 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="642">
-                  <caret line="79" column="98" selection-start-line="79" selection-start-column="98" selection-end-line="79" selection-end-column="98" />
+                <state relative-caret-position="198">
+                  <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#871#872#0" expanded="true" />
+                    <element signature="e#901#902#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRfixer.java">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueNumbering.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="363">
-                  <caret line="99" selection-start-line="99" selection-end-line="99" />
+                <state relative-caret-position="412">
+                  <caret line="213" column="21" selection-start-line="213" selection-start-column="21" selection-end-line="213" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#500#501#0" expanded="true" />
+                    <element signature="e#575#576#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/FuncInliner.java">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+                <state relative-caret-position="2442">
+                  <caret line="827" column="49" selection-start-line="827" selection-start-column="49" selection-end-line="827" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="419">
+                  <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="25" selection-start-line="25" selection-end-line="25" />
-                  <folding>
-                    <element signature="e#243#244#0" expanded="true" />
-                    <element signature="e#271#272#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ConstantIR.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#132#133#0" expanded="true" />
-                    <element signature="e#159#160#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -257,8 +203,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="203">
-                  <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+                <state relative-caret-position="219">
+                  <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#getVreg#0;class#InstIR#0" />
@@ -281,7 +227,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new Re</find>
       <find>'$'</find>
       <find>$</find>
       <find>This</find>
@@ -311,6 +256,7 @@
       <find>Vrax</find>
       <find>callee</find>
       <find>NULL</find>
+      <find>Null</find>
     </findStrings>
     <replaceStrings>
       <replace>[]</replace>
@@ -342,10 +288,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeClassMemberASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopePrepareASTScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/ClassSymbol.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/AST/IdentExprNode.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRInterpreter.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ASTBuilder.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Scope/VarSymbol.java" />
@@ -357,12 +299,10 @@
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Config.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRPrinter.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/StackSoltIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/RegisterSet.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/Graph.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/StackFrameAllocater.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BranchInstIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/RegisterAllocator.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/JumpInstIR.java" />
@@ -376,7 +316,6 @@
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/OperandIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/PhysicalRegisterIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/MemoryIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/LeaInstIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/MoveInstIR.java" />
@@ -388,11 +327,18 @@
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/ImmediateIR.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRfixer.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CallInstIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java" />
-        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java" />
         <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/FuncInliner.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/UseLessCode.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/UseLessCodeEliminater.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueMunbering.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueNumbering.java" />
       </list>
     </option>
   </component>
@@ -402,11 +348,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="64" />
-    <option name="width" value="1481" />
-    <option name="height" value="932" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="263" />
+    <option name="y" value="55" />
+    <option name="width" value="1657" />
+    <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -925,11 +871,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557542818265</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="improve_func_inline">
+      <created>1557561566363</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1557561566363</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="632824000" />
+    <option name="totallyTimeSpent" value="649380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -941,21 +894,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="263" y="55" width="1657" height="1005" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892008" visible="true" weight="0.20563847" />
-      <window_info id="Structure" order="1" sideWeight="0.5010799" side_tool="true" weight="0.1128943" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Learn" order="6" weight="0.32982844" />
-      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Structure" order="0" sideWeight="0.5010799" side_tool="true" weight="0.1128943" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Learn" order="5" weight="0.32982844" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info content_ui="combo" x="730" y="75" width="337" height="930" id="Project" order="7" sideWeight="0.49892008" weight="0.16030957" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4986165" weight="0.3139785" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49723375" visible="true" weight="0.21935484" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32150537" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49723375" weight="0.23181818" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31935483" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32916147" />
@@ -966,7 +919,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5019369" side_tool="true" weight="0.32903227" />
       <window_info anchor="bottom" id="Tool Output" order="12" sideWeight="0.4980631" weight="0.29697624" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" sideWeight="0.4986165" weight="0.5258064" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4979253" weight="0.35053763" />
+      <window_info active="true" anchor="bottom" id="Messages" order="14" sideWeight="0.4979253" visible="true" weight="0.35" />
       <window_info anchor="bottom" id="Python Console" order="15" />
       <window_info anchor="bottom" id="Duplicate detector" order="16" weight="0.32937366" />
       <window_info anchor="bottom" id="Dependency Viewer" order="17" weight="0.7359199" />
@@ -1066,7 +1019,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AST_buckup_leave_decl" />
     <MESSAGE value="Start_Scope_Scanner_Func" />
     <MESSAGE value="Scnner_almost_finish &amp;&amp; start_DEBUG" />
     <MESSAGE value="Start_Scope_Scanner_Global" />
@@ -1091,17 +1043,12 @@
     <MESSAGE value="unfinished_combine" />
     <MESSAGE value="fix_some_bugs_inast&amp;funcIR" />
     <MESSAGE value="add_func_inline" />
-    <option name="LAST_COMMIT_MESSAGE" value="add_func_inline" />
+    <MESSAGE value="improve_func_inline" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve_func_inline" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/NasmPrinter.java</url>
-          <line>136</line>
-          <properties />
-          <option name="timeStamp" value="210" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/ScopeBuilderASTScanner.java</url>
           <line>227</line>
@@ -1109,28 +1056,51 @@
           <option name="timeStamp" value="214" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java</url>
-          <line>50</line>
+          <condition expression="bb.toString().equals(&quot;main19_Ifthen&quot;)" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java</url>
+          <line>259</line>
           <properties />
-          <option name="timeStamp" value="232" />
+          <option name="timeStamp" value="277" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java</url>
-          <line>36</line>
+          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java</url>
+          <line>251</line>
           <properties />
-          <option name="timeStamp" value="238" />
+          <option name="timeStamp" value="284" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java</url>
-          <line>54</line>
+          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueNumbering.java</url>
+          <line>182</line>
           <properties />
-          <option name="timeStamp" value="248" />
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueNumbering.java</url>
+          <line>192</line>
+          <properties />
+          <option name="timeStamp" value="286" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="graph" language="JAVA" />
+        <watch expression="curFunc" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>bb.toString().equals(&quot;main19_Ifthen&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>bb.toString().equals(&quot;main13_Ifthen&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>now == null</expression-string>
         <language-id>JAVA</language-id>
@@ -1172,18 +1142,18 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>name.equals(&quot;a&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>name == &quot;a&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
     <expressions id="watch">
+      <expression>
+        <expression-string>curFunc</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>graph</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>BasicBlockIR</expression-string>
         <language-id>JAVA</language-id>
@@ -1224,16 +1194,6 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>finishedStack</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>func.getReversedOrderedBBList()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
     <expressions id="setValue">
       <expression>
@@ -1244,37 +1204,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/IfStmtNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#1012#1013#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/AST/ExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/AddressIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -1295,24 +1224,6 @@
             <element signature="e#2146#2147#0" expanded="true" />
             <element signature="e#2201#2202#0" expanded="true" />
             <element signature="e#2241#2242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1709#1710#0" expanded="true" />
-            <element signature="e#1757#1758#0" expanded="true" />
-            <element signature="e#1803#1804#0" expanded="true" />
-            <element signature="e#1876#1877#0" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1949#1950#0" expanded="true" />
-            <element signature="e#1982#1983#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1397,76 +1308,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/NasmPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2929#2930#0" expanded="true" />
-            <element signature="e#2971#2972#0" expanded="true" />
-            <element signature="e#3028#3029#0" expanded="true" />
-            <element signature="e#3068#3069#0" expanded="true" />
-            <element signature="e#3124#3125#0" expanded="true" />
-            <element signature="e#3164#3165#0" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
-            <element signature="e#3527#3528#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CompInstIR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
           <caret line="42" lean-forward="true" selection-end-line="42" />
           <folding>
             <element signature="e#0#1019#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5584#5585#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
-            <element signature="e#5680#5681#0" expanded="true" />
-            <element signature="e#5716#5717#0" expanded="true" />
-            <element signature="e#5747#5748#0" expanded="true" />
-            <element signature="e#5774#5775#0" expanded="true" />
-            <element signature="e#5819#5820#0" expanded="true" />
-            <element signature="e#5848#5849#0" expanded="true" />
-            <element signature="e#5877#5878#0" expanded="true" />
-            <element signature="e#5904#5905#0" expanded="true" />
-            <element signature="e#5958#5959#0" expanded="true" />
-            <element signature="e#5991#5992#0" expanded="true" />
-            <element signature="e#7332#7333#0" expanded="true" />
-            <element signature="e#7367#7368#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1263#1264#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-            <element signature="e#1335#1336#0" expanded="true" />
-            <element signature="e#1367#1368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1503,16 +1350,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="134" selection-start-line="134" selection-end-line="134" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/RegisterIR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1536,30 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2512#2513#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1716,27 +1529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getVreg#0;class#InstIR#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="79" column="98" selection-start-line="79" selection-start-column="98" selection-end-line="79" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Operands/VirtualRegisterIR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1744,40 +1536,211 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java">
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/MidTerm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1058">
-          <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+        <state relative-caret-position="68">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/CJumpInstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1119#1120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/BasicBlockIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1295#1296#0" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/NasmPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="126" column="7" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2929#2930#0" expanded="true" />
+            <element signature="e#2971#2972#0" expanded="true" />
+            <element signature="e#3028#3029#0" expanded="true" />
+            <element signature="e#3068#3069#0" expanded="true" />
+            <element signature="e#3124#3125#0" expanded="true" />
+            <element signature="e#3164#3165#0" expanded="true" />
+            <element signature="e#3221#3222#0" expanded="true" />
+            <element signature="e#3263#3264#0" expanded="true" />
+            <element signature="e#3527#3528#0" expanded="true" />
+            <element signature="e#3569#3570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+            <element signature="e#1918#1919#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/FuncIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5584#5585#0" expanded="true" />
+            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5680#5681#0" expanded="true" />
+            <element signature="e#5716#5717#0" expanded="true" />
+            <element signature="e#5747#5748#0" expanded="true" />
+            <element signature="e#5774#5775#0" expanded="true" />
+            <element signature="e#5848#5849#0" expanded="true" />
+            <element signature="e#5877#5878#0" expanded="true" />
+            <element signature="e#5904#5905#0" expanded="true" />
+            <element signature="e#5958#5959#0" expanded="true" />
+            <element signature="e#5991#5992#0" expanded="true" />
+            <element signature="e#7332#7333#0" expanded="true" />
+            <element signature="e#7367#7368#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/FuncInliner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+        <state relative-caret-position="591">
+          <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/BinaryInstIR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="47" column="44" lean-forward="true" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+        <state relative-caret-position="861">
+          <caret line="86" column="52" lean-forward="true" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2512#2513#0" expanded="true" />
+            <element signature="e#2592#2593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="118" column="5" lean-forward="true" selection-start-line="74" selection-end-line="118" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/UseLessCodeEliminater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#228#229#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="847" column="5" lean-forward="true" selection-start-line="847" selection-start-column="5" selection-end-line="847" selection-end-column="5" />
+        <state relative-caret-position="2442">
+          <caret line="827" column="49" selection-start-line="827" selection-start-column="49" selection-end-line="827" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4437">
+          <caret line="291" column="5" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Ir/Instructions/InstIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getVreg#0;class#InstIR#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/BlockMerger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LocalValueNumbering.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="213" column="21" selection-start-line="213" selection-start-column="21" selection-end-line="213" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

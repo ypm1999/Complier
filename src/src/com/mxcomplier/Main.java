@@ -45,15 +45,15 @@ public class Main {
             IRBuilder irBuilder = new IRBuilder();
             irBuilder.visit(ast);
 
-            new FuncInliner().run(irBuilder);
-            new IRfixer().visit((irBuilder.root));
+            new BlockMerger(true).visit(irBuilder.root);
+            new LocalValueNumbering().visit(irBuilder.root);
             if (Config.DEBUG) {
                 new IRPrinter(irBuilder).visit(irBuilder.root);
-//            IRInterpreter interpreter = new IRInterpreter(irBuilder);
-//            interpreter.run();
             }
-            new BlockMerger(true).visit(irBuilder.root);
+            new FuncInliner().run(irBuilder);
 
+            new IRfixer().visit((irBuilder.root));
+            new BlockMerger(true).visit(irBuilder.root);
 
             new GraphAllocator().run(irBuilder);
             new StackFrameAllocater().visit(irBuilder.root);

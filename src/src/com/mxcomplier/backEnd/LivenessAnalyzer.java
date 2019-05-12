@@ -23,8 +23,11 @@ public class LivenessAnalyzer {
 
     }
 
-    Graph buildGraph(FuncIR func, List<Pair<VirtualRegisterIR, VirtualRegisterIR>> moveList){
-        Graph graph = new Graph();
+    public HashMap<BasicBlockIR, HashSet<VirtualRegisterIR>> getLiveOut() {
+        return liveOut;
+    }
+
+    public void buildLiveOut(FuncIR func){
         liveOut.clear();
         usedVregs.clear();
         definedVregs.clear();
@@ -41,10 +44,6 @@ public class LivenessAnalyzer {
                     if (!bbDefined.contains(vreg))
                         bbUsed.add(vreg);
                 bbDefined.addAll(defined);
-                for (VirtualRegisterIR vreg: used)
-                    graph.addNode(vreg);
-                for (VirtualRegisterIR vreg: defined)
-                    graph.addNode(vreg);
             }
         }
         //get liveOut
@@ -67,13 +66,23 @@ public class LivenessAnalyzer {
                 changed = changed || oldSize != curLiveOut.size();
             }
         }
+    }
 
-        int cnt = 0;
+    Graph buildGraph(FuncIR func, List<Pair<VirtualRegisterIR, VirtualRegisterIR>> moveList){
+        Graph graph = new Graph();
+        buildLiveOut(func);
+
+        for (BasicBlockIR bb : func.getBBList()){
+            for (VirtualRegisterIR vreg: usedVregs.get(bb))
+                graph.addNode(vreg);
+            for (VirtualRegisterIR vreg: definedVregs.get(bb))
+                graph.addNode(vreg);
+        }
+
         for (BasicBlockIR bb : func.getBBList()) {
             HashSet<VirtualRegisterIR> liveNow = liveOut.get(bb);
-            cnt++;
             for(InstIR inst = bb.getTail().prev; inst != bb.getHead(); inst = inst.prev) {
-                if (inst instanceof MoveInstIR){
+                if (inst instanceof MoveInstIR && moveList != null){
                     OperandIR dest = ((MoveInstIR) inst).getDest();
                     OperandIR src = ((MoveInstIR) inst).getSrc();
                     if (dest instanceof VirtualRegisterIR && src instanceof VirtualRegisterIR){

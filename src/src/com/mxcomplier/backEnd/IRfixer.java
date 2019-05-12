@@ -51,10 +51,8 @@ public class IRfixer extends IRScanner {
 
     @Override
     public void visit(ProgramIR node) {
-        accessedFunc.clear();
         for (FuncIR func : node.getFuncs()){
             curFunc = func;
-            dfsGlobalVars(func);
             func.accept(this);
             curFunc = null;
         }
@@ -78,19 +76,6 @@ public class IRfixer extends IRScanner {
                 for (InstIR inst = bb.getTail().prev; inst != bb.getHead(); inst = inst.prev)
                     inst.replaceVreg(renameMap);
             }
-        }
-    }
-
-    static private HashSet<FuncIR> accessedFunc = new HashSet<>();
-    private void dfsGlobalVars(FuncIR func){
-        if (accessedFunc.contains(func))
-            return;
-        accessedFunc.add(func);
-        func.initGlobalDefined();
-        for (FuncIR nextFunc:func.callee){
-            dfsGlobalVars(nextFunc);
-            func.usedGlobalVar.addAll(nextFunc.usedGlobalVar);
-            func.definedGlobalVar.addAll(nextFunc.definedGlobalVar);
         }
     }
 

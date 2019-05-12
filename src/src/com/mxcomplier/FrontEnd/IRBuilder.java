@@ -158,6 +158,54 @@ public class IRBuilder extends ASTScanner{
         }
 
         globalScope = currentScope = currentScope.getParent();
+
+        initFuncGlobalVar(root.getFuncs());
+    }
+
+    private void showGlobal(){
+        for (FuncIR func:root.getFuncs()){
+            System.err.println(func.getName() + "::");
+            StringBuilder str = new StringBuilder("used        :");
+            for (VirtualRegisterIR vreg : func.usedGlobalVar)
+                str.append(" ").append(vreg.lable);
+            System.err.println(str);
+
+            str = new StringBuilder("defined     :");
+            for (VirtualRegisterIR vreg : func.definedGlobalVar)
+                str.append(" ").append(vreg.lable);
+            System.err.println(str);
+
+
+            str = new StringBuilder("selfUsed    :");
+            for (VirtualRegisterIR vreg : func.selfUsedGlobalVar)
+                str.append(" ").append(vreg.lable);
+            System.err.println(str);
+
+            str = new StringBuilder("selfDefined :");
+            for (VirtualRegisterIR vreg : func.selfDefinedGlobalVar)
+                str.append(" ").append(vreg.lable);
+            System.err.println(str);
+            System.err.println("--------------------------------------------------");
+        }
+    }
+
+    private void initFuncGlobalVar(List<FuncIR> funcs){
+        for (FuncIR func : funcs)
+            func.initGlobalDefined();
+        boolean change = true;
+        while(change){
+            change = false;
+            for (FuncIR func :funcs){
+                int oldUsedSize = func.usedGlobalVar.size();
+                int oldDefinedSize = func.definedGlobalVar.size();
+                for (FuncIR nextFunc:func.callee){
+                    func.usedGlobalVar.addAll(nextFunc.usedGlobalVar);
+                    func.definedGlobalVar.addAll(nextFunc.definedGlobalVar);
+                }
+                if (oldUsedSize != func.usedGlobalVar.size() || oldDefinedSize != func.definedGlobalVar.size())
+                    change = true;
+            }
+        }
     }
 
     @Override

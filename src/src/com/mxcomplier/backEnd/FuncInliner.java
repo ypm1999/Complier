@@ -12,7 +12,7 @@ public class FuncInliner extends IRScanner{
 
     static private final int MAX_CALLEE_INST_NUM = 1 << 9;
     static private final int MAX_CALLER_INST_NUM = 1 << 12;
-    static private final int MAX_INLINE_RAND = 8;
+    static private final int MAX_INLINE_RAND = 1;
 
     private class FuncInfo{
         int instNum = 0;
@@ -51,6 +51,9 @@ public class FuncInliner extends IRScanner{
         newfunc.entryBB = bbRenameMap.get(oldFunc.entryBB);
         newfunc.leaveBB = bbRenameMap.get(oldFunc.leaveBB);
         newfunc.usedGlobalVar = oldFunc.usedGlobalVar;
+        newfunc.definedGlobalVar = oldFunc.definedGlobalVar;
+        newfunc.selfUsedGlobalVar = oldFunc.selfUsedGlobalVar;
+        newfunc.selfDefinedGlobalVar = oldFunc.selfDefinedGlobalVar;
 
         for (BasicBlockIR oldBB : oldFunc.getBBList()){
             BasicBlockIR newBB = bbRenameMap.get(oldBB);
@@ -90,6 +93,8 @@ public class FuncInliner extends IRScanner{
                             CallInstIR call = (CallInstIR) inst;
                             FuncInfo info = funcInfoMap.getOrDefault(call.getFunc(), null);
                             if (info == null || info.instNum > MAX_CALLEE_INST_NUM)
+                                continue;
+                            if (call.getFunc().getName().equals("origin"))
                                 continue;
 
                             if (func == call.getFunc()){
@@ -181,8 +186,15 @@ public class FuncInliner extends IRScanner{
             }
         }
 
-        caller.updateCallee();
-        caller.usedGlobalVar.addAll(callee.usedGlobalVar);
+        if (callee.getType() != FuncIR.Type.LIBRARY) {
+            caller.updateCallee();
+            if (callee != caller) {
+                caller.usedGlobalVar.addAll(callee.usedGlobalVar);
+//                caller.definedGlobalVar.addAll(callee.definedGlobalVar);
+//                caller.selfUsedGlobalVar.addAll(callee.selfUsedGlobalVar);
+//                caller.selfDefinedGlobalVar.addAll(callee.selfDefinedGlobalVar);
+            }
+        }
 
         return newLeaveBB;
     }

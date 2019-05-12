@@ -23,8 +23,8 @@ public class FuncIR {
     public VirtualRegisterIR returnValue = null;
     public BasicBlockIR entryBB, leaveBB;
     public HashSet<FuncIR> callee = new HashSet<>(), caller = new HashSet<>();
-    public HashSet<VirtualRegisterIR> usedGlobalVar = new HashSet<>(), selfUsedGlobalVar;
-    public HashSet<VirtualRegisterIR> definedGlobalVar, selfDefinedGlobalVar;
+    public HashSet<VirtualRegisterIR> usedGlobalVar = new HashSet<>(), selfUsedGlobalVar = new HashSet<>();
+    public HashSet<VirtualRegisterIR> definedGlobalVar = new HashSet<>(), selfDefinedGlobalVar = new HashSet<>();
     private HashSet<PhysicalRegisterIR> definedPhyRegs = null, usedPhyRegs = null;
 
     private List<BasicBlockIR> BBList = new ArrayList<>();

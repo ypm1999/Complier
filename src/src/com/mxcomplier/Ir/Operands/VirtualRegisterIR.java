@@ -23,6 +23,7 @@ public class VirtualRegisterIR extends RegisterIR {
         this.tempVar = other.tempVar;
         this.memory = other.memory;
         this.phyReg = other.phyReg;
+        this.alais = other.alais;
     }
 
     public VirtualRegisterIR(String label, PhysicalRegisterIR phy){
@@ -51,9 +52,16 @@ public class VirtualRegisterIR extends RegisterIR {
         return phyReg;
     }
 
+
+
     @Override
     public VirtualRegisterIR copy() {
         return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 
     @Override

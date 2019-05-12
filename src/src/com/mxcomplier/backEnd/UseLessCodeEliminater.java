@@ -17,6 +17,7 @@ public class UseLessCodeEliminater extends IRScanner {
 
     private void runFunc(FuncIR func){
 
+
     }
 
 }

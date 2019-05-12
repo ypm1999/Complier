@@ -47,11 +47,11 @@ public class Main {
 
             new BlockMerger(true).visit(irBuilder.root);
             new LocalValueNumbering().visit(irBuilder.root);
+
+            new FuncInliner().run(irBuilder);
             if (Config.DEBUG) {
                 new IRPrinter(irBuilder).visit(irBuilder.root);
             }
-            new FuncInliner().run(irBuilder);
-
             new IRfixer().visit((irBuilder.root));
             new BlockMerger(true).visit(irBuilder.root);
 

@@ -148,8 +148,9 @@ public class IRfixer extends IRScanner {
             case DIV:
             case MOD:
                 node.prepend(new MoveInstIR(RegisterSet.Vrax, node.dest));
-                node.prepend(new MoveInstIR(RegisterSet.Vrbx, node.src));
+//                node.prepend(new BinaryInstIR(BinaryInstIR.Op.XOR, RegisterSet.Vrdx, RegisterSet.Vrdx));
                 node.prepend(new MoveInstIR(RegisterSet.Vrdx, ZERO));
+                node.prepend(new MoveInstIR(RegisterSet.Vrbx, node.src));
                 node.src = RegisterSet.Vrbx;
                 if (node.getOp() == BinaryInstIR.Op.MOD)
                     node.append(new MoveInstIR(node.dest, RegisterSet.Vrdx));

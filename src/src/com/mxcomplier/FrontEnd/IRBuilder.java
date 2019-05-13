@@ -723,8 +723,7 @@ public class IRBuilder extends ASTScanner {
     }
 
     private void doArithmeticBinaryExpr(BinaryExprNode node, ExprNode lhs, ExprNode rhs) {
-        lhs.accept(this);
-        rhs.accept(this);
+
         BinaryInstIR.Op op = BinaryInstIR.Op.ERROR;
         switch (node.getOp()) {
             case MUL:
@@ -760,7 +759,8 @@ public class IRBuilder extends ASTScanner {
             default:
                 assert false;
         }
-
+        lhs.accept(this);
+        rhs.accept(this);
         if (lhs.resultReg instanceof ImmediateIR && rhs.resultReg instanceof ImmediateIR) {
             long res = 0;
             long lvalue = ((ImmediateIR) lhs.resultReg).getValue();
@@ -811,14 +811,6 @@ public class IRBuilder extends ASTScanner {
                 res = (VirtualRegisterIR) lhs.resultReg;
             else
                 curBB.append(new MoveInstIR(res, lhs.resultReg));
-            if (rhs.resultReg instanceof ImmediateIR && !(lhs.resultReg instanceof ImmediateIR)){
-                ImmediateIR magic = new ImmediateIR(((long)1 << 32) / ((ImmediateIR) rhs.resultReg).getValue());
-                if (op == BinaryInstIR.Op.MOD)
-                curBB.append(new BinaryInstIR(BinaryInstIR.Op.MUL, res, magic));
-
-
-            }
-
             curBB.append(new BinaryInstIR(op, res, rhs.resultReg));
         }
         node.resultReg = res;

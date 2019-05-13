@@ -9,7 +9,6 @@ import com.mxcomplier.Ir.Instructions.MoveInstIR;
 import com.mxcomplier.Ir.Operands.*;
 import org.antlr.v4.runtime.misc.Pair;
 
-import javax.swing.text.html.ListView;
 import java.util.*;
 
 import static com.mxcomplier.Ir.RegisterSet.*;
@@ -34,7 +33,6 @@ public class GraphAllocator {
     private boolean conservative(VirtualRegisterIR u, VirtualRegisterIR v) {
         HashSet<VirtualRegisterIR> nodes = new HashSet<>(graph.getNeighbor(u));
         nodes.addAll(graph.getNeighbor(v));
-//        return nodes.size() < REGNUM;
         int cnt = 0;
         for (VirtualRegisterIR node : nodes)
             if (graph.getDegree(node) >= REGNUM)
@@ -69,7 +67,7 @@ public class GraphAllocator {
                     }
                 }
                 if (!graph.getNeighbor(u).contains(v) && conservative(u, v)) {
-                    System.err.println("merge " + u + " <-" + v);
+//                    System.err.println("merge " + u + " <-" + v);
                     v.alais = u;
                     renameMap.put(v, u);
                     HashSet<VirtualRegisterIR> tmp = new HashSet<>(graph.getNeighbor(v));
@@ -99,7 +97,7 @@ public class GraphAllocator {
         spilledVregs = new ArrayList<>();
         finishedStack = new LinkedList<>();
 
-//        doMerge(func);
+        doMerge(func);
 
         originGraph = new LivenessAnalyzer().buildGraph(func, null);
         graph = new Graph(originGraph);

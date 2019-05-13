@@ -15,12 +15,6 @@
     <list default="true" id="cd63b658-0c42-46ab-a1cc-8ecd93e4cf27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/src/testcase.mx" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/src/testcase.mx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRfixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRfixer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/testcase.mx" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/testcase.mx" afterDir="false" />
     </list>
     <list id="ad6cd9c6-90e9-4b03-8c24-cc54fb5061fa" name="no Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../complier_commit/build.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../complier_commit/build.bash" afterDir="false" />
@@ -135,8 +129,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+                <state relative-caret-position="357">
+                  <caret line="112" column="9" lean-forward="true" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -147,7 +141,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-289">
+                <state relative-caret-position="-221">
                   <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -160,7 +154,7 @@
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRfixer.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="272">
-                  <caret line="150" column="75" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
+                  <caret line="150" column="73" selection-start-line="150" selection-start-column="73" selection-end-line="150" selection-end-column="73" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -265,8 +259,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="815" column="46" lean-forward="true" selection-start-line="815" selection-start-column="46" selection-end-line="815" selection-end-column="46" />
+                <state relative-caret-position="85">
+                  <caret line="802" column="19" lean-forward="true" selection-start-line="802" selection-start-column="19" selection-end-line="802" selection-end-column="19" />
                   <folding>
                     <element signature="e#36304#36305#0" expanded="true" />
                     <element signature="e#36351#36352#0" expanded="true" />
@@ -360,7 +354,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="a92e41ae9053ff044547d1cb3ca7d2611c423af9" />
+        <entry key="$PROJECT_DIR$/.." value="f0adeb8b4a4ec3d7083eeba85b8b2ff25501214b" />
       </map>
     </option>
   </component>
@@ -599,6 +593,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -1005,7 +1000,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="711449000" />
+    <option name="totallyTimeSpent" value="711455000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1018,7 +1013,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5010799" side_tool="true" weight="0.1128943" />
       <window_info id="Designer" order="1" />
@@ -1787,7 +1781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/LivenessAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
+        <state relative-caret-position="-221">
           <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1797,8 +1791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/FrontEnd/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="815" column="46" lean-forward="true" selection-start-line="815" selection-start-column="46" selection-end-line="815" selection-end-column="46" />
+        <state relative-caret-position="85">
+          <caret line="802" column="19" lean-forward="true" selection-start-line="802" selection-start-column="19" selection-end-line="802" selection-end-column="19" />
           <folding>
             <element signature="e#36304#36305#0" expanded="true" />
             <element signature="e#36351#36352#0" expanded="true" />
@@ -1823,7 +1817,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/IRfixer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="150" column="75" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
+          <caret line="150" column="73" selection-start-line="150" selection-start-column="73" selection-end-line="150" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1832,8 +1826,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mxcomplier/backEnd/GraphAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="357">
+          <caret line="112" column="9" lean-forward="true" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

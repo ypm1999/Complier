@@ -48,22 +48,20 @@ public class Main {
             new BlockMerger(true).visit(irBuilder.root);
             new LocalValueNumbering().visit(irBuilder.root);
             new UseLessCodeEliminater(irBuilder).run();
-
-//            new FuncInliner().run(irBuilder);
-//            System.err.println("inline Finished");
+            new FuncInliner().run(irBuilder);
 
             new IRfixer().visit((irBuilder.root));
-//            if (Config.DEBUG) {
-//                new IRPrinter(irBuilder).visit(irBuilder.root);
-//            }
+            if (Config.DEBUG) {
+                new IRPrinter(irBuilder).visit(irBuilder.root);
+            }
             new BlockMerger(true).visit(irBuilder.root);
-
-//            System.err.println("Allocating");
             new GraphAllocator().run(irBuilder);
             new StackFrameAllocater().visit(irBuilder.root);
             new BlockMerger(false).visit(irBuilder.root);
-//            System.err.println("Printing");
-            new NasmPrinter(irBuilder).visit(irBuilder.root);
+            new NasmPrinter(irBuilder, System.out).visit(irBuilder.root);
+            if (!Config.DEBUG) {
+                new NasmPrinter(irBuilder, System.err).visit(irBuilder.root);
+            }
 
         } catch (ComplierError e) {
             System.err.println("Complier Failed!");

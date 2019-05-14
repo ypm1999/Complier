@@ -803,7 +803,7 @@ public class IRBuilder extends ASTScanner {
             return;
         }
         VirtualRegisterIR res = new VirtualRegisterIR("airthmeticBinary");
-        res.tempVar = true;
+//        res.tempVar = true;
         if (op == BinaryInstIR.Op.ADD && lhs.getType() instanceof StringType) {
             doFuncCall(library_stradd, Arrays.asList(lhs.resultReg, rhs.resultReg), res);
         } else {
@@ -846,6 +846,10 @@ public class IRBuilder extends ASTScanner {
                         finished = false;
 
                 }
+            }
+            if (!finished && op == BinaryInstIR.Op.ADD && lhs.resultReg == rhs.resultReg){
+                finished = true;
+                curBB.append(new BinaryInstIR(BinaryInstIR.Op.SHL, res, ONE));
             }
             if (!finished)
                 curBB.append(new BinaryInstIR(op, res, rhs.resultReg));

@@ -1,0 +1,2 @@
+/usr/lib/jvm/java-11-openjdk-amd64/bin/java
+/usr/lib/jvm/jdk1.8.0_121/bin/java

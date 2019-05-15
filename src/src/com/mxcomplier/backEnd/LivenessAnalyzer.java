@@ -16,11 +16,11 @@ import java.util.Map;
 
 public class LivenessAnalyzer {
 
+    public boolean IRlevel;
     private HashMap<BasicBlockIR, HashSet<VirtualRegisterIR>> liveOut = new HashMap<>();
     private HashMap<BasicBlockIR, HashSet<VirtualRegisterIR>> liveIn = new HashMap<>();
     private HashMap<BasicBlockIR, HashSet<VirtualRegisterIR>> usedVregs = new HashMap<>();
     private HashMap<BasicBlockIR, HashSet<VirtualRegisterIR>> definedVregs = new HashMap<>();
-    public boolean IRlevel;
 
     LivenessAnalyzer() {
         IRlevel = false;
@@ -39,7 +39,7 @@ public class LivenessAnalyzer {
     }
 
     //get usedVregs & definedVregs
-    public void initUseAndDef(FuncIR func){
+    public void initUseAndDef(FuncIR func) {
         usedVregs.clear();
         definedVregs.clear();
         for (BasicBlockIR bb : func.getBBList()) {
@@ -116,11 +116,11 @@ public class LivenessAnalyzer {
         }
     }
 
-    void liveOutRename(HashMap<VirtualRegisterIR, VirtualRegisterIR> renameMap){
-        for (Map.Entry<BasicBlockIR, HashSet<VirtualRegisterIR>> entry: liveOut.entrySet()){
+    void liveOutRename(HashMap<VirtualRegisterIR, VirtualRegisterIR> renameMap) {
+        for (Map.Entry<BasicBlockIR, HashSet<VirtualRegisterIR>> entry : liveOut.entrySet()) {
             HashSet<VirtualRegisterIR> livenow = entry.getValue();
-            for (Map.Entry<VirtualRegisterIR, VirtualRegisterIR> rename: renameMap.entrySet()){
-                if (livenow.contains(rename.getKey())){
+            for (Map.Entry<VirtualRegisterIR, VirtualRegisterIR> rename : renameMap.entrySet()) {
+                if (livenow.contains(rename.getKey())) {
                     livenow.remove(rename.getKey());
                     livenow.add(rename.getValue());
                 }

@@ -16,32 +16,6 @@ import java.util.HashSet;
 public class LocalValueNumbering extends IRScanner {
 
 
-    class Pair {
-        BinaryInstIR.Op op;
-        Integer lhs, rhs;
-
-        Pair(BinaryInstIR.Op op, Integer lhs, Integer rhs) {
-            this.op = op;
-            this.lhs = lhs;
-            this.rhs = rhs;
-        }
-
-        @Override
-        public int hashCode() {
-            return op.ordinal() * 100000000 + lhs * 10000 + rhs;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof Pair) {
-                Pair other = (Pair) obj;
-                return op == other.op && lhs.equals(other.lhs) && rhs.equals(other.rhs);
-
-            }
-            return false;
-        }
-    }
-
     private int valueCountor;
     private HashMap<VirtualRegisterIR, Integer> registerValueMap = new HashMap<>();
     private HashMap<Pair, Integer> pairValueMap = new HashMap<>();
@@ -111,7 +85,6 @@ public class LocalValueNumbering extends IRScanner {
         addRegisterValue(vreg, newVal);
     }
 
-
     @Override
     public void visit(ProgramIR node) {
         for (FuncIR func : node.getFuncs())
@@ -140,7 +113,6 @@ public class LocalValueNumbering extends IRScanner {
             inst = next;
         }
     }
-
 
     @Override
     public void visit(CallInstIR node) {
@@ -284,5 +256,31 @@ public class LocalValueNumbering extends IRScanner {
     public void visit(LeaInstIR node) {
         if (node.getDest() instanceof VirtualRegisterIR)
             changeRegisterValue((VirtualRegisterIR) node.getDest(), ++valueCountor);
+    }
+
+    class Pair {
+        BinaryInstIR.Op op;
+        Integer lhs, rhs;
+
+        Pair(BinaryInstIR.Op op, Integer lhs, Integer rhs) {
+            this.op = op;
+            this.lhs = lhs;
+            this.rhs = rhs;
+        }
+
+        @Override
+        public int hashCode() {
+            return op.ordinal() * 100000000 + lhs * 10000 + rhs;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof Pair) {
+                Pair other = (Pair) obj;
+                return op == other.op && lhs.equals(other.lhs) && rhs.equals(other.rhs);
+
+            }
+            return false;
+        }
     }
 }

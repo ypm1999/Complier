@@ -6,21 +6,17 @@ import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.*;
 import com.mxcomplier.Ir.Operands.VirtualRegisterIR;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FuncInliner extends IRScanner {
 
     static private final int MAX_CALLEE_INST_NUM = 1 << 10;
     static private final int MAX_CALLER_INST_NUM = 1 << 14;
     static private final int MAX_INLINE_RAND = 16;
-
-    private class FuncInfo {
-        int instNum = 0;
-        FuncIR funcCopy = null;
-    }
-
     private HashMap<FuncIR, FuncInfo> funcInfoMap = new HashMap<>();
-//    private HashMap<FuncIR, FuncIR> funcBuckupMap = new HashMap<>();
 
     private FuncIR doBuckup(FuncIR oldFunc) {
         Map<BasicBlockIR, BasicBlockIR> bbRenameMap = new HashMap<>();
@@ -69,6 +65,7 @@ public class FuncInliner extends IRScanner {
 
         return newfunc;
     }
+//    private HashMap<FuncIR, FuncIR> funcBuckupMap = new HashMap<>();
 
     public void run(IRBuilder ir) {
         List<FuncIR> funcList = ir.root.getFuncs();
@@ -188,5 +185,10 @@ public class FuncInliner extends IRScanner {
         }
 
         return newLeaveBB;
+    }
+
+    private class FuncInfo {
+        int instNum = 0;
+        FuncIR funcCopy = null;
     }
 }

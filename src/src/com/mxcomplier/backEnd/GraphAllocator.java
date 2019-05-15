@@ -7,7 +7,6 @@ import com.mxcomplier.Ir.FuncIR;
 import com.mxcomplier.Ir.Instructions.InstIR;
 import com.mxcomplier.Ir.Instructions.MoveInstIR;
 import com.mxcomplier.Ir.Operands.*;
-import com.mxcomplier.Ir.RegisterSet;
 import org.antlr.v4.runtime.misc.Pair;
 
 import java.util.*;
@@ -25,6 +24,7 @@ public class GraphAllocator {
     private HashSet<VirtualRegisterIR> simplifyTODOList, spillTODOList;
     private HashMap<VirtualRegisterIR, PhysicalRegisterIR> colorMap;
     private LinkedList<PhysicalRegisterIR> allPhyreg;
+    private IRBuilder irBuilder;
 
     private VirtualRegisterIR getAlias(VirtualRegisterIR x) {
         if (x.alais == x)
@@ -48,7 +48,7 @@ public class GraphAllocator {
         livenessAnalyzer.buildLiveOut(func);
 
         boolean changed = true;
-        while(changed) {
+        while (changed) {
             changed = false;
             moveList.clear();
             graph = livenessAnalyzer.buildGraph(func, moveList);
@@ -85,14 +85,12 @@ public class GraphAllocator {
             for (BasicBlockIR bb : func.getBBList()) {
                 for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
                     inst.replaceVreg(renameMap);
-                    if (inst instanceof MoveInstIR && ((MoveInstIR) inst).src == ((MoveInstIR) inst).dest){
+                    if (inst instanceof MoveInstIR && ((MoveInstIR) inst).src == ((MoveInstIR) inst).dest) {
                         inst = inst.prev;
                         inst.next.remove();
                     }
                 }
             }
-
-//            livenessAnalyzer.liveOutRename(renameMap);
         }
     }
 
@@ -194,15 +192,13 @@ public class GraphAllocator {
         }
     }
 
-    private void rebuildSpilledList(){
+    private void rebuildSpilledList() {
         if (spilledVregs.size() < 3)
             return;
         int n = spilledVregs.size() - spilledVregs.size() / 3;
-        while(--n > 0)
+        while (--n > 0)
             spilledVregs.remove(0);
     }
-
-    private IRBuilder irBuilder;
 
     private void rewriteFunc(FuncIR func) {
         rebuildSpilledList();

@@ -1,16 +1,11 @@
 package com.mxcomplier.backEnd;
 
-import com.mxcomplier.Config;
 import com.mxcomplier.Ir.BasicBlockIR;
 import com.mxcomplier.Ir.FuncIR;
-import com.mxcomplier.Ir.Instructions.*;
-import com.mxcomplier.Ir.Operands.*;
+import com.mxcomplier.Ir.Instructions.CJumpInstIR;
+import com.mxcomplier.Ir.Instructions.InstIR;
+import com.mxcomplier.Ir.Instructions.JumpInstIR;
 import com.mxcomplier.Ir.ProgramIR;
-import com.mxcomplier.Ir.RegisterSet;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
 
 public class Cjumpfixer extends IRScanner {
 

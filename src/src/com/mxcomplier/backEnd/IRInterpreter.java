@@ -15,11 +15,13 @@ import java.util.Scanner;
 import static com.mxcomplier.Ir.Operands.VirtualRegisterIR.getVregId;
 
 public class IRInterpreter {
+    private static int MemorySize = (1 << 20) * 256;
+    private static int pt = 0;
     private FuncIR main, init;
     private HashMap<StaticDataIR, Integer> staticDataMap = new HashMap<>();
     private long[] regSet;
     private char[] memory;
-    private static int MemorySize = (1 << 20) * 256;
+    private Scanner sc = new Scanner(System.in);
 
     public IRInterpreter(IRBuilder ir) {
         this.main = ir.funcMap.get("main");
@@ -68,8 +70,6 @@ public class IRInterpreter {
         assert false;
         return 0;
     }
-
-    private Scanner sc = new Scanner(System.in);
 
     private long runLibFunc(FuncIR func, List<OperandIR> args) {
         switch (func.getName()) {
@@ -127,7 +127,6 @@ public class IRInterpreter {
         }
         return 0;
     }
-
 
     private BasicBlockIR runInst(InstIR instruction) {
 //        System.err.println(instruction.toString());
@@ -330,8 +329,6 @@ public class IRInterpreter {
         for (int i = 0; i < Config.getREGSIZE(); i++, src >>= 8)
             memory[addr++] = (char) src;
     }
-
-    private static int pt = 0;
 
     private long malloc(long size) {
         pt += size;

@@ -4,17 +4,15 @@ import com.mxcomplier.Ir.IRVisitor;
 
 public class VirtualRegisterIR extends RegisterIR {
     static private int vRegId = 0;
-
-    private int id;
     public MemoryIR memory = null;
     public boolean tempVar = false;
-    private PhysicalRegisterIR phyReg = null;
     public VirtualRegisterIR alais = null;
+    private int id;
+    private PhysicalRegisterIR phyReg = null;
 
     public VirtualRegisterIR(String label) {
         this.id = vRegId++;
         this.lable = label;
-//        this.memory = new StackSoltIR(lable + "_solt");
     }
 
     public VirtualRegisterIR(VirtualRegisterIR other) {
@@ -32,26 +30,25 @@ public class VirtualRegisterIR extends RegisterIR {
         this.phyReg = phy;
     }
 
-    public int getId() {
-        return id;
-    }
-
     static public int getVregId() {
         return vRegId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }
 
-    public void setPhyReg(PhysicalRegisterIR phyReg) {
-        this.phyReg = phyReg;
-    }
-
     public PhysicalRegisterIR getPhyReg() {
         return phyReg;
     }
 
+    public void setPhyReg(PhysicalRegisterIR phyReg) {
+        this.phyReg = phyReg;
+    }
 
     @Override
     public VirtualRegisterIR copy() {

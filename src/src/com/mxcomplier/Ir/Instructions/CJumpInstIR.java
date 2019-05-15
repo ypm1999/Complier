@@ -10,14 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 public class CJumpInstIR extends BranchInstIR {
-    public enum Op {
-        L, G, LE, GE, E, NE, ERROR
-    }
-
-    private Op op;
     public OperandIR lhs, rhs;
+    private Op op;
     private BasicBlockIR trueBB, falseBB;
-
     public CJumpInstIR(Op op, OperandIR lhs, OperandIR rhs, BasicBlockIR trueBB, BasicBlockIR falseBB) {
         this.op = op;
         this.lhs = lhs;
@@ -50,7 +45,7 @@ public class CJumpInstIR extends BranchInstIR {
         falseBB = null;
     }
 
-    public void reverseOp(){
+    public void reverseOp() {
         BasicBlockIR tmp = trueBB;
         trueBB = falseBB;
         falseBB = tmp;
@@ -73,7 +68,8 @@ public class CJumpInstIR extends BranchInstIR {
             case NE:
                 op = Op.E;
                 break;
-            default: throw new IRError("OP in Cjump");
+            default:
+                throw new IRError("OP in Cjump");
         }
     }
 
@@ -136,5 +132,9 @@ public class CJumpInstIR extends BranchInstIR {
 
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public enum Op {
+        L, G, LE, GE, E, NE, ERROR
     }
 }

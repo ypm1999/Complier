@@ -3,7 +3,6 @@ package com.mxcomplier;
 import com.mxcomplier.AST.ProgramNode;
 import com.mxcomplier.Error.ComplierError;
 import com.mxcomplier.FrontEnd.*;
-import com.mxcomplier.Ir.Instructions.CJumpInstIR;
 import com.mxcomplier.LaxerParser.MxStarLexer;
 import com.mxcomplier.LaxerParser.MxStarParser;
 import com.mxcomplier.backEnd.*;
@@ -68,7 +67,6 @@ public class Main {
             new Cjumpfixer().visit(irBuilder.root);
             new BlockCopier(false).visit(irBuilder.root);
             new NasmPrinter(irBuilder, System.out).visit(irBuilder.root);
-
         } catch (ComplierError e) {
             System.err.println("Complier Failed!");
             System.exit(-1);

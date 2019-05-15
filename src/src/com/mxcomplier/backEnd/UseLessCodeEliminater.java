@@ -74,7 +74,7 @@ public class UseLessCodeEliminater extends IRScanner {
                 if (inst instanceof MoveInstIR && inst.next instanceof BinaryInstIR) {
                     MoveInstIR move = (MoveInstIR) inst;
                     BinaryInstIR binary = (BinaryInstIR) inst.next;
-                    if (binary.src ==  move.dest
+                    if (binary.src == move.dest
                             && binary.dest instanceof VirtualRegisterIR
                             && move.dest instanceof VirtualRegisterIR
                             && !liveNow.contains(move.dest))
@@ -89,7 +89,7 @@ public class UseLessCodeEliminater extends IRScanner {
                                 break;
                         }
                 }
-                if (remove){
+                if (remove) {
                     inst = inst.next;
                     inst.prev.remove();
                 } else {

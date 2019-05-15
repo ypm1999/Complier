@@ -16,23 +16,17 @@ import java.util.Set;
 public class FuncIR {
 
     static private int ID = 0;
-    private int id;
-
-    public enum Type {
-        EXTRA, LIBRARY, USER
-    }
-
-    private String name;
-    private Type type;
+    static private HashSet<BasicBlockIR> accessed = new HashSet<>();
     public VirtualRegisterIR returnValue = null;
     public BasicBlockIR entryBB, leaveBB;
     public HashSet<FuncIR> callee = new HashSet<>(), caller = new HashSet<>();
     public HashSet<VirtualRegisterIR> usedGlobalVar = new HashSet<>(), selfUsedGlobalVar = new HashSet<>();
     public HashSet<VirtualRegisterIR> definedGlobalVar = new HashSet<>(), selfDefinedGlobalVar = new HashSet<>();
-    private HashSet<PhysicalRegisterIR> definedPhyRegs = null, usedPhyRegs = null;
-
     public Set<EmptyForRemover.ForBBs> forSet = new HashSet<>();
-
+    private int id;
+    private String name;
+    private Type type;
+    private HashSet<PhysicalRegisterIR> definedPhyRegs = null, usedPhyRegs = null;
     private List<BasicBlockIR> BBList = new ArrayList<>();
     private List<BasicBlockIR> orderedBBList, reversedOrderedBBList;
     private List<VirtualRegisterIR> parameters = new ArrayList<>();
@@ -120,9 +114,6 @@ public class FuncIR {
         selfUsedGlobalVar = new HashSet<>(usedGlobalVar);
         selfDefinedGlobalVar = new HashSet<>(definedGlobalVar);
     }
-
-
-    static private HashSet<BasicBlockIR> accessed = new HashSet<>();
 
     private void reverseOrderDfsBB(BasicBlockIR now, BasicBlockIR fa) {
         if (fa != null) {
@@ -264,5 +255,9 @@ public class FuncIR {
 
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public enum Type {
+        EXTRA, LIBRARY, USER
     }
 }

@@ -11,7 +11,9 @@ import com.mxcomplier.Ir.Operands.StaticDataIR;
 import com.mxcomplier.Ir.ProgramIR;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class NasmPrinter extends IRScanner {
     private String indentation = "";
@@ -69,7 +71,7 @@ public class NasmPrinter extends IRScanner {
         println("section .text\n");
     }
 
-    private void setOrder(FuncIR func){
+    private void setOrder(FuncIR func) {
         func.initReverseOrderBBList();
         LinkedList<BasicBlockIR> BBList = new LinkedList<>();
         List<BasicBlockIR> oldBBList = new ArrayList<>(func.getBBList());
@@ -78,7 +80,7 @@ public class NasmPrinter extends IRScanner {
 
         BBList.add(func.entryBB);
         workList.add(func.entryBB);
-        for (BasicBlockIR bb: oldBBList){
+        for (BasicBlockIR bb : oldBBList) {
             for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
                 if (inst instanceof CJumpInstIR) {
                     CJumpInstIR cJumpInstIR = (CJumpInstIR) inst;
@@ -97,7 +99,7 @@ public class NasmPrinter extends IRScanner {
         }
 
 
-        while(!workList.isEmpty()) {
+        while (!workList.isEmpty()) {
             BasicBlockIR bb = workList.iterator().next();
             workList.remove(bb);
             if (!(bb.getTail().prev instanceof JumpInstIR))
@@ -106,12 +108,11 @@ public class NasmPrinter extends IRScanner {
             if (BBList.contains(nextBB))
                 continue;
             bb.getTail().prev.remove();
-            if (nextBB.fronters.size() == 1){
+            if (nextBB.fronters.size() == 1) {
                 bb.merge(nextBB);
                 if (nextBB != func.leaveBB && !workList.contains(bb))
                     workList.add(bb);
-            }
-            else{
+            } else {
                 BBList.add(BBList.indexOf(bb) + 1, nextBB);
                 if (nextBB != func.leaveBB && !workList.contains(nextBB))
                     workList.add(nextBB);

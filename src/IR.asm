@@ -1,415 +1,476 @@
-<random>
-	<_BB3_random0_entry_random>
-		mov vReg14_airthmeticBinary vReg12_seed
-		mod vReg14_airthmeticBinary vReg10_Q
-		mov vReg15_airthmeticBinary vReg8_A
-		mul vReg15_airthmeticBinary vReg14_airthmeticBinary
-		mov vReg16_airthmeticBinary vReg12_seed
-		div vReg16_airthmeticBinary vReg10_Q
-		mov vReg17_airthmeticBinary vReg11_R
-		mul vReg17_airthmeticBinary vReg16_airthmeticBinary
-		sub vReg15_airthmeticBinary vReg17_airthmeticBinary
-		mov vReg13_tempseed vReg15_airthmeticBinary
-		cjmp if(vReg13_tempseed GE 0) goto _BB4_random1_Ifthen else _BB6_random3_Ifelse
-	<_BB4_random1_Ifthen>
-		mov vReg12_seed vReg13_tempseed
-		jmp _BB5_random2_Ifafter
-	<_BB5_random2_Ifafter>
-		mov vReg0_returnValue_of_random vReg12_seed
-		jmp _BB7_random4_leave_random
-	<_BB6_random3_Ifelse>
-		mov vReg19_airthmeticBinary vReg13_tempseed
-		add vReg19_airthmeticBinary vReg9_M
-		mov vReg12_seed vReg19_airthmeticBinary
-		jmp _BB5_random2_Ifafter
-	<_BB7_random4_leave_random>
-		leave
-		ret
-
-********************************************************************************
-
-<initialize>
-	<_BB8_initialize0_entry_initialize>
-		mov vReg12_seed vReg20_initialize_arg_val
-		jmp _BB9_initialize1_leave_initialize
-	<_BB9_initialize1_leave_initialize>
-		leave
-		ret
-
-********************************************************************************
-
-<swap>
-	<_BB10_swap0_entry_swap>
-		mov vReg23_temp qword [vReg7_a + vReg21_swap_arg_x*8]
-		mov qword [vReg7_a + vReg21_swap_arg_x*8] qword [vReg7_a + vReg22_swap_arg_y*8]
-		mov qword [vReg7_a + vReg22_swap_arg_y*8] vReg23_temp
-		jmp _BB11_swap1_leave_swap
-	<_BB11_swap1_leave_swap>
-		leave
-		ret
-
-********************************************************************************
-
-<pd>
-	<_BB12_pd0_entry_pd>
-		jmp _BB13_pd1_forCondition
-	<_BB13_pd1_forCondition>
-		cjmp if(vReg5_h LE vReg24_pd_arg_x) goto _BB15_pd3_forBody else _BB16_pd4_forAfter
-	<_BB14_pd2_forexpr3>
-		inc vReg5_h
-		jmp _BB13_pd1_forCondition
-	<_BB15_pd3_forBody>
-		mov vReg25_airthmeticBinary vReg5_h
-		inc vReg25_airthmeticBinary
-		mov vReg26_airthmeticBinary vReg5_h
-		mul vReg26_airthmeticBinary vReg25_airthmeticBinary
-		shr vReg26_airthmeticBinary 1
-		cjmp if(vReg24_pd_arg_x E vReg26_airthmeticBinary) goto _BB17_pd5_Ifthen else _BB18_pd6_Ifafter
-	<_BB16_pd4_forAfter>
-		jmp _BB23_pd11_assignFalse
-	<_BB17_pd5_Ifthen>
-		jmp _BB19_pd7_assignTrue
-	<_BB18_pd6_Ifafter>
-		jmp _BB14_pd2_forexpr3
-	<_BB19_pd7_assignTrue>
-		mov vReg1_returnValue_of_pd 1
-		jmp _BB21_pd9_assignafter
-	<_BB20_pd8_assignFalse>
-		mov vReg1_returnValue_of_pd 0
-		jmp _BB21_pd9_assignafter
-	<_BB21_pd9_assignafter>
-		jmp _BB25_pd13_leave_pd
-	<_BB22_pd10_assignTrue>
-		mov vReg1_returnValue_of_pd 1
-		jmp _BB24_pd12_assignafter
-	<_BB23_pd11_assignFalse>
-		mov vReg1_returnValue_of_pd 0
-		jmp _BB24_pd12_assignafter
-	<_BB24_pd12_assignafter>
-		jmp _BB25_pd13_leave_pd
-	<_BB25_pd13_leave_pd>
-		leave
-		ret
-
-********************************************************************************
-
-<show>
-	<_BB26_show0_entry_show>
+/usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/java -javaagent:/home/sjtu-ypm/Downloads/ideaIU-2018.3.5/lib/idea_rt.jar=42637:/home/sjtu-ypm/Downloads/ideaIU-2018.3.5/bin -Dfile.encoding=UTF-8 -classpath /home/sjtu-ypm/complier/src/out/production/src:/home/sjtu-ypm/complier/src/lib/antlr-4.7.2-complete.jar com.mxcomplier.Main -DEBUG
+_BB35_main18_Ifthen <- _BB32_main16_forexpr3
+<main>
+	<_BB5_main0_entry_main>
+		call getInt ()
+		mov vReg9_returnValue_of_getInt rax
+		mov vReg8_n vReg9_returnValue_of_getInt
+		mov vReg12_new_size vReg8_n
+		inc vReg12_new_size
+		shl vReg12_new_size 3
+		mov rdi vReg12_new_size
+		call malloc (vReg12_new_size)
+		mov vReg11_arrayNew rax
+		mov qword [vReg11_arrayNew] vReg8_n
+		add vReg11_arrayNew 8
+		mov vReg12_new_size vReg8_n
+		mov vReg13_new_cnt 0
+		cjmp if(vReg12_new_size E 0) goto _BB8_main2_newWhileAfter else _BB7_main1_newWhileBody
+		jmp _BB7_main1_newWhileBody
+	<_BB7_main1_newWhileBody>
+		mov vReg15_new_size vReg8_n
+		inc vReg15_new_size
+		shl vReg15_new_size 3
+		mov rdi vReg15_new_size
+		call malloc (vReg15_new_size)
+		mov vReg14_arrayNew rax
+		mov qword [vReg14_arrayNew] vReg8_n
+		add vReg14_arrayNew 8
+		mov qword [vReg11_arrayNew + vReg13_new_cnt*8] vReg14_arrayNew
+		inc vReg13_new_cnt
+		cjmp if(vReg13_new_cnt NE vReg12_new_size) goto _BB7_main1_newWhileBody else _BB8_main2_newWhileAfter
+		jmp _BB8_main2_newWhileAfter
+	<_BB8_main2_newWhileAfter>
+		mov vReg10_f vReg11_arrayNew
+		mov vReg18_new_size vReg8_n
+		inc vReg18_new_size
+		shl vReg18_new_size 3
+		mov rdi vReg18_new_size
+		call malloc (vReg18_new_size)
+		mov vReg17_arrayNew rax
+		mov qword [vReg17_arrayNew] vReg8_n
+		add vReg17_arrayNew 8
+		mov vReg18_new_size vReg8_n
+		mov vReg19_new_cnt 0
+		cjmp if(vReg18_new_size E 0) goto _BB11_main4_newWhileAfter else _BB10_main3_newWhileBody
+		jmp _BB10_main3_newWhileBody
+	<_BB10_main3_newWhileBody>
+		mov vReg21_new_size vReg8_n
+		inc vReg21_new_size
+		shl vReg21_new_size 3
+		mov rdi vReg21_new_size
+		call malloc (vReg21_new_size)
+		mov vReg20_arrayNew rax
+		mov qword [vReg20_arrayNew] vReg8_n
+		add vReg20_arrayNew 8
+		mov qword [vReg17_arrayNew + vReg19_new_cnt*8] vReg20_arrayNew
+		inc vReg19_new_cnt
+		cjmp if(vReg19_new_cnt NE vReg18_new_size) goto _BB10_main3_newWhileBody else _BB11_main4_newWhileAfter
+		jmp _BB11_main4_newWhileAfter
+	<_BB11_main4_newWhileAfter>
+		mov vReg16_g vReg17_arrayNew
+		mov vReg24_new_size vReg8_n
+		inc vReg24_new_size
+		shl vReg24_new_size 3
+		mov rdi vReg24_new_size
+		call malloc (vReg24_new_size)
+		mov vReg23_arrayNew rax
+		mov qword [vReg23_arrayNew] vReg8_n
+		add vReg23_arrayNew 8
+		mov vReg24_new_size vReg8_n
+		mov vReg25_new_cnt 0
+		cjmp if(vReg24_new_size NE 0) goto _BB13_main5_newWhileBody else _BB14_main6_newWhileAfter
+		jmp _BB14_main6_newWhileAfter
+	<_BB13_main5_newWhileBody>
+		mov vReg27_new_size vReg8_n
+		inc vReg27_new_size
+		shl vReg27_new_size 3
+		mov rdi vReg27_new_size
+		call malloc (vReg27_new_size)
+		mov vReg26_arrayNew rax
+		mov qword [vReg26_arrayNew] vReg8_n
+		add vReg26_arrayNew 8
+		mov qword [vReg23_arrayNew + vReg25_new_cnt*8] vReg26_arrayNew
+		inc vReg25_new_cnt
+		cjmp if(vReg25_new_cnt NE vReg24_new_size) goto _BB13_main5_newWhileBody else _BB14_main6_newWhileAfter
+		jmp _BB14_main6_newWhileAfter
+	<_BB14_main6_newWhileAfter>
+		mov vReg22_g_useless vReg23_arrayNew
 		mov vReg28_i 0
-		jmp _BB27_show1_forCondition
-	<_BB27_show1_forCondition>
-		cjmp if(vReg28_i L vReg6_now) goto _BB29_show3_forBody else _BB30_show4_forAfter
-	<_BB28_show2_forexpr3>
+		cjmp if(vReg8_n G 0) goto _BB17_main8_forBody else _BB18_main9_forAfter
+		jmp _BB18_main9_forAfter
+	<_BB16_main7_forexpr3>
 		inc vReg28_i
-		jmp _BB27_show1_forCondition
-	<_BB29_show3_forBody>
-		call toString (qword [vReg7_a + vReg28_i*8])
-		call __stradd (vReg29_returnValue_of_toString,vReg30_constString_addr)
-		call print (vReg31_airthmeticBinary)
-		jmp _BB28_show2_forexpr3
-	<_BB30_show4_forAfter>
-		call println (vReg32_constString_addr)
-		jmp _BB31_show5_leave_show
-	<_BB31_show5_leave_show>
+		cjmp if(vReg28_i L vReg8_n) goto _BB17_main8_forBody else _BB18_main9_forAfter
+		jmp _BB18_main9_forAfter
+	<_BB17_main8_forBody>
+		mov vReg29_j 0
+		cjmp if(vReg8_n G 0) goto _BB21_main10_forBody else _BB16_main7_forexpr3
+		jmp _BB16_main7_forexpr3
+	<_BB18_main9_forAfter>
+		mov vReg28_i 0
+		cjmp if(vReg8_n LE 0) goto _BB26_main13_forAfter else _BB25_main12_forBody
+		jmp _BB25_main12_forBody
+	<_BB21_main10_forBody>
+		mov vReg31_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg32_airthmeticBinary vReg28_i
+		add vReg32_airthmeticBinary vReg29_j
+		mov qword [vReg31_arrCall_to_reg + vReg29_j*8] vReg32_airthmeticBinary
+		inc vReg29_j
+		cjmp if(vReg29_j L vReg8_n) goto _BB21_main10_forBody else _BB16_main7_forexpr3
+		jmp _BB16_main7_forexpr3
+	<_BB24_main11_forexpr3>
+		inc vReg28_i
+		cjmp if(vReg28_i GE vReg8_n) goto _BB26_main13_forAfter else _BB25_main12_forBody
+		jmp _BB25_main12_forBody
+	<_BB25_main12_forBody>
+		mov vReg29_j 0
+		cjmp if(vReg8_n LE 0) goto _BB24_main11_forexpr3 else _BB29_main15_forBody
+		jmp _BB29_main15_forBody
+	<_BB26_main13_forAfter>
+		mov vReg53_sum 0
+		mov vReg28_i 0
+		cjmp if(vReg8_n LE 0) goto _BB40_main21_forAfter else _BB39_main20_forBody
+		jmp _BB39_main20_forBody
+	<_BB28_main14_forexpr3>
+		inc vReg29_j
+		cjmp if(vReg29_j GE vReg8_n) goto _BB24_main11_forexpr3 else _BB29_main15_forBody
+		jmp _BB29_main15_forBody
+	<_BB29_main15_forBody>
+		mov vReg30_k 0
+		cjmp if(vReg8_n LE 0) goto _BB28_main14_forexpr3 else _BB33_main17_forBody
+		jmp _BB33_main17_forBody
+	<_BB32_main16_forexpr3>
+		inc vReg30_k
+		cjmp if(vReg30_k GE vReg8_n) goto _BB28_main14_forexpr3 else _BB33_main17_forBody
+		jmp _BB33_main17_forBody
+	<_BB33_main17_forBody>
+		cjmp if(vReg29_j L vReg28_i) goto _BB32_main16_forexpr3 else _BB35_main18_Ifthen
+		jmp _BB35_main18_Ifthen
+	<_BB35_main18_Ifthen>
+		mov vReg33_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg35_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg36_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg37_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg115_func_arg_a__cp qword [vReg35_arrCall_to_reg + vReg29_j*8]
+		mov vReg116_func_arg_b__cp qword [vReg36_arrCall_to_reg + vReg30_k*8]
+		mov vReg117_func_arg_c__cp qword [vReg37_arrCall_to_reg + vReg29_j*8]
+		mov vReg119_airthmeticBinary__cp vReg115_func_arg_a__cp
+		add vReg119_airthmeticBinary__cp vReg116_func_arg_b__cp
+		add vReg119_airthmeticBinary__cp vReg117_func_arg_c__cp
+		and vReg119_airthmeticBinary__cp 1073741823
+		mov vReg34_returnValue_of_func vReg119_airthmeticBinary__cp
+		jmp _BB73_main24_leave_func__inline
+	<_BB38_main19_forexpr3>
+		inc vReg28_i
+		cjmp if(vReg28_i GE vReg8_n) goto _BB40_main21_forAfter else _BB39_main20_forBody
+		jmp _BB39_main20_forBody
+	<_BB39_main20_forBody>
+		mov vReg29_j 0
+		cjmp if(vReg8_n G 0) goto _BB43_main22_forBody else _BB38_main19_forexpr3
+		jmp _BB38_main19_forexpr3
+	<_BB40_main21_forAfter>
+		mov rdi vReg53_sum
+		call toString (vReg53_sum)
+		mov vReg57_returnValue_of_toString rax
+		mov rdi vReg57_returnValue_of_toString
+		call print (vReg57_returnValue_of_toString)
+		mov rax 0
+		jmp _BB45_main23_leave_main
+	<_BB43_main22_forBody>
+		mov vReg54_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg55_airthmeticBinary vReg53_sum
+		add vReg55_airthmeticBinary qword [vReg54_arrCall_to_reg + vReg29_j*8]
+		and vReg55_airthmeticBinary 1073741823
+		mov vReg53_sum vReg55_airthmeticBinary
+		inc vReg29_j
+		cjmp if(vReg29_j L vReg8_n) goto _BB43_main22_forBody else _BB38_main19_forexpr3
+		jmp _BB38_main19_forexpr3
+	<_BB45_main23_leave_main>
 		leave
 		ret
-
-********************************************************************************
-
-<win>
-	<_BB32_win0_entry_win>
-		mov vReg37_new_size 100
-		inc vReg37_new_size
-		shl vReg37_new_size 3
-		call malloc (vReg37_new_size)
-		mov qword [vReg36_arrayNew] 100
-		add vReg36_arrayNew 8
-		mov vReg35_b vReg36_arrayNew
-		cjmp if(vReg6_now NE vReg5_h) goto _BB33_win1_Ifthen else _BB34_win2_Ifafter
-	<_BB33_win1_Ifthen>
-		jmp _BB36_win4_assignFalse
-	<_BB34_win2_Ifafter>
-		mov vReg34_j 0
-		jmp _BB38_win6_forCondition
-	<_BB35_win3_assignTrue>
-		mov vReg2_returnValue_of_win 1
-		jmp _BB37_win5_assignafter
-	<_BB36_win4_assignFalse>
-		mov vReg2_returnValue_of_win 0
-		jmp _BB37_win5_assignafter
-	<_BB37_win5_assignafter>
-		jmp _BB64_win32_leave_win
-	<_BB38_win6_forCondition>
-		cjmp if(vReg34_j L vReg6_now) goto _BB40_win8_forBody else _BB41_win9_forAfter
-	<_BB39_win7_forexpr3>
-		inc vReg34_j
-		jmp _BB38_win6_forCondition
-	<_BB40_win8_forBody>
-		mov qword [vReg35_b + vReg34_j*8] qword [vReg7_a + vReg34_j*8]
-		jmp _BB39_win7_forexpr3
-	<_BB41_win9_forAfter>
-		mov vReg33_i 0
-		jmp _BB42_win10_forCondition
-	<_BB42_win10_forCondition>
-		mov vReg39_airthmeticBinary vReg6_now
-		dec vReg39_airthmeticBinary
-		cjmp if(vReg33_i L vReg39_airthmeticBinary) goto _BB44_win12_forBody else _BB45_win13_forAfter
-	<_BB43_win11_forexpr3>
-		inc vReg33_i
-		jmp _BB42_win10_forCondition
-	<_BB44_win12_forBody>
-		mov vReg40_airthmeticBinary vReg33_i
-		inc vReg40_airthmeticBinary
-		mov vReg34_j vReg40_airthmeticBinary
-		jmp _BB46_win14_forCondition
-	<_BB45_win13_forAfter>
-		mov vReg33_i 0
-		jmp _BB52_win20_forCondition
-	<_BB46_win14_forCondition>
-		cjmp if(vReg34_j L vReg6_now) goto _BB48_win16_forBody else _BB49_win17_forAfter
-	<_BB47_win15_forexpr3>
-		inc vReg34_j
-		jmp _BB46_win14_forCondition
-	<_BB48_win16_forBody>
-		cjmp if(qword [vReg35_b + vReg33_i*8] G qword [vReg35_b + vReg34_j*8]) goto _BB50_win18_Ifthen else _BB51_win19_Ifafter
-	<_BB49_win17_forAfter>
-		jmp _BB43_win11_forexpr3
-	<_BB50_win18_Ifthen>
-		mov vReg38_temp qword [vReg35_b + vReg33_i*8]
-		mov qword [vReg35_b + vReg33_i*8] qword [vReg35_b + vReg34_j*8]
-		mov qword [vReg35_b + vReg34_j*8] vReg38_temp
-		jmp _BB51_win19_Ifafter
-	<_BB51_win19_Ifafter>
-		jmp _BB47_win15_forexpr3
-	<_BB52_win20_forCondition>
-		cjmp if(vReg33_i L vReg6_now) goto _BB54_win22_forBody else _BB55_win23_forAfter
-	<_BB53_win21_forexpr3>
-		inc vReg33_i
-		jmp _BB52_win20_forCondition
-	<_BB54_win22_forBody>
-		mov vReg41_airthmeticBinary vReg33_i
-		inc vReg41_airthmeticBinary
-		cjmp if(qword [vReg35_b + vReg33_i*8] NE vReg41_airthmeticBinary) goto _BB56_win24_Ifthen else _BB57_win25_Ifafter
-	<_BB55_win23_forAfter>
-		jmp _BB61_win29_assignTrue
-	<_BB56_win24_Ifthen>
-		jmp _BB59_win27_assignFalse
-	<_BB57_win25_Ifafter>
-		jmp _BB53_win21_forexpr3
-	<_BB58_win26_assignTrue>
-		mov vReg2_returnValue_of_win 1
-		jmp _BB60_win28_assignafter
-	<_BB59_win27_assignFalse>
-		mov vReg2_returnValue_of_win 0
-		jmp _BB60_win28_assignafter
-	<_BB60_win28_assignafter>
-		jmp _BB64_win32_leave_win
-	<_BB61_win29_assignTrue>
-		mov vReg2_returnValue_of_win 1
-		jmp _BB63_win31_assignafter
-	<_BB62_win30_assignFalse>
-		mov vReg2_returnValue_of_win 0
-		jmp _BB63_win31_assignafter
-	<_BB63_win31_assignafter>
-		jmp _BB64_win32_leave_win
-	<_BB64_win32_leave_win>
-		leave
-		ret
-
-********************************************************************************
-
-<merge>
-	<_BB65_merge0_entry_merge>
-		mov vReg42_i 0
-		jmp _BB66_merge1_forCondition
-	<_BB66_merge1_forCondition>
-		cjmp if(vReg42_i L vReg6_now) goto _BB68_merge3_forBody else _BB69_merge4_forAfter
-	<_BB67_merge2_forexpr3>
-		inc vReg42_i
-		jmp _BB66_merge1_forCondition
-	<_BB68_merge3_forBody>
-		cjmp if(qword [vReg7_a + vReg42_i*8] E 0) goto _BB70_merge5_Ifthen else _BB71_merge6_Ifafter
-	<_BB69_merge4_forAfter>
-		mov vReg42_i 0
-		jmp _BB78_merge13_forCondition
-	<_BB70_merge5_Ifthen>
-		mov vReg44_airthmeticBinary vReg42_i
-		inc vReg44_airthmeticBinary
-		mov vReg43_j vReg44_airthmeticBinary
-		jmp _BB72_merge7_forCondition
-	<_BB71_merge6_Ifafter>
-		jmp _BB67_merge2_forexpr3
-	<_BB72_merge7_forCondition>
-		cjmp if(vReg43_j L vReg6_now) goto _BB74_merge9_forBody else _BB75_merge10_forAfter
-	<_BB73_merge8_forexpr3>
-		inc vReg43_j
-		jmp _BB72_merge7_forCondition
-	<_BB74_merge9_forBody>
-		cjmp if(qword [vReg7_a + vReg43_j*8] NE 0) goto _BB76_merge11_Ifthen else _BB77_merge12_Ifafter
-	<_BB75_merge10_forAfter>
-		jmp _BB71_merge6_Ifafter
-	<_BB76_merge11_Ifthen>
-		call swap (vReg42_i,vReg43_j)
-		jmp _BB75_merge10_forAfter
-	<_BB77_merge12_Ifafter>
-		jmp _BB73_merge8_forexpr3
-	<_BB78_merge13_forCondition>
-		cjmp if(vReg42_i L vReg6_now) goto _BB80_merge15_forBody else _BB81_merge16_forAfter
-	<_BB79_merge14_forexpr3>
-		inc vReg42_i
-		jmp _BB78_merge13_forCondition
-	<_BB80_merge15_forBody>
-		cjmp if(qword [vReg7_a + vReg42_i*8] E 0) goto _BB82_merge17_Ifthen else _BB83_merge18_Ifafter
-	<_BB81_merge16_forAfter>
-		jmp _BB84_merge19_leave_merge
-	<_BB82_merge17_Ifthen>
-		mov vReg6_now vReg42_i
-		jmp _BB81_merge16_forAfter
-	<_BB83_merge18_Ifafter>
-		jmp _BB79_merge14_forexpr3
-	<_BB84_merge19_leave_merge>
-		leave
-		ret
-
-********************************************************************************
-
-<move>
-	<_BB85_move0_entry_move>
-		mov vReg45_i 0
-		jmp _BB86_move1_forCondition
-	<_BB86_move1_forCondition>
-		cjmp if(vReg45_i L vReg6_now) goto _BB88_move3_forBody else _BB89_move4_forAfter
-	<_BB87_move2_forexpr3>
-		jmp _BB86_move1_forCondition
-	<_BB88_move3_forBody>
-		dec qword [vReg7_a + vReg45_i*8]
-		mov vReg46_airthmeticBinary vReg45_i
-		inc vReg46_airthmeticBinary
-		mov vReg45_i vReg46_airthmeticBinary
-		jmp _BB87_move2_forexpr3
-	<_BB89_move4_forAfter>
-		mov qword [vReg7_a + vReg6_now*8] vReg6_now
-		mov vReg47_ vReg6_now
-		inc vReg6_now
-		jmp _BB90_move5_leave_move
-	<_BB90_move5_leave_move>
-		leave
-		ret
+	<_BB73_main24_leave_func__inline>
+		mov qword [vReg33_arrCall_to_reg + vReg29_j*8] vReg34_returnValue_of_func
+		mov vReg38_arrCall_to_reg qword [vReg22_g_useless + vReg28_i*8]
+		mov vReg40_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg41_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg42_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg120_func_arg_a__cp qword [vReg40_arrCall_to_reg + vReg29_j*8]
+		mov vReg121_func_arg_b__cp qword [vReg41_arrCall_to_reg + vReg30_k*8]
+		mov vReg122_func_arg_c__cp qword [vReg42_arrCall_to_reg + vReg29_j*8]
+		mov vReg124_airthmeticBinary__cp vReg120_func_arg_a__cp
+		add vReg124_airthmeticBinary__cp vReg121_func_arg_b__cp
+		add vReg124_airthmeticBinary__cp vReg122_func_arg_c__cp
+		and vReg124_airthmeticBinary__cp 1073741823
+		mov vReg39_returnValue_of_func vReg124_airthmeticBinary__cp
+		jmp _BB74_main25_leave_func__inline
+	<_BB74_main25_leave_func__inline>
+		mov qword [vReg38_arrCall_to_reg + vReg29_j*8] vReg39_returnValue_of_func
+		mov vReg43_arrCall_to_reg qword [vReg22_g_useless + vReg28_i*8]
+		mov vReg45_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg46_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg47_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg125_func_arg_a__cp qword [vReg45_arrCall_to_reg + vReg29_j*8]
+		mov vReg126_func_arg_b__cp qword [vReg46_arrCall_to_reg + vReg30_k*8]
+		mov vReg127_func_arg_c__cp qword [vReg47_arrCall_to_reg + vReg29_j*8]
+		mov vReg129_airthmeticBinary__cp vReg125_func_arg_a__cp
+		add vReg129_airthmeticBinary__cp vReg126_func_arg_b__cp
+		add vReg129_airthmeticBinary__cp vReg127_func_arg_c__cp
+		and vReg129_airthmeticBinary__cp 1073741823
+		mov vReg44_returnValue_of_func vReg129_airthmeticBinary__cp
+		jmp _BB75_main26_leave_func__inline
+	<_BB75_main26_leave_func__inline>
+		mov qword [vReg43_arrCall_to_reg + vReg29_j*8] vReg44_returnValue_of_func
+		mov vReg48_arrCall_to_reg qword [vReg22_g_useless + vReg28_i*8]
+		mov vReg50_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg51_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg52_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg130_func_arg_a__cp qword [vReg50_arrCall_to_reg + vReg29_j*8]
+		mov vReg131_func_arg_b__cp qword [vReg51_arrCall_to_reg + vReg30_k*8]
+		mov vReg132_func_arg_c__cp qword [vReg52_arrCall_to_reg + vReg29_j*8]
+		mov vReg134_airthmeticBinary__cp vReg130_func_arg_a__cp
+		add vReg134_airthmeticBinary__cp vReg131_func_arg_b__cp
+		add vReg134_airthmeticBinary__cp vReg132_func_arg_c__cp
+		and vReg134_airthmeticBinary__cp 1073741823
+		mov vReg49_returnValue_of_func vReg134_airthmeticBinary__cp
+		jmp _BB76_main27_leave_func__inline
+	<_BB76_main27_leave_func__inline>
+		mov qword [vReg48_arrCall_to_reg + vReg29_j*8] vReg49_returnValue_of_func
+		inc vReg30_k
+		cjmp if(vReg30_k GE vReg8_n) goto _BB28_main14_forexpr3 else _BB33_main17_forBody
+		jmp _BB33_main17_forBody
 
 ********************************************************************************
 
 <main>
-	<_BB91_main0_entry_main>
-		call __init ()
-		mov vReg48_i 0
-		mov vReg49_temp 0
-		mov vReg50_count 0
-		mov vReg4_n 210
-		mov vReg5_h 0
-		mov vReg52_new_size 100
-		inc vReg52_new_size
-		shl vReg52_new_size 3
-		call malloc (vReg52_new_size)
-		mov qword [vReg51_arrayNew] 100
-		add vReg51_arrayNew 8
-		mov vReg7_a vReg51_arrayNew
-		mov vReg53_airthmeticBinary vReg9_M
-		div vReg53_airthmeticBinary vReg8_A
-		mov vReg10_Q vReg53_airthmeticBinary
-		mov vReg54_airthmeticBinary vReg9_M
-		mod vReg54_airthmeticBinary vReg8_A
-		mov vReg11_R vReg54_airthmeticBinary
-		call pd (vReg4_n)
-		cjmp if(vReg55_returnValue_of_pd E 1) goto _BB93_main2_Ifafter else _BB92_main1_Ifthen
-	<_BB92_main1_Ifthen>
-		call println (vReg56_constString_addr)
-		mov vReg3_returnValue_of_main 1
-		jmp _BB104_main13_leave_main
-	<_BB93_main2_Ifafter>
-		call println (vReg57_constString_addr)
-		call initialize (3654898)
-		call random ()
-		mov vReg59_airthmeticBinary vReg58_returnValue_of_random
-		mod vReg59_airthmeticBinary 10
-		inc vReg59_airthmeticBinary
-		mov vReg6_now vReg59_airthmeticBinary
-		call toString (vReg6_now)
-		call println (vReg61_returnValue_of_toString)
-		jmp _BB94_main3_forCondition
-	<_BB94_main3_forCondition>
-		mov vReg62_airthmeticBinary vReg6_now
-		dec vReg62_airthmeticBinary
-		cjmp if(vReg48_i L vReg62_airthmeticBinary) goto _BB96_main5_forBody else _BB97_main6_forAfter
-	<_BB95_main4_forexpr3>
-		inc vReg48_i
-		jmp _BB94_main3_forCondition
-	<_BB96_main5_forBody>
-		call random ()
-		mov vReg64_airthmeticBinary vReg63_returnValue_of_random
-		mod vReg64_airthmeticBinary 10
-		inc vReg64_airthmeticBinary
-		mov qword [vReg7_a + vReg48_i*8] vReg64_airthmeticBinary
-		jmp _BB98_main7_whileCondition
-	<_BB97_main6_forAfter>
-		mov vReg71_airthmeticBinary vReg6_now
-		dec vReg71_airthmeticBinary
-		mov vReg72_airthmeticBinary vReg4_n
-		sub vReg72_airthmeticBinary vReg49_temp
-		mov qword [vReg7_a + vReg71_airthmeticBinary*8] vReg72_airthmeticBinary
-		call show ()
-		call merge ()
-		jmp _BB101_main10_whileCondition
-	<_BB98_main7_whileCondition>
-		mov vReg66_airthmeticBinary qword [vReg7_a + vReg48_i*8]
-		add vReg66_airthmeticBinary vReg49_temp
-		cjmp if(vReg66_airthmeticBinary G vReg4_n) goto _BB99_main8_whileBody else _BB100_main9_whileAfter
-	<_BB99_main8_whileBody>
-		call random ()
-		mov vReg68_airthmeticBinary vReg67_returnValue_of_random
-		mod vReg68_airthmeticBinary 10
-		inc vReg68_airthmeticBinary
-		mov qword [vReg7_a + vReg48_i*8] vReg68_airthmeticBinary
-		jmp _BB98_main7_whileCondition
-	<_BB100_main9_whileAfter>
-		mov vReg70_airthmeticBinary vReg49_temp
-		add vReg70_airthmeticBinary qword [vReg7_a + vReg48_i*8]
-		mov vReg49_temp vReg70_airthmeticBinary
-		jmp _BB95_main4_forexpr3
-	<_BB101_main10_whileCondition>
-		call win ()
-		cjmp if(vReg73_returnValue_of_win E 1) goto _BB103_main12_whileAfter else _BB102_main11_whileBody
-	<_BB102_main11_whileBody>
-		inc vReg50_count
-		call toString (vReg50_count)
-		call __stradd (vReg74_constString_addr,vReg75_returnValue_of_toString)
-		call __stradd (vReg76_airthmeticBinary,vReg77_constString_addr)
-		call println (vReg78_airthmeticBinary)
-		call move ()
-		call merge ()
-		call show ()
-		jmp _BB101_main10_whileCondition
-	<_BB103_main12_whileAfter>
-		call toString (vReg50_count)
-		call __stradd (vReg79_constString_addr,vReg80_returnValue_of_toString)
-		call __stradd (vReg81_airthmeticBinary,vReg82_constString_addr)
-		call println (vReg83_airthmeticBinary)
-		mov vReg3_returnValue_of_main 0
-		jmp _BB104_main13_leave_main
-	<_BB104_main13_leave_main>
+	<_BB5_main0_entry_main>
+		call getInt ()
+		mov vReg9_returnValue_of_getInt rax
+		mov vReg8_n vReg9_returnValue_of_getInt
+		mov vReg12_new_size vReg8_n
+		inc vReg12_new_size
+		shl vReg12_new_size 3
+		mov rdi vReg12_new_size
+		call malloc (vReg12_new_size)
+		mov vReg11_arrayNew rax
+		mov qword [vReg11_arrayNew] vReg8_n
+		add vReg11_arrayNew 8
+		mov vReg12_new_size vReg8_n
+		mov vReg13_new_cnt 0
+		cjmp if(vReg12_new_size E 0) goto _BB8_main2_newWhileAfter else _BB7_main1_newWhileBody
+		jmp _BB7_main1_newWhileBody
+	<_BB7_main1_newWhileBody>
+		mov vReg15_new_size vReg8_n
+		inc vReg15_new_size
+		shl vReg15_new_size 3
+		mov rdi vReg15_new_size
+		call malloc (vReg15_new_size)
+		mov vReg14_arrayNew rax
+		mov qword [vReg14_arrayNew] vReg8_n
+		add vReg14_arrayNew 8
+		mov qword [vReg11_arrayNew + vReg13_new_cnt*8] vReg14_arrayNew
+		inc vReg13_new_cnt
+		cjmp if(vReg13_new_cnt NE vReg12_new_size) goto _BB7_main1_newWhileBody else _BB8_main2_newWhileAfter
+		jmp _BB8_main2_newWhileAfter
+	<_BB8_main2_newWhileAfter>
+		mov vReg10_f vReg11_arrayNew
+		mov vReg18_new_size vReg8_n
+		inc vReg18_new_size
+		shl vReg18_new_size 3
+		mov rdi vReg18_new_size
+		call malloc (vReg18_new_size)
+		mov vReg17_arrayNew rax
+		mov qword [vReg17_arrayNew] vReg8_n
+		add vReg17_arrayNew 8
+		mov vReg18_new_size vReg8_n
+		mov vReg19_new_cnt 0
+		cjmp if(vReg18_new_size E 0) goto _BB11_main4_newWhileAfter else _BB10_main3_newWhileBody
+		jmp _BB10_main3_newWhileBody
+	<_BB10_main3_newWhileBody>
+		mov vReg21_new_size vReg8_n
+		inc vReg21_new_size
+		shl vReg21_new_size 3
+		mov rdi vReg21_new_size
+		call malloc (vReg21_new_size)
+		mov vReg20_arrayNew rax
+		mov qword [vReg20_arrayNew] vReg8_n
+		add vReg20_arrayNew 8
+		mov qword [vReg17_arrayNew + vReg19_new_cnt*8] vReg20_arrayNew
+		inc vReg19_new_cnt
+		cjmp if(vReg19_new_cnt NE vReg18_new_size) goto _BB10_main3_newWhileBody else _BB11_main4_newWhileAfter
+		jmp _BB11_main4_newWhileAfter
+	<_BB11_main4_newWhileAfter>
+		mov vReg16_g vReg17_arrayNew
+		mov vReg24_new_size vReg8_n
+		inc vReg24_new_size
+		shl vReg24_new_size 3
+		mov rdi vReg24_new_size
+		call malloc (vReg24_new_size)
+		mov vReg23_arrayNew rax
+		mov qword [vReg23_arrayNew] vReg8_n
+		add vReg23_arrayNew 8
+		mov vReg24_new_size vReg8_n
+		mov vReg25_new_cnt 0
+		cjmp if(vReg24_new_size NE 0) goto _BB13_main5_newWhileBody else _BB14_main6_newWhileAfter
+		jmp _BB14_main6_newWhileAfter
+	<_BB13_main5_newWhileBody>
+		mov vReg27_new_size vReg8_n
+		inc vReg27_new_size
+		shl vReg27_new_size 3
+		mov rdi vReg27_new_size
+		call malloc (vReg27_new_size)
+		mov vReg26_arrayNew rax
+		mov qword [vReg26_arrayNew] vReg8_n
+		add vReg26_arrayNew 8
+		mov qword [vReg23_arrayNew + vReg25_new_cnt*8] vReg26_arrayNew
+		inc vReg25_new_cnt
+		cjmp if(vReg25_new_cnt NE vReg24_new_size) goto _BB13_main5_newWhileBody else _BB14_main6_newWhileAfter
+		jmp _BB14_main6_newWhileAfter
+	<_BB14_main6_newWhileAfter>
+		mov vReg22_g_useless vReg23_arrayNew
+		mov vReg28_i 0
+		cjmp if(vReg8_n G 0) goto _BB17_main8_forBody else _BB18_main9_forAfter
+		jmp _BB18_main9_forAfter
+	<_BB16_main7_forexpr3>
+		inc vReg28_i
+		cjmp if(vReg28_i L vReg8_n) goto _BB17_main8_forBody else _BB18_main9_forAfter
+		jmp _BB18_main9_forAfter
+	<_BB17_main8_forBody>
+		mov vReg29_j 0
+		cjmp if(vReg8_n G 0) goto _BB21_main10_forBody else _BB16_main7_forexpr3
+		jmp _BB16_main7_forexpr3
+	<_BB18_main9_forAfter>
+		mov vReg28_i 0
+		cjmp if(vReg8_n LE 0) goto _BB26_main13_forAfter else _BB25_main12_forBody
+		jmp _BB25_main12_forBody
+	<_BB21_main10_forBody>
+		mov vReg31_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg32_airthmeticBinary vReg28_i
+		add vReg32_airthmeticBinary vReg29_j
+		mov qword [vReg31_arrCall_to_reg + vReg29_j*8] vReg32_airthmeticBinary
+		inc vReg29_j
+		cjmp if(vReg29_j L vReg8_n) goto _BB21_main10_forBody else _BB16_main7_forexpr3
+		jmp _BB16_main7_forexpr3
+	<_BB24_main11_forexpr3>
+		inc vReg28_i
+		cjmp if(vReg28_i GE vReg8_n) goto _BB26_main13_forAfter else _BB25_main12_forBody
+		jmp _BB25_main12_forBody
+	<_BB25_main12_forBody>
+		mov vReg29_j 0
+		cjmp if(vReg8_n LE 0) goto _BB24_main11_forexpr3 else _BB29_main15_forBody
+		jmp _BB29_main15_forBody
+	<_BB26_main13_forAfter>
+		mov vReg53_sum 0
+		mov vReg28_i 0
+		cjmp if(vReg8_n LE 0) goto _BB40_main21_forAfter else _BB39_main20_forBody
+		jmp _BB39_main20_forBody
+	<_BB28_main14_forexpr3>
+		inc vReg29_j
+		cjmp if(vReg29_j GE vReg8_n) goto _BB24_main11_forexpr3 else _BB29_main15_forBody
+		jmp _BB29_main15_forBody
+	<_BB29_main15_forBody>
+		mov vReg30_k 0
+		cjmp if(vReg8_n LE 0) goto _BB28_main14_forexpr3 else _BB33_main17_forBody
+		jmp _BB33_main17_forBody
+	<_BB32_main16_forexpr3>
+		inc vReg30_k
+		cjmp if(vReg30_k GE vReg8_n) goto _BB28_main14_forexpr3 else _BB33_main17_forBody
+		jmp _BB33_main17_forBody
+	<_BB33_main17_forBody>
+		cjmp if(vReg29_j L vReg28_i) goto _BB32_main16_forexpr3 else _BB35_main18_Ifthen
+		jmp _BB35_main18_Ifthen
+	<_BB35_main18_Ifthen>
+		mov vReg33_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg35_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg36_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg37_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg115_func_arg_a__cp qword [vReg35_arrCall_to_reg + vReg29_j*8]
+		mov vReg116_func_arg_b__cp qword [vReg36_arrCall_to_reg + vReg30_k*8]
+		mov vReg117_func_arg_c__cp qword [vReg37_arrCall_to_reg + vReg29_j*8]
+		mov vReg119_airthmeticBinary__cp vReg115_func_arg_a__cp
+		add vReg119_airthmeticBinary__cp vReg116_func_arg_b__cp
+		add vReg119_airthmeticBinary__cp vReg117_func_arg_c__cp
+		and vReg119_airthmeticBinary__cp 1073741823
+		mov vReg34_returnValue_of_func vReg119_airthmeticBinary__cp
+		mov qword [vReg33_arrCall_to_reg + vReg29_j*8] vReg34_returnValue_of_func
+		mov vReg38_arrCall_to_reg qword [vReg22_g_useless + vReg28_i*8]
+		mov vReg40_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg41_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg42_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg120_func_arg_a__cp qword [vReg40_arrCall_to_reg + vReg29_j*8]
+		mov vReg121_func_arg_b__cp qword [vReg41_arrCall_to_reg + vReg30_k*8]
+		mov vReg122_func_arg_c__cp qword [vReg42_arrCall_to_reg + vReg29_j*8]
+		mov vReg124_airthmeticBinary__cp vReg120_func_arg_a__cp
+		add vReg124_airthmeticBinary__cp vReg121_func_arg_b__cp
+		add vReg124_airthmeticBinary__cp vReg122_func_arg_c__cp
+		and vReg124_airthmeticBinary__cp 1073741823
+		mov vReg39_returnValue_of_func vReg124_airthmeticBinary__cp
+		mov qword [vReg38_arrCall_to_reg + vReg29_j*8] vReg39_returnValue_of_func
+		mov vReg43_arrCall_to_reg qword [vReg22_g_useless + vReg28_i*8]
+		mov vReg45_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg46_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg47_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg125_func_arg_a__cp qword [vReg45_arrCall_to_reg + vReg29_j*8]
+		mov vReg126_func_arg_b__cp qword [vReg46_arrCall_to_reg + vReg30_k*8]
+		mov vReg127_func_arg_c__cp qword [vReg47_arrCall_to_reg + vReg29_j*8]
+		mov vReg129_airthmeticBinary__cp vReg125_func_arg_a__cp
+		add vReg129_airthmeticBinary__cp vReg126_func_arg_b__cp
+		add vReg129_airthmeticBinary__cp vReg127_func_arg_c__cp
+		and vReg129_airthmeticBinary__cp 1073741823
+		mov vReg44_returnValue_of_func vReg129_airthmeticBinary__cp
+		mov qword [vReg43_arrCall_to_reg + vReg29_j*8] vReg44_returnValue_of_func
+		mov vReg48_arrCall_to_reg qword [vReg22_g_useless + vReg28_i*8]
+		mov vReg50_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg51_arrCall_to_reg qword [vReg10_f + vReg28_i*8]
+		mov vReg52_arrCall_to_reg qword [vReg10_f + vReg30_k*8]
+		mov vReg130_func_arg_a__cp qword [vReg50_arrCall_to_reg + vReg29_j*8]
+		mov vReg131_func_arg_b__cp qword [vReg51_arrCall_to_reg + vReg30_k*8]
+		mov vReg132_func_arg_c__cp qword [vReg52_arrCall_to_reg + vReg29_j*8]
+		mov vReg134_airthmeticBinary__cp vReg130_func_arg_a__cp
+		add vReg134_airthmeticBinary__cp vReg131_func_arg_b__cp
+		add vReg134_airthmeticBinary__cp vReg132_func_arg_c__cp
+		and vReg134_airthmeticBinary__cp 1073741823
+		mov vReg49_returnValue_of_func vReg134_airthmeticBinary__cp
+		mov qword [vReg48_arrCall_to_reg + vReg29_j*8] vReg49_returnValue_of_func
+		inc vReg30_k
+		cjmp if(vReg30_k GE vReg8_n) goto _BB28_main14_forexpr3 else _BB33_main17_forBody
+		jmp _BB33_main17_forBody
+	<_BB38_main19_forexpr3>
+		inc vReg28_i
+		cjmp if(vReg28_i GE vReg8_n) goto _BB40_main21_forAfter else _BB39_main20_forBody
+		jmp _BB39_main20_forBody
+	<_BB39_main20_forBody>
+		mov vReg29_j 0
+		cjmp if(vReg8_n G 0) goto _BB43_main22_forBody else _BB38_main19_forexpr3
+		jmp _BB38_main19_forexpr3
+	<_BB40_main21_forAfter>
+		mov rdi vReg53_sum
+		call toString (vReg53_sum)
+		mov vReg57_returnValue_of_toString rax
+		mov rdi vReg57_returnValue_of_toString
+		call print (vReg57_returnValue_of_toString)
+		mov rax 0
+		jmp _BB45_main23_leave_main
+	<_BB43_main22_forBody>
+		mov vReg54_arrCall_to_reg qword [vReg16_g + vReg28_i*8]
+		mov vReg55_airthmeticBinary vReg53_sum
+		add vReg55_airthmeticBinary qword [vReg54_arrCall_to_reg + vReg29_j*8]
+		and vReg55_airthmeticBinary 1073741823
+		mov vReg53_sum vReg55_airthmeticBinary
+		inc vReg29_j
+		cjmp if(vReg29_j L vReg8_n) goto _BB43_main22_forBody else _BB38_main19_forexpr3
+		jmp _BB38_main19_forexpr3
+	<_BB45_main23_leave_main>
 		leave
 		ret
 
 ********************************************************************************
 
-<__init>
-	<_BB1___init0_initFuncEntry>
-		mov vReg8_A 48271
-		mov [rel A] vReg8_A
-		mov vReg9_M 2147483647
-		mov [rel M] vReg9_M
-		mov vReg12_seed 1
-		mov [rel seed] vReg12_seed
-		jmp _BB2___init1_leave_initFunc
-	<_BB2___init1_leave_initFunc>
-		leave
-		ret
+_BB11_main4_newWhileAfter <- _BB14_main6_newWhileAfter
+_BB14_main6_newWhileAfter <- _BB18_main9_forAfter
+_BB18_main9_forAfter <- _BB25_main12_forBody
+_BB25_main12_forBody <- _BB29_main15_forBody
+_BB29_main15_forBody <- _BB33_main17_forBody
+_BB35_main18_Ifthen <- _BB33_main17_forBody
+_BB28_main14_forexpr3 <- _BB29_main15_forBody
+_BB26_main13_forAfter <- _BB39_main20_forBody
+_BB39_main20_forBody <- _BB38_main19_forexpr3
+_BB43_main22_forBody <- _BB38_main19_forexpr3
+_BB32_main16_forexpr3 <- _BB33_main17_forBody
+_BB17_main8_forBody <- _BB16_main7_forexpr3
+_BB21_main10_forBody <- _BB16_main7_forexpr3
+_BB18_main9_forAfter <- _BB29_main15_forBody
+_BB25_main12_forBody <- _BB33_main17_forBody
+_BB26_main13_forAfter <- _BB38_main19_forexpr3
+
+Process finished with exit code 0

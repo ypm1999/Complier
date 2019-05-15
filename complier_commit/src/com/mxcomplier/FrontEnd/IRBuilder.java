@@ -10,6 +10,7 @@ import com.mxcomplier.Ir.Operands.*;
 import com.mxcomplier.Ir.ProgramIR;
 import com.mxcomplier.Scope.*;
 import com.mxcomplier.Type.*;
+import com.mxcomplier.backEnd.EmptyForRemover;
 
 import java.util.*;
 
@@ -18,6 +19,7 @@ public class IRBuilder extends ASTScanner {
     public Map<String, FuncIR> funcMap = new HashMap<>();
     private Map<ExprNode, BasicBlockIR> trueBBMap = new HashMap<>();
     private Map<ExprNode, BasicBlockIR> falseBBMap = new HashMap<>();
+
     private FuncIR initFunc = null;
 
     private FuncIR currentFunc;
@@ -43,8 +45,6 @@ public class IRBuilder extends ASTScanner {
     }
 
     private void initBuildInFunc() {
-        //TODO
-
         FuncIR library_print = new FuncIR("print", FuncIR.Type.LIBRARY);
         FuncIR library_println = new FuncIR("println", FuncIR.Type.LIBRARY);
         FuncIR library_getString = new FuncIR("getString", FuncIR.Type.LIBRARY);
@@ -81,8 +81,6 @@ public class IRBuilder extends ASTScanner {
     }
 
     public IRBuilder() {
-        //TODO
-
         initBuildInFunc();
     }
 
@@ -209,7 +207,6 @@ public class IRBuilder extends ASTScanner {
 
         currentFunc = node.getFuncIR();
         curBB = currentFunc.entryBB = new BasicBlockIR(currentFunc, "entry_" + currentFunc.getName());
-        //TODO add parameters
         Scope funcScope = node.getFuncBody().getScope();
         List<VirtualRegisterIR> args = currentFunc.getParameters();
         ClassSymbol belongClass = funcScope.getFunc(node.getName()).getBelongClass();
@@ -230,7 +227,6 @@ public class IRBuilder extends ASTScanner {
         node.getFuncBody().accept(this);
         currentFunc.leaveBB = new BasicBlockIR(currentFunc, "leave_" + currentFunc.getName());
 
-        //TODO merge return && find leaveBB
         for (BasicBlockIR bb : currentFunc.getBBList()) {
             if (bb == currentFunc.leaveBB)
                 continue;
@@ -356,6 +352,7 @@ public class IRBuilder extends ASTScanner {
         BasicBlockIR expr3BB = new BasicBlockIR(currentFunc, "forexpr3");
         BasicBlockIR bodyBB = new BasicBlockIR(currentFunc, "forBody");
         BasicBlockIR afterBB = new BasicBlockIR(currentFunc, "forAfter");
+        currentFunc.forSet.add(new EmptyForRemover.ForBBs(bodyBB, condBB, expr3BB, afterBB));
         if (node.getExpr1() != null)
             node.getExpr1().accept(this);
         curBB.append(new JumpInstIR(condBB));
@@ -846,6 +843,10 @@ public class IRBuilder extends ASTScanner {
                         finished = false;
 
                 }
+            }
+            if (!finished && op == BinaryInstIR.Op.ADD && lhs.resultReg == rhs.resultReg){
+                finished = true;
+                curBB.append(new BinaryInstIR(BinaryInstIR.Op.SHL, res, ONE));
             }
             if (!finished)
                 curBB.append(new BinaryInstIR(op, res, rhs.resultReg));

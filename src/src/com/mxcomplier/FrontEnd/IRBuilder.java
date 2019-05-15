@@ -10,6 +10,7 @@ import com.mxcomplier.Ir.Operands.*;
 import com.mxcomplier.Ir.ProgramIR;
 import com.mxcomplier.Scope.*;
 import com.mxcomplier.Type.*;
+import com.mxcomplier.backEnd.EmptyForRemover;
 
 import java.util.*;
 
@@ -18,6 +19,7 @@ public class IRBuilder extends ASTScanner {
     public Map<String, FuncIR> funcMap = new HashMap<>();
     private Map<ExprNode, BasicBlockIR> trueBBMap = new HashMap<>();
     private Map<ExprNode, BasicBlockIR> falseBBMap = new HashMap<>();
+
     private FuncIR initFunc = null;
 
     private FuncIR currentFunc;
@@ -356,6 +358,7 @@ public class IRBuilder extends ASTScanner {
         BasicBlockIR expr3BB = new BasicBlockIR(currentFunc, "forexpr3");
         BasicBlockIR bodyBB = new BasicBlockIR(currentFunc, "forBody");
         BasicBlockIR afterBB = new BasicBlockIR(currentFunc, "forAfter");
+        currentFunc.forSet.add(new EmptyForRemover.ForBBs(bodyBB, condBB, expr3BB, afterBB));
         if (node.getExpr1() != null)
             node.getExpr1().accept(this);
         curBB.append(new JumpInstIR(condBB));
@@ -803,7 +806,7 @@ public class IRBuilder extends ASTScanner {
             return;
         }
         VirtualRegisterIR res = new VirtualRegisterIR("airthmeticBinary");
-//        res.tempVar = true;
+        res.tempVar = true;
         if (op == BinaryInstIR.Op.ADD && lhs.getType() instanceof StringType) {
             doFuncCall(library_stradd, Arrays.asList(lhs.resultReg, rhs.resultReg), res);
         } else {

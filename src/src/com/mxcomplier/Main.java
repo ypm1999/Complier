@@ -44,20 +44,19 @@ public class Main {
 
             IRBuilder irBuilder = new IRBuilder();
             irBuilder.visit(ast);
-
+            if (Config.DEBUG) {
+                new IRPrinter(irBuilder).visit(irBuilder.root);
+            }
+            new EmptyForRemover(irBuilder).run();
             new BlockMerger(true).visit(irBuilder.root);
             new BlockCopier(true).visit(irBuilder.root);
             if (Config.DEBUG) {
                 new IRPrinter(irBuilder).visit(irBuilder.root);
             }
             new LocalValueNumbering().visit(irBuilder.root);
-            if (Config.DEBUG) {
-                new IRPrinter(irBuilder).visit(irBuilder.root);
-            }
             new UseLessCodeEliminater(irBuilder).run();
 
-//            new FuncInliner().run(irBuilder);
-
+            new FuncInliner().run(irBuilder);
 
             new IRfixer().visit((irBuilder.root));
             new BlockMerger(true).visit(irBuilder.root);

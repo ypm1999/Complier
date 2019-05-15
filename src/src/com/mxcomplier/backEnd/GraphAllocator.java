@@ -105,8 +105,9 @@ public class GraphAllocator {
         allPhyreg = new LinkedList<>();
         for (int i = 0; i < min(6, func.getParameters().size()); i++)
             allPhyreg.addLast(paratReg[i].getPhyReg());
-        for (PhysicalRegisterIR preg : calleeSaveRegisterSet)
-            allPhyreg.addLast(preg);
+        for (PhysicalRegisterIR preg : callerSaveRegisterSet)
+            if (!allPhyreg.contains(preg))
+                allPhyreg.addLast(preg);
         for (PhysicalRegisterIR preg : allocatePhyRegisterSet)
             if (!allPhyreg.contains(preg))
                 allPhyreg.addLast(preg);
@@ -184,21 +185,10 @@ public class GraphAllocator {
             if (colorCanUse.isEmpty()) {
                 spilledVregs.add(vreg);
             } else {
-                PhysicalRegisterIR preg = null;
-                for (int i = 0; i < min(6, curFunc.getParameters().size()); i++)
-                    if (colorCanUse.contains(paratReg[i].getPhyReg())) {
-                        preg = paratReg[i].getPhyReg();
-                        break;
-                    }
-                if (preg == null) {
+                PhysicalRegisterIR preg = colorCanUse.iterator().next();
+                colorCanUse.retainAll(callerSaveRegisterSet);
+                if (!colorCanUse.isEmpty())
                     preg = colorCanUse.iterator().next();
-                    if (curFunc.callee.isEmpty())
-                        colorCanUse.retainAll(callerSaveRegisterSet);
-                    else
-                        colorCanUse.retainAll(calleeSaveRegisterSet);
-                    if (!colorCanUse.isEmpty())
-                        preg = colorCanUse.iterator().next();
-                }
                 colorMap.put(vreg, preg);
             }
         }

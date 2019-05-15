@@ -1,3 +1,9 @@
+
+
+
+
+
+
 default rel
 
 global print
@@ -36,6 +42,8 @@ print:
 
 
 
+
+
 L_001:  mov     rsi, qword [rel stdout]
         add     rbx, 1
         call    _IO_putc
@@ -45,12 +53,24 @@ L_001:  mov     rsi, qword [rel stdout]
 L_002:  pop     rbx
         ret
 
+
+
+
+
+
+
+
 println:
         push    rbx
         lea     rbx, [rdi+8H]
         movsx   edi, byte [rdi+8H]
         test    dil, dil
         jz      L_004
+
+
+
+
+
 L_003:  mov     rsi, qword [rel stdout]
         add     rbx, 1
         call    _IO_putc
@@ -61,6 +81,12 @@ L_004:  pop     rbx
         mov     rsi, qword [rel stdout]
         mov     edi, 10
         jmp     _IO_putc
+
+
+
+
+
+
 
 
 getString:
@@ -76,6 +102,12 @@ getString:
         mov     edx, eax
         jnz     L_007
 L_005:  lea     rbx, [rel buffer.3345]
+
+
+
+
+
+
 L_006:  mov     rdi, qword [rel stdin]
         call    _IO_getc
         cmp     al, 10
@@ -93,6 +125,11 @@ L_007:  add     edx, 1
         bt      rax, rdx
         jc      L_013
 L_008:  mov     r12d, 18433
+
+
+
+
+
 L_009:  mov     rdi, qword [rel stdin]
         add     rbx, 1
         call    _IO_getc
@@ -105,6 +142,13 @@ L_009:  mov     rdi, qword [rel stdin]
         jc      L_011
 L_010:  mov     ebp, edx
         jmp     L_009
+
+
+
+
+
+
+
 L_011:  lea     edi, [rbp+0AH]
         movsxd  rbp, edx
         movsxd  rdi, edi
@@ -120,9 +164,21 @@ L_012:  mov     byte [rbx], 0
         pop     rbp
         pop     r12
         ret
+
+
+
+
+
+
 L_013:  xor     ebp, ebp
         mov     edi, 9
         jmp     L_012
+
+
+
+
+
+
 
 
 getInt:
@@ -137,6 +193,11 @@ getInt:
         cmp     al, 9
         jbe     L_015
         mov     ebp, 1
+
+
+
+
+
 L_014:  mov     rdi, qword [rel stdin]
         cmp     dl, 45
         cmove   ebx, ebp
@@ -146,6 +207,11 @@ L_014:  mov     rdi, qword [rel stdin]
         cmp     al, 9
         ja      L_014
 L_015:  xor     r12d, r12d
+
+
+
+
+
 L_016:  lea     rax, [r12+r12]
         mov     rdi, qword [rel stdin]
         lea     rbp, [rax+r12*8]
@@ -165,6 +231,12 @@ L_016:  lea     rax, [r12+r12]
         pop     rbp
         pop     r12
         ret
+
+
+
+
+
+
 
 
 toString:
@@ -191,9 +263,23 @@ toString:
         ret
 
 
+
+
+
+
+
+
+
 _string_length:
         mov     rax, qword [rdi]
         ret
+
+
+
+
+
+
+
 
 
 _string_substring:
@@ -225,6 +311,12 @@ _string_substring:
         ret
 
 
+
+
+
+
+
+
 _string_parseInt:
         movsx   edx, byte [rdi+8H]
         cmp     dl, 45
@@ -234,6 +326,11 @@ _string_parseInt:
         lea     rcx, [rdi+8H]
         xor     esi, esi
 L_017:  xor     eax, eax
+
+
+
+
+
 L_018:  sub     edx, 48
         lea     rax, [rax+rax*4]
         add     rcx, 1
@@ -247,65 +344,98 @@ L_018:  sub     edx, 48
         test    esi, esi
         cmovne  rax, rdx
         ret
+
+
+
+
+
+
 L_019:  movsx   edx, byte [rdi+9H]
         lea     rcx, [rdi+9H]
         test    dl, dl
         jz      L_020
         mov     esi, 1
         jmp     L_017
+
+
+
+
+
+
 L_020:  xor     eax, eax
         ret
+
+
+
+
+
+
 
 
 _string_ord:
         movsx   rax, byte [rdi+rsi+8H]
         ret
 
+
+
+
+
+
+
+
+
 __stradd:
-        push    r14
         push    r13
         push    r12
-        push    rbp
         mov     r12, rdi
+        push    rbp
         push    rbx
-        mov     r14, qword [rdi]
         mov     rbp, rsi
-        mov     rbx, qword [rsi]
-        lea     r13, [r14+8H]
-        lea     rdi, [rbx+r13+1H]
+        sub     rsp, 8
+        mov     rbx, qword [rdi]
+        mov     r13, qword [rsi]
+        lea     rdi, [rbx+r13+9H]
+        add     rbx, r13
         call    malloc
-        lea     rdx, [r14+rbx]
-        test    r14, r14
-        lea     rcx, [rax+8H]
-        mov     qword [rax], rdx
-        jle     L_026
-        mov     edx, 8
-L_025:  movzx   edi, byte [r12+rdx]
-        mov     byte [rax+rdx], dil
+        movzx   ecx, byte [r12+8H]
+        mov     qword [rax], rbx
+        lea     rdx, [rax+8H]
+        test    cl, cl
+        jz      L_022
+        lea     rdi, [r12+8H]
+
+
+
+
+
+L_021:  add     rdi, 1
         add     rdx, 1
-        cmp     r13, rdx
-        jnz     L_025
-        add     rcx, r14
-L_026:  test    rbx, rbx
-        jle     L_028
-        xor     edx, edx
-L_027:  movzx   eax, byte [rbp+rdx+8H]
-        mov     byte [rcx+rdx], al
+        mov     byte [rdx-1H], cl
+        movzx   ecx, byte [rdi]
+        test    cl, cl
+        jnz     L_021
+L_022:  movzx   ecx, byte [rbp+8H]
+        lea     rdi, [rbp+8H]
+        test    cl, cl
+        jz      L_024
+
+
+
+
+
+L_023:  add     rdi, 1
         add     rdx, 1
-        cmp     rbx, rdx
-        jnz     L_027
-        add     rcx, rbx
-L_028:  mov     byte [rcx], 0
-        mov     rax, rcx
+        mov     byte [rdx-1H], cl
+        movzx   ecx, byte [rdi]
+        test    cl, cl
+        jnz     L_023
+L_024:  mov     byte [rdx], 0
+        add     rsp, 8
         pop     rbx
         pop     rbp
         pop     r12
         pop     r13
-        pop     r14
         ret
-
-
-
 
 
 __strcmp:
@@ -316,6 +446,12 @@ __strcmp:
         add     rsp, 8
         cdqe
         ret
+
+
+
+
+
+
 
 
 ___array_size:
@@ -339,3 +475,76 @@ LC0:
         db 25H, 6CH, 64H, 00H
 
 
+
+;********************************************************************************
+
+global main
+global __init
+section .data
+
+section .text
+
+main:
+	_BB9_main0_entry_main:
+		push rbp
+		mov rbp, rsp
+		sub rsp, 0
+		mov rdi, 0
+		mov rsi, 0
+		jmp _BB12_main1_forBody
+	_BB12_main1_forBody:
+		mov rbx, 0
+		cmp rsi, 89999999
+		jge _BB18_main2_Ifthen
+		jmp _BB15_main4_forexpr3
+	_BB18_main2_Ifthen:
+		cmp rbx, 9
+		jl _BB15_main4_forexpr3
+		mov r8, rsi
+		shl r8, 3
+		mov r13, 0
+		mov r15, 0
+		cmp r8, 0
+		jg _BB39_main6_forBody__inline
+		jmp _BB38_main7_forAfter__inline
+	_BB16_main3_forBody:
+		cmp rsi, 89999999
+		jge _BB18_main2_Ifthen
+		jmp _BB15_main4_forexpr3
+	_BB15_main4_forexpr3:
+		inc rbx
+		cmp rbx, 10
+		jl _BB16_main3_forBody
+	_BB11_main5_forexpr3:
+		inc rsi
+		cmp rsi, 90000000
+		jl _BB12_main1_forBody
+		call toString
+		mov rdi, rax
+		call println
+		mov rax, 0
+		leave
+		ret
+	_BB39_main6_forBody__inline:
+		add r13, r15
+		mov r14, r15
+		dec r14
+		mov r12, r8
+		and r12, r14
+		xor r13, r12
+		mov rax, r13
+		mov rcx, 3518437209
+		mul rcx
+		shr rax, 45
+		mov rcx, 10000
+		mul rcx
+		sub r13, rax
+		inc r15
+		cmp r15, r8
+		jl _BB39_main6_forBody__inline
+	_BB38_main7_forAfter__inline:
+		add rdi, r13
+		inc rbx
+		cmp rbx, 10
+		jl _BB16_main3_forBody
+		jmp _BB11_main5_forexpr3

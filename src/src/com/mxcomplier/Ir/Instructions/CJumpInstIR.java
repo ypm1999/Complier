@@ -14,6 +14,8 @@ public class CJumpInstIR extends BranchInstIR {
     private Op op;
     private BasicBlockIR trueBB, falseBB;
     public CJumpInstIR(Op op, OperandIR lhs, OperandIR rhs, BasicBlockIR trueBB, BasicBlockIR falseBB) {
+        if (trueBB == null)
+            throw new IRError("");
         this.op = op;
         this.lhs = lhs;
         this.rhs = rhs;
@@ -42,6 +44,7 @@ public class CJumpInstIR extends BranchInstIR {
     }
 
     public BasicBlockIR getTrueBB() {
+
         return trueBB;
     }
 

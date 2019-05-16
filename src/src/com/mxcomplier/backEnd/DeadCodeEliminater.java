@@ -10,11 +10,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-public class UseLessCodeEliminater extends IRScanner {
+public class DeadCodeEliminater extends IRScanner {
 
     IRBuilder ir;
 
-    public UseLessCodeEliminater(IRBuilder ir) {
+    public DeadCodeEliminater(IRBuilder ir) {
         this.ir = ir;
     }
 

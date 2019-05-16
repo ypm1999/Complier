@@ -65,7 +65,8 @@ public class InstructionMatcher extends IRScanner {
                 MoveInstIR moveNext = (MoveInstIR) inst.next;
                 if (move.getSrc() instanceof MemoryIR) {
                     MemoryIR src = (MemoryIR) move.getSrc();
-                    if (moveNext.getSrc() instanceof MemoryIR && src.phyEquals((MemoryIR) moveNext.getSrc())) {
+                    if (moveNext.getSrc() instanceof MemoryIR && src.phyEquals((MemoryIR) moveNext.getSrc())
+                            && move.getDest() instanceof  VirtualRegisterIR && !src.getVreg().contains((VirtualRegisterIR) move.getDest())) {
                         moveNext.setSrc(move.getDest());
                     }
                 }

@@ -13,7 +13,6 @@ import com.mxcomplier.Ir.RegisterSet;
 import java.util.HashSet;
 
 public class StackFrameAllocater extends IRScanner {
-    private FuncIR curFunc = null;
 
 
     @Override
@@ -28,9 +27,7 @@ public class StackFrameAllocater extends IRScanner {
     @Override
     public void visit(ProgramIR node) {
         for (FuncIR func : node.getFuncs()) {
-            curFunc = func;
             func.accept(this);
-            curFunc = null;
         }
     }
 

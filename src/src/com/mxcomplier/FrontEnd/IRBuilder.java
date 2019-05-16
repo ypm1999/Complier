@@ -388,12 +388,14 @@ public class IRBuilder extends ASTScanner {
 
     @Override
     public void visit(ContinueStmtNode node) {
-        curBB.append(new JumpInstIR(curLoopCondition));
+        if (!(curBB.getTail().prev instanceof BranchInstIR))
+            curBB.append(new JumpInstIR(curLoopCondition));
     }
 
     @Override
     public void visit(BreakStmtNode node) {
-        curBB.append(new JumpInstIR(curLoopAfter));
+        if (!(curBB.getTail().prev instanceof BranchInstIR))
+            curBB.append(new JumpInstIR(curLoopAfter));
     }
 
     @Override
@@ -681,6 +683,8 @@ public class IRBuilder extends ASTScanner {
     }
 
     private void doRelationBinaryExpr(BinaryExprNode node, ExprNode lhs, ExprNode rhs) {
+        if (!trueBBMap.containsKey(node))
+            return;
         CJumpInstIR.Op op = CJumpInstIR.Op.ERROR;
         switch (node.getOp()) {
             case LESS:

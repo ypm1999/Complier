@@ -30,11 +30,11 @@ public class FuncInliner extends IRScanner {
             newfunc.getParameters().add(newArg);
         }
 
-        if (oldFunc.returnValue != null) {
-            VirtualRegisterIR newret = new VirtualRegisterIR(oldFunc.returnValue.lable + "_");
-            newfunc.returnValue = newret;
-            if (!vregRenameMap.containsKey(oldFunc.returnValue))
-                vregRenameMap.put(oldFunc.returnValue, newret);
+        if (oldFunc.getReturnValue() != null) {
+            VirtualRegisterIR newret = new VirtualRegisterIR(oldFunc.getReturnValue().lable + "_");
+            newfunc.setReturnValue(newret);
+            if (!vregRenameMap.containsKey(oldFunc.getReturnValue()))
+                vregRenameMap.put(oldFunc.getReturnValue(), newret);
         }
 
         for (VirtualRegisterIR vreg : oldFunc.getAllVreg())
@@ -65,7 +65,6 @@ public class FuncInliner extends IRScanner {
 
         return newfunc;
     }
-//    private HashMap<FuncIR, FuncIR> funcBuckupMap = new HashMap<>();
 
     public void run(IRBuilder ir) {
         List<FuncIR> funcList = ir.root.getFuncs();
@@ -130,12 +129,6 @@ public class FuncInliner extends IRScanner {
         curBB.getTail().prev = call;
         call.next = curBB.getTail();
 
-        //rename inst after call
-//        for (InstIR inst = newLeaveBB.getHead().next; inst != newLeaveBB.getTail(); inst = inst.next) {
-//            if (inst instanceof BranchInstIR)
-//                ((BranchInstIR) inst).bbRename(Collections.singletonMap(curBB, newLeaveBB));
-//        }
-
         for (int i = 0; i < callee.getParameters().size(); i++) {
             VirtualRegisterIR oldArg = callee.getParameters().get(i);
             VirtualRegisterIR newArg = new VirtualRegisterIR(oldArg);
@@ -151,8 +144,8 @@ public class FuncInliner extends IRScanner {
             }
         }
 
-        if (callee.returnValue != null)
-            vregRenameMap.put(callee.returnValue, (VirtualRegisterIR) call.getReturnValue());
+        if (callee.getReturnValue() != null)
+            vregRenameMap.put(callee.getReturnValue(), (VirtualRegisterIR) call.getReturnValue());
 
         for (VirtualRegisterIR vreg : callee.getAllVreg()) {
             if (!vregRenameMap.containsKey(vreg)

@@ -17,19 +17,18 @@ import static java.lang.Math.min;
 public class GraphAllocator {
     private static final int REGNUM = 14;
 
-    private FuncIR curFunc = null;
     private Graph graph, originGraph;
     private List<VirtualRegisterIR> spilledVregs;
     private LinkedList<VirtualRegisterIR> finishedStack;
     private HashSet<VirtualRegisterIR> simplifyTODOList, spillTODOList;
     private HashMap<VirtualRegisterIR, PhysicalRegisterIR> colorMap;
     private LinkedList<PhysicalRegisterIR> allPhyreg;
-    private IRBuilder irBuilder;
 
     private VirtualRegisterIR getAlias(VirtualRegisterIR x) {
-        if (x.alais == x)
+        if (x.getAlias() == x)
             return x;
-        return x.alais = getAlias(x.alais);
+        x.setAlias(getAlias(x.getAlias()));
+        return x.getAlias();
     }
 
     private boolean conservative(VirtualRegisterIR u, VirtualRegisterIR v) {
@@ -53,7 +52,7 @@ public class GraphAllocator {
             moveList.clear();
             graph = livenessAnalyzer.buildGraph(func, moveList);
             for (VirtualRegisterIR node : graph.getnodes())
-                node.alais = node;
+                node.setAlias(node);
             HashMap<VirtualRegisterIR, VirtualRegisterIR> renameMap = new HashMap<>();
             for (Pair<VirtualRegisterIR, VirtualRegisterIR> pair : moveList) {
                 VirtualRegisterIR u = getAlias(pair.a), v = getAlias(pair.b);
@@ -69,8 +68,7 @@ public class GraphAllocator {
                     }
                 }
                 if (!graph.getNeighbor(u).contains(v) && conservative(u, v)) {
-//                    System.err.println("merge " + u + " <-" + v);
-                    v.alais = u;
+                    v.setAlias(u);
                     renameMap.put(v, u);
                     HashSet<VirtualRegisterIR> tmp = new HashSet<>(graph.getNeighbor(v));
                     for (VirtualRegisterIR node : tmp) {
@@ -85,7 +83,7 @@ public class GraphAllocator {
             for (BasicBlockIR bb : func.getBBList()) {
                 for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
                     inst.replaceVreg(renameMap);
-                    if (inst instanceof MoveInstIR && ((MoveInstIR) inst).src == ((MoveInstIR) inst).dest) {
+                    if (inst instanceof MoveInstIR && ((MoveInstIR) inst).getSrc() == ((MoveInstIR) inst).getDest()) {
                         inst = inst.prev;
                         inst.next.remove();
                     }
@@ -203,8 +201,8 @@ public class GraphAllocator {
     private void rewriteFunc(FuncIR func) {
         rebuildSpilledList();
         for (VirtualRegisterIR vreg : spilledVregs)
-            if (vreg.memory == null)
-                vreg.memory = new StackSoltIR(vreg.lable + "_spillPlace");
+            if (vreg.getMemory() == null)
+                vreg.setMemory(new StackSoltIR(vreg.lable + "_spillPlace"));
         for (BasicBlockIR bb : func.getBBList()) {
             for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
                 List<VirtualRegisterIR> used = inst.getUsedVReg(), defined = inst.getDefinedVreg();
@@ -214,7 +212,7 @@ public class GraphAllocator {
                 for (VirtualRegisterIR vreg : used) {
                     VirtualRegisterIR tmp = new VirtualRegisterIR("spill_reg");
                     renameMap.put(vreg, tmp);
-                    inst.prepend(new MoveInstIR(tmp, vreg.memory));
+                    inst.prepend(new MoveInstIR(tmp, vreg.getMemory()));
                 }
                 InstIR curInst = inst;
                 for (VirtualRegisterIR vreg : defined) {
@@ -224,7 +222,7 @@ public class GraphAllocator {
                         renameMap.put(vreg, tmp);
                     } else
                         tmp = renameMap.get(vreg);
-                    inst.append(new MoveInstIR(vreg.memory, tmp));
+                    inst.append(new MoveInstIR(vreg.getMemory(), tmp));
                     inst = inst.next;
                 }
                 curInst.replaceVreg(renameMap);
@@ -256,48 +254,14 @@ public class GraphAllocator {
 
         for (BasicBlockIR bb : func.getBBList()) {
             for (InstIR inst = bb.getHead().next; inst != bb.getTail(); inst = inst.next) {
-                if (inst instanceof MoveInstIR) {
-                    OperandIR dest = getPhyValue(((MoveInstIR) inst).dest);
-                    OperandIR src = getPhyValue(((MoveInstIR) inst).src);
-                    if (dest == src) {
-                        inst = inst.prev;
-                        inst.next.remove();
-                    } else if (inst.next instanceof MoveInstIR) {
-                        OperandIR destNext = getPhyValue(((MoveInstIR) inst.next).dest);
-                        OperandIR srcNext = getPhyValue(((MoveInstIR) inst.next).src);
-                        if (dest == srcNext && src == destNext) {
-                            inst.next.remove();
-                            inst = inst.prev;
-                        }
-                        if (dest == destNext && dest instanceof PhysicalRegisterIR) {
-                            if (((MoveInstIR) inst.next).src instanceof MemoryIR) {
-                                MemoryIR temp = (MemoryIR) ((MoveInstIR) inst.next).src;
-                                if (temp.getOffset() != null && temp.getOffset().getPhyReg() == dest)
-                                    continue;
-                                if (temp.getBase() != null && temp.getBase().getPhyReg() == dest)
-                                    continue;
-                            }
-                            if (dest == srcNext)
-                                continue;
-                            inst = inst.prev;
-                            inst.next.remove();
-                        }
-                    }
-                }
+
             }
         }
 
     }
 
-    private OperandIR getPhyValue(OperandIR oper) {
-        if (oper instanceof VirtualRegisterIR)
-            return ((VirtualRegisterIR) oper).getPhyReg();
-        else
-            return oper;
-    }
 
     public void run(IRBuilder ir) {
-        irBuilder = ir;
         int cnt = 0;
         for (StaticDataIR mem : ir.root.getStaticData()) {
             mem.lable = "__Static" + cnt + "_" + mem.lable;
@@ -305,9 +269,7 @@ public class GraphAllocator {
         }
 
         for (FuncIR func : ir.root.getFuncs()) {
-            curFunc = func;
             runFunc(func);
-            curFunc = null;
         }
     }
 }

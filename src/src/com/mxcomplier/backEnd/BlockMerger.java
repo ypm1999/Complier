@@ -54,7 +54,7 @@ public class BlockMerger extends IRScanner {
                     if (bb.getInstNum() == 1) {
                         HashMap<BasicBlockIR, BasicBlockIR> renameMap = new HashMap<>();
                         renameMap.put(bb, nextBB);
-                        for (BasicBlockIR prevBB : bb.fronters) {
+                        for (BasicBlockIR prevBB : bb.getFronters()) {
                             if (removedBB.contains(prevBB))
                                 continue;
                             ((BranchInstIR) prevBB.getTail().prev).bbRename(renameMap);
@@ -62,7 +62,7 @@ public class BlockMerger extends IRScanner {
                         }
                         break;
                     }
-                    if (nextBB.fronters.size() == 1 && nextBB.getInstNum() > 1) {
+                    if (nextBB.getFronters().size() == 1 && nextBB.getInstNum() > 1) {
                         lastInst.remove();
                         bb.merge(nextBB);
                         removedBB.add(nextBB);

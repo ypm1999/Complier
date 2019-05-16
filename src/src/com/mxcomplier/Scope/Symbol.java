@@ -3,7 +3,7 @@ package com.mxcomplier.Scope;
 import com.mxcomplier.Type.Type;
 
 abstract public class Symbol {
-    boolean isOutputIrrelevant = false;
+    private boolean isOutputIrrelevant = false;
     private String name;
     private Type type;
 

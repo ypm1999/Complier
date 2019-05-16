@@ -15,10 +15,10 @@ import com.mxcomplier.backEnd.EmptyForRemover;
 import java.util.*;
 
 public class IRBuilder extends ASTScanner {
-    public static ImmediateIR ONE = new ImmediateIR(1), ZERO = new ImmediateIR(0);
-    public static ImmediateIR REGSIZE = new ImmediateIR(Config.getREGSIZE());
+    static private final ImmediateIR ONE = new ImmediateIR(1), ZERO = new ImmediateIR(0);
+    static private final ImmediateIR REGSIZE = new ImmediateIR(Config.getREGSIZE());
     public ProgramIR root;
-    public Map<String, FuncIR> funcMap = new HashMap<>();
+    private Map<String, FuncIR> funcMap = new HashMap<>();
     private Map<ExprNode, BasicBlockIR> trueBBMap = new HashMap<>();
     private Map<ExprNode, BasicBlockIR> falseBBMap = new HashMap<>();
     private FuncIR initFunc = null;
@@ -93,7 +93,7 @@ public class IRBuilder extends ASTScanner {
     private void initFunc(FuncDefNode node, String className) {
         FuncIR func = new FuncIR(className + node.getName());
         if (node.getReturnType() == null || !(node.getReturnType().getType() instanceof VoidType))
-            func.returnValue = new VirtualRegisterIR("returnValue_of_" + func.getName());
+            func.setReturnValue(new VirtualRegisterIR("returnValue_of_" + func.getName()));
         funcMap.put(func.getName(), func);
         node.setFuncIR(func);
         root.getFuncs().add(func);
@@ -122,10 +122,10 @@ public class IRBuilder extends ASTScanner {
                 StaticDataIR staticData = new StaticDataIR();
                 staticData.lable = var.getName();
                 root.getStaticData().add(staticData);
-                var.vReg.memory = new MemoryIR(staticData);
+                var.vReg.setMemory(new MemoryIR(staticData));
                 if (((VarDefNode) section).getInitExpr() != null) {
                     addVarInitInst(var.vReg, ((VarDefNode) section).getInitExpr());
-                    curBB.append(new MoveInstIR(var.vReg.memory, var.vReg));
+                    curBB.append(new MoveInstIR(var.vReg.getMemory(), var.vReg));
                     currentFunc.usedGlobalVar.add(var.vReg);
                     useinit = true;
                 }
@@ -235,10 +235,10 @@ public class IRBuilder extends ASTScanner {
             if (!(bb.getTail().prev instanceof BranchInstIR)) {
                 if (!ret) {
                     if (node.getReturnType() == null)
-                        bb.append(new MoveInstIR(currentFunc.returnValue, curThisPointor));
+                        bb.append(new MoveInstIR(currentFunc.getReturnValue(), curThisPointor));
                     else {
                         if (!(node.getReturnType().getType() instanceof VoidType))
-                            bb.append(new MoveInstIR(currentFunc.returnValue, ZERO));
+                            bb.append(new MoveInstIR(currentFunc.getReturnValue(), ZERO));
                     }
                 }
                 bb.append(new JumpInstIR(currentFunc.leaveBB));
@@ -247,7 +247,7 @@ public class IRBuilder extends ASTScanner {
         if (node.getReturnType() != null && node.getReturnType().getType() instanceof VoidType)
             currentFunc.leaveBB.append(new ReturnInstIR());
         else
-            currentFunc.leaveBB.append(new ReturnInstIR(currentFunc.returnValue));
+            currentFunc.leaveBB.append(new ReturnInstIR(currentFunc.getReturnValue()));
 
         currentFunc = null;
         curThisPointor = null;
@@ -400,12 +400,12 @@ public class IRBuilder extends ASTScanner {
     public void visit(ReturnStmtNode node) {
         if (node.getReturnExpr() != null) {
             if (node.getReturnExpr().getType() instanceof BoolType) {
-                boolAssign(currentFunc.returnValue, node.getReturnExpr());
+                boolAssign(currentFunc.getReturnValue(), node.getReturnExpr());
             } else {
                 node.getReturnExpr().accept(this);
-                curBB.append(new MoveInstIR(currentFunc.returnValue, node.getReturnExpr().resultReg));
+                curBB.append(new MoveInstIR(currentFunc.getReturnValue(), node.getReturnExpr().resultReg));
             }
-            curBB.append(new ReturnInstIR(currentFunc.returnValue));
+            curBB.append(new ReturnInstIR(currentFunc.getReturnValue()));
         } else
             curBB.append(new ReturnInstIR());
     }
@@ -797,11 +797,11 @@ public class IRBuilder extends ASTScanner {
             return;
         }
         VirtualRegisterIR res = new VirtualRegisterIR("airthmeticBinary");
-        res.tempVar = true;
+        res.setTempVar(true);
         if (op == BinaryInstIR.Op.ADD && lhs.getType() instanceof StringType) {
             doFuncCall(library_stradd, Arrays.asList(lhs.resultReg, rhs.resultReg), res);
         } else {
-            if (lhs.resultReg instanceof VirtualRegisterIR && ((VirtualRegisterIR) lhs.resultReg).tempVar)
+            if (lhs.resultReg instanceof VirtualRegisterIR && ((VirtualRegisterIR) lhs.resultReg).isTempVar())
                 res = (VirtualRegisterIR) lhs.resultReg;
             else
                 curBB.append(new MoveInstIR(res, lhs.resultReg));

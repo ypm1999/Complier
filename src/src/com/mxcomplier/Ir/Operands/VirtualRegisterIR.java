@@ -4,11 +4,35 @@ import com.mxcomplier.Ir.IRVisitor;
 
 public class VirtualRegisterIR extends RegisterIR {
     static private int vRegId = 0;
-    public MemoryIR memory = null;
-    public boolean tempVar = false;
-    public VirtualRegisterIR alais = null;
+    private MemoryIR memory = null;
+    private boolean tempVar = false;
+    private VirtualRegisterIR alias = null;
     private int id;
     private PhysicalRegisterIR phyReg = null;
+
+    public VirtualRegisterIR getAlias() {
+        return alias;
+    }
+
+    public MemoryIR getMemory() {
+        return memory;
+    }
+
+    public boolean isTempVar() {
+        return tempVar;
+    }
+
+    public void setAlias(VirtualRegisterIR alias) {
+        this.alias = alias;
+    }
+
+    public void setMemory(MemoryIR memory) {
+        this.memory = memory;
+    }
+
+    public void setTempVar(boolean tempVar) {
+        this.tempVar = tempVar;
+    }
 
     public VirtualRegisterIR(String label) {
         this.id = vRegId++;
@@ -21,21 +45,13 @@ public class VirtualRegisterIR extends RegisterIR {
         this.tempVar = other.tempVar;
         this.memory = other.memory;
         this.phyReg = other.phyReg;
-        this.alais = other.alais;
+        this.alias = other.alias;
     }
 
     public VirtualRegisterIR(String label, PhysicalRegisterIR phy) {
         this.id = -1;
         this.lable = label;
         this.phyReg = phy;
-    }
-
-    static public int getVregId() {
-        return vRegId;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public void accept(IRVisitor visitor) {

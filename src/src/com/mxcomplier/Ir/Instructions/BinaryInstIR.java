@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 public class BinaryInstIR extends InstIR {
-    public AddressIR dest;
-    public OperandIR src;
+    private AddressIR dest;
+    private OperandIR src;
     private Op op;
     public BinaryInstIR(Op op, AddressIR dest, OperandIR src) {
         this.op = op;
@@ -25,13 +25,23 @@ public class BinaryInstIR extends InstIR {
         return op;
     }
 
+    public void setSrc(OperandIR src) {
+        this.src = src;
+    }
+
     public OperandIR getSrc() {
         return src;
+    }
+
+    public void setDest(AddressIR dest) {
+        this.dest = dest;
     }
 
     public AddressIR getDest() {
         return dest;
     }
+
+
 
     @Override
     public List<StackSoltIR> getStackSolt() {

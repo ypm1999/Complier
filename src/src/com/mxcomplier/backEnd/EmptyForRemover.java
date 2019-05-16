@@ -42,7 +42,7 @@ public class EmptyForRemover extends IRScanner {
                     if (inst instanceof CallInstIR || inst instanceof ReturnInstIR)
                         removeAble = false;
                     if ((inst instanceof MoveInstIR && ((MoveInstIR) inst).getDest() instanceof MemoryIR)
-                            || (inst instanceof LeaInstIR && ((MoveInstIR) inst).getDest() instanceof MemoryIR)
+                            || (inst instanceof LeaInstIR && ((LeaInstIR) inst).getDest() instanceof MemoryIR)
                             || (inst instanceof BinaryInstIR && ((BinaryInstIR) inst).getDest() instanceof MemoryIR)
                             || (inst instanceof UnaryInstIR && ((UnaryInstIR) inst).getDest() instanceof MemoryIR))
                         removeAble = false;
@@ -76,7 +76,7 @@ public class EmptyForRemover extends IRScanner {
             this.after = after;
         }
 
-        public boolean noUseInafter(LivenessAnalyzer livenessAnalyzer) {
+        boolean noUseInafter(LivenessAnalyzer livenessAnalyzer) {
             HashSet<VirtualRegisterIR> outSet = new HashSet<>(livenessAnalyzer.getDefinedVregs().get(body));
             outSet.addAll(livenessAnalyzer.getDefinedVregs().get(cond));
             outSet.addAll(livenessAnalyzer.getDefinedVregs().get(expr3));
@@ -91,7 +91,7 @@ public class EmptyForRemover extends IRScanner {
         }
 
         Set<BasicBlockIR> getBBSet() {
-            return new HashSet<BasicBlockIR>(Arrays.asList(body, expr3, cond, after));
+            return new HashSet<>(Arrays.asList(body, expr3, cond, after));
         }
     }
 

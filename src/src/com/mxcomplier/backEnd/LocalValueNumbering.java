@@ -22,7 +22,6 @@ public class LocalValueNumbering extends IRScanner {
     private HashMap<Integer, HashSet<VirtualRegisterIR>> valueRegisterMap = new HashMap<>();
     private HashMap<Integer, Integer> immValueMap = new HashMap<>();
     private HashMap<Integer, Integer> valueImmMap = new HashMap<>();
-    private FuncIR curFunc = null;
 
     private Integer getOperandValue(OperandIR oper) {
         if (oper instanceof VirtualRegisterIR)
@@ -93,10 +92,8 @@ public class LocalValueNumbering extends IRScanner {
 
     @Override
     public void visit(FuncIR node) {
-        curFunc = node;
         for (BasicBlockIR bb : node.getBBList())
             bb.accept(this);
-        curFunc = null;
     }
 
     @Override
@@ -203,11 +200,11 @@ public class LocalValueNumbering extends IRScanner {
         Integer lhs = getOperandValue(node.getLhs());
         Integer rhs = getOperandValue(node.getRhs());
         if (valueImmMap.containsKey(lhs))
-            node.lhs = new ImmediateIR(valueImmMap.get(lhs));
+            node.setLhs(new ImmediateIR(valueImmMap.get(lhs)));
         if (valueImmMap.containsKey(rhs))
-            node.rhs = new ImmediateIR(valueImmMap.get(rhs));
-        if (node.lhs instanceof ImmediateIR && node.rhs instanceof ImmediateIR) {
-            boolean res = doComp(node.getOp(), ((ImmediateIR) node.lhs).getValue(), ((ImmediateIR) node.rhs).getValue());
+            node.setRhs(new ImmediateIR(valueImmMap.get(rhs)));
+        if (node.getLhs() instanceof ImmediateIR && node.getRhs() instanceof ImmediateIR) {
+            boolean res = doComp(node.getOp(), ((ImmediateIR) node.getLhs()).getValue(), ((ImmediateIR) node.getRhs()).getValue());
             if (res)
                 node.append(new JumpInstIR(node.getTrueBB()));
             else
@@ -226,7 +223,7 @@ public class LocalValueNumbering extends IRScanner {
             result = pairValueMap.get(binaryPair);
             OperandIR oper = getValueOperand(result);
             if (oper != null) {
-                node.append(new MoveInstIR(node.dest, oper));
+                node.append(new MoveInstIR(node.getDest(), oper));
                 node.remove();
             }
         } else {
@@ -241,7 +238,7 @@ public class LocalValueNumbering extends IRScanner {
     public void visit(MoveInstIR node) {
         Integer src = getOperandValue(node.getSrc());
         if (valueImmMap.containsKey(src))
-            node.src = new ImmediateIR(valueImmMap.get(src));
+            node.setSrc(new ImmediateIR(valueImmMap.get(src)));
         if (node.getDest() instanceof VirtualRegisterIR)
             changeRegisterValue((VirtualRegisterIR) node.getDest(), src);
     }

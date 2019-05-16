@@ -9,8 +9,8 @@ import java.util.List;
 
 public class BasicBlockIR {
     private static int BBid = 0;
-    public List<BasicBlockIR> fronters;
-    public List<BasicBlockIR> successors;
+    private List<BasicBlockIR> fronters;
+    private List<BasicBlockIR> successors;
     private int id;
     private String lable; //for Debug
     private FuncIR func;
@@ -41,13 +41,7 @@ public class BasicBlockIR {
 
     public int getMergeInstNum() {
         int res = 0;
-//        int cnt = 1;
         for (InstIR inst = head.next; inst != tail; inst = inst.next) {
-//            if (inst instanceof CJumpInstIR) {
-//                res += cnt;
-//                cnt++;
-//            }
-//            else
             res++;
         }
         return res;
@@ -66,6 +60,14 @@ public class BasicBlockIR {
 
     void addSuccessor(BasicBlockIR bb) {
         successors.add(bb);
+    }
+
+    public List<BasicBlockIR> getFronters() {
+        return fronters;
+    }
+
+    public List<BasicBlockIR> getSuccessors() {
+        return successors;
     }
 
     public void append(InstIR inst) {
@@ -100,7 +102,7 @@ public class BasicBlockIR {
         return lable;
     }
 
-    public String getFuncLabel() {
+    private String getFuncLabel() {
         return func.getName() + func.getBBList().indexOf(this);
     }
 

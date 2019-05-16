@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CJumpInstIR extends BranchInstIR {
-    public OperandIR lhs, rhs;
+    private OperandIR lhs, rhs;
     private Op op;
     private BasicBlockIR trueBB, falseBB;
     public CJumpInstIR(Op op, OperandIR lhs, OperandIR rhs, BasicBlockIR trueBB, BasicBlockIR falseBB) {
@@ -29,8 +29,16 @@ public class CJumpInstIR extends BranchInstIR {
         return lhs;
     }
 
+    public void setLhs(OperandIR lhs) {
+        this.lhs = lhs;
+    }
+
     public OperandIR getRhs() {
         return rhs;
+    }
+
+    public void setRhs(OperandIR rhs) {
+        this.rhs = rhs;
     }
 
     public BasicBlockIR getTrueBB() {

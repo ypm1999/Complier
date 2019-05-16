@@ -137,7 +137,6 @@ public class FuncIR {
     }
 
     private void orderDfsBB(BasicBlockIR now, BasicBlockIR fa) {
-//        System.err.println(now.getLable());
         if (fa != null) {
             now.addFronter(fa);
             fa.addSuccessor(now);
@@ -146,9 +145,7 @@ public class FuncIR {
             return;
         accessed.add(now);
         orderedBBList.add(now);
-//        System.err.println(now.getLable());
         for (InstIR inst = now.getTail().prev; inst != now.getHead(); inst = inst.prev) {
-//            System.err.println(inst);
             if (inst instanceof EmptyInstIR)
                 throw new IRError("empty");
             if (inst instanceof JumpInstIR)
@@ -209,6 +206,46 @@ public class FuncIR {
 
     public Type getType() {
         return type;
+    }
+
+    public VirtualRegisterIR getReturnValue() {
+        return returnValue;
+    }
+
+    public void setReturnValue(VirtualRegisterIR returnValue) {
+        this.returnValue = returnValue;
+    }
+
+    public BasicBlockIR getEntryBB() {
+        return entryBB;
+    }
+
+    public BasicBlockIR getLeaveBB() {
+        return leaveBB;
+    }
+
+    public HashSet<FuncIR> getCallee() {
+        return callee;
+    }
+
+    public HashSet<FuncIR> getCaller() {
+        return caller;
+    }
+
+    public HashSet<VirtualRegisterIR> getDefinedGlobalVar() {
+        return definedGlobalVar;
+    }
+
+    public HashSet<VirtualRegisterIR> getUsedGlobalVar() {
+        return usedGlobalVar;
+    }
+
+    public HashSet<VirtualRegisterIR> getSelfDefinedGlobalVar() {
+        return selfDefinedGlobalVar;
+    }
+
+    public HashSet<VirtualRegisterIR> getSelfUsedGlobalVar() {
+        return selfUsedGlobalVar;
     }
 
     public List<VirtualRegisterIR> getParameters() {

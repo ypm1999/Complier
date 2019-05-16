@@ -35,8 +35,8 @@ public class Cjumpfixer extends IRScanner {
 
     @Override
     public void visit(CJumpInstIR node) {
-        if (node.getTrueBB().fronters.size() == 1 ||
-                (node.getFalseBB().fronters.size() > 1 && node.getTrueBB().getInstNum() < node.getFalseBB().getInstNum()))
+        if (node.getTrueBB().getFronters().size() == 1 ||
+                (node.getFalseBB().getFronters().size() > 1 && node.getTrueBB().getInstNum() < node.getFalseBB().getInstNum()))
             node.reverseOp();
         node.append(new JumpInstIR(node.getFalseBB()));
         node.removeFalseBB();

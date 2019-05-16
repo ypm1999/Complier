@@ -1,9 +1,3 @@
-
-
-
-
-
-
 default rel
 
 global print
@@ -40,10 +34,6 @@ print:
         test    dil, dil
         jz      L_002
 
-
-
-
-
 L_001:  mov     rsi, qword [rel stdout]
         add     rbx, 1
         call    _IO_putc
@@ -54,22 +44,12 @@ L_002:  pop     rbx
         ret
 
 
-
-
-
-
-
-
 println:
         push    rbx
         lea     rbx, [rdi+8H]
         movsx   edi, byte [rdi+8H]
         test    dil, dil
         jz      L_004
-
-
-
-
 
 L_003:  mov     rsi, qword [rel stdout]
         add     rbx, 1
@@ -81,12 +61,6 @@ L_004:  pop     rbx
         mov     rsi, qword [rel stdout]
         mov     edi, 10
         jmp     _IO_putc
-
-
-
-
-
-
 
 
 getString:
@@ -102,11 +76,6 @@ getString:
         mov     edx, eax
         jnz     L_007
 L_005:  lea     rbx, [rel buffer.3345]
-
-
-
-
-
 
 L_006:  mov     rdi, qword [rel stdin]
         call    _IO_getc
@@ -127,9 +96,6 @@ L_007:  add     edx, 1
 L_008:  mov     r12d, 18433
 
 
-
-
-
 L_009:  mov     rdi, qword [rel stdin]
         add     rbx, 1
         call    _IO_getc
@@ -142,12 +108,6 @@ L_009:  mov     rdi, qword [rel stdin]
         jc      L_011
 L_010:  mov     ebp, edx
         jmp     L_009
-
-
-
-
-
-
 
 L_011:  lea     edi, [rbp+0AH]
         movsxd  rbp, edx
@@ -165,20 +125,9 @@ L_012:  mov     byte [rbx], 0
         pop     r12
         ret
 
-
-
-
-
-
 L_013:  xor     ebp, ebp
         mov     edi, 9
         jmp     L_012
-
-
-
-
-
-
 
 
 getInt:
@@ -194,10 +143,6 @@ getInt:
         jbe     L_015
         mov     ebp, 1
 
-
-
-
-
 L_014:  mov     rdi, qword [rel stdin]
         cmp     dl, 45
         cmove   ebx, ebp
@@ -207,10 +152,6 @@ L_014:  mov     rdi, qword [rel stdin]
         cmp     al, 9
         ja      L_014
 L_015:  xor     r12d, r12d
-
-
-
-
 
 L_016:  lea     rax, [r12+r12]
         mov     rdi, qword [rel stdin]
@@ -231,12 +172,6 @@ L_016:  lea     rax, [r12+r12]
         pop     rbp
         pop     r12
         ret
-
-
-
-
-
-
 
 
 toString:
@@ -263,23 +198,9 @@ toString:
         ret
 
 
-
-
-
-
-
-
-
 _string_length:
         mov     rax, qword [rdi]
         ret
-
-
-
-
-
-
-
 
 
 _string_substring:
@@ -311,12 +232,6 @@ _string_substring:
         ret
 
 
-
-
-
-
-
-
 _string_parseInt:
         movsx   edx, byte [rdi+8H]
         cmp     dl, 45
@@ -326,11 +241,6 @@ _string_parseInt:
         lea     rcx, [rdi+8H]
         xor     esi, esi
 L_017:  xor     eax, eax
-
-
-
-
-
 L_018:  sub     edx, 48
         lea     rax, [rax+rax*4]
         add     rcx, 1
@@ -344,44 +254,19 @@ L_018:  sub     edx, 48
         test    esi, esi
         cmovne  rax, rdx
         ret
-
-
-
-
-
-
 L_019:  movsx   edx, byte [rdi+9H]
         lea     rcx, [rdi+9H]
         test    dl, dl
         jz      L_020
         mov     esi, 1
         jmp     L_017
-
-
-
-
-
-
 L_020:  xor     eax, eax
         ret
-
-
-
-
-
-
 
 
 _string_ord:
         movsx   rax, byte [rdi+rsi+8H]
         ret
-
-
-
-
-
-
-
 
 
 __stradd:
@@ -403,11 +288,6 @@ __stradd:
         test    cl, cl
         jz      L_022
         lea     rdi, [r12+8H]
-
-
-
-
-
 L_021:  add     rdi, 1
         add     rdx, 1
         mov     byte [rdx-1H], cl
@@ -418,11 +298,6 @@ L_022:  movzx   ecx, byte [rbp+8H]
         lea     rdi, [rbp+8H]
         test    cl, cl
         jz      L_024
-
-
-
-
-
 L_023:  add     rdi, 1
         add     rdx, 1
         mov     byte [rdx-1H], cl
@@ -446,12 +321,6 @@ __strcmp:
         add     rsp, 8
         cdqe
         ret
-
-
-
-
-
-
 
 
 ___array_size:

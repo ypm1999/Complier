@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UnaryInstIR extends InstIR {
-    public AddressIR dest;
+    private AddressIR dest;
     private Op op;
     public UnaryInstIR(Op op, AddressIR dest) {
         this.op = op;

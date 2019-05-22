@@ -26,7 +26,7 @@ public class Main {
         try {
             InputStream codeInput;
             if (Config.DEBUG)
-                codeInput = new FileInputStream("testcases/testcase.mx");
+                codeInput = new FileInputStream("testcase.mx");
             else
                 codeInput = System.in;
 
@@ -52,8 +52,10 @@ public class Main {
             if (Config.enableBlockCopy)
                 new BlockCopier(true).visit(irBuilder.root);
 
+//            new IRPrinter(irBuilder).visit(irBuilder.root);
             if (Config.enableLocalValueNumbering)
                 new LocalValueNumbering().visit(irBuilder.root);
+//            new IRPrinter(irBuilder).visit(irBuilder.root);
             if (Config.enableDeadCodeEliminate)
                 new DeadCodeEliminater(irBuilder).run();
 
@@ -67,7 +69,7 @@ public class Main {
             new IRfixer().visit((irBuilder.root));
             if (Config.enableBlockMerge)
                 new BlockMerger(true).visit(irBuilder.root);
-            if (Config.enableBlockMerge)
+            if (Config.enableBlockCopy)
                 new BlockCopier(true).visit(irBuilder.root);
 
             new GraphAllocator().run(irBuilder);
@@ -75,12 +77,13 @@ public class Main {
 
             if (Config.enableBlockMerge)
                 new BlockMerger(false).visit(irBuilder.root);
+
             if (Config.enableInstructionMatch)
                 new InstructionMatcher().visit(irBuilder.root);
 
             new Cjumpfixer().visit(irBuilder.root);
 
-            if (Config.enableFinalBlockMerge)
+            if (Config.enableFinalBlockCopy)
                 new BlockCopier(false).visit(irBuilder.root);
 
             new NasmPrinter(irBuilder, System.out).visit(irBuilder.root);

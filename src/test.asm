@@ -350,131 +350,469 @@ LC0:
 global main
 global __init
 section .data
-  __Static0_constString0:
-    dq 13
-    db 6EH, 6FH, 20H, 73H, 6FH, 6CH, 75H, 74H, 69H, 6FH, 6EH, 21H, 0AH, 00H
+  __Static0_a:
+    db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+  __Static1_i:
+    db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+  __Static2_j:
+    db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+  __Static3_b:
+    db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
 
 section .text
 
 main:
-  _BB9_main0_entry_main:
+  _BB5_main0_entry_main:
     push rbp
     mov rbp, rsp
-    sub rsp, 40
-    call getInt
-    mov qword [rbp - 24], rax
-    mov rcx, 0
-    mov qword [rbp - 16], rcx
-    mov rcx, 0
-    mov qword [rbp - 32], rcx
-    mov rcx, 0
-    mov qword [rbp - 8], rcx
-    mov r13, qword [rbp - 24]
-    dec r13
-    mov r14, 0
-    mov rbx, qword [rbp - 24]
-    mov rax, rbx
-    mov r11, qword [rbp - 24]
-    xor rdx, rdx
-    mul r11
+    mov r14, [rel __Static0_a]
+    mov r13, [rel __Static1_i]
+    mov r12, [rel __Static2_j]
+    mov rbx, [rel __Static3_b]
+    mov rdi, 5
+    shl rdi, 3
+    call malloc
+    mov r14, rax
+    mov rcx, 4
+    mov qword [r14], rcx
+    add r14, 8
+    mov [rel __Static0_a], r14
+    mov rdi, 6
+    shl rdi, 3
+    call malloc
     mov rbx, rax
-    mov rdi, rbx
-    inc rdi
+    mov rcx, 5
+    mov qword [rbx], rcx
+    add rbx, 8
+    mov [rel __Static3_b], rbx
+    mov r13, 0
+    cmp r13, 4
+    jl _BB8_main1_forBody
+    mov r13, 0
+    cmp r13, 4
+    jl _BB12_main3_forBody
+    mov r13, 0
+    cmp r13, 5
+    jl _BB20_main4_forBody
+    jmp _BB21_main2_forAfter
+  _BB8_main1_forBody:
+    mov rdi, 12
     shl rdi, 3
     call malloc
-    mov r15, rax
-    mov qword [r15], rbx
-    add r15, 8
-    mov rbx, 0
-    mov rcx, qword [rbp - 24]
-    mov rax, rcx
-    mov r11, qword [rbp - 24]
-    xor rdx, rdx
-    mul r11
-    mov rcx, rax
-    cmp rbx, rcx
-    jge _BB13_main2_forAfter
-  _BB12_main1_forBody:
-    mov rcx, 0
-    mov qword [r15 + rbx*8], rcx
-    mov rcx, qword [rbp - 24]
-    mov rax, rcx
-    mov r11, qword [rbp - 24]
-    xor rdx, rdx
-    mul r11
-    mov rcx, rax
-    cmp rbx, rcx
-    jge _BB13_main2_forAfter
-    jmp _BB12_main1_forBody
-  _BB13_main2_forAfter:
-    mov rbx, qword [rbp - 24]
-    mov rax, rbx
-    mov r11, qword [rbp - 24]
-    xor rdx, rdx
-    mul r11
-    mov rbx, rax
-    mov rdi, rbx
-    inc rdi
-    shl rdi, 3
+    mov rcx, 11
+    mov qword [rax], rcx
+    add rax, 8
+    mov qword [r14 + r13*8], rax
+    inc r13
+    cmp r13, 4
+    jl _BB8_main1_forBody
+    mov r13, 0
+    cmp r13, 4
+    jl _BB12_main3_forBody
+    mov r13, 0
+    cmp r13, 5
+    jl _BB20_main4_forBody
+  _BB21_main2_forAfter:
+    mov rcx, qword [r14 + 24]
+    mov rdi, qword [rcx + 72]
+    call toString
+    mov rdi, rax
+    call println
+    mov r13, 0
+    cmp r13, 3
+    jle _BB24_main6_forBody
+    mov r13, 0
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    jmp _BB32_main10_forBody
+  _BB12_main3_forBody:
+    mov r12, 0
+    cmp r12, 10
+    jl _BB16_main5_forBody
+    inc r13
+    cmp r13, 4
+    jl _BB12_main3_forBody
+    mov r13, 0
+    cmp r13, 5
+    jl _BB20_main4_forBody
+    jmp _BB21_main2_forAfter
+  _BB20_main4_forBody:
+    mov rdi, 16
     call malloc
-    mov qword [rbp - 40], rax
-    mov rcx, qword [rbp - 40]
-    mov qword [rcx], rbx
-    mov rcx, qword [rbp - 40]
-    add rcx, 8
-    mov qword [rbp - 40], rcx
-    mov rdi, qword [rbp - 24]
-    inc rdi
-    shl rdi, 3
-    call malloc
-    mov r12, rax
-    mov rcx, qword [rbp - 24]
-    mov qword [r12], rcx
-    add r12, 8
-    mov rbx, 0
-    mov rcx, qword [rbp - 24]
-    cmp rcx, 0
-    jg _BB16_main4_forBody
-    mov rcx, qword [rbp - 16]
-    mov qword [r15], rcx
-    mov rcx, qword [rbp - 32]
-    mov rdx, qword [rbp - 40]
+    mov qword [rbx + r13*8], rax
+    mov rdx, qword [rbx + r13*8]
+    mov rcx, -1
     mov qword [rdx], rcx
-    cmp r14, 1
-    jne _BB20_main5_Ifelse
-  _BB18_main3_Ifthen:
-    mov rcx, qword [rbp - 8]
-    mov rcx, qword [r12 + rcx*8]
-    mov rdi, qword [rcx + r13*8]
+    inc r13
+    cmp r13, 5
+    jl _BB20_main4_forBody
+    jmp _BB21_main2_forAfter
+  _BB16_main5_forBody:
+    mov rdx, qword [r14 + r13*8]
+    mov rcx, 888
+    mov qword [rdx + r12*8], rcx
+    inc r12
+    cmp r12, 10
+    jl _BB16_main5_forBody
+    inc r13
+    cmp r13, 4
+    jl _BB12_main3_forBody
+    mov r13, 0
+    cmp r13, 5
+    jl _BB20_main4_forBody
+    jmp _BB21_main2_forAfter
+  _BB24_main6_forBody:
+    mov r12, 0
+    cmp r12, 9
+    jle _BB28_main11_forBody
+    inc r13
+    cmp r13, 3
+    jle _BB24_main6_forBody
+    mov r13, 0
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+  _BB31_main7_forexpr3:
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    jmp _BB32_main10_forBody
+  _BB33_main8_forAfter:
+    mov rdx, qword [r14 + 16]
+    mov rcx, 0
+    mov qword [rdx + 80], rcx
+    mov rcx, qword [r14 + 16]
+    mov rdi, qword [rcx + 80]
+    call toString
+    mov rdi, rax
+    call println
+    mov rdx, qword [rbx]
+    mov rcx, -2
+    mov qword [rdx], rcx
+    mov rcx, qword [r14 + 16]
+    mov rcx, qword [rcx + 80]
+    mov rdx, qword [rbx + rcx*8]
+    mov rcx, -10
+    mov qword [rdx], rcx
+    mov rcx, qword [rbx]
+    mov rdi, qword [rcx]
+    call toString
+    mov rdi, rax
+    call println
+    mov rcx, qword [rbx + 8]
+    mov rdi, qword [rcx]
     call toString
     mov rdi, rax
     call println
     mov rax, 0
-    jmp _BB21_main6_leave_main
-  _BB16_main4_forBody:
-    mov rdi, qword [rbp - 24]
-    inc rdi
-    shl rdi, 3
-    call malloc
-    mov rcx, qword [rbp - 24]
-    mov qword [rax], rcx
-    add rax, 8
-    mov qword [r12 + rbx*8], rax
-    mov rcx, qword [rbp - 24]
-    cmp rbx, rcx
-    jl _BB16_main4_forBody
-    mov rcx, qword [rbp - 16]
-    mov qword [r15], rcx
-    mov rcx, qword [rbp - 32]
-    mov rdx, qword [rbp - 40]
-    mov qword [rdx], rcx
-    cmp r14, 1
-    jne _BB20_main5_Ifelse
-    jmp _BB18_main3_Ifthen
-  _BB20_main5_Ifelse:
-    lea rdi, [rel __Static0_constString0]
-    call print
-    mov rax, 0
-  _BB21_main6_leave_main:
     leave
     ret
+  _BB36_main9_forBody:
+    mov rcx, qword [r14 + r13*8]
+    mov rdi, qword [rcx + r12*8]
+    call toString
+    mov rdi, rax
+    call println
+    inc r12
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+  _BB32_main10_forBody:
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    inc r13
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    jmp _BB32_main10_forBody
+  _BB28_main11_forBody:
+    mov rsi, qword [r14 + r13*8]
+    mov rcx, r13
+    mov rax, rcx
+    mov r11, 10
+    xor rdx, rdx
+    mul r11
+    mov rcx, rax
+    add rcx, r12
+    mov qword [rsi + r12*8], rcx
+    inc r12
+    cmp r12, 9
+    jle _BB28_main11_forBody
+    inc r13
+    cmp r13, 3
+    jle _BB24_main6_forBody
+    mov r13, 0
+    cmp r13, 3
+    jg _BB33_main8_forAfter
+    mov r12, 0
+    cmp r12, 9
+    jle _BB36_main9_forBody
+    jmp _BB31_main7_forexpr3

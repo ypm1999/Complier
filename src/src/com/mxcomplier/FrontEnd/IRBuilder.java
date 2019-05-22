@@ -267,7 +267,6 @@ public class IRBuilder extends ASTScanner {
 
     @Override
     public void visit(VarDefNode node) {
-//        System.out.println(node.getLocation().toString());
         VarSymbol var = currentScope.getVar(node.getName());
         var.vReg = new VirtualRegisterIR(node.getName());
         if (node.getInitExpr() != null)
@@ -801,7 +800,7 @@ public class IRBuilder extends ASTScanner {
             return;
         }
         VirtualRegisterIR res = new VirtualRegisterIR("airthmeticBinary");
-        res.setTempVar(true);
+//        res.setTempVar(true);
         if (op == BinaryInstIR.Op.ADD && lhs.getType() instanceof StringType) {
             doFuncCall(library_stradd, Arrays.asList(lhs.resultReg, rhs.resultReg), res);
         } else {

@@ -1,59 +1,49 @@
-bool check(int a, int N) {
-    return ((a < N) && (a >= 0));
-}
+A a;
+B b;
 
 int main() {
-    int N;
-    int head;
-	int startx;
-	int starty;
-    int targetx;
-	int targety;
-	int tail;
-	int ok;
-	int now;
-    int x;
-	int y;
-    int[] xlist;
-	int[] ylist;
-    int[][] step;
-    int i;
-	int j;
-
-    N = getInt();
-    head = 0;tail = 0;startx = 0;starty = 0;
-    targetx = 0;targety  = N - 1;
-    x = 0;y = 0;
-    now = 0;ok = 0;
-    xlist = new int[N * N];
-    for (i = 0; i < N * N; i = i ++ )
-        xlist[i] = 0;
-    ylist = new int[N * N];
-    step = new int[N][];
-    for (i = 0; i < N; i =  i ++ ) {
-		step[i] = new int[N];
-    }
-    xlist[0] = startx;
-    ylist[0] = starty;
-	step[startx][starty] == 0;
-	
-    if (ok == 1) println(toString(step[targetx][targety]));
-    else print("no solution!\n");
+    a = new A;
+    b = new B;
+    A[] a = (new A).many()[0];
+    B[][] b = (new B).many()[1][1].many();
     return 0;
 }
 
+class A {
+    B b;
+    A one() {
+        return a;
+    }
+
+    A[][] many() {
+        return new A[10][10];
+    }
+}
+
+class B {
+    A a;
+    B one() {
+        return b;
+    }
+
+    B[][] many() {
+        return new B[10][10];
+    }
+}
 
 
 
 
 /*!! metadata:
 === comment ===
-horse2-5100309153-yanghuan.mx
+miscellaneous class test
+class-2-515030910117-zhenglianmin.mx
 === assert ===
 success_compile
 === phase ===
-semantic pretest
+semantic extended
 === is_public ===
 True
 
 !!*/
+
